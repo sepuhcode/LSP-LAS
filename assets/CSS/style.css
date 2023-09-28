@@ -1,9 +1,9 @@
 .logo {
-    width: 70%;
+    max-width: 100%;
 
     /* Mengatur tinggi gambar menjadi 75% dari tinggi kontainer */
-    height: 70%;
-    margin-left: 35%;
+    height: auto;
+    margin-left: 20px;
 }
 
 .navbar-nav a:hover {
