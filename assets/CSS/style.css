@@ -97,13 +97,18 @@ ul:last-child {
 
     text-align: left;
 }
-
+.table-size{
+    position: relative;
+    border: 1px solid black;
+}
 .table-size img {
     /* gambar background tabel  */
     position: absolute;
     width: 205px;
     height: 205px;
     opacity: .1;
+    left: 50%;
+    /* top: 18%; */
 }
 
 /* Mengatur gaya sel header */

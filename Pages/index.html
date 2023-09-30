@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="../assets/CSS/style.css">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
-
 <body>
+
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a href="#"><img src="../assets/Images/LogoLAS.png" class="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+                <a href="#"><img src="../assets/Images/LogoLAS.png" class="logo"></a>
                 <ul class="navbar-nav ms-auto"> <!-- Gunakan ml-auto untuk menggeser ke kanan -->
                     <li class="nav-item">
                         <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> jangan dikasih class active dulu -->
@@ -68,40 +68,49 @@
         <div class="text">Cari Data Sertifikasi</div>
         <hr>
     </div>
-    <div class="search-container">
-        <!-- Kolom pencarian -->
-        <input type="text" class="search-box" placeholder="Cari nomor sertifikasi">
-
-        <!-- Tombol pencarian -->
-        <button class="search-button"> <i data-feather="search"></i></button>
-        <div class="table-size">
-            <img src="../assets/Images/Logo-LSP-3.png" alt="logo LSP">
-            <table class="table table-bordered rounded" style="margin-top: 3%;">
-                <tbody>
-                    <tr>
-                        <th scope="row">Nama</th>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">No. Sertifikasi</th>
-                        <td>2017728361726</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Asesor</th>
-                        <td>ahwdvwhdvhavh</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Skema</th>
-                        <td>Plate Walder</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Berlaku Sampai</th>
-                        <td>20/09/2023</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- <div class="search-container" style="align-items: center;">
+        <form action="" >
+            Kolom pencarian
+            <input type="text" class="search-box" placeholder="Cari nomor sertifikasi">
+            Tombol pencarian
+            <button class="search-button"> </i></button>
+        </form>
+    </div> -->
+    <div class="container-fluid mb-4" style="width: 40%;">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-danger" type="submit"><i data-feather="search"></i></button>
+        </form>
+      </div>
+    
+    <div class="table-size">
+        <img class="logo-tabel" src="../assets/Images/Logo-LSP-3.png" alt="logo LSP">
+        <table class="table table-bordered rounded">
+            <tbody>
+                <tr>
+                    <th scope="row">Nama</th>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <th scope="row">No. Sertifikasi</th>
+                    <td>2017728361726</td>
+                </tr>
+                <tr>
+                    <th scope="row">Asesor</th>
+                    <td>ahwdvwhdvhavh</td>
+                </tr>
+                <tr>
+                    <th scope="row">Skema</th>
+                    <td>Plate Walder</td>
+                </tr>
+                <tr>
+                    <th scope="row">Berlaku Sampai</th>
+                    <td>20/09/2023</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
     <div>
 
     </div>
