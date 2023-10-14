@@ -1,3 +1,4 @@
+/* ajarin dong puh */
 .logo {
     max-width: 100%;
 
@@ -23,6 +24,13 @@ ul:last-child {
     margin-right: 15%;
 }
 
+.btn-login {
+    margin-top: 2px;
+    font-size: 15pt;
+
+}
+
+
 #test button {
     background-color: red;
 }
@@ -35,7 +43,9 @@ ul:last-child {
     margin: 40px auto;
     /* Memberikan jarak atas dan bawah */
     width: 80%;
+    /* panjang garis */
 }
+
 
 .line-with-text hr {
     flex-grow: 1;
@@ -57,19 +67,6 @@ ul:last-child {
     /* Memberikan padding agar teks terlihat lebih baik */
 }
 
-/* searching */
-/* CSS untuk mengatur tampilan kolom pencarian */
-.search-container {
-    text-align: center;
-}
-
-.search-box {
-    padding: 10px;
-    width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
 .search-box::placeholder {
     font-style: italic;
 }
@@ -85,25 +82,37 @@ ul:last-child {
 
 .table {
     width: 40%;
-    /* Mengatur lebar tabel menjadi 50% dari lebar container */
-    margin: 0 auto;
+    /* Mengatur lebar tabel menjadi 40% dari lebar container */
+    margin: 0px auto;
     /* Memusatkan tabel secara horizontal */
     border-collapse: collapse;
+
 }
 
-.table-size table{
+.table-size {
+
+
+    position: relative;
+
+}
+
+.table-size table {
     /* set border table  */
-    border: 2px solid black; 
-
+    border: 2px solid black;
     text-align: left;
+
+
 }
 
+/* gambar background tabel  */
 .table-size img {
-    /* gambar background tabel  */
     position: absolute;
     width: 205px;
     height: 205px;
-    opacity: .1;
+    /* opacity: .1; */
+    filter: opacity(.1);
+    left: 50%;
+    z-index: 5;
 }
 
 /* Mengatur gaya sel header */
@@ -111,8 +120,7 @@ ul:last-child {
     width: 30%;
     /* color: #a8a6a4; */
     /* background-color: #a8a6a4; */
-    background-color:#e5e5e5;
-
+    background-color: #e5e5e5;
     /* text-align: left; */
     padding: 8px;
 }
@@ -121,4 +129,178 @@ ul:last-child {
 td {
     width: 70%;
     padding: 8px;
+}
+
+.teks-2 {
+    text-align: center;
+    font-size: 15pt;
+}
+
+/* div .left {
+    display: inline;
+    margin: 0px 1000px 0px 0px;
+    border: 1px solid rgb(0, 0, 0);
+} */
+
+div .center {
+    /* display: inline; */
+    margin-left: 0px;
+    margin-top: 0px;
+    border: 1px solid rgb(0, 0, 0);
+
+}
+
+#active {
+    color: red;
+    text-decoration: underline;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body {
+    background: #f2f2f2;
+} */
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide-right {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.logos,
+.logos-2 {
+    overflow: hidden;
+    padding: 30px 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logos:before,
+.logos:after,
+.logos-2:before,
+.logos-2:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.logos:before,
+.logos-2:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.logos:after,
+.logos-2:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+.logos:hover .logos-slide,
+.logos:hover .logos-slide-right {
+    animation-play-state: running;
+}
+
+.logos-slide {
+    display: inline-block;
+    animation: 35s slide infinite linear;
+}
+
+.logos-slide-right {
+    display: inline-block;
+    animation: 35s slide-right infinite linear;
+}
+
+.logos-slide img,
+.logos-slide-right img {
+    width: 243px;
+    height: 146px;
+    margin: 0 20px;
+}
+
+/* .logos-slide-right img {
+    width: 243px;
+    height: 146px;
+    margin: 0 20px;
+} */
+
+/* accordion*/
+.image-container {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 300px;
+    /* Sesuaikan lebar gambar sesuai kebutuhan Anda */
+}
+
+.bg-accordion {
+    background-color: rgb(217, 217, 217)
+}
+
+
+.alur-pendaftaran {
+    margin-top: 10%;
+    width: 1920px;
+    height: 1091px;
+    background-color: #ff0000;
+    border-top-right-radius: 40%;
+    border-bottom-left-radius: 40%;
+    /* line-height: 300px; */
+
+
+}
+
+.line-with-text2 {
+    display: flex;
+    /* Membuat elemen flex container */
+    align-items: center;
+    /* Menggeser elemen anak ke tengah vertikal */
+    margin: 40px auto;
+    /* Memberikan jarak atas dan bawah */
+    width: 80%;
+    /* panjang garis */
+}
+
+.line-with-text2 .text2 {
+    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
+    padding: 0 10px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    /* Memberikan padding agar teks terlihat lebih baik */
+}
+
+.line-with-text2 hr {
+    flex-grow: 1;
+    /* Menggunakan ruang kosong yang tersisa */
+    height: 10px;
+    /* Mengatur tinggi garis */
+    background-color: rgb(255, 255, 255);
+    /* Warna garis */
+    margin: 0 10px;
+    /* Memberikan jarak kiri dan kanan garis */
+
 }
