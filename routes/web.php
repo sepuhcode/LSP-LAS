@@ -20,3 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('search/{keyword}', [testSearchController::class, 'search']);
+Route::get('/convert/date', [testSearchController::class, 'convertDate']);
+Route::get('/check/date', [testSearchController::class, 'checkDate']);
+
+Route::post('/cari/setifikat',[testSearchController::class,'cariSertifikat'])->name('cari.sertifikat');
+Route::get('/home', [testSearchController::class, 'showHomePage']);

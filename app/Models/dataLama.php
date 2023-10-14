@@ -9,7 +9,7 @@ class dataLama extends Model
 {
     use HasFactory;
 
-    protected $table = 'data_lama_v2';
+    protected $table = 'data-lama';
     protected $primaryKey = 'no';
     public $incrementing = false;
 
