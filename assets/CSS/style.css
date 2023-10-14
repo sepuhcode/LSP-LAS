@@ -263,14 +263,44 @@ div .center {
 
 
 .alur-pendaftaran {
-    position: relative;
+    margin-top: 10%;
     width: 1920px;
-    height: 500px;
+    height: 1091px;
     background-color: #ff0000;
-    border-top-right-radius: 30%;
-    border-bottom-left-radius: 30%;
-    text-align: center;
+    border-top-right-radius: 40%;
+    border-bottom-left-radius: 40%;
     /* line-height: 300px; */
 
+
+}
+
+.line-with-text2 {
+    display: flex;
+    /* Membuat elemen flex container */
+    align-items: center;
+    /* Menggeser elemen anak ke tengah vertikal */
+    margin: 40px auto;
+    /* Memberikan jarak atas dan bawah */
+    width: 80%;
+    /* panjang garis */
+}
+
+.line-with-text2 .text2 {
+    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
+    padding: 0 10px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    /* Memberikan padding agar teks terlihat lebih baik */
+}
+
+.line-with-text2 hr {
+    flex-grow: 1;
+    /* Menggunakan ruang kosong yang tersisa */
+    height: 10px;
+    /* Mengatur tinggi garis */
+    background-color: rgb(255, 255, 255);
+    /* Warna garis */
+    margin: 0 10px;
+    /* Memberikan jarak kiri dan kanan garis */
 
 }
