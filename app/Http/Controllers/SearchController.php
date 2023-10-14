@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\dataLama;
+use App\Models\OldData;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,20 +11,20 @@ class testSearchController extends Controller
 {
    public function search(string $keyword)
    {
-      $sertifikat = dataLama::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
+      $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
       if ($sertifikat->isNotEmpty()) {
          $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1095 days"));
       } else {
          $tglBerlaku = "";
       }
       return view('testView', compact('sertifikat', 'tglBerlaku'));
-      //  return dd(dataLama::where('no_sertifikat',$keyword)->firstOrFail());
+      //  return dd(OldData::where('no_sertifikat',$keyword)->firstOrFail());
    }
 
    public function convertDate()
    {
-      $datas = dataLama::all();
-      // $datas = dataLama::pluck('tgl_sertifikat_lama','no');
+      $datas = OldData::all();
+      // $datas = OldData::pluck('tgl_sertifikat_lama','no');
       foreach ($datas as $data) {
 
          if (!empty($data->tgl_sertifikat_lama)) {
@@ -35,13 +35,13 @@ class testSearchController extends Controller
             $formatedDate = null;
          }
 
-         DB::table('data-lama')->where('no', $data->no)->update(['tgl_sertifikat_baru' => $formatedDate]);
+         DB::table('old_data')->where('no', $data->no)->update(['tgl_sertifikat_baru' => $formatedDate]);
       }
    }
 
    public function checkDate()
    {
-      $data = dataLama::select('tgl_sertifikat_baru')->where('no', 2)->get();
+      $data = OldData::select('tgl_sertifikat_baru')->where('no', 2)->get();
       $tgl_berlaku = date_add(date_create($data[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1095 days"));
       // dd(date_format($tgl_berlaku,'d-M-Y'));
 
@@ -58,7 +58,7 @@ class testSearchController extends Controller
    {
       $keyword = $request['keyword'];
 
-      $sertifikat = dataLama::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
+      $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
       if ($sertifikat->isNotEmpty()) {
          if ($sertifikat[0]->tgl_sertifikat_baru != null) {
             $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1096 days"));
