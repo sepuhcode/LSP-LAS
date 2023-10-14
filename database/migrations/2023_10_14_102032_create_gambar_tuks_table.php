@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('gambar_tuks', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->boolean('visibility');
             $table->timestamps();
         });
     }
