@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data-lama`
+-- Table structure for table `old_data`
 --
 
-CREATE TABLE `data-lama` (
+CREATE TABLE `old_data` (
   `no` int(4) NOT NULL,
   `no_ujk` int(2) DEFAULT NULL,
   `nama` varchar(39) DEFAULT NULL,
@@ -46,10 +46,10 @@ CREATE TABLE `data-lama` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `data-lama`
+-- Dumping data for table `old_data`
 --
 
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (1, 1, 'Iqbal Maulana Muhamad', '24193.0721.3.0016194. 2023', 'C24.024.0000001. 2023', 'Pipe Welder', '1G GMAW', 'PT Juara Bike', NULL, '5 Januari 2023', NULL, NULL, 'Ma\'Mun Hidayat', 'SS.03/PLW-III/LSP-LAS/2019', 'PAID'),
 (2, 1, 'Muhammad Syarwani Abdan', '24193.0721.2.0016195. 2023', 'C24.024.0000002. 2023', 'Plate Welder', '3G FCAW-GMAW', 'LPK Competence Indonesia', '10801936', '6 Januari 2023', '08/02/2023', '2023-02-08', 'Iman Heriyadi', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (3, 2, 'Jefri Prasetio', '24193.0721.2.0016196. 2023', 'C24.024.0000003. 2023', 'Plate Welder', '3G FCAW', 'LPK Competence Indonesia', '10801937', '6 Januari 2023', '08/02/2023', '2023-02-08', 'Iman Heriyadi', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
@@ -254,7 +254,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (202, 11, 'Didik Diartono', '24193.0721.2.0016395. 2023', 'C24.024.0000202. 2023', 'Plate Welder', '3G SMAW', 'Kampuh Welding Cikarang', '10824280', '20 Januari 2023', '17/02/2023', '2023-02-17', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (203, 12, 'Ayom Priambodo', '24193.0721.2.0016396. 2023', 'C24.024.0000203. 2023', 'Plate Welder', '3G GMAW', 'Kampuh Welding Cikarang', '10824281', '20 Januari 2023', '17/02/2023', '2023-02-17', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (204, 1, 'Muhammad Dhoheron', '24193.0721.2.0016397. 2023', 'C24.024.0000204. 2023', 'Plate Welder', '3G FCAW', 'Kampuh Welding Cikarang', 'pinjem u KWC 21 FEB', '24 Januari 2023', '13/02/2023', '2023-02-13', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', 'PAID');
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (205, 2, 'Muhamad Shobirin', '24193.0721.2.0016398. 2023', 'C24.024.0000205. 2023', 'Plate Welder', '3G FCAW', 'Kampuh Welding Cikarang', NULL, '24 Januari 2023', '13/02/2023', '2023-02-13', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (206, 3, 'Muchamad Sofirin', '24193.0721.2.0016399. 2023', 'C24.024.0000206. 2023', 'Plate Welder', '3G FCAW', 'Kampuh Welding Cikarang', NULL, '24 Januari 2023', '13/02/2023', '2023-02-13', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (207, 4, 'Joko Premana', '24193.0721.2.0016400. 2023', 'C24.024.0000207. 2023', 'Plate Welder', '3G FCAW', 'Kampuh Welding Cikarang', NULL, '24 Januari 2023', '13/02/2023', '2023-02-13', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
@@ -476,7 +476,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (423, 10, 'Kapriyadi', '24193.0721.3.0016616 .2023', 'C24.024.0000423 .2023', 'Welding Inspector Basic', NULL, 'SLV Metropolitan', '10889963', '29 Jan-1 Feb 2023', '15/03/2023', '2023-03-15', 'Idil Fithriansyah', NULL, NULL),
 (424, 11, 'Heru Harista Harnel', '24193.0721.3.0016617 .2023', 'C24.024.0000424 .2023', 'Welding Inspector Basic', NULL, 'SLV Metropolitan', '10889964', '29 Jan-1 Feb 2023', '15/03/2023', '2023-03-15', 'Idil Fithriansyah', NULL, NULL),
 (425, 12, 'Yudha Arganata', '24193.0721.3.0016618 .2023', 'C24.024.0000425 .2023', 'Welding Inspector Basic', NULL, 'SLV Metropolitan', '10889965', '29 Jan-1 Feb 2023', '15/03/2023', '2023-03-15', 'Idil Fithriansyah', NULL, NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (426, 13, 'Yoga Desfian', '24193.0721.3.0016619 .2023', 'C24.024.0000426 .2023', 'Welding Inspector Basic', NULL, 'SLV Metropolitan', '10889966', '29 Jan-1 Feb 2023', '15/03/2023', '2023-03-15', 'Idil Fithriansyah', NULL, NULL),
 (427, 14, 'Teguh Hadi Pratama', '24193.0721.3.0016620 .2023', 'C24.024.0000427 .2023', 'Welding Inspector Basic', NULL, 'SLV Metropolitan', '10889967', '29 Jan-1 Feb 2023', '15/03/2023', '2023-03-15', 'Idil Fithriansyah', NULL, NULL),
 (428, 15, 'Rialdi Supriyatna', '24193.0721.3.0016621 .2023', 'C24.024.0000428 .2023', 'Welding Inspector Basic', NULL, 'SLV Metropolitan', '10889968', '29 Jan-1 Feb 2023', '15/03/2023', '2023-03-15', 'Idil Fithriansyah', NULL, NULL),
@@ -688,7 +688,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (634, 11, 'Johan Bala Lembang', '24193.0721.2.0016827 .2023', 'C24.024.0000634 .2023', 'Plate Welder', '4G FCAW', 'PT Sriwijaya Teknik Utama', '11116594', '30-31 Maret 2023', '08/05/2023', '2023-05-08', 'Epriyanto', NULL, NULL),
 (635, 12, 'Achmad Permadi', '24193.0721.2.0016828 .2023', 'C24.024.0000635 .2023', 'Plate Welder', '4G FCAW', 'PT Sriwijaya Teknik Utama', '11116595', '30-31 Maret 2023', '08/05/2023', '2023-05-08', 'Epriyanto', NULL, NULL),
 (636, 13, 'M. Sakti Jaya', '24193.0721.2.0016829 .2023', 'C24.024.0000636 .2023', 'Plate Welder', '4G FCAW', 'PT Sriwijaya Teknik Utama', '11116596', '30-31 Maret 2023', '08/05/2023', '2023-05-08', 'Epriyanto', NULL, NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (637, 14, 'Andi Ahriyan Banua D', '24193.0721.2.0016830 .2023', 'C24.024.0000637 .2023', 'Plate Welder', '4G FCAW', 'PT Sriwijaya Teknik Utama', '11116597', '30-31 Maret 2023', '08/05/2023', '2023-05-08', 'Epriyanto', NULL, NULL),
 (638, 15, 'Aris Chanra', '24193.0721.2.0016831 .2023', 'C24.024.0000638 .2023', 'Plate Welder', '4G FCAW', 'PT Sriwijaya Teknik Utama', '11116598', '30-31 Maret 2023', '08/05/2023', '2023-05-08', 'Epriyanto', NULL, NULL),
 (639, 16, 'Yulianus Tiwa', '24193.0721.2.0016832 .2023', 'C24.024.0000639 .2023', 'Plate Welder', '4G FCAW', 'PT Sriwijaya Teknik Utama', '11116599', '30-31 Maret 2023', '08/05/2023', '2023-05-08', 'Epriyanto', NULL, NULL),
@@ -909,7 +909,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (854, 16, 'Muhammad Imam Afriansyah', '24193.0721.3.0017047 .2023', 'C24.024.0000854 .2023', 'Pipe Welder', '6G FCAW', 'Geweld Training Center', '11133328', '15-17 April 2023', '10/05/2023', '2023-05-10', 'Iman Heriyadi', NULL, NULL),
 (855, 17, 'Muhammad Puji Kurniawan', '24193.0721.3.0017048 .2023', 'C24.024.0000855 .2023', 'Pipe Welder', '6G FCAW', 'Geweld Training Center', '11133329', '15-17 April 2023', '10/05/2023', '2023-05-10', 'Iman Heriyadi', NULL, NULL),
 (856, 18, 'Muhammad Raihan Ardana', '24193.0721.3.0017049 .2023', 'C24.024.0000856 .2023', 'Pipe Welder', '6G FCAW', 'Geweld Training Center', '11133330', '15-17 April 2023', '10/05/2023', '2023-05-10', 'Iman Heriyadi', NULL, NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (857, 19, 'Natan Elyonai P', '24193.0721.3.0017050 .2023', 'C24.024.0000857 .2023', 'Pipe Welder', '6G FCAW', 'Geweld Training Center', '11133331', '15-17 April 2023', '10/05/2023', '2023-05-10', 'Iman Heriyadi', NULL, NULL),
 (858, 20, 'Novriansyah', '24193.0721.3.0017051 .2023', 'C24.024.0000858 .2023', 'Pipe Welder', '6G FCAW', 'Geweld Training Center', '11133332', '15-17 April 2023', '10/05/2023', '2023-05-10', 'Iman Heriyadi', NULL, NULL),
 (859, 21, 'Puji Dwi Haryono', '24193.0721.3.0017052 .2023', 'C24.024.0000859 .2023', 'Pipe Welder', '6G FCAW', 'Geweld Training Center', '11133333', '15-17 April 2023', '10/05/2023', '2023-05-10', 'Iman Heriyadi', NULL, NULL),
@@ -1123,7 +1123,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (1067, 14, 'Iman Sucahyo', '24193.0721.2.0017260 .2023', 'C24.024.0001067 .2023', 'Plate Welder', '3G SMAW', 'Worshop Catur Training Centre Batam (SLV)', '11323355', '3-5/06/2023', '13/06/2023', '2023-06-13', 'Markus Pamenta', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1068, 15, 'Indra Hardiansya', '24193.0721.2.0017261 .2023', 'C24.024.0001068 .2023', 'Plate Welder', '3G SMAW', 'Worshop Catur Training Centre Batam (SLV)', '11323356', '3-5/06/2023', '13/06/2023', '2023-06-13', 'Markus Pamenta', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1069, 16, 'Irfan Surya Saputra', '24193.0721.2.0017262 .2023', 'C24.024.0001069 .2023', 'Plate Welder', '3G SMAW', 'Worshop Catur Training Centre Batam (SLV)', '11323357', '3-5/06/2023', '13/06/2023', '2023-06-13', 'Markus Pamenta', 'SS.02/PLW-II/LSP-LAS/2019', NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (1070, 17, 'Jemmi Maulana', '24193.0721.2.0017263 .2023', 'C24.024.0001070 .2023', 'Plate Welder', '3G SMAW', 'Worshop Catur Training Centre Batam (SLV)', '11323358', '3-5/06/2023', '13/06/2023', '2023-06-13', 'Markus Pamenta', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1071, 18, 'Kevin Javaleri', '24193.0721.2.0017264 .2023', 'C24.024.0001071 .2023', 'Plate Welder', '3G SMAW', 'Worshop Catur Training Centre Batam (SLV)', '11323359', '3-5/06/2023', '13/06/2023', '2023-06-13', 'Markus Pamenta', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1072, 19, 'Mahdi Hidayat Arkiang', '24193.0721.2.0017265 .2023', 'C24.024.0001072 .2023', 'Plate Welder', '3G SMAW', 'Worshop Catur Training Centre Batam (SLV)', '11323360', '3-5/06/2023', '13/06/2023', '2023-06-13', 'Markus Pamenta', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
@@ -1323,7 +1323,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (1266, 21, 'Ilham', '24193.0721.2.0017459 .2023', 'C24.024.0001266 .2023', 'Plate Welder', '3G SMAW', 'LPK Hijau Muda Academy', '11408652', '22-23/06/2023', '04/07/2023', '2023-07-04', 'Gatot J Situmorang', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1267, 22, 'Ardi', '24193.0721.2.0017460 .2023', 'C24.024.0001267 .2023', 'Plate Welder', '3G SMAW', 'LPK Hijau Muda Academy', '11408649', '22-23/06/2023', '04/07/2023', '2023-07-04', 'Gatot J Situmorang', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1268, 23, 'Abdu Rahman', '24193.0721.2.0017461 .2023', 'C24.024.0001268 .2023', 'Plate Welder', '3G SMAW', 'LPK Hijau Muda Academy', '11408651', '22-23/06/2023', '04/07/2023', '2023-07-04', 'Gatot J Situmorang', 'SS.02/PLW-II/LSP-LAS/2019', NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (1269, 24, 'Rudi', '24193.0721.2.0017462 .2023', 'C24.024.0001269 .2023', 'Plate Welder', '3G SMAW', 'LPK Hijau Muda Academy', '11408659', '22-23/06/2023', '04/07/2023', '2023-07-04', 'Gatot J Situmorang', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1270, 25, 'Sanusi', '24193.0721.2.0017463 .2023', 'C24.024.0001270 .2023', 'Plate Welder', '3G SMAW', 'LPK Hijau Muda Academy', '11408660', '22-23/06/2023', '04/07/2023', '2023-07-04', 'Gatot J Situmorang', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1271, 26, 'Arif Saifudin Zuhri', '24193.0721.2.0017464 .2023', 'C24.024.0001271 .2023', 'Plate Welder', '3G SMAW', 'LPK Hijau Muda Academy', '11408658', '22-23/06/2023', '04/07/2023', '2023-07-04', 'Gatot J Situmorang', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
@@ -1526,7 +1526,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (1468, 26, 'Nanang', '24193.0721.2.0017661 .2023', 'C24.024.0001468 .2023', 'Plate Welder', '3G SMAW', 'PT Socfindo Tanah Gambus', '11519993', '27-29/07/2023', '02/08/2023', '2023-08-02', 'Faisal Ihsan', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1469, 1, 'Pajrin Padillah', '24193.0721.2.0017662 .2023', 'C24.024.0001469 .2023', 'Plate Welder', '4G SMAW', 'BLK Tanjung Tabalong', '11505809', '27/07/2023', '31/07/2023', '2023-07-31', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', 'UNPAID'),
 (1470, 2, 'Haris', '24193.0721.2.0017663 .2023', 'C24.024.0001470 .2023', 'Plate Welder', '4G SMAW', 'BLK Tanjung Tabalong', '11505810', '27/07/2023', '31/07/2023', '2023-07-31', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (1471, 3, 'Ahmad Yayan', '24193.0721.2.0017664 .2023', 'C24.024.0001471 .2023', 'Plate Welder', '3G SMAW', 'BLK Tanjung Tabalong', '11505811', '27/07/2023', '31/07/2023', '2023-07-31', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1472, 4, 'Hardiman', '24193.0721.2.0017665 .2023', 'C24.024.0001472 .2023', 'Plate Welder', '3G SMAW', 'BLK Tanjung Tabalong', '11505812', '27/07/2023', '31/07/2023', '2023-07-31', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1473, 5, 'Ike Ludiarma', '24193.0721.2.0017666 .2023', 'C24.024.0001473 .2023', 'Plate Welder', '3G SMAW', 'BLK Tanjung Tabalong', '11505813', '27/07/2023', '31/07/2023', '2023-07-31', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
@@ -1725,7 +1725,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (1666, 7, 'Jajang Suparman', '24193.0721.2.0017859 .2023', 'C24.024.0001666 .2023', 'Plate Welder', '3G SMAW', 'PT Indocement Tunggal Perkasa', '11543364', '7-8/08/2023', '10/08/2023', '2023-08-10', 'Asep Tajudin Nur', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1667, 8, 'Rakiya', '24193.0721.2.0017860 .2023', 'C24.024.0001667 .2023', 'Plate Welder', '3G SMAW', 'PT Indocement Tunggal Perkasa', '11543365', '7-8/08/2023', '10/08/2023', '2023-08-10', 'Asep Tajudin Nur', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1668, 9, 'Kosim', '24193.0721.2.0017861 .2023', 'C24.024.0001668 .2023', 'Plate Welder', '3G SMAW', 'PT Indocement Tunggal Perkasa', '11543366', '7-8/08/2023', '10/08/2023', '2023-08-10', 'Asep Tajudin Nur', 'SS.02/PLW-II/LSP-LAS/2019', NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (1669, 10, 'Nur Aini', '24193.0721.2.0017862 .2023', 'C24.024.0001669 .2023', 'Plate Welder', '3G SMAW', 'PT Indocement Tunggal Perkasa', '11543367', '7-8/08/2023', '10/08/2023', '2023-08-10', 'Asep Tajudin Nur', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1670, 11, 'Ahmad Syahroni', '24193.0721.3.0017863 .2023', 'C24.024.0001670 .2023', 'Pipe Welder', '6G SMAW', 'PT Indocement Tunggal Perkasa', '11543368', '7-8/08/2023', '10/08/2023', '2023-08-10', 'Asep Tajudin Nur', 'SS. 03/PPW-III/LSP-LAS/2019', NULL),
 (1671, 12, 'Iwa Kartiwa', '24193.0721.3.0017864 .2023', 'C24.024.0001671 .2023', 'Pipe Welder', '6G SMAW', 'PT Indocement Tunggal Perkasa', '11543369', '7-8/08/2023', '10/08/2023', '2023-08-10', 'Asep Tajudin Nur', 'SS. 03/PPW-III/LSP-LAS/2019', NULL),
@@ -1933,7 +1933,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (1873, 12, 'Muhammad Kisman', '24193.0721.2.0018066 .2023', 'C24.024.0001873 .2023', 'Plate Welder', '4G FCAW', 'Kampuh Welding Cikarang', '11601891', '21/08/2023', '29/08/2023', '2023-08-29', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1874, 13, 'Roni Eko Nurcahyo', '24193.0721.2.0018067 .2023', 'C24.024.0001874 .2023', 'Plate Welder', '4G FCAW', 'Kampuh Welding Cikarang', '11601892', '21/08/2023', '29/08/2023', '2023-08-29', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1875, 14, 'Saifullah', '24193.0721.2.0018068 .2023', 'C24.024.0001875 .2023', 'Plate Welder', '4G FCAW', 'Kampuh Welding Cikarang', '11601893', '21/08/2023', '29/08/2023', '2023-08-29', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (1876, 15, 'Sefliandi Sewang', '24193.0721.2.0018069 .2023', 'C24.024.0001876 .2023', 'Plate Welder', '4G FCAW', 'Kampuh Welding Cikarang', '11601894', '21/08/2023', '29/08/2023', '2023-08-29', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1877, 16, 'Supriadi. T', '24193.0721.2.0018070 .2023', 'C24.024.0001877 .2023', 'Plate Welder', '4G FCAW', 'Kampuh Welding Cikarang', '11601895', '21/08/2023', '29/08/2023', '2023-08-29', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (1878, 17, 'Sulkarnain', '24193.0721.2.0018071 .2023', 'C24.024.0001878 .2023', 'Plate Welder', '4G FCAW', 'Kampuh Welding Cikarang', '11601896', '21/08/2023', '29/08/2023', '2023-08-29', 'Sunoto Mudiantoro', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
@@ -2135,7 +2135,7 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 (2074, 7, 'Suparto', '24193.0721.2.0018267 .2023', 'C24.024.0002074 .2023', 'Plate Welder', '3G SMAW', 'PT Laden Safety Mandiri', '11655008', '2-3 September 2023', '12/09/2023', '2023-09-12', 'Idil Fithriansyah', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (2075, 8, 'Marihot Sitorus', '24193.0721.2.0018268 .2023', 'C24.024.0002075 .2023', 'Plate Welder', '3G SMAW', 'PT Laden Safety Mandiri', '11655009', '2-3 September 2023', '12/09/2023', '2023-09-12', 'Idil Fithriansyah', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (2076, 9, 'Abdul Kadir Jaelani', '24193.0721.2.0018269 .2023', 'C24.024.0002076 .2023', 'Plate Welder', '3G SMAW', 'PT Laden Safety Mandiri', '11655010', '2-3 September 2023', '12/09/2023', '2023-09-12', 'Idil Fithriansyah', 'SS.02/PLW-II/LSP-LAS/2019', NULL);
-INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
+INSERT INTO `old_data` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertifikat`, `skema_sertifikasi`, `posisi_las`, `tuk`, `no_blangko`, `tgl_uji`, `tgl_sertifikat_lama`, `tgl_sertifikat_baru`, `asesor`, `no_skema`, `keterangan`) VALUES
 (2077, 10, 'Abdullah Nur Azis', '24193.0721.2.0018270 .2023', 'C24.024.0002077 .2023', 'Plate Welder', '3G SMAW', 'PT Laden Safety Mandiri', '11655011', '2-3 September 2023', '12/09/2023', '2023-09-12', 'Idil Fithriansyah', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (2078, 11, 'M. Rais Syamsuddin', '24193.0721.2.0018271 .2023', 'C24.024.0002078 .2023', 'Plate Welder', '3G SMAW', 'PT Laden Safety Mandiri', '11655012', '2-3 September 2023', '12/09/2023', '2023-09-12', 'Idil Fithriansyah', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
 (2079, 12, 'Muh. Reza Pahlevi', '24193.0721.2.0018272 .2023', 'C24.024.0002079 .2023', 'Plate Welder', '3G SMAW', 'PT Laden Safety Mandiri', '11655013', '2-3 September 2023', '12/09/2023', '2023-09-12', 'Idil Fithriansyah', 'SS.02/PLW-II/LSP-LAS/2019', NULL),
@@ -2216,9 +2216,9 @@ INSERT INTO `data-lama` (`no`, `no_ujk`, `nama`, `no_sertifikat`, `no_reg_sertif
 --
 
 --
--- Indexes for table `data-lama`
+-- Indexes for table `old_data`
 --
-ALTER TABLE `data-lama`
+ALTER TABLE `old_data`
   ADD PRIMARY KEY (`no`);
 COMMIT;
 
