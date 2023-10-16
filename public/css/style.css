@@ -1,33 +1,27 @@
-/* ajarin dong puh */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root {
+    --primary-color: red;
+    --primary-font-family: "Inter", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--primary-font-family);
+}
+
 .logo {
     max-width: 100%;
-
-    /* Mengatur tinggi gambar menjadi 75% dari tinggi kontainer */
     height: auto;
     margin-left: 20px;
 }
 
-.navbar-nav a:hover {
-    text-decoration: underline;
-    color: red;
-}
-
-.navbar-nav a {
-    font-size: 15pt;
-}
-
-.navbar-nav li {
-    margin-left: 10%;
-}
-
-ul:last-child {
-    margin-right: 15%;
-}
-
-.btn-login {
-    margin-top: 2px;
-    font-size: 15pt;
-
+.navbar {
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.5);
 }
 
 
@@ -86,22 +80,16 @@ ul:last-child {
     margin: 0px auto;
     /* Memusatkan tabel secara horizontal */
     border-collapse: collapse;
-
 }
 
 .table-size {
-
-
     position: relative;
-
 }
 
 .table-size table {
     /* set border table  */
     border: 2px solid black;
     text-align: left;
-
-
 }
 
 /* gambar background tabel  */
@@ -147,25 +135,12 @@ div .center {
     margin-left: 0px;
     margin-top: 0px;
     border: 1px solid rgb(0, 0, 0);
-
 }
 
 #active {
     color: red;
     text-decoration: underline;
 }
-
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* body {
-    background: #f2f2f2;
-} */
 
 @keyframes slide {
     from {
@@ -249,11 +224,8 @@ div .center {
 } */
 
 /* accordion*/
-.image-container {
+.image-accordion {
     position: relative;
-    top: 0;
-    right: 0;
-    width: 300px;
     /* Sesuaikan lebar gambar sesuai kebutuhan Anda */
 }
 
@@ -263,15 +235,10 @@ div .center {
 
 
 .alur-pendaftaran {
-    margin-top: 10%;
-    width: 1920px;
-    height: 1091px;
-    background-color: #ff0000;
-    border-top-right-radius: 40%;
-    border-bottom-left-radius: 40%;
-    /* line-height: 300px; */
-
-
+    width: 100%;
+    background-color: #FF2F2F;
+    border-top-right-radius: 300px;
+    border-bottom-left-radius: 300px;
 }
 
 .line-with-text2 {
@@ -302,5 +269,4 @@ div .center {
     /* Warna garis */
     margin: 0 10px;
     /* Memberikan jarak kiri dan kanan garis */
-
 }
