@@ -30,15 +30,15 @@
 <div class="mx-2 " style="background-color: #EFEFEF">
 
     <div class="TUK-left">
-        <h2>+18K</h2><br>
+        <h2>+18K</h2>
         <p>Sertifikat Terbit</p>
     </div>
     <div class="TUK-mid">
-        <h2>18</h2><br>
+        <h2>18</h2>
         <p>TUK Aktif</p>
     </div>
     <div class="TUK-right">
-        <h2>13</h2><br>
+        <h2>13</h2>
         <p>Skema Sertifikasi</p>
     </div>
 
