@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OldData;
+namespace App\Models\OldData;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
