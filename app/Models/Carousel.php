@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Carousel extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'file_name',
+        'visibility'
+    ];
 }

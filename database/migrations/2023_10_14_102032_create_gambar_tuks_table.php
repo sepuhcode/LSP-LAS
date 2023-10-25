@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gambar_tuks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('url');
+            $table->string('file_name');
             $table->string('address');
             $table->timestamps();
         });
