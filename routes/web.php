@@ -18,19 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [SearchController::class, 'showHomePage']);
 Route::get('search/{keyword}', [SearchController::class, 'search']);
 Route::get('/convert/date', [SearchController::class, 'convertDate']);
 Route::get('/check/date', [SearchController::class, 'checkDate']);
-
 Route::post('/cari/setifikat',[SearchController::class,'cariSertifikat'])->name('cari.sertifikat');
+
 Route::get('/home', [SearchController::class, 'showHomePage']);
 
 //admin routes
 Route::resource('/admin/user',UserController::class); //CRUD data user
 Route::resource('/admin/carousel',CarouselController::class); //CRUD gambar carousel
 Route::resource('/admin/tuk', TukController::class); //CRUD gambar tuk
+
 

@@ -22,7 +22,7 @@ class SearchController extends Controller
         } else {
             $tglBerlaku = "";
         }
-        return view('main', compact('sertifikat', 'tglBerlaku'));
+        return view('home', compact('sertifikat', 'tglBerlaku'));
         //  return dd(OldData::where('no_sertifikat',$keyword)->firstOrFail());
     }
 
@@ -72,7 +72,7 @@ class SearchController extends Controller
             $sertifikat = [];
             $tglBerlaku = null;
             session(['failed' => 'Data tidak ditemukan']);
-            return view('main', compact('sertifikat', 'tglBerlaku'));
+            return view('home', compact('sertifikat', 'tglBerlaku'));
         }
 
         // return view('testView', compact('sertifikat', 'tglBerlaku'));
@@ -94,7 +94,7 @@ class SearchController extends Controller
         $sertifikat = [];
         $tglBerlaku = null;
 
-        return view('main', [
+        return view('home', [
         'sertifikat' => $sertifikat,
         'tglBerlaku' => $tglBerlaku,
         ]);
