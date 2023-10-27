@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Carousel;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\fileExists;
+
 class CarouselController extends Controller
 {
     /**
@@ -37,14 +39,14 @@ class CarouselController extends Controller
         $fileName = time().'.'.$request->image->extension();
 
         $validatedData = [
-            'file_name'=> $fileName,
+            'image'=> $fileName,
             'visibility'=>true    
         ];
 
         Carousel::create($validatedData);
 
 
-        $request->image->move(public_path('carouselImg'),$fileName);
+        $request->image->move(public_path('Images/carouselImg'),$fileName);
 
         return redirect('/admin/carousel')->with('success','image uploaded');
     }
@@ -68,9 +70,13 @@ class CarouselController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Carousel $carousel, $type)
+    public function update(Request $request, Carousel $carousel)
     {
-        dd('ok');
+        $updatedData = [
+            'visibility'=> !$carousel->visibility
+        ];
+        Carousel::whereId($carousel->id)->update($updatedData);
+        return redirect('/admin/carousel')->with('success','Edit Data Berhasil!');
     }
 
     /**
@@ -78,7 +84,11 @@ class CarouselController extends Controller
      */
     public function destroy(Carousel $carousel)
     {
+
         Carousel::destroy($carousel->id);
+        if (file_exists(public_path('Images/carouselImg/'.$carousel->image))) {
+            unlink(public_path('Images/carouselImg/'.$carousel->image));
+        }
         return redirect('/admin/carousel')->with('success','Data Berhasil Dihapus');
     }
 }

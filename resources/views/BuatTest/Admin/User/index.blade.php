@@ -43,7 +43,7 @@
                     <form action="/admin/user/{{ $user->id }}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit" onClick="return confirm('yakin mau dihapus cuk?');">Delete</button>
+                        <button type="submit" onClick="return confirm('yakin mau dihapus?');">Delete</button>
                     </form>
                 </td>
             </tr>

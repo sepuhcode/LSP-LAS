@@ -10,7 +10,7 @@ class Carousel extends Model
     use HasFactory;
     
     protected $fillable = [
-        'file_name',
+        'image',
         'visibility'
     ];
 }

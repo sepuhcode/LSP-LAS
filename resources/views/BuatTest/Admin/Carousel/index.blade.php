@@ -28,15 +28,8 @@
         @if ($carousels->count() > 0 )
         @foreach ($carousels as $carousel)
         <tr>
-            <td>{{ $loop->iteration+1 }}</td>
-            {{-- <td><img src={{ public_path('carouselImg')\$carousel->file_name }} alt=""></td> --}}
-            <td>ntar cok</td>
-            {{-- <td>{{ $carousel->visibility ? 'Active' : 'Inactive' }}</td> --}}
-            {{-- @if ($carousel->visibility)
-                <td>Hide</td>
-            @else
-                <td>Show</td>
-            @endif --}}
+            <td>{{ $loop->iteration }}</td>
+            <td><img src={{ asset('Images/carouselImg/'.$carousel->image) }} alt="" width="150px"></td>
         <td> 
             <form action="/admin/carousel/{{ $carousel->id }}" method="post">
             @method('put')
@@ -48,7 +41,7 @@
                 <form action="/admin/carousel/{{ $carousel->id }}" method="post">
                     @method('delete')
                     @csrf
-                    <button type="submit" onClick="return confirm('yakin mau dihapus cuk?');">Delete</button>
+                    <button type="submit" onClick="return confirm('yakin mau dihapus?');">Delete</button>
                 </form>
             </td>
         </tr>

@@ -33,6 +33,5 @@ Route::get('/home', [SearchController::class, 'showHomePage']);
 //admin routes
 Route::resource('/admin/user',UserController::class); //CRUD data user
 Route::resource('/admin/carousel',CarouselController::class); //CRUD gambar carousel
-// Route::get('/test/routes',[Carousel2Controller::class]);
 Route::resource('/admin/tuk', GambarTukController::class); //DRUD gambar tuk
 

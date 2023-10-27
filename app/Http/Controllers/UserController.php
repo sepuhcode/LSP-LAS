@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('/Buattest.admin.user.update',[
+        return view('Buattest.admin.user.update',[
             'user'=>$user
         ]);
     }

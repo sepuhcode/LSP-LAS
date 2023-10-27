@@ -14,7 +14,7 @@
         @csrf
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" placeholder="Input Name"
-            class="@error('name') is-invalid @enderror">
+            class="@error('name') is-invalid @enderror" value="{{ old('name') }}">
         @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -22,7 +22,7 @@
 
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" placeholder="Input Email"
-            class="@error('email') is-invalid @enderror">
+            class="@error('email') is-invalid @enderror" value="{{ old('email') }}>
         @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -38,14 +38,14 @@
 
         <label for="phone">Phone Number:</label><br>
         <input type="text" id="phone" name="phone" placeholder="Input Phone Number"
-            class="@error('phone') is-invalid @enderror">
+            class="@error('phone') is-invalid @enderror" value="{{ old('phone') }}>
         @error('phone')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <br>
 
         <label for="address">Address:</label><br>
-        <textarea name="address" id="address" rows="3" cols="30"> </textarea><br>
+        <textarea name="address" id="address" rows="3" cols="30"> {{ old('address') }} </textarea><br>
 
         <label for="role">Choose a role:</label>
         <select id="role" name="role" class="@error('role') is-invalid @enderror">
