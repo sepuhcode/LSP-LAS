@@ -35,11 +35,12 @@
             <td>{{ $tuk->address }}</td>
             <td><img src={{ asset('Images/tukImg/'.$tuk->image) }} alt="" width="150px"></td>
         <td> 
-            <form action="/admin/tuk/{{ $tuk->id }}" method="post">
+            {{-- <form action="/admin/tuk/{{ $tuk->id }}/edit" method="post">
             @method('put')
             @csrf
             <input type="submit" value="Update">
-            </form>
+            </form> --}}
+            <button><a href="/admin/tuk/{{$tuk->id}}/edit" style="text-decoration: none; color:black;">Update</a></button>
         </td>
             <td>
                 <form action="/admin/tuk/{{ $tuk->id }}" method="post">

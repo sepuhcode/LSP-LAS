@@ -43,7 +43,7 @@ class TukController extends Controller
         Tuk::create($validatedData);
         $request->image->move(public_path('Images/tukImg'),$fileName);
 
-        return redirect('/admin/carousel')->with('success','image uploaded');
+        return redirect('/admin/tuk')->with('success','image uploaded');
     }
 
     /**
@@ -73,10 +73,25 @@ class TukController extends Controller
             'name' => 'required|string',
             'address' => 'required',
         ];
-        $rules['image'] = $request->image == $tuk->image ? '' : 'required|image|mimes:png,jpg,jpeg|max:2048';
+        // $rules['image'] = $request->image == $tuk->image ? '' : 'required|image|mimes:png,jpg,jpeg|max:2048';
+        // dd($request->hasFile('image'));
+        // $rules['image'] = $request->hasFile('image') ? 'required|image|mimes:png,jpg,jpeg|max:2048' : '';
+        if ($request->hasFile('image')) {
+            $rules['image'] = 'required|image|mimes:png,jpg,jpeg|max:2048';
+        }
 
         $updatedData = $request->validate($rules);
 
+        if ($request->hasFile('image')) {
+            if (file_exists(public_path('Images/tukImg/'.$tuk->image))) {
+                unlink(public_path('Images/tukImg/'.$tuk->image));
+            }
+
+            $newFileName = 'tuk' . time() . '.' . $request->image->extension();
+            $updatedData['image'] = $newFileName;
+            $request->image->move(public_path('Images/tukImg'),$newFileName);
+
+        }
         Tuk::whereId($tuk->id)->update($updatedData);
         return redirect('/admin/tuk')->with('success','Edit Data Berhasil!');
 

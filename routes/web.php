@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Carousel2Controller;
 use App\Http\Controllers\CarouselController;
-use App\Http\Controllers\GambarTukController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TukController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +32,5 @@ Route::get('/home', [SearchController::class, 'showHomePage']);
 //admin routes
 Route::resource('/admin/user',UserController::class); //CRUD data user
 Route::resource('/admin/carousel',CarouselController::class); //CRUD gambar carousel
-Route::resource('/admin/tuk', GambarTukController::class); //DRUD gambar tuk
+Route::resource('/admin/tuk', TukController::class); //CRUD gambar tuk
 
