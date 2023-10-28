@@ -31,10 +31,22 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
-    <div class="mx-2 " style="background-color: #EFEFEF">
-
-        <div class="TUK-left">
+    <div class="row px-0 py-5 m-0 justify-content-center" style="background-color: #EFEFEF">
+        <div class="row p-0 text-center justify-content-center tuk-box" style="width: 33%">
+            <div class="tuk col-4">
+                <h2>+18K</h2>
+                <p>Sertifikat Terbit</p>
+            </div>
+            <div class="tuk col-4">
+                <h2>18</h2>
+                <p>TUK Aktif</p>
+            </div>
+            <div class="tuk col-4">
+                <h2>13</h2>
+                <p>Skema Sertifikasi</p>
+            </div>
+        </div>
+        {{-- <div class="TUK-left">
             <h2>+18K</h2>
             <p>Sertifikat Terbit</p>
         </div>
@@ -45,7 +57,7 @@
         <div class="TUK-right">
             <h2>13</h2>
             <p>Skema Sertifikasi</p>
-        </div>
+        </div> --}}
 
         <div class="row justify-content-center d-none d-lg-flex mb-4 mt-4">
             <div class="col-lg-2 ">
@@ -144,19 +156,19 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row p-0 m-0">
         <img src="{{ asset('Images/Content-Dashboard.png') }}" />
     </div>
-    <div class="row" style="background-color: #EFEFEF">
+    <div class="row px-0 py-5 m-0" style="background-color: #EFEFEF">
         <div class="col-12 text-center">
-            <h1 class="fw-semibold fs-4">Visi Misi LSP LAS</h1>
-            <h2 class="fw-semibold mx-auto mt-5 mb-5 fs-5">
+            <h1 class="fw-semibold fs-3" style="color: red">Visi Misi LSP LAS</h1>
+            <h2 class="fw-semibold mx-auto my-5 fs-5" style="width: 50%">
                 Menjadi satu – satunya Lembaga Sertifikasi Profesi Pengelasan di Indonesia yang memiliki Kompetensi Nasional
                 dan Internasional untuk menghasilkan tenaga – tenaga pengelasan yang berkualifikasi Nasional dan
                 Internasional.
             </h2>
         </div>
-        <div class="row mx-auto" style="width: 70%; margin-bottom: 5rem;">
+        <div class="row mx-auto" style="width: 50%;">
             <div class="col-md-7">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
