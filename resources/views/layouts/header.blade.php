@@ -19,8 +19,14 @@
                 <li class="nav-item">
                     <a class="nav-link {{ (Request::is('about/*')) ? 'active' : '' }}" href="#">About</a>
                 </li>
-                <li class="nav-item" style="padding-right: 150px ">
-                    <button class="btn btn-outline-danger btn-login" type="submit" style="font-size: 20px">Login</button>
+                <li class="nav-item">
+                    {{-- <button class="btn btn-outline-danger btn-login" type="submit">Login</button> --}}
+                    @guest
+                    <a class="btn btn-outline-danger btn-login active" href="/login">Login</a>
+                    @endguest
+                    @auth
+                    <a class="btn btn-outline-danger btn-login active" href="/logout">Logout</a>
+                    @endauth
                 </li>
             </ul>
         </div>

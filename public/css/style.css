@@ -24,9 +24,8 @@
     text-underline-position: under
 }
 
-#test button {
-    background-color: red;
-}
+
+
 
 .search-box::placeholder {
     font-style: italic;
@@ -102,8 +101,6 @@ div .table-sertifikat {
     margin-left: 0px;
     margin-top: 0px;
     margin-bottom: 106px;
-
-}
 
 /* slider-partner */
 /* @keyframes slide {
@@ -220,6 +217,11 @@ div .table-sertifikat {
     color: #7B7878;
 }
 
+/* carousel start */
+#carouselExampleIndicators{
+    position: relative;
+}
+  
 .carousel-control-prev-icon {
 
     height: 40px;
@@ -239,6 +241,8 @@ div .table-sertifikat {
     margin: 0 10px 0 10px;
     color: #FFFFFF;
 }
+
+/* carousel end */
 
 .TUK-left {
     display: inline-block;
