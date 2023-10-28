@@ -25,9 +25,8 @@
 }
 
 
-#test button {
-    background-color: red;
-}
+
+
 
 .line-with-text {
     display: flex;
@@ -137,10 +136,11 @@ div .center {
     border: 1px solid rgb(0, 0, 0);
 }
 
-#active {
+.active-red {
     color: red;
     text-decoration: underline;
 }
+
 
 /* slider-partner */
 /* @keyframes slide {
@@ -289,6 +289,21 @@ div .center {
 }
 
 
+
+
+/* carousel start */
+#carouselExampleIndicators{
+    position: relative;
+}
+
+#test button {
+    background-color: red;
+}
+#test{
+        position: absolute;
+    bottom: -30px;
+}
+
 .carousel-control-prev-icon {
 
     height: 40px;
@@ -308,6 +323,8 @@ div .center {
     margin: 0 10px 0 10px;
     color: #FFFFFF;
 }
+
+/* carousel end */
 
 .TUK-left {
     display: inline-block;

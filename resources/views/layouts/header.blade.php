@@ -9,7 +9,9 @@
             <ul class="navbar-nav ms-auto"> <!-- Gunakan ml-auto untuk menggeser ke kanan -->
                 <li class="nav-item">
                     <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> jangan dikasih class active dulu -->
-                    <a class="nav-link" id="active" aria-current="page" href="#">Home</a>
+                    {{-- <a class="nav-link" id="active" aria-current="page" href="/">Home</a> --}}
+                    {{-- <a class="nav-link" id="{{ Request::is('/home') ? 'active':'' }}" aria-current="page" href="/home">Home</a> --}}
+                    <a class="nav-link {{ Request::is('home') ? 'active-red':'' }}"  aria-current="page" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="sertifikasi.html">Sertifikasi</a>
@@ -21,7 +23,13 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-outline-danger btn-login" type="submit">Login</button>
+                    {{-- <button class="btn btn-outline-danger btn-login" type="submit">Login</button> --}}
+                    @guest
+                    <a class="btn btn-outline-danger btn-login active" href="/login">Login</a>
+                    @endguest
+                    @auth
+                    <a class="btn btn-outline-danger btn-login active" href="/logout">Logout</a>
+                    @endauth
                 </li>
             </ul>
         </div>
