@@ -27,9 +27,7 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-
-<div class="mx-2" style="background-color: #EFEFEF">
-
+<div class="row p-0 m-0" style="background-color: #EFEFEF">
     <div class="TUK-left">
         <br>
         <h2 style=>+18K</h2>
@@ -141,20 +139,20 @@
                 <img src="{{ asset('images/Patria.png') }}"  style="display: inline"/>
             </div>
         </div>
-        </div>
+    </div>
 
 </div>
-<div class="row">
+<div class="row p-0 m-0">
     <img src="{{ asset('Images/Content-Dashboard.png') }}"/>
 </div>
-<div class="row" style="background-color: #EFEFEF">
+<div class="row p-0 m-0" style="background-color: #EFEFEF">
     <div class="col-12 text-center">
-        <h1 class="fw-semibold text-red mt-2" style="font-size: 52px">Visi Misi LSP LAS</h1>
-        <h2 class="fw-semibold mx-auto mt-5 mb-5 " style="width: 70%; text-align:center; font-size:30px;">
+        <h1 class="fw-semibold fs-3 m-0" style="color: red">Visi Misi LSP LAS</h1>
+        <h2 class="fw-semibold mx-auto my-5 fs-5" style="width: 50%">
             Menjadi satu – satunya Lembaga Sertifikasi Profesi Pengelasan di Indonesia yang memiliki Kompetensi Nasional dan Internasional untuk menghasilkan tenaga – tenaga pengelasan yang berkualifikasi Nasional dan Internasional.
         </h2>
     </div>
-    <div class="row mx-auto" style="width: 70%; margin-bottom: 5rem;">
+    <div class="row mx-auto" style="width: 50%; margin-bottom: 5rem;">
         <div class="col-md-7">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">

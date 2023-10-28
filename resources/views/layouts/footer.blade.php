@@ -43,6 +43,6 @@
         </div>
     </div>
 </div>
-<footer>
-    <h5 style="text-align: center; background-color:#FEFEFE; margin:3">©2023 Copyright LSP LAS • All rights reserved • Made by nterco team</h5>
-</footer>
+<div class="row p-0 m-0">
+    <p class="text-center m-0">©2023 Copyright LSP LAS • All rights reserved • Made by nterco team</p>
+</div>
