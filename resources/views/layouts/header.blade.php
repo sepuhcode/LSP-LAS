@@ -6,10 +6,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <a href="#" class="navbar-brand"><img src="{{ asset('images/LogoLAS.png') }}" class="logo" width="70%" height="70%"></a>
-            <ul class="navbar-nav ms-auto"> <!-- Gunakan ml-auto untuk menggeser ke kanan -->
-                <li class="nav-item">
+            <ul class="navbar-nav ms-auto "> <!-- Gunakan ml-auto untuk menggeser ke kanan -->
+                <li class="nav-item" style="">
                     <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> jangan dikasih class active dulu -->
-                    <a class="nav-link" id="active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" id="active" aria-current="page" href="#" >Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="sertifikasi.html">Sertifikasi</a>
@@ -20,8 +20,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-danger btn-login" type="submit">Login</button>
+                <li class="nav-item" style="padding-right: 150px ">
+                    <button class="btn btn-outline-danger btn-login" type="submit" style="font-size: 20px">Login</button>
                 </li>
             </ul>
         </div>

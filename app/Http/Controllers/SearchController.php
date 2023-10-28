@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-namespace App\Models\OldData;
+use App\Models\OldData;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SearchCOntroller extends Controller
 {
-    public function __construct(OldData $oldData)
-    {
-        $this->oldData = $oldData;
-    }
+    // public function __construct(OldData $oldData)
+    // {
+    //     $this->oldData = $oldData;
+    // }
 
     public function search(string $keyword)
     {
