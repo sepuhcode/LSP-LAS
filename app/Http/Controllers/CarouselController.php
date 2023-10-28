@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Carousel;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\fileExists;
+
 class CarouselController extends Controller
 {
     /**
@@ -12,7 +14,9 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        //
+        return view('BuatTest.Admin.Carousel.index',[
+            'carousels'=>Carousel::all()
+        ]);
     }
 
     /**
@@ -20,7 +24,7 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        //
+        return view('BuatTest.Admin.Carousel.create');
     }
 
     /**
@@ -28,7 +32,23 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image'=>'required|image|mimes:png,jpg,jpeg|max:4096'
+        ]);
+        
+        $fileName = time().'.'.$request->image->extension();
+
+        $validatedData = [
+            'image'=> $fileName,
+            'visibility'=>true    
+        ];
+
+        Carousel::create($validatedData);
+
+
+        $request->image->move(public_path('Images/carouselImg'),$fileName);
+
+        return redirect('/admin/carousel')->with('success','image uploaded');
     }
 
     /**
@@ -52,7 +72,11 @@ class CarouselController extends Controller
      */
     public function update(Request $request, Carousel $carousel)
     {
-        //
+        $updatedData = [
+            'visibility'=> !$carousel->visibility
+        ];
+        Carousel::whereId($carousel->id)->update($updatedData);
+        return redirect('/admin/carousel')->with('success','Edit Data Berhasil!');
     }
 
     /**
@@ -60,6 +84,11 @@ class CarouselController extends Controller
      */
     public function destroy(Carousel $carousel)
     {
-        //
+
+        Carousel::destroy($carousel->id);
+        if (file_exists(public_path('Images/carouselImg/'.$carousel->image))) {
+            unlink(public_path('Images/carouselImg/'.$carousel->image));
+        }
+        return redirect('/admin/carousel')->with('success','Data Berhasil Dihapus');
     }
 }
