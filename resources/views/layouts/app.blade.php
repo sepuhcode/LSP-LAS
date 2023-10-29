@@ -29,8 +29,8 @@
                 icon: 'error',
                 confirmButtonText: 'Close'
             })
-            request()->session()->flush();
         </script>
+        request()->session()->flush();
     @endif
 
     {{-- Script --}}

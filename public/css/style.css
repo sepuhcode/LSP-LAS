@@ -12,20 +12,53 @@
     font-family: var(--primary-font-family);
 }
 
+.logo {
+    max-width: 100%;
+    height: auto;
+    margin-left: 20px;
+}
+
 .navbar {
     -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
 }
 
-.active {
-    color: red !important;
-    text-decoration: underline;
-    text-underline-position: under
+
+
+
+
+.line-with-text {
+    display: flex;
+    /* Membuat elemen flex container */
+    align-items: center;
+    /* Menggeser elemen anak ke tengah vertikal */
+    margin: 40px auto;
+    /* Memberikan jarak atas dan bawah */
+    width: 80%;
+    /* panjang garis */
 }
 
 
+.line-with-text hr {
+    flex-grow: 1;
+    /* Menggunakan ruang kosong yang tersisa */
+    height: 10px;
+    /* Mengatur tinggi garis */
+    background-color: rgba(255, 0, 0, 1);
+    /* Warna garis */
+    margin: 0 10px;
+    /* Memberikan jarak kiri dan kanan garis */
 
+}
+
+.line-with-text .text {
+    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
+    padding: 0 10px;
+    color: red;
+    font-weight: bold;
+    /* Memberikan padding agar teks terlihat lebih baik */
+}
 
 .search-box::placeholder {
     font-style: italic;
@@ -96,11 +129,18 @@ td {
     border: 1px solid rgb(0, 0, 0);
 } */
 
-div .table-sertifikat {
+div .center {
     /* display: inline; */
     margin-left: 0px;
     margin-top: 0px;
-    margin-bottom: 106px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.active-red {
+    color: red;
+    text-decoration: underline;
+}
+
 
 /* slider-partner */
 /* @keyframes slide {
@@ -187,6 +227,7 @@ div .table-sertifikat {
 /* accordion*/
 .image-accordion {
     position: relative;
+    /* Sesuaikan lebar gambar sesuai kebutuhan Anda */
 }
 
 .bg-accordion {
@@ -194,16 +235,12 @@ div .table-sertifikat {
 }
 
 
-.accordion-button:not(.collapsed) {
-    background-color: rgb(217, 217, 217);
+.accordion-button:not(.collapsed){
+    background-color:rgb(217, 217, 217);
 }
 
-.accordion-button:focus {
+.accordion-button:focus{
     box-shadow: none;
-}
-
-.accordion-body {
-    color: #7B7878;
 }
 
 .alur-pendaftaran {
@@ -217,11 +254,56 @@ div .table-sertifikat {
     color: #7B7878;
 }
 
+.accordion-body {
+    color: #7B7878;
+}
+
+.line-with-text2 {
+    display: flex;
+    /* Membuat elemen flex container */
+    align-items: center;
+    /* Menggeser elemen anak ke tengah vertikal */
+    margin: 40px auto;
+    /* Memberikan jarak atas dan bawah */
+    width: 80%;
+    /* panjang garis */
+}
+
+.line-with-text2 .text2 {
+    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
+    padding: 0 10px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    /* Memberikan padding agar teks terlihat lebih baik */
+}
+
+.line-with-text2 hr {
+    flex-grow: 1;
+    /* Menggunakan ruang kosong yang tersisa */
+    height: 10px;
+    /* Mengatur tinggi garis */
+    background-color: rgb(255, 255, 255);
+    /* Warna garis */
+    margin: 0 10px;
+    /* Memberikan jarak kiri dan kanan garis */
+}
+
+
+
+
 /* carousel start */
 #carouselExampleIndicators{
     position: relative;
 }
-  
+
+#test button {
+    background-color: red;
+}
+#test{
+        position: absolute;
+    bottom: -30px;
+}
+
 .carousel-control-prev-icon {
 
     height: 40px;
@@ -247,106 +329,39 @@ div .table-sertifikat {
 .TUK-left {
     display: inline-block;
     text-align: center;
-    background-color: #FF2F2F;
-    color: #fff;
+    background-color: #FEFEFE;
     width: 201px;
     height: 116px;
     border-radius: 35px 0px 0px 35px;
-
     /* border-top-left-radius: 30%;
     border-bottom-left-radius: 30%; */
     margin-left: 35%;
     margin-top: 20px;
-    font-weight: bold;
 }
 
 .TUK-mid {
     display: inline-block;
     text-align: center;
     background-color: #FEFEFE;
-    color: #FF2F2F;
     width: 201px;
     height: 116px;
     margin-top: 20px;
-    font-weight: bold;
 }
 
 .TUK-right {
     display: inline-block;
     text-align: center;
     background-color: #FEFEFE;
-    color: #FF2F2F;
     width: 201px;
     height: 116px;
     border-radius: 0px 35px 35px 0px;
+    /* border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%; */
     margin-top: 20px;
-    font-weight: bold;
 
 }
 
-@media(max-width: 574px) {
-    .TUK-left {
-        align-content: center;
-        display: inline-block;
-        width: 100.5px;
-        height: 58px;
-        font-size: 14px;
-        margin-left: 20%;
-    }
-
-    .TUK-mid {
-        align-content: center;
-        display: inline-block;
-        width: 100.5px;
-        height: 58px;
-        font-size: 14px;
-    }
-
-    .TUK-right {
-        align-content: center;
-        display: inline-block;
-        width: 100.5px;
-        height: 58px;
-        font-size: 14px;
-    }
-
-
-}
-
-@media(max-width: 574px) {
-    .TUK-left h2 {
-        font-size: 14px;
-
-    }
-
-    p {
-        font-size: 12px;
-    }
-}
-
-@media(max-width: 574px) {
-    .TUK-mid h2 {
-        font-size: 14px;
-    }
-
-    p {
-        font-size: 12px;
-    }
-}
-
-@media(max-width: 574px) {
-    .TUK-right h2 {
-        font-size: 14px;
-    }
-
-    p {
-        font-size: 12px;
-    }
-}
-
-;
-
-/* .TUK-left:hover {
+.TUK-left:hover {
     background-color: #ff0000;
     color: #FFFFFF;
 }
@@ -359,14 +374,21 @@ div .table-sertifikat {
 .TUK-right:hover {
     background-color: #ff0000;
     color: #FFFFFF;
+}
+
+
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 } */
 
 .logo-footer {
-    width: 100px;
-    height: 50px;
+    width: 177px;
+    height: 76px;
     margin-top: 0;
     margin-bottom: 50px;
-
 }
 
 .container-footer {
@@ -387,7 +409,7 @@ div .table-sertifikat {
 }
 
 .footer-col {
-    /* width: 33%; */
+    width: 25%;
     padding: 0 15px;
 }
 
@@ -397,6 +419,8 @@ div .table-sertifikat {
     padding: 0;
     box-sizing: border-box;
 }
+
+
 
 .footer-col h4 {
     font-size: 18px;
@@ -509,3 +533,4 @@ div .table-sertifikat {
         width: 100%;
     }
 }
+

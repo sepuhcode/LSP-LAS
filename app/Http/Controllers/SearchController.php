@@ -58,9 +58,9 @@ class SearchController extends Controller
 
     public function cariSertifikat(Request $request)
     {
-        $keyword = $request->input('keyword');
+        $keyword = $request['keyword'];
 
-        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
+        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
             if ($sertifikat[0]->tgl_sertifikat_baru != null) {
             $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1096 days"));
@@ -72,12 +72,15 @@ class SearchController extends Controller
             $sertifikat = [];
             $tglBerlaku = null;
             session(['failed' => 'Data tidak ditemukan']);
-            return view('sertifikat.index', compact('sertifikat', 'tglBerlaku'));
+            return view('home', compact('sertifikat', 'tglBerlaku'));
         }
 
-        return redirect('sertifikat.index', [
-            'sertifikat' => $sertifikat,
-            'tglBerlaku' => $tglBerlaku,
+        // return view('testView', compact('sertifikat', 'tglBerlaku'));
+        // return view('testView')->with('sertifikat',$sertifikat)->with('tglBerlaku',$tglBerlaku)->with('failed','Data tidak ditemukan');//cuma test
+
+        return redirect('cari.sertifikat', [
+        'sertifikat' => $sertifikat,
+        'tglBerlaku' => $tglBerlaku,
         ]);
 
     }

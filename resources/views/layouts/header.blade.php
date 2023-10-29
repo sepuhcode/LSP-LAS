@@ -5,19 +5,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('images/LogoLAS.png') }}" width="120px"></a>
-            <ul class="navbar-nav ms-auto">
+            <a href="#" class="navbar-brand"><img src="{{ asset('images/LogoLAS.png') }}" class="logo" width="70%" height="70%"></a>
+            <ul class="navbar-nav ms-auto"> <!-- Gunakan ml-auto untuk menggeser ke kanan -->
                 <li class="nav-item">
-                    <a class="nav-link {{ (Request::is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/') }}">Home</a>
+                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> jangan dikasih class active dulu -->
+                    {{-- <a class="nav-link" id="active" aria-current="page" href="/">Home</a> --}}
+                    {{-- <a class="nav-link" id="{{ Request::is('/home') ? 'active':'' }}" aria-current="page" href="/home">Home</a> --}}
+                    <a class="nav-link {{ Request::is('home') ? 'active-red':'' }}"  aria-current="page" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ (Request::is('cari/sertifikat')) ? 'active' : '' }}" href="{{ route('cari.sertifikat') }}">Sertifikasi</a>
+                    <a class="nav-link" href="sertifikasi.html">Sertifikasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ (Request::is('pendaftaran/*')) ? 'active' : '' }}" href="#">Pendaftaran</a>
+                    <a class="nav-link" href="#">Pendaftaran</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ (Request::is('about/*')) ? 'active' : '' }}" href="#">About</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
                     {{-- <button class="btn btn-outline-danger btn-login" type="submit">Login</button> --}}
