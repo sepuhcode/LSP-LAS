@@ -12,24 +12,45 @@
     font-family: var(--primary-font-family);
 }
 
+/* basic start */
 .navbar {
     -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
 }
 
+.navlink {
+    margin: 5px;
+}
+
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 p {
     margin: 0;
 }
+/* basic end */
+
+/* btn style start */
+.btn-primary {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    border: 2px solid #ff0000;
+    background-color: #fff;
+    color: #ff0000;
+}
+/* btn style end */
 
 .active {
     color: red !important;
     text-decoration: underline;
     text-underline-position: under
-}
-
-.search-box::placeholder {
-    font-style: italic;
 }
 
 .search-button {
@@ -39,6 +60,10 @@ p {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.search-box::placeholder {
+    font-style: italic;
 }
 
 .table {
@@ -193,26 +218,33 @@ div .table-sertifikat {
 }
 
 /* carousel start */
-#carouselExampleIndicators{
+#carouselExampleIndicators {
     position: relative;
 }
-
-.carousel-control-prev-icon {
-    height: 40px;
-    width: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 10px 0 10px;
-    color: #FFFFFF;
+.carousel-indicators {
+    max-width: fit-content;
+    background-color: white;
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
 }
 
-.carousel-control-next-icon {
-    height: 40px;
-    width: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 10px 0 10px;
-    color: #FFFFFF;
+.carousel-indicators [data-bs-target] {
+    background-color: red !important;
+    height: 18px !important;
+    width: 18px !important;
+    border:none !important;
+    border-radius: 100% !important;
+}
+
+.carousel-indicators [data-bs-target].active{
+    height:18px !important;
+    width:50px !important;
+    border-radius: 30px !important;
+    border:none !important;
 }
 /* carousel end */
 
@@ -223,9 +255,13 @@ div .table-sertifikat {
     -webkit-box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
     -moz-box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
 }
+
+.tuk-box-img {
+    border: 3px #d9d9d9 solid;
+}
+
 .tuk {
     padding: 10px;
-    border: 1px #bbbbbb solid;
     background-color: #FEFEFE;
     color: #FF2F2F;
     font-weight: bold;
@@ -233,47 +269,17 @@ div .table-sertifikat {
 
 .tuk:first-child {
     border-radius: 35px 0px 0px 35px;
+    border-right: 4px #efefef solid;
 }
 
 .tuk:last-child {
     border-radius: 0px 35px 35px 0px;
+    border-left: 4px #efefef solid;
 }
 
-.TUK-left {
-    display: inline-block;
-    text-align: center;
+.tuk:hover {
     background-color: #FF2F2F;
-    color: #fff;
-    width: 201px;
-    height: 116px;
-    border-radius: 35px 0px 0px 35px;
-    margin-left: 35%;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.TUK-mid {
-    display: inline-block;
-    text-align: center;
-    background-color: #FEFEFE;
-    color: #FF2F2F;
-    width: 201px;
-    height: 116px;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.TUK-right {
-    display: inline-block;
-    text-align: center;
-    background-color: #FEFEFE;
-    color: #FF2F2F;
-    width: 201px;
-    height: 116px;
-    border-radius: 0px 35px 35px 0px;
-    margin-top: 20px;
-    font-weight: bold;
-
+    color: #FEFEFE;
 }
 /* tuk end */
 
@@ -357,7 +363,7 @@ div .table-sertifikat {
 
 .footer {
     background-color: #24262b;
-    padding: 70px 0;
+    /* padding: 70px 0; */
 }
 
 .footer-col {
