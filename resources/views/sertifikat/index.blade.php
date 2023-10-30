@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <th scope="row">Berlaku Sampai</th>
-                            <td>20/09/2023</td>
+                            <td>{{ $tglBerlaku }}</td>
                         </tr>
                     </tbody>
                 </table>

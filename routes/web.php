@@ -34,6 +34,7 @@ Route::get('/logout',[LoginController::class,'logout'])->middleware('auth');
 
 Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
 Route::get('/cari/sertifikat',[SearchController::class,'cariSertifikat'])->name('cari.sertifikat');
+Route::post('/cari/setifikat',[SearchController::class,'cariSertifikat'])->name('cari.sertifikat');
 
 
 //admin routes

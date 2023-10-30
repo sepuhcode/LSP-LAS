@@ -75,7 +75,7 @@ class SearchController extends Controller
             return view('sertifikat.index', compact('sertifikat', 'tglBerlaku'));
         }
 
-        return redirect('sertifikat.index', [
+        return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
         ]);
