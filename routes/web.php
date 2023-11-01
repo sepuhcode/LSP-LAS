@@ -19,14 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function() {
+    return redirect('/home');
+});
+
 // Route::get('search/{keyword}', [SearchController::class, 'search']); //cuma buat test
 // Route::get('/convert/date', [SearchController::class, 'convertDate']); //cuma buat test
 // Route::get('/check/date', [SearchController::class, 'checkDate']); //cuma buat test
-// Route::get('/', [SearchController::class, 'showHomePage']);
+
+// auth
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::get('/logout',[LoginController::class,'logout'])->middleware('auth');
-Route::post('/cari/setifikat',[SearchController::class,'cariSertifikat'])->name('cari.sertifikat');
+
+Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
+Route::get('/cari/sertifikat',[SearchController::class,'showSertifikatPage'])->name('sertifikat');
+Route::post('/cari/sertifikat',[SearchController::class,'cariSertifikat']);
 
 Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
 

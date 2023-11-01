@@ -12,56 +12,44 @@
     font-family: var(--primary-font-family);
 }
 
-.logo {
-    max-width: 100%;
-    height: auto;
-    margin-left: 20px;
-}
-
 .navbar {
     -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
 }
 
-
-
-
-
-.line-with-text {
-    display: flex;
-    /* Membuat elemen flex container */
-    align-items: center;
-    /* Menggeser elemen anak ke tengah vertikal */
-    margin: 40px auto;
-    /* Memberikan jarak atas dan bawah */
-    width: 80%;
-    /* panjang garis */
+.navlink {
+    margin: 5px;
 }
 
-
-.line-with-text hr {
-    flex-grow: 1;
-    /* Menggunakan ruang kosong yang tersisa */
-    height: 10px;
-    /* Mengatur tinggi garis */
-    background-color: rgba(255, 0, 0, 1);
-    /* Warna garis */
-    margin: 0 10px;
-    /* Memberikan jarak kiri dan kanan garis */
-
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.line-with-text .text {
-    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
-    padding: 0 10px;
-    color: red;
-    font-weight: bold;
-    /* Memberikan padding agar teks terlihat lebih baik */
+p {
+    margin: 0;
+}
+/* basic end */
+
+/* btn style start */
+.btn-primary {
+    background-color: #ff0000;
+    color: #fff;
 }
 
-.search-box::placeholder {
-    font-style: italic;
+.btn-primary:hover {
+    border: 2px solid #ff0000;
+    background-color: #fff;
+    color: #ff0000;
+}
+/* btn style end */
+
+.active {
+    color: red !important;
+    text-decoration: underline;
+    text-underline-position: under
 }
 
 .search-button {
@@ -71,6 +59,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.search-box::placeholder {
+    font-style: italic;
 }
 
 .table {
@@ -129,39 +121,12 @@ td {
     border: 1px solid rgb(0, 0, 0);
 } */
 
-div .center {
+div .table-sertifikat {
     /* display: inline; */
     margin-left: 0px;
     margin-top: 0px;
-    border: 1px solid rgb(0, 0, 0);
+    margin-bottom: 106px;
 }
-
-.active-red {
-    color: red;
-    text-decoration: underline;
-}
-
-
-/* slider-partner */
-/* @keyframes slide {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-@keyframes slide-right {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-} */
 
 .logos,
 .logos-2 {
@@ -292,97 +257,130 @@ div .center {
 
 
 /* carousel start */
-#carouselExampleIndicators{
+#carouselExampleIndicators {
     position: relative;
 }
-
-#test button {
-    background-color: red;
-}
-#test{
-        position: absolute;
-    bottom: -30px;
-}
-
-.carousel-control-prev-icon {
-
-    height: 40px;
-    width: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 10px 0 10px;
-    color: #FFFFFF;
-
+.carousel-indicators {
+    max-width: fit-content;
+    background-color: white;
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
 }
 
-.carousel-control-next-icon {
-    height: 40px;
-    width: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 10px 0 10px;
-    color: #FFFFFF;
+.carousel-indicators [data-bs-target] {
+    background-color: red !important;
+    height: 18px !important;
+    width: 18px !important;
+    border:none !important;
+    border-radius: 100% !important;
 }
 
+.carousel-indicators [data-bs-target].active{
+    height:18px !important;
+    width:50px !important;
+    border-radius: 30px !important;
+    border:none !important;
+}
 /* carousel end */
 
-.TUK-left {
-    display: inline-block;
-    text-align: center;
+/* tuk start */
+.tuk-box {
+    border-radius: 35px;
+    box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
+}
+
+.tuk-box-img {
+    border: 3px #d9d9d9 solid;
+}
+
+.tuk {
+    padding: 10px;
     background-color: #FEFEFE;
-    width: 201px;
-    height: 116px;
+    color: #FF2F2F;
+    font-weight: bold;
+}
+
+.tuk:first-child {
     border-radius: 35px 0px 0px 35px;
-    /* border-top-left-radius: 30%;
-    border-bottom-left-radius: 30%; */
-    margin-left: 35%;
-    margin-top: 20px;
+    border-right: 4px #efefef solid;
 }
 
-.TUK-mid {
-    display: inline-block;
-    text-align: center;
-    background-color: #FEFEFE;
-    width: 201px;
-    height: 116px;
-    margin-top: 20px;
-}
-
-.TUK-right {
-    display: inline-block;
-    text-align: center;
-    background-color: #FEFEFE;
-    width: 201px;
-    height: 116px;
+.tuk:last-child {
     border-radius: 0px 35px 35px 0px;
-    /* border-top-right-radius: 30%;
-    border-bottom-right-radius: 30%; */
-    margin-top: 20px;
+    border-left: 4px #efefef solid;
+}
+
+.tuk:hover {
+    background-color: #FF2F2F;
+    color: #FEFEFE;
+}
+/* tuk end */
+
+@media(max-width: 574px) {
+    .TUK-left {
+        align-content: center;
+        display: inline-block;
+        width: 100.5px;
+        height: 58px;
+        font-size: 14px;
+        margin-left: 20%;
+    }
+
+    .TUK-mid {
+        align-content: center;
+        display: inline-block;
+        width: 100.5px;
+        height: 58px;
+        font-size: 14px;
+    }
+
+    .TUK-right {
+        align-content: center;
+        display: inline-block;
+        width: 100.5px;
+        height: 58px;
+        font-size: 14px;
+    }
+
 
 }
 
-.TUK-left:hover {
-    background-color: #ff0000;
-    color: #FFFFFF;
+@media(max-width: 574px) {
+    .TUK-left h2 {
+        font-size: 14px;
+
+    }
+
+    p {
+        font-size: 12px;
+    }
 }
 
-.TUK-mid:hover {
-    background-color: #ff0000;
-    color: #FFFFFF;
+@media(max-width: 574px) {
+    .TUK-mid h2 {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 12px;
+    }
 }
 
-.TUK-right:hover {
-    background-color: #ff0000;
-    color: #FFFFFF;
+@media(max-width: 574px) {
+    .TUK-right h2 {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 12px;
+    }
 }
-
-
-
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
 
 .logo-footer {
     width: 177px;
@@ -404,12 +402,10 @@ div .center {
 
 .footer {
     background-color: #24262b;
-    padding: 70px 0;
-
+    /* padding: 70px 0; */
 }
 
 .footer-col {
-    width: 25%;
     padding: 0 15px;
 }
 
@@ -506,8 +502,6 @@ div .center {
         width: 50%;
     }
 }
-
-
 
 @media(max-width: 767px) {
     .footer-col {
