@@ -60,7 +60,7 @@ class SearchController extends Controller
     {
         $keyword = $request['keyword'];
 
-        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
+        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
             if ($sertifikat[0]->tgl_sertifikat != null) {
                 $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string("1096 days"));
@@ -71,13 +71,16 @@ class SearchController extends Controller
             $sertifikat = [];
             $tglBerlaku = null;
             session(['failed' => 'Data tidak ditemukan']);
-            return view('home', compact('sertifikat', 'tglBerlaku'));
+            // return view('sertifikat.index', compact('sertifikat', 'tglBerlaku'));
+            return redirect()->route('sertifikat')->with($sertifikat)->with($tglBerlaku);
         }
 
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
         ]);
+        // return redirect()->route('sertifikat')->with('sertifikat',$sertifikat)->with('tglBerlaku',$tglBerlaku);
+
     }
 
     public function showSertifikatPage()
