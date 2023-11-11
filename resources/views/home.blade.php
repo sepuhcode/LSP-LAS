@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-    <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="carousel">
-        <div class="carousel-indicators mx-auto">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
+    <div id="carouselExampleIndicators" class="carousel slide carousel-dark position-relative" data-bs-ride="carousel " >
+        <div class="carousel-indicators mx-auto position-absolute top-20">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active "
+                aria-current="true" aria-label="Slide 1" ></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
+                aria-label="Slide 2" ></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+                aria-label="Slide 3" ></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -23,7 +23,7 @@
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
             {{-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> --}}
-            <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg" >
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M28.5 57C44.2398 57 57 44.2398 57 28.5C57 12.7602 44.2398 0 28.5 0C12.7602 0 0 12.7602 0 28.5C0 44.2398 12.7602 57 28.5 57ZM34.2181 37.0319C34.6901 37.5205 34.9512 38.175 34.9453 38.8543C34.9394 39.5336 34.667 40.1835 34.1866 40.6638C33.7062 41.1442 33.0564 41.4167 32.377 41.4226C31.6977 41.4285 31.0432 41.1674 30.5546 40.6954L20.191 30.3318C19.7052 29.8459 19.4324 29.187 19.4324 28.5C19.4324 27.813 19.7052 27.1541 20.191 26.6682L30.5546 16.3046C31.0432 15.8326 31.6977 15.5715 32.377 15.5774C33.0564 15.5833 33.7062 15.8558 34.1866 16.3362C34.667 16.8165 34.9394 17.4664 34.9453 18.1457C34.9512 18.825 34.6901 19.4795 34.2181 19.9681L25.6863 28.5L34.2181 37.0319Z" fill="#ED1C24"/>
             </svg>
             <span class="visually-hidden">Previous</span>
@@ -37,9 +37,10 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
     <div class="row px-0 py-5 m-0 justify-content-center" style="background-color: #EFEFEF">
         <div class="row p-0 mb-5 text-center justify-content-center tuk-box" style="width: 33%">
-            <div class="tuk col-4">
+        <div class="tuk col-4">
                 <h2>+18K</h2>
                 <p>Sertifikat Terbit</p>
             </div>
@@ -243,6 +244,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row mx-auto ">
+        <img src="{{ asset('Images/alur-pendaftaran.png') }}"/>
     </div>
 @endsection
 @section('script')

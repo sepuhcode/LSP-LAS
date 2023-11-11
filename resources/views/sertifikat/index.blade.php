@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div class="line-with-text">
-        <hr>
-        <div class="text">Cari Data Sertifikasi</div>
-        <hr>
+    <div class="row p-0 m-0">
+         <img src="{{ asset('Images/bg-carisertifikat.png') }}" />
     </div>
     <div class="container-fluid mb-4" style="width: 40%;">
         <form action="/cari/sertifikat" method="POST" class="d-flex">
@@ -17,7 +15,7 @@
         <div class="center">
 
             <div class="table-size">
-                <img src="../assets/Images/Logo-LSP-3.png" alt="logo LSP">
+                <img src="{{ asset('images/Logo-LSP-3.png') }}" alt="logo LSP">
                 <table class="table table-bordered rounded">
                     <tbody>
                         <tr>
