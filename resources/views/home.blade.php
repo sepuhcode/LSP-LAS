@@ -130,6 +130,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <div class="row p-0 m-0">
         <img src="{{ asset('Images/Content-Dashboard.png') }}" />
@@ -247,7 +248,6 @@
     <div class="row mx-auto ">
         <img src="{{ asset('Images/alur-pendaftaran.png') }}"/>
     </div>
-
 @endsection
 @section('script')
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>

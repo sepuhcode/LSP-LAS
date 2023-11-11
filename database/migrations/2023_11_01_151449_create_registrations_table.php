@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posisi_las', function (Blueprint $table) {
+        Schema::create('registrations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('skema_sertifikasi_id');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('phone')->unique();
+            $table->string('address')->nullable();
+            // $table->boolean('is_active');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posisi_las');
+        Schema::dropIfExists('registrations');
     }
 };
