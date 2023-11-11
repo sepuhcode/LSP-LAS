@@ -12,7 +12,8 @@ class SkemaSertifikasiController extends Controller
      */
     public function index()
     {
-        //
+        $skemas = SkemaSertifikasi::all();
+        return view('BuatTest.Admin.Skema_Sertifikasi.index',['skemas'=>$skemas]);
     }
 
     /**
@@ -20,7 +21,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('BuatTest.Admin.Skema_Sertifikasi.create');
     }
 
     /**
@@ -28,7 +29,12 @@ class SkemaSertifikasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        SkemaSertifikasi::create($validatedData);
+        return redirect('/admin/skema-sertifikasi')->with('success','data berhasil ditambahkan');
     }
 
     /**
@@ -44,7 +50,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function edit(SkemaSertifikasi $skemaSertifikasi)
     {
-        //
+        return view('BuatTest.Admin.Skema_Sertifikasi.update',['skema'=>$skemaSertifikasi]);
     }
 
     /**
@@ -52,7 +58,11 @@ class SkemaSertifikasiController extends Controller
      */
     public function update(Request $request, SkemaSertifikasi $skemaSertifikasi)
     {
-        //
+        $updatedData = $request->validate(['name'=>'required']);
+
+        SkemaSertifikasi::whereId($skemaSertifikasi->id)->update($updatedData);
+        return redirect('/admin/skema-sertifikasi')->with('success','Data berhasil diupdate');
+
     }
 
     /**
@@ -60,6 +70,6 @@ class SkemaSertifikasiController extends Controller
      */
     public function destroy(SkemaSertifikasi $skemaSertifikasi)
     {
-        //
+        dd('skema sertifikasi destroy');
     }
 }

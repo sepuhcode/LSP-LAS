@@ -12,7 +12,6 @@
     font-family: var(--primary-font-family);
 }
 
-/* basic start */
 .navbar {
     -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
@@ -116,6 +115,12 @@ td {
     font-size: 15pt;
 }
 
+/* div .left {
+    display: inline;
+    margin: 0px 1000px 0px 0px;
+    border: 1px solid rgb(0, 0, 0);
+} */
+
 div .table-sertifikat {
     /* display: inline; */
     margin-left: 0px;
@@ -187,6 +192,7 @@ div .table-sertifikat {
 /* accordion*/
 .image-accordion {
     position: relative;
+    /* Sesuaikan lebar gambar sesuai kebutuhan Anda */
 }
 
 .bg-accordion {
@@ -194,16 +200,12 @@ div .table-sertifikat {
 }
 
 
-.accordion-button:not(.collapsed) {
-    background-color: rgb(217, 217, 217);
+.accordion-button:not(.collapsed){
+    background-color:rgb(217, 217, 217);
 }
 
-.accordion-button:focus {
+.accordion-button:focus{
     box-shadow: none;
-}
-
-.accordion-body {
-    color: #7B7878;
 }
 
 .alur-pendaftaran {
@@ -216,6 +218,43 @@ div .table-sertifikat {
 .fw-semibold {
     color: #7B7878;
 }
+
+.accordion-body {
+    color: #7B7878;
+}
+
+.line-with-text2 {
+    display: flex;
+    /* Membuat elemen flex container */
+    align-items: center;
+    /* Menggeser elemen anak ke tengah vertikal */
+    margin: 40px auto;
+    /* Memberikan jarak atas dan bawah */
+    width: 80%;
+    /* panjang garis */
+}
+
+.line-with-text2 .text2 {
+    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
+    padding: 0 10px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    /* Memberikan padding agar teks terlihat lebih baik */
+}
+
+.line-with-text2 hr {
+    flex-grow: 1;
+    /* Menggunakan ruang kosong yang tersisa */
+    height: 10px;
+    /* Mengatur tinggi garis */
+    background-color: rgb(255, 255, 255);
+    /* Warna garis */
+    margin: 0 10px;
+    /* Memberikan jarak kiri dan kanan garis */
+}
+
+
+
 
 /* carousel start */
 #carouselExampleIndicators {
@@ -344,8 +383,8 @@ div .table-sertifikat {
 }
 
 .logo-footer {
-    width: 100px;
-    height: 50px;
+    width: 177px;
+    height: 76px;
     margin-top: 0;
     margin-bottom: 50px;
 }
@@ -376,6 +415,8 @@ div .table-sertifikat {
     padding: 0;
     box-sizing: border-box;
 }
+
+
 
 .footer-col h4 {
     font-size: 18px;
@@ -486,3 +527,4 @@ div .table-sertifikat {
         width: 100%;
     }
 }
+

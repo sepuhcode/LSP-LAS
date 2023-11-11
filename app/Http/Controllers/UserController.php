@@ -31,7 +31,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validatedData = $request->validate([
             'name'=>'required',
             'email'=>'required|unique:users',
@@ -61,6 +60,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        dd($user);
         return view('Buattest.admin.user.update',[
             'user'=>$user
         ]);
