@@ -2,7 +2,7 @@
 <div class="row px-0 py-5 m-0 justify-content-center footer">
     <div class="row p-0" style="width: 80%">
         <div class="col-4">
-            <img src="{{ asset('images/LogoLAS.png') }}" width="120px" />
+            <img src="{{ asset('images/LogoLAS.png') }}" width="120px"; class="mb-4 mt-3" />
             <ul>
                 <li><a href="#">Home </a></li>
                 <li><a href="#">Sertifikasi</a></li>
@@ -36,7 +36,7 @@
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1850074093113!2d106.82989237581323!3d-6.2393303610991895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3c2f78e1417%3A0x6e69dc9146860164!2sPT%20Surveyor%20Indonesia%20(Persero)%20Tbk!5e0!3m2!1sid!2sid!4v1697885207960!5m2!1sid!2sid"
                 width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                referrerpolicy="no-referrer-when-downgrade" class="mt-2"></iframe>
         </div>
     </div>
 </div>

@@ -31,6 +31,7 @@
 p {
     margin: 0;
 }
+
 /* basic end */
 
 /* btn style start */
@@ -44,6 +45,7 @@ p {
     background-color: #fff;
     color: #ff0000;
 }
+
 /* btn style end */
 
 .active {
@@ -260,39 +262,41 @@ div .table-sertifikat {
 #carouselExampleIndicators {
     position: relative;
 }
+
 .carousel-indicators {
     max-width: fit-content;
     background-color: white;
     opacity: 0.9;
     border-radius: 10px;
     padding: 5px;
-    box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
-    -webkit-box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.25);
+    box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
 }
 
 .carousel-indicators [data-bs-target] {
     background-color: red !important;
     height: 18px !important;
     width: 18px !important;
-    border:none !important;
+    border: none !important;
     border-radius: 100% !important;
 }
 
-.carousel-indicators [data-bs-target].active{
-    height:18px !important;
-    width:50px !important;
+.carousel-indicators [data-bs-target].active {
+    height: 18px !important;
+    width: 50px !important;
     border-radius: 30px !important;
-    border:none !important;
+    border: none !important;
 }
+
 /* carousel end */
 
 /* tuk start */
 .tuk-box {
     border-radius: 35px;
-    box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
-    -webkit-box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px 11px 21px 1px rgba(0,0,0,0.25);
+    box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
 }
 
 .tuk-box-img {
@@ -320,6 +324,7 @@ div .table-sertifikat {
     background-color: #FF2F2F;
     color: #FEFEFE;
 }
+
 /* tuk end */
 
 @media(max-width: 574px) {
@@ -405,20 +410,18 @@ div .table-sertifikat {
     /* padding: 70px 0; */
 }
 
-.footer-col {
+.col-4 {
     padding: 0 15px;
 }
 
-.footer-col ul {
+.col-4 ul {
     list-style: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-
-.footer-col h4 {
+.col-4 h4 {
     font-size: 18px;
     color: #ffffff;
     text-transform: capitalize;
@@ -428,7 +431,7 @@ div .table-sertifikat {
     margin-top: 20px;
 }
 
-.footer-col p {
+.col-4 .text-white {
     font-size: 15px;
     text-align: justify;
     position: relative;
@@ -437,7 +440,7 @@ div .table-sertifikat {
 
 }
 
-.footer-col h4::before {
+.col-4 h4::before {
     content: '';
     position: absolute;
     left: 0;
@@ -448,11 +451,11 @@ div .table-sertifikat {
     width: 50px;
 }
 
-.footer-col ul li:not(:last-child) {
+.col-4 ul li:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.footer-col ul li a {
+.col-4 ul li a {
     font-size: 16px;
     text-transform: capitalize;
     color: #ffffff;
@@ -465,14 +468,15 @@ div .table-sertifikat {
     font-style: italic;
     margin-bottom: 10px;
     margin-left: 5px;
+
 }
 
-.footer-col ul li a:hover {
+.col-4 ul li a:hover {
     color: #ffffff;
     padding-left: 8px;
 }
 
-.footer-col .social-links a {
+.social-links a {
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -485,7 +489,12 @@ div .table-sertifikat {
     transition: all 0.5s ease;
 }
 
-.footer-col .social-links a:hover {
+.social-links a:hover {
+    color: #ffffff;
+
+}
+
+.col-4 .social-links a:hover {
     color: #24262b;
     background-color: #ffffff;
 }
@@ -504,14 +513,14 @@ div .table-sertifikat {
 }
 
 @media(max-width: 767px) {
-    .footer-col {
+    .col-4 {
         width: 50%;
         margin-bottom: 30px;
     }
 }
 
 @media(max-width: 574px) {
-    .footer-col {
+    .col-4 {
         width: 100%;
     }
 }
@@ -527,4 +536,3 @@ div .table-sertifikat {
         width: 100%;
     }
 }
-
