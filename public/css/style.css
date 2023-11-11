@@ -12,70 +12,47 @@
     font-family: var(--primary-font-family);
 }
 
-.logo {
-    max-width: 100%;
-    height: auto;
-    margin-left: 20px;
-}
-
-/* @media(max-width:574px) {
-    .logo {
-        width: 50%;
-        height: 50%;
-
-    }
-} */
-
+/* basic start */
 .navbar {
     -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
 }
 
-.nav-item {
-    padding-right: 50px;
-    font-weight: bold;
-    font-size: 20px;
+.navlink {
+    margin: 5px;
 }
 
-#test button {
-    background-color: red;
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.line-with-text {
-    display: flex;
-    /* Membuat elemen flex container */
-    align-items: center;
-    /* Menggeser elemen anak ke tengah vertikal */
-    margin: 40px auto;
-    /* Memberikan jarak atas dan bawah */
-    width: 80%;
-    /* panjang garis */
+p {
+    margin: 0;
 }
 
+/* basic end */
 
-.line-with-text hr {
-    flex-grow: 1;
-    /* Menggunakan ruang kosong yang tersisa */
-    height: 10px;
-    /* Mengatur tinggi garis */
-    background-color: rgba(255, 0, 0, 1);
-    /* Warna garis */
-    margin: 0 10px;
-    /* Memberikan jarak kiri dan kanan garis */
-
+/* btn style start */
+.btn-primary {
+    background-color: #ff0000;
+    color: #fff;
 }
 
-.line-with-text .text {
-    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
-    padding: 0 10px;
-    color: red;
-    font-weight: bold;
-    /* Memberikan padding agar teks terlihat lebih baik */
+.btn-primary:hover {
+    border: 2px solid #ff0000;
+    background-color: #fff;
+    color: #ff0000;
 }
 
-.search-box::placeholder {
-    font-style: italic;
+/* btn style end */
+
+.active {
+    color: red !important;
+    text-decoration: underline;
+    text-underline-position: under
 }
 
 .search-button {
@@ -85,6 +62,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.search-box::placeholder {
+    font-style: italic;
 }
 
 .table {
@@ -137,45 +118,12 @@ td {
     font-size: 15pt;
 }
 
-/* div .left {
-    display: inline;
-    margin: 0px 1000px 0px 0px;
-    border: 1px solid rgb(0, 0, 0);
-} */
-
 div .table-sertifikat {
     /* display: inline; */
     margin-left: 0px;
     margin-top: 0px;
     margin-bottom: 106px;
-
 }
-
-#active {
-    color: red;
-    text-decoration: underline;
-}
-
-/* slider-partner */
-/* @keyframes slide {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-@keyframes slide-right {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-} */
 
 .logos,
 .logos-2 {
@@ -241,7 +189,6 @@ div .table-sertifikat {
 /* accordion*/
 .image-accordion {
     position: relative;
-    /* Sesuaikan lebar gambar sesuai kebutuhan Anda */
 }
 
 .bg-accordion {
@@ -257,6 +204,10 @@ div .table-sertifikat {
     box-shadow: none;
 }
 
+.accordion-body {
+    color: #7B7878;
+}
+
 .alur-pendaftaran {
     width: 100%;
     background-color: #FF2F2F;
@@ -268,106 +219,74 @@ div .table-sertifikat {
     color: #7B7878;
 }
 
-.text-red {
+/* carousel start */
+#carouselExampleIndicators {
+    position: relative;
+}
+
+.carousel-indicators {
+    max-width: fit-content;
+    background-color: white;
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: red !important;
+    height: 18px !important;
+    width: 18px !important;
+    border: none !important;
+    border-radius: 100% !important;
+}
+
+.carousel-indicators [data-bs-target].active {
+    height: 18px !important;
+    width: 50px !important;
+    border-radius: 30px !important;
+    border: none !important;
+}
+
+/* carousel end */
+
+/* tuk start */
+.tuk-box {
+    border-radius: 35px;
+    box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+}
+
+.tuk-box-img {
+    border: 3px #d9d9d9 solid;
+}
+
+.tuk {
+    padding: 10px;
+    background-color: #FEFEFE;
     color: #FF2F2F;
-}
-
-.accordion-body {
-    color: #7B7878;
-    width: 595px;
-    border-radius: 15px;
-}
-
-.line-with-text2 {
-    display: flex;
-    /* Membuat elemen flex container */
-    align-items: center;
-    /* Menggeser elemen anak ke tengah vertikal */
-    margin: 40px auto;
-    /* Memberikan jarak atas dan bawah */
-    width: 80%;
-    /* panjang garis */
-}
-
-.line-with-text2 .text2 {
-    /* Anda dapat menyesuaikan gaya teks sesuai kebutuhan Anda */
-    padding: 0 10px;
-    color: rgb(0, 0, 0);
     font-weight: bold;
-    /* Memberikan padding agar teks terlihat lebih baik */
 }
 
-.line-with-text2 hr {
-    flex-grow: 1;
-    /* Menggunakan ruang kosong yang tersisa */
-    height: 10px;
-    /* Mengatur tinggi garis */
-    background-color: rgb(255, 255, 255);
-    /* Warna garis */
-    margin: 0 10px;
-    /* Memberikan jarak kiri dan kanan garis */
-}
-
-
-.carousel-control-prev-icon {
-
-    height: 40px;
-    width: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 10px 0 10px;
-    color: #FFFFFF;
-
-}
-
-.carousel-control-next-icon {
-    height: 40px;
-    width: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 10px 0 10px;
-    color: #FFFFFF;
-}
-
-.TUK-left {
-    display: inline-block;
-    text-align: center;
-    background-color: #FF2F2F;
-    color: #fff;
-    width: 201px;
-    height: 116px;
+.tuk:first-child {
     border-radius: 35px 0px 0px 35px;
-
-    /* border-top-left-radius: 30%;
-    border-bottom-left-radius: 30%; */
-    margin-left: 35%;
-    margin-top: 20px;
-    font-weight: bold;
+    border-right: 4px #efefef solid;
 }
 
-.TUK-mid {
-    display: inline-block;
-    text-align: center;
-    background-color: #FEFEFE;
-    color: #FF2F2F;
-    width: 201px;
-    height: 116px;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.TUK-right {
-    display: inline-block;
-    text-align: center;
-    background-color: #FEFEFE;
-    color: #FF2F2F;
-    width: 201px;
-    height: 116px;
+.tuk:last-child {
     border-radius: 0px 35px 35px 0px;
-    margin-top: 20px;
-    font-weight: bold;
-
+    border-left: 4px #efefef solid;
 }
+
+.tuk:hover {
+    background-color: #FF2F2F;
+    color: #FEFEFE;
+}
+
+/* tuk end */
 
 @media(max-width: 574px) {
     .TUK-left {
@@ -429,37 +348,11 @@ div .table-sertifikat {
     }
 }
 
-;
-
-/* .TUK-left:hover {
-    background-color: #ff0000;
-    color: #FFFFFF;
-}
-
-.TUK-mid:hover {
-    background-color: #ff0000;
-    color: #FFFFFF;
-}
-
-.TUK-right:hover {
-    background-color: #ff0000;
-    color: #FFFFFF;
-} */
-
-
-
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
-
 .logo-footer {
     width: 100px;
     height: 50px;
     margin-top: 0;
     margin-bottom: 50px;
-
 }
 
 .container-footer {
@@ -475,25 +368,21 @@ div .table-sertifikat {
 
 .footer {
     background-color: #24262b;
-    padding: 70px 0;
-
+    /* padding: 70px 0; */
 }
 
-.footer-col {
-    /* width: 33%; */
+.col-4 {
     padding: 0 15px;
 }
 
-.footer-col ul {
+.col-4 ul {
     list-style: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-
-.footer-col h4 {
+.col-4 h4 {
     font-size: 18px;
     color: #ffffff;
     text-transform: capitalize;
@@ -503,7 +392,7 @@ div .table-sertifikat {
     margin-top: 20px;
 }
 
-.footer-col p {
+.col-4 .text-white {
     font-size: 15px;
     text-align: justify;
     position: relative;
@@ -512,7 +401,7 @@ div .table-sertifikat {
 
 }
 
-.footer-col h4::before {
+.col-4 h4::before {
     content: '';
     position: absolute;
     left: 0;
@@ -523,11 +412,11 @@ div .table-sertifikat {
     width: 50px;
 }
 
-.footer-col ul li:not(:last-child) {
+.col-4 ul li:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.footer-col ul li a {
+.col-4 ul li a {
     font-size: 16px;
     text-transform: capitalize;
     color: #ffffff;
@@ -540,14 +429,15 @@ div .table-sertifikat {
     font-style: italic;
     margin-bottom: 10px;
     margin-left: 5px;
+
 }
 
-.footer-col ul li a:hover {
+.col-4 ul li a:hover {
     color: #ffffff;
     padding-left: 8px;
 }
 
-.footer-col .social-links a {
+.social-links a {
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -560,7 +450,12 @@ div .table-sertifikat {
     transition: all 0.5s ease;
 }
 
-.footer-col .social-links a:hover {
+.social-links a:hover {
+    color: #ffffff;
+
+}
+
+.col-4 .social-links a:hover {
     color: #24262b;
     background-color: #ffffff;
 }
@@ -578,17 +473,15 @@ div .table-sertifikat {
     }
 }
 
-
-
 @media(max-width: 767px) {
-    .footer-col {
+    .col-4 {
         width: 50%;
         margin-bottom: 30px;
     }
 }
 
 @media(max-width: 574px) {
-    .footer-col {
+    .col-4 {
         width: 100%;
     }
 }

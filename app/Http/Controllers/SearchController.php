@@ -16,7 +16,7 @@ class SearchController extends Controller
 
     public function search(string $keyword)
     {
-        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
+        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
             $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1095 days"));
         } else {
@@ -32,11 +32,11 @@ class SearchController extends Controller
         // $datas = OldData::pluck('tgl_sertifikat_lama','no');
         foreach ($datas as $data) {
             if (!empty($data->tgl_sertifikat_lama)) {
-            $correct_tgl = str_replace('/', '-', $data->tgl_sertifikat_lama); //replace / ke - (ex: "02/08/2023" -> "02-08-2023");
-            $time = strtotime($correct_tgl);
-            $formatedDate = date('Y-m-d', $time);
+                $correct_tgl = str_replace('/', '-', $data->tgl_sertifikat_lama); //replace / ke - (ex: "02/08/2023" -> "02-08-2023");
+                $time = strtotime($correct_tgl);
+                $formatedDate = date('Y-m-d', $time);
             } else {
-            $formatedDate = null;
+                $formatedDate = null;
             }
 
             DB::table('old_data')->where('no', $data->no)->update(['tgl_sertifikat_baru' => $formatedDate]);
@@ -60,30 +60,37 @@ class SearchController extends Controller
     {
         $keyword = $request['keyword'];
 
-        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat_baru')->where('no_sertifikat', $keyword)->get();
+        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
-            if ($sertifikat[0]->tgl_sertifikat_baru != null) {
-            $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1096 days"));
-            }
-            else{
-            $tglBerlaku = null;
+            if ($sertifikat[0]->tgl_sertifikat != null) {
+                $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string("1096 days"));
+            } else {
+                $tglBerlaku = null;
             }
         } else {
             $sertifikat = [];
             $tglBerlaku = null;
             session(['failed' => 'Data tidak ditemukan']);
-            return view('home', compact('sertifikat', 'tglBerlaku'));
+            return view('sertifikat.index', compact('sertifikat', 'tglBerlaku'));
         }
 
-        // return view('testView', compact('sertifikat', 'tglBerlaku'));
-        // return view('testView')->with('sertifikat',$sertifikat)->with('tglBerlaku',$tglBerlaku)->with('failed','Data tidak ditemukan');//cuma test
-
-        return redirect('cari.sertifikat', [
-        'sertifikat' => $sertifikat,
-        'tglBerlaku' => $tglBerlaku,
+        return view('sertifikat.index', [
+            'sertifikat' => $sertifikat,
+            'tglBerlaku' => $tglBerlaku,
         ]);
-
     }
+
+    public function showSertifikatPage()
+    {
+        $sertifikat = [];
+        $tglBerlaku = null;
+
+        return view('sertifikat.index', [
+            'sertifikat' => $sertifikat,
+            'tglBerlaku' => $tglBerlaku,
+        ]);
+    }
+
     public function showHomePage()
     {
         // $sertifikat =[['nama'=>' ',
@@ -95,8 +102,8 @@ class SearchController extends Controller
         $tglBerlaku = null;
 
         return view('home', [
-        'sertifikat' => $sertifikat,
-        'tglBerlaku' => $tglBerlaku,
+            'sertifikat' => $sertifikat,
+            'tglBerlaku' => $tglBerlaku,
         ]);
     }
 }
