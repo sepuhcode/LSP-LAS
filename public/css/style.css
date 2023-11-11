@@ -410,18 +410,18 @@ div .table-sertifikat {
     /* padding: 70px 0; */
 }
 
-.col-4 {
+.footer .col-4 {
     padding: 0 15px;
 }
 
-.col-4 ul {
+.footer .col-4 ul {
     list-style: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.col-4 h4 {
+.footer .col-4 h4 {
     font-size: 18px;
     color: #ffffff;
     text-transform: capitalize;
@@ -431,7 +431,7 @@ div .table-sertifikat {
     margin-top: 20px;
 }
 
-.col-4 .text-white {
+.footer .col-4 .text-white {
     font-size: 15px;
     text-align: justify;
     position: relative;
@@ -440,7 +440,7 @@ div .table-sertifikat {
 
 }
 
-.col-4 h4::before {
+.footer .col-4 h4::before {
     content: '';
     position: absolute;
     left: 0;
@@ -451,11 +451,11 @@ div .table-sertifikat {
     width: 50px;
 }
 
-.col-4 ul li:not(:last-child) {
+.footer .col-4 ul li:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.col-4 ul li a {
+.footer .col-4 ul li a {
     font-size: 16px;
     text-transform: capitalize;
     color: #ffffff;
@@ -471,7 +471,7 @@ div .table-sertifikat {
 
 }
 
-.col-4 ul li a:hover {
+.footer .col-4 ul li a:hover {
     color: #ffffff;
     padding-left: 8px;
 }

@@ -37,10 +37,10 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    
+
     <div class="row px-0 py-5 m-0 justify-content-center" style="background-color: #EFEFEF">
         <div class="row p-0 mb-5 text-center justify-content-center tuk-box" style="width: 33%">
-            <div class="tuk col-4">
+        <div class="tuk col-4">
                 <h2>+18K</h2>
                 <p>Sertifikat Terbit</p>
             </div>

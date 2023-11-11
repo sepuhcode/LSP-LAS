@@ -15,7 +15,7 @@
         <div class="center">
 
             <div class="table-size">
-                <img src="../assets/Images/Logo-LSP-3.png" alt="logo LSP">
+                <img src="{{ asset('images/Logo-LSP-3.png') }}" alt="logo LSP">
                 <table class="table table-bordered rounded">
                     <tbody>
                         <tr>
