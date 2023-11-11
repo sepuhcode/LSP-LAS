@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posisi_las', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('SkemaSertifikasi_id');
+            $table->foreignId('skema_sertifikasi_id');
             $table->timestamps();
         });
     }

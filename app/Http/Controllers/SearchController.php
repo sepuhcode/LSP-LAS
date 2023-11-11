@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use App\Models\OldData;
+use App\Models\Tuk;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -87,26 +89,25 @@ class SearchController extends Controller
     {
         $sertifikat = [];
         $tglBerlaku = null;
-
+       
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
-            'tglBerlaku' => $tglBerlaku,
+            'tglBerlaku' => $tglBerlaku
         ]);
     }
 
     public function showHomePage()
     {
-        // $sertifikat =[['nama'=>' ',
-        // 'no-sertifikat'=>' ',
-        // 'asesor'=>' ',
-        // 'skema_sertifikasi'=>' ']];
-
         $sertifikat = [];
         $tglBerlaku = null;
+        $tuks = Tuk::all();
+        $carousels = Carousel::all();
 
         return view('home', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
+            'tuks'=>$tuks,
+            'carousels'=>$carousels
         ]);
     }
 }

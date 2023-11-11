@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PosisiLasController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SkemaSertifikasiController;
 use App\Http\Controllers\TukController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +46,8 @@ Route::resource('/admin/user',UserController::class); //CRUD data user
 Route::resource('/admin/carousel',CarouselController::class); //CRUD gambar carousel
 Route::resource('/admin/tuk', TukController::class); //CRUD gambar tuk
 Route::resource('/admin/registration', RegistrationController::class); //verifikasi registrasi akun user
+Route::resource('/admin/skema-sertifikasi', SkemaSertifikasiController::class); //verifikasi registrasi akun user
+Route::resource('/admin/posisi-las', PosisiLasController::class); //verifikasi registrasi akun user
 
 
 //registration route

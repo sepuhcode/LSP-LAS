@@ -12,7 +12,8 @@ class PosisiLasController extends Controller
      */
     public function index()
     {
-        //
+        $positions = PosisiLas::all();
+        return view('BuatTest.Admin.Posisi_Las.index',['positions'=>$positions]);
     }
 
     /**
@@ -20,7 +21,7 @@ class PosisiLasController extends Controller
      */
     public function create()
     {
-        //
+        return view('BuatTest.Admin.Posisi_Las.create');
     }
 
     /**
@@ -28,7 +29,13 @@ class PosisiLasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name'=>'required',
+            'skema_sertifikasi_id'=>'required|integer'
+        ]);
+
+        PosisiLas::create($validatedData);
+        return redirect('/admin/posisi_las')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -44,7 +51,7 @@ class PosisiLasController extends Controller
      */
     public function edit(PosisiLas $posisiLas)
     {
-        //
+        return view('BuatTest.Admin.Posisi_Las.update',['posisiLas'=>$posisiLas]);
     }
 
     /**

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PosisiLas extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
 }
