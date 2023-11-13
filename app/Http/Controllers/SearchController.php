@@ -101,7 +101,7 @@ class SearchController extends Controller
         $sertifikat = [];
         $tglBerlaku = null;
         $tuks = Tuk::all();
-        $carousels = Carousel::all();
+        $carousels = Carousel::whereVisibility(true)->get();
 
         return view('home', [
             'sertifikat' => $sertifikat,
