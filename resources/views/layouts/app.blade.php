@@ -21,7 +21,7 @@
 
     @include('layouts.footer')
 
-    @if (request()->session()->has('failed'))
+    {{-- @if (request()->session()->has('failed'))
         <script>
             Swal.fire({
                 title: 'Error!',
@@ -29,9 +29,9 @@
                 icon: 'error',
                 confirmButtonText: 'Close'
             })
+            request()->session()->flush();
         </script>
-        request()->session()->flush();
-    @endif
+    @endif --}}
 
     {{-- Script --}}
     <script src="https://unpkg.com/feather-icons"></script>
