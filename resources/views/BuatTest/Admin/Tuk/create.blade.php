@@ -17,7 +17,10 @@
         @enderror
         <br>
         <label for="address">Address:</label><br>
-        <textarea name="address" id="address" rows="3" cols="30"> {{ old('address') }} </textarea>
+        <textarea name="address" id="address" rows="3" cols="30" class="@error('image') is-invalid @enderror"> {{ old('address') }} </textarea>
+        @error('address')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <br>
         <label for="image">Image:</label><br>
         <input type="file" id="image" name="image" placeholder="Upload image"

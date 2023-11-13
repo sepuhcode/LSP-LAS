@@ -1,16 +1,25 @@
 @extends('layouts.app')
 @section('content')
-    <div id="carouselExampleIndicators" class="carousel slide carousel-dark position-relative" data-bs-ride="carousel " >
-        <div class="carousel-indicators mx-auto position-absolute top-20">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active "
-                aria-current="true" aria-label="Slide 1" ></button>
+    <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="carousel">
+        <div class="carousel-indicators mx-auto">
+            {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                 aria-label="Slide 2" ></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3" ></button>
+                aria-label="Slide 3"></button> --}}
+            @foreach ($carousels as $carousel)
+                @if ($loop->iteration == 1)
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+                @else
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->iteration-1 }}"
+                aria-label="Slide {{ $loop->iteration }}"></button>
+                @endif
+            @endforeach
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            {{-- <div class="carousel-item active">
                 <img src="{{ asset('images/Content-Dashboard1.png') }}" class="d-block w-100 " alt="...">
             </div>
             <div class="carousel-item">
@@ -18,7 +27,12 @@
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('images/Content-Dashboard1.png') }}" class="d-block w-100" alt="...">
+            </div> --}}
+            @foreach ($carousels as $carousel)
+            <div class="carousel-item {{ $loop->iteration == 1?'active':''  }}">
+                <img src="{{ asset('images/carouselImg/'.$carousel->image) }}" class="d-block w-100" alt="...">
             </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
@@ -32,20 +46,22 @@
             data-bs-slide="next">
             {{-- <span class="carousel-control-next-icon" aria-hidden="true"></span> --}}
             <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M28.5 0C12.7602 0 0 12.7602 0 28.5C0 44.2398 12.7602 57 28.5 57C44.2398 57 57 44.2398 57 28.5C57 12.7602 44.2398 0 28.5 0ZM22.7819 19.9681C22.3099 19.4795 22.0488 18.825 22.0547 18.1457C22.0606 17.4664 22.333 16.8165 22.8134 16.3362C23.2938 15.8558 23.9436 15.5833 24.623 15.5774C25.3023 15.5715 25.9568 15.8326 26.4454 16.3046L36.809 26.6682C37.2948 27.1541 37.5676 27.813 37.5676 28.5C37.5676 29.187 37.2948 29.8459 36.809 30.3318L26.4454 40.6954C25.9568 41.1674 25.3023 41.4285 24.623 41.4226C23.9436 41.4167 23.2938 41.1442 22.8134 40.6638C22.333 40.1835 22.0606 39.5336 22.0547 38.8543C22.0488 38.175 22.3099 37.5205 22.7819 37.0319L31.3137 28.5L22.7819 19.9681Z" fill="#ED1C24"/>
-                </svg>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M28.5 0C12.7602 0 0 12.7602 0 28.5C0 44.2398 12.7602 57 28.5 57C44.2398 57 57 44.2398 57 28.5C57 12.7602 44.2398 0 28.5 0ZM22.7819 19.9681C22.3099 19.4795 22.0488 18.825 22.0547 18.1457C22.0606 17.4664 22.333 16.8165 22.8134 16.3362C23.2938 15.8558 23.9436 15.5833 24.623 15.5774C25.3023 15.5715 25.9568 15.8326 26.4454 16.3046L36.809 26.6682C37.2948 27.1541 37.5676 27.813 37.5676 28.5C37.5676 29.187 37.2948 29.8459 36.809 30.3318L26.4454 40.6954C25.9568 41.1674 25.3023 41.4285 24.623 41.4226C23.9436 41.4167 23.2938 41.1442 22.8134 40.6638C22.333 40.1835 22.0606 39.5336 22.0547 38.8543C22.0488 38.175 22.3099 37.5205 22.7819 37.0319L31.3137 28.5L22.7819 19.9681Z"
+                    fill="#ED1C24" />
+            </svg>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
     <div class="row px-0 py-5 m-0 justify-content-center" style="background-color: #EFEFEF">
         <div class="row p-0 mb-5 text-center justify-content-center tuk-box" style="width: 33%">
-        <div class="tuk col-4">
-                <h2>+18K</h2>
+            <div class="tuk col-4">
+                <h2>18K+</h2>
                 <p>Sertifikat Terbit</p>
             </div>
             <div class="tuk col-4">
-                <h2>18</h2>
+                <h2>{{ count($tuks) }}</h2>
                 <p>TUK Aktif</p>
             </div>
             <div class="tuk col-4">
@@ -54,7 +70,7 @@
             </div>
         </div>
         <div class="row justify-content-center p-0" style="width: 80%">
-            <div class="col-2 p-3">
+            {{-- <div class="col-2 p-3">
                 <div class="tuk-box-img">
                     <img width="100%" src="{{ asset('images/patria.png') }}"/>
                 </div>
@@ -128,7 +144,15 @@
                 <div class="tuk-box-img">
                     <img width="100%" src="{{ asset('images/patria.png') }}"/>
                 </div>
-            </div>
+            </div> --}}
+
+            @foreach ($tuks as $tuk)
+                <div class="col-2 p-3">
+                    <div class="tuk-box-img">
+                        <img width="100%" height="135px" src="{{ asset('Images/tukImg/'.$tuk->image) }}" />
+                    </div>
+                </div>
+            @endforeach
         </div>
 
     </div>
