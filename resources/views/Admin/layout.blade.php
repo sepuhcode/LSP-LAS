@@ -42,7 +42,8 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href={{ asset('admin_template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}>
     <!-- Theme style -->
-    <link rel="stylesheet" href={{ asset('admin_template/dist/css/adminlte.min.css') }}>
+    {{-- <link rel="stylesheet" href={{ asset('admin_template/dist/css/adminlte.min.css') }}> --}}
+    <link rel="stylesheet" href={{ asset('admin_template/dist/css/adminlte.css') }}>
 
     <!-- DataTables -->
     <link rel="stylesheet" href={{ asset('admin_template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}>
@@ -54,6 +55,7 @@
         href="/css/app-wa-02670e9412103b5852dcbe140d278c49.css?vsn=d">
 
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
+
 
 </head>
 
@@ -286,13 +288,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="admin/carousel" class="nav-link">
+                                    <a href="/admin/carousel" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Carousel</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="admin/tuk" class="nav-link">
+                                    <a href="/admin/tuk" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TUK</p>
                                     </a>

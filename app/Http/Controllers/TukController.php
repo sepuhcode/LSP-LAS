@@ -25,7 +25,7 @@ class TukController extends Controller
      */
     public function create()
     {
-        return view("BuatTest.Admin.Tuk.create");
+        return view("Admin.TUK.create");
     }
 
     /**
