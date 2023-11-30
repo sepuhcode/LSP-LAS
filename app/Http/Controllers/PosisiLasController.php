@@ -13,7 +13,7 @@ class PosisiLasController extends Controller
     public function index()
     {
         $positions = PosisiLas::all();
-        return view('BuatTest.Admin.Posisi_Las.index',['positions'=>$positions]);
+        return view('buat-test.admin.posisi-las.index', ['positions' => $positions]);
     }
 
     /**
@@ -21,7 +21,7 @@ class PosisiLasController extends Controller
      */
     public function create()
     {
-        return view('BuatTest.Admin.Posisi_Las.create');
+        return view('buat-test.admin.posisi-las.create');
     }
 
     /**
@@ -30,12 +30,12 @@ class PosisiLasController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'=>'required',
-            'skema_sertifikasi_id'=>'required|integer'
+            'name' => 'required',
+            'skema_sertifikasi_id' => 'required|integer'
         ]);
 
         PosisiLas::create($validatedData);
-        return redirect('/admin/posisi_las')->with('success','Data berhasil ditambahkan');
+        return redirect('/admin/posisi-las')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -51,7 +51,7 @@ class PosisiLasController extends Controller
      */
     public function edit(PosisiLas $posisiLas)
     {
-        return view('BuatTest.Admin.Posisi_Las.update',['posisiLas'=>$posisiLas]);
+        return view('buat-test.admin.posisi-las.update', ['posisiLas' => $posisiLas]);
     }
 
     /**

@@ -55,5 +55,5 @@ Route::resource('/register',RegistrationController::class);
 
 
 //test halaman admin
-Route::view('testadmin','Admin.Dashboard.index');
-Route::view('testtuk','Admin.TUK.index');
+Route::view('testadmin','admin.dashboard.index');
+Route::view('testtuk','admin.tuk.index');

@@ -517,14 +517,14 @@ div .table-sertifikat {
 }
 
 @media(max-width: 767px) {
-    .col-4 {
+    .footer .col-4 {
         width: 50%;
         margin-bottom: 30px;
     }
 }
 
 @media(max-width: 574px) {
-    .col-4 {
+    .footer .col-4 {
         width: 100%;
     }
 }

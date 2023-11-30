@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('/BuatTest.Admin.User.index',[
+        return view('/buat-test.admin.user.index', [
             'users' => User::all()
         ]);
     }
@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('BuatTest.Admin.User.create');
+        return view('buat-test.admin.user.create');
     }
 
     /**
@@ -32,11 +32,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'=>'required',
-            'email'=>'required|unique:users',
-            'password'=>'required|min:8',
-            'phone'=>'required|unique:users',
-            'address'=>'nullable'
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:8',
+            'phone' => 'required|unique:users',
+            'address' => 'nullable'
         ]);
         $validatedData['is_active'] = true;
         // $validatedData['password']= Hash::make($validatedData['password']);
@@ -44,7 +44,7 @@ class UserController extends Controller
         $user = User::create($validatedData);
         $user->assignRole($request['role']);
 
-        return redirect('/admin/user')->with('success','Data Berhasil Disimpan!');
+        return redirect('/admin/user')->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -61,8 +61,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         dd($user);
-        return view('Buattest.admin.user.update',[
-            'user'=>$user
+        return view('buat-test.admin.user.update', [
+            'user' => $user
         ]);
     }
 
@@ -72,29 +72,29 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $rules = [
-            'name'=>'required',
-            'is_active'=>'required',
-            'address'=>'nullable',
+            'name' => 'required',
+            'is_active' => 'required',
+            'address' => 'nullable',
         ];
         //cek perubahan data pada no telp, email
-        $request->phone != $user->phone ? $rules['phone']= 'required|unique:users': '';
-        $request->email != $user->email ? $rules['email']= 'required|unique:users':'';
-        
+        $request->phone != $user->phone ? $rules['phone'] = 'required|unique:users' : '';
+        $request->email != $user->email ? $rules['email'] = 'required|unique:users' : '';
+
         // Cek isi inputan password\
         $request->filled('password') ? $rules['password'] = 'required|min:8' : '';
 
 
         $validatedData = $request->validate($rules);
- 
-        if($user->getRoleNames()[0] != $request->role){
+
+        if ($user->getRoleNames()[0] != $request->role) {
             $user->syncRoles($request->role);
         }
         // hash password baru
         // $request->filled('password') ? $validatedData['password'] = Hash::make($validatedData['password']) : '';
 
-        User::where('id',$user->id)
+        User::where('id', $user->id)
             ->update($validatedData);
-        return redirect('/admin/user')->with('success','Edit Data Berhasil!');
+        return redirect('/admin/user')->with('success', 'Edit Data Berhasil!');
     }
 
     /**
@@ -103,6 +103,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        return redirect('/admin/user')->with('success','Data Berhasil Dihapus!');
+        return redirect('/admin/user')->with('success', 'Data Berhasil Dihapus!');
     }
 }

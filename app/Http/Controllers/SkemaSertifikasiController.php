@@ -13,7 +13,7 @@ class SkemaSertifikasiController extends Controller
     public function index()
     {
         $skemas = SkemaSertifikasi::all();
-        return view('BuatTest.Admin.Skema_Sertifikasi.index',['skemas'=>$skemas]);
+        return view('buat-test.admin.skema-sertifikasi.index', ['skemas' => $skemas]);
     }
 
     /**
@@ -21,7 +21,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function create()
     {
-        return view('BuatTest.Admin.Skema_Sertifikasi.create');
+        return view('buat-test.admin.skema-sertifikasi.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class SkemaSertifikasiController extends Controller
         ]);
 
         SkemaSertifikasi::create($validatedData);
-        return redirect('/admin/skema-sertifikasi')->with('success','data berhasil ditambahkan');
+        return redirect('/admin/skema-sertifikasi')->with('success', 'data berhasil ditambahkan');
     }
 
     /**
@@ -50,7 +50,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function edit(SkemaSertifikasi $skemaSertifikasi)
     {
-        return view('BuatTest.Admin.Skema_Sertifikasi.update',['skema'=>$skemaSertifikasi]);
+        return view('buat-test.admin.skema-sertifikasi.update', ['skema' => $skemaSertifikasi]);
     }
 
     /**
@@ -58,11 +58,10 @@ class SkemaSertifikasiController extends Controller
      */
     public function update(Request $request, SkemaSertifikasi $skemaSertifikasi)
     {
-        $updatedData = $request->validate(['name'=>'required']);
+        $updatedData = $request->validate(['name' => 'required']);
 
         SkemaSertifikasi::whereId($skemaSertifikasi->id)->update($updatedData);
-        return redirect('/admin/skema-sertifikasi')->with('success','Data berhasil diupdate');
-
+        return redirect('/admin/skema-sertifikasi')->with('success', 'Data berhasil diupdate');
     }
 
     /**
