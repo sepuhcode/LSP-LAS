@@ -12,16 +12,6 @@
     font-family: var(--primary-font-family);
 }
 
-.navbar {
-    -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
-}
-
-.navlink {
-    margin: 5px;
-}
-
 .container {
     width: 100%;
     margin-right: auto;
@@ -31,8 +21,20 @@
 p {
     margin: 0;
 }
-
 /* basic end */
+
+/* navbar start */
+.navbar {
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .auth-section{
+    width: 100px;
+    padding: 0px 10px;
+}
+/* navbar end */
 
 /* btn style start */
 .btn-primary {
@@ -40,12 +42,15 @@ p {
     color: #fff;
 }
 
+a.btn-primary {
+ padding: 10px;
+}
+
 .btn-primary:hover {
     border: 2px solid #ff0000;
     background-color: #fff;
     color: #ff0000;
 }
-
 /* btn style end */
 
 .active {
@@ -317,11 +322,13 @@ div .table-sertifikat {
 .tuk:first-child {
     border-radius: 35px 0px 0px 35px;
     border-right: 4px #efefef solid;
+    padding-left: 13px;
 }
 
 .tuk:last-child {
     border-radius: 0px 35px 35px 0px;
     border-left: 4px #efefef solid;
+    padding-right: 13px;
 }
 
 .tuk:hover {
