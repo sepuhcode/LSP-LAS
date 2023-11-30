@@ -310,6 +310,10 @@ div .table-sertifikat {
     font-weight: bold;
 }
 
+.tuk * {
+    cursor: pointer;
+}
+
 .tuk:first-child {
     border-radius: 35px 0px 0px 35px;
     border-right: 4px #efefef solid;
@@ -494,7 +498,7 @@ div .table-sertifikat {
 
 }
 
-.col-4 .social-links a:hover {
+.footer .col-4 .social-links a:hover {
     color: #24262b;
     background-color: #ffffff;
 }
