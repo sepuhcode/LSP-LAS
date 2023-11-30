@@ -3,11 +3,11 @@
         <div class="col-4">
             <img src="{{ asset('images/LogoLAS.png') }}" width="120px"; class="mb-4 mt-3" />
             <ul>
-                <li><a href="#">Home </a></li>
-                <li><a href="#">Sertifikasi</a></li>
+                <li><a href="{{ url('/') }}">Home </a></li>
+                <li><a href="{{ route('sertifikat') }}">Sertifikasi</a></li>
                 <li><a href="#">Pendaftaran</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="{{ url('/login') }}">Login</a></li>
             </ul>
         </div>
         <div class="col-4 text-white">
@@ -22,8 +22,8 @@
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fa-regular fa-envelope"></i>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="col-4 text-white">
