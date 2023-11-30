@@ -54,3 +54,6 @@ Route::resource('/admin/posisi-las', PosisiLasController::class); //verifikasi r
 Route::resource('/register',RegistrationController::class);
 
 
+//test halaman admin
+Route::view('testadmin','Admin.Dashboard.index');
+Route::view('testtuk','Admin.TUK.index');

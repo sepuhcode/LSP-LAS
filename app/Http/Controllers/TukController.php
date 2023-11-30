@@ -12,7 +12,10 @@ class TukController extends Controller
      */
     public function index()
     {
-        return view("BuatTest.Admin.Tuk.index", [
+        // return view("BuatTest.Admin.Tuk.index", [
+        //     'tuks' => Tuk::all()
+        // ]);
+        return view("Admin.TUK.index", [
             'tuks' => Tuk::all()
         ]);
     }
@@ -22,7 +25,7 @@ class TukController extends Controller
      */
     public function create()
     {
-        return view("BuatTest.Admin.Tuk.create");
+        return view("Admin.TUK.create");
     }
 
     /**
@@ -59,9 +62,10 @@ class TukController extends Controller
      */
     public function edit(Tuk $tuk)
     {
-        return view('BuatTest.Admin.Tuk.update',[
-            'tuk'=>$tuk
-        ]);
+        // return view('BuatTest.Admin.Tuk.update',[
+        //     'tuk'=>$tuk
+        // ]);
+        
     }
 
     /**
