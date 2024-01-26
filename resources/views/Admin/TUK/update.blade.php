@@ -6,25 +6,25 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Upload TUK</h3>
+                    <h3 class="card-title">Update TUK</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="\admin\tuk" method="POST" enctype="multipart/form-data">
+                <form action="/admin/tuk/{{ $tuk->id }}" method="POST" enctype="multipart/form-data">
+                    @method('put')
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">TUK Name </label>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Enter TUK Name..."
-                                value="{{ old('name') }}">
+                            <input name="name" type="text" class="form-control" id="name"
+                                value="{{ old('name', $tuk->name) }}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3"
-                                placeholder="Enter Address...">{{ old('address') }}</textarea>
+                            <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3">{{ old('address', $tuk->address) }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="image">Image</label>
@@ -44,7 +44,7 @@
 
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Upload</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>

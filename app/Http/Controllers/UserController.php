@@ -13,8 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('/BuatTest.Admin.User.index',[
-            'users' => User::all()
+        return view('Admin.User.index',[
+            'users' => User::all(),
+            'page' => 'User'
         ]);
     }
 
@@ -23,7 +24,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('BuatTest.Admin.User.create');
+        return view('Admin.User.create',[
+            'page'=>'User'
+        ]);
     }
 
     /**
@@ -44,7 +47,7 @@ class UserController extends Controller
         $user = User::create($validatedData);
         $user->assignRole($request['role']);
 
-        return redirect('/admin/user')->with('success','Data Berhasil Disimpan!');
+        return redirect('/admin/user')->with('success','Added');
     }
 
     /**
@@ -60,8 +63,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        dd($user);
-        return view('Buattest.admin.user.update',[
+        // dd($user);
+        return view('Admin.user.update',[
             'user'=>$user
         ]);
     }
@@ -94,7 +97,7 @@ class UserController extends Controller
 
         User::where('id',$user->id)
             ->update($validatedData);
-        return redirect('/admin/user')->with('success','Edit Data Berhasil!');
+        return redirect('/admin/user')->with('success','Updated');
     }
 
     /**
@@ -103,6 +106,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        return redirect('/admin/user')->with('success','Data Berhasil Dihapus!');
+        return redirect('/admin/user')->with('success','Deleted');
     }
 }

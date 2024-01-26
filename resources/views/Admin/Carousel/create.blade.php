@@ -6,26 +6,13 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Upload TUK</h3>
+                    <h3 class="card-title">Upload Carousel</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="\admin\tuk" method="POST" enctype="multipart/form-data">
+                <form action="\admin\carousel" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">TUK Name </label>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Enter TUK Name..."
-                                value="{{ old('name') }}">
-                            @error('name')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3"
-                                placeholder="Enter Address...">{{ old('address') }}</textarea>
-                        </div>
                         <div class="form-group">
                             <label for="image">Image</label>
                             <div class="input-group">

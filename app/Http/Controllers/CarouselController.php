@@ -14,8 +14,13 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        return view('BuatTest.Admin.Carousel.index',[
-            'carousels'=>Carousel::all()
+        // return view('BuatTest.Admin.Carousel.index',[
+        //     'carousels'=>Carousel::all(),
+        //     'page' => 'Carousel'
+        // ]);
+        return view('Admin.Carousel.index',[
+            'carousels'=>Carousel::all(),
+            'page' => 'Carousel'
         ]);
     }
 
@@ -24,7 +29,9 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        return view('BuatTest.Admin.Carousel.create');
+        return view('Admin.Carousel.create',[
+            'page' => 'Carousel'
+        ]);
     }
 
     /**
@@ -48,7 +55,7 @@ class CarouselController extends Controller
 
         $request->image->move(public_path('Images/carouselImg'),$fileName);
 
-        return redirect('/admin/carousel')->with('success','image uploaded');
+        return redirect('/admin/carousel')->with('success','Uploaded');
     }
 
     /**
@@ -76,7 +83,7 @@ class CarouselController extends Controller
             'visibility'=> !$carousel->visibility
         ];
         Carousel::whereId($carousel->id)->update($updatedData);
-        return redirect('/admin/carousel')->with('success','Edit Data Berhasil!');
+        return redirect('/admin/carousel')->with('success','Updated');
     }
 
     /**
@@ -89,6 +96,6 @@ class CarouselController extends Controller
         if (file_exists(public_path('Images/carouselImg/'.$carousel->image))) {
             unlink(public_path('Images/carouselImg/'.$carousel->image));
         }
-        return redirect('/admin/carousel')->with('success','Data Berhasil Dihapus');
+        return redirect('/admin/carousel')->with('success','Deleted');
     }
 }
