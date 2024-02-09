@@ -242,5 +242,8 @@
             });
         });
         // end accordion
+        
+
+
     </script>
 @endsection
