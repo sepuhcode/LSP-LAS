@@ -6,7 +6,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Update TUK</h3>
+                    <h3 class="card-title">Edit TUK</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -15,7 +15,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">TUK Name </label>
+                            <label for="name">TUK </label>
                             <input name="name" type="text" class="form-control" id="name"
                                 value="{{ old('name', $tuk->name) }}">
                             @error('name')
@@ -23,15 +23,15 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Alamat</label>
                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3">{{ old('address', $tuk->address) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">Image</label>
+                            <label for="image">Gambar</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
-                                    <label class="custom-file-label" for="image">Choose file</label>
+                                    <label class="custom-file-label" for="image">Pilih File</label>
                                 </div>
                                 {{-- <div class="input-group-append">
                                     <span class="input-group-text">Upload</span>

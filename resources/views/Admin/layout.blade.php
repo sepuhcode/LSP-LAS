@@ -422,6 +422,16 @@
                 "responsive": true,
             });
 
+            $('#table-without-search').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+
             //bs custom file input
             bsCustomFileInput.init();
         });

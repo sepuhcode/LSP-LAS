@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('skema_sertifikasi_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
+
+    
 
     /**
      * Reverse the migrations.
