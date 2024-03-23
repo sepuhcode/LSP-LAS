@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row p-0 m-0">
-         <img src="{{ asset('Images/bg-carisertifikat.png') }}" />
+        <img src="{{ asset('Images/bg-carisertifikat.png') }}" />
     </div>
     <div class="container-fluid mb-4" style="width: 40%;">
         <form action="/cari/sertifikat" method="POST" class="d-flex">
@@ -80,9 +80,9 @@
                             <div id="collapseOne" class="accordion-collapse collapse show bg-accordion"
                                 aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body" style="text-align: justify;">
-                                Daftar Unit Kompetensi<br>
+                                    Daftar Unit Kompetensi<br>
 
-                                   KOMPETENSI INTI<br>
+                                    KOMPETENSI INTI<br>
                                     1 . C.25LAS01.001.1 Melaksanakan Persiapan Tempat Kerja<br>
                                     <br>
                                     KOMPETENSI PILIHAN<br>
@@ -96,9 +96,10 @@
                                     memiliki sertifikat pelatihan Bidang Pengelasan Fillet atau yang setara, atau<br>
                                     Tenaga Kerjadengan memiliki pengalaman kerja minimal 1 (satu) Tahun dibidang<br>
                                     pengelasan pada industri, atau<br>
-                                    Tenaga Kerja berpengalaman minimal 2 ( dua ) tahun di bidang pengelasan pada kelompok<br>
+                                    Tenaga Kerja berpengalaman minimal 2 ( dua ) tahun di bidang pengelasan pada
+                                    kelompok<br>
                                     usaha mandiri.<br>
-                                 
+
                                 </div>
                             </div>
                         </div>
@@ -108,7 +109,7 @@
                                     data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
                                     <span class="fw-semibold fs-5">
-                                       PLATE WELDER
+                                        PLATE WELDER
                                     </span>
                                 </button>
                             </h2>
@@ -128,9 +129,11 @@
                                     PERSYARATAN DASAR PEMOHON SERTIFIKASI<br>
                                     Minimal pendidikan SD dan/ atau yang setara pada bidang keahlian pengelasan dan/atau<br>
                                     memiliki sertifikat pelatihan Bidang Pengelasan Fillet atau yang setara, atau<br>
-                                    Tenaga Kerja dengan memiliki pengalaman kerja minimal 1 (satu) Tahun dibidang pengelasan<br>
+                                    Tenaga Kerja dengan memiliki pengalaman kerja minimal 1 (satu) Tahun dibidang
+                                    pengelasan<br>
                                     pada industri, atau<br>
-                                    Tenaga Kerja berpengalaman minimal 2 ( dua ) tahun di bidang pengelasan pada kelompok<br>
+                                    Tenaga Kerja berpengalaman minimal 2 ( dua ) tahun di bidang pengelasan pada
+                                    kelompok<br>
                                     usaha mandiri.<br>
                                 </div>
                             </div>
@@ -158,30 +161,30 @@
                                     2.C.25LAS01.026.1 Memperbaiki Hasil Pengelasan<br>
                                     3.C.25LAS01.030.1 Membuat Sambungan Las Kampuh (Groove) sesuai WPS untuk<br>
                                     Pengelasan Pipa ke Pipa dan sesuai dengan Proses Las yang Digunakan<br>
-                                    4.C.25LAS01.031.1  Melakukan Inspeksi Visual Pengelasan<br>
+                                    4.C.25LAS01.031.1 Melakukan Inspeksi Visual Pengelasan<br>
                                     <br>
                                     PERSYARATAN DASAR PEMOHON SERTIFIKASI<br>
-                                    Minimal pendidikan SLTP dan/ atau yang setara pada bidang keahlian pengelasan dan/atau memiliki<br>
+                                    Minimal pendidikan SLTP dan/ atau yang setara pada bidang keahlian pengelasan dan/atau
+                                    memiliki<br>
                                     sertifikat pelatihan Bidang Pengelasan Pipa atau yang setara, atau<br>
-                                    Tenaga Kerja dengan memiliki pengalaman kerja minimal 2 (dua) Tahun dibidang pengelasan pada<br>
+                                    Tenaga Kerja dengan memiliki pengalaman kerja minimal 2 (dua) Tahun dibidang pengelasan
+                                    pada<br>
                                     industri, atau<br>
-                                    Tenaga Kerja berpengalaman minimal 3 ( dua ) tahun di bidang pengelasan pada kelompok usaha<br>
+                                    Tenaga Kerja berpengalaman minimal 3 ( dua ) tahun di bidang pengelasan pada kelompok
+                                    usaha<br>
                                     mandiri<br>
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
 
-                
-    </div>
-@endsection
-@section('script')
-    <script>
-        feather.replace();
-    </script>
-    
-    
-    
-@endsection
+
+            </div>
+        @endsection
+        @push('scripts')
+            <script>
+                feather.replace();
+            </script>
+        @endpush

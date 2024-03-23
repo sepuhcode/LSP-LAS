@@ -1,4 +1,103 @@
 @extends('layouts.app')
+
+@push('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    <style>
+        #slider-section * {
+            margin: 0;
+        }
+
+        #slider-section {
+            /* height: 600px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #slider-section .container {
+            /* width: 1600px; */
+            margin: auto;
+        }
+
+        #slider-section .subcontainer {
+            width: 85%;
+            margin: auto;
+        }
+
+        #slider-section .slider-wrapper {
+            position: relative;
+        }
+
+        #slider-section .previous,
+        #slider-section .next {
+            padding: 2px;
+            width: 30px;
+            cursor: pointer;
+            border-radius: 50%;
+            outline: none;
+            transition: 0.7s ease-in-out;
+            border: 3px solid white;
+            background-color: #1a1a1a;
+            box-shadow: 0 0 5px #bbb;
+            position: absolute;
+            top: 50%;
+        }
+
+        #slider-section .previous {
+            left: 2%;
+        }
+
+        #slider-section .next {
+            right: 2%;
+        }
+
+        #slider-section .previous:hover,
+        #slider-section .next:hover {
+            border: 3px solid gray;
+        }
+
+        #slider-section #controls i {
+            color: white;
+            font-size: 1rem;
+        }
+
+        #slider-section .tns-nav {
+            text-align: right;
+        }
+
+        #slider-section .tns-nav button {
+            border: black 1px solid;
+            padding: 8px;
+            border-radius: 50%;
+            background-color: white;
+            margin-left: 15px;
+        }
+
+        #slider-section .tns-nav .tns-nav-active {
+            background-color: gray;
+        }
+
+        /* DYNAMIC HTML */
+
+        #slider-section .slide {
+            width: auto;
+            height: fit-content;
+        }
+
+        #slider-section .slide img {
+            width: 100%;
+            height: 200px;
+        }
+
+        @media(max-width:1600px) {
+            #slider-section .container {
+                width: 100%;
+            }
+        }
+    </style>
+@endpush
+
 @section('content')
     <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="carousel">
         <div class="carousel-indicators mx-auto">
@@ -13,11 +112,15 @@
             @endforeach
         </div>
         <div class="carousel-inner">
-            @foreach ($carousels as $carousel)
+            @forelse ($carousels as $carousel)
                 <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
                     <img src="{{ asset('images/carouselImg/' . $carousel->image) }}" class="d-block w-100" alt="...">
                 </div>
-            @endforeach
+            @empty
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/Content-Dashboard1.png') }}" class="d-block w-100" alt="dashboard image">
+                </div>
+            @endforelse
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
@@ -179,27 +282,29 @@
             </div>
         </div>
     </div>
-    <div class="row mx-auto ">
-        <img src="{{ asset('Images/alur-pendaftaran.png') }}" />
-    </div>
-    <div class="row mx-auto" style="width: 80%;">
-        <div class="col-12 text-center">
-            <ul>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-                <li>Buat Akun</li>
-            </ul>
+    <div class="row mx-auto px-0 py-5 m-0" style="width: 80%;">
+        <div class="col-12">
+            <section id="slider-section">
+                <div class="container">
+                    <div class="subcontainer">
+                        <div class="slider-wrapper">
+                            <h1 class="fw-semibold fs-3 text-center" style="color: red">Tim Kami</h1>
+                            <br>
+                            <div class="slider"></div>
+                            <div id="controls">
+                                <button class="previous"><i class="fas fa-angle-left"></i></button>
+                                <button class="next"><i class="fas fa-angle-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 @endsection
-@section('script')
+@push('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
     <script>
         // begin accordion
         const imageContainer = document.querySelector(".image-accordion");
@@ -242,8 +347,74 @@
             });
         });
         // end accordion
-        
 
+        // carousel image about us
+        const slider = document.querySelector("#slider-section .slider");
+        const imagesObject = [{
+                "img": "{{ asset('images/our-team/image-1.png') }}",
+                "nama": "Sunoto Mudiantoro",
+                "jabatan": "Direktur"
+            },
+            {
+                "img": "{{ asset('images/our-team/image-2.png') }}",
+                "nama": "Kemal Mahdi",
+                "jabatan": "Manajer Mutu"
+            },
+            {
+                "img": "{{ asset('images/our-team/image-3.png') }}",
+                "nama": "Aiyub",
+                "jabatan": "Komite Skema"
+            },
+            {
+                "img": "{{ asset('images/our-team/image-4.png') }}",
+                "nama": "Wahadi Sugijono",
+                "jabatan": "Manajer Sertifikat"
+            },
+            {
+                "img": "{{ asset('images/our-team/image-5.png') }}",
+                "nama": "Wahyuni",
+                "jabatan": "Manajer Administrasi"
+            },
+            {
+                "img": "{{ asset('images/our-team/image-6.png') }}",
+                "nama": "Nadifa Mutiara",
+                "jabatan": "Wakil Manajer Mutu"
+            },
+            {
+                "img": "{{ asset('images/our-team/image-7.png') }}",
+                "nama": "Karla Juwita",
+                "jabatan": "Staff Administrasi"
+            }
+        ];
 
+        window.addEventListener("load", initializeSlider());
+
+        function initializeSlider() {
+            let images = "";
+            for (let image in imagesObject) {
+                images += `<div class="slide">
+              <img src="${imagesObject[image].img}"
+                alt="image">
+              <br><br>
+              <div>
+                <p><strong>${imagesObject[image].nama}</strong></p>
+                <p>${imagesObject[image].jabatan}</p>
+              </div>
+            </div>`
+            }
+            slider.innerHTML = images;
+        }
+
+        const tnslider = tns({
+            container: '#slider-section .slider',
+            autoWidth: true,
+            gutter: 50,
+            slideBy: 1,
+            nav: true,
+            speed: 400,
+            controlsContainer: '#slider-section #controls',
+            prevButton: '#slider-section .previous',
+            nextButton: '#slider-section .next'
+        });
     </script>
-@endsection
+@endpush
