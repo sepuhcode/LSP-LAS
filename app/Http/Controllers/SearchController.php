@@ -110,4 +110,6 @@ class SearchController extends Controller
             'carousels'=>$carousels
         ]);
     }
+
+    
 }

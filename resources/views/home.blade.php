@@ -114,7 +114,7 @@
         <div class="carousel-inner">
             @forelse ($carousels as $carousel)
                 <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
-                    <img src="{{ asset('images/carouselImg/' . $carousel->image) }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('images/carousel-img/' . $carousel->image) }}" class="d-block w-100" alt="...">
                 </div>
             @empty
                 <div class="carousel-item active">

@@ -4,49 +4,39 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">TUK</h3>
+                    <h3 class="card-title">Skema Sertifikasi</h3>
                     <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/tuk/create" style="color: white">Upload TUK</a></button>
+                            href="/admin/skema-sertifikasi/create" style="color: white">Tambah</a></button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover" style="text-align: center; ">
+                    <table id="table-without-search" class="table table-bordered table-hover" style="text-align: center; ">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama TUK</th>
-                                <th>Alamat</th>
-                                <th>Gambar</th>
+                                <th>ID</th>
+                                <th>Skema Sertifikasi</th>
+                                <th>Nomor Skema</th>
+                                <th>Deskripsi</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($tuks->count() > 0)
-                                @foreach ($tuks as $tuk)
+                            @if ($skemas->count() > 0)
+                                @foreach ($skemas as $skema)
                                     <tr>
-                                        <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center">{{ $tuk->name }}</td>
-                                        <td id="td-center">{{ $tuk->address }}</td>
-                                        <td id="td-center"><img src={{ asset('Images/tukImg/' . $tuk->image) }}
-                                                alt="" width="150px"></td>
+                                        <td id="td-center">{{ $skema->id }}</td>
+                                        <td id="td-center">{{ $skema->name }}</td>
+                                        <td id="td-center">{{ $skema->no_skema }}</td>
+                                        <td id="td-center">{{ $skema->deskripsi }}</td>
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/tuk/{{ $tuk->id }}/edit"
+                                                    href="/admin/skema-sertifikasi/{{ $skema->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
-                                        {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            {{-- <form action="/admin/tuk/{{ $tuk->id }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-outline-danger" type="submit"
-                                                    onClick="return confirm('yakin mau dihapus?');"><i
-                                                        class="fas fa-trash-alt"></i></button>
-                                            </form> --}}
-
-                                            <button class="btn btn-outline-danger delete-tuk" data-tukId="{{ $tuk->id }}"
-                                                data-tukName="{{ $tuk->name }}">
+                                            <button class="btn btn-outline-danger delete-skema" data-skemaId="{{ $skema->id }}"
+                                                data-skemaName="{{ $skema->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -69,11 +59,11 @@
 @section('optional_script')
     <script>
         $(function() {
-            $('.delete-tuk').on('click', function() {
-                var tukId = $(this).attr('data-tukId');
+            $('.delete-skema').on('click', function() {
+                var skemaId = $(this).attr('data-skemaId');
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-tukName') +
+                    text: "delete " + $(this).attr('data-skemaName') +
                         " ?",
                     icon: 'question',
                     showCancelButton: true,
@@ -83,7 +73,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/tuk/' + tukId);
+                        $('#form-delete').attr('action', '/admin/skema-sertifikasi/' + skemaId);
                         $('#form-delete').submit();
                     }
                 });

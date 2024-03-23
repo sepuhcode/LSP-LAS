@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PosisiLasController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SertifikasiController;
 use App\Http\Controllers\SkemaSertifikasiController;
 use App\Http\Controllers\TukController;
 use App\Http\Controllers\UserController;
@@ -39,15 +40,21 @@ Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
 Route::get('/cari/sertifikat',[SearchController::class,'showSertifikatPage'])->name('sertifikat');
 Route::post('/cari/sertifikat',[SearchController::class,'cariSertifikat']);
 
-Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
+
+// Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
 
 //admin routes
-Route::resource('/admin/user',UserController::class); //CRUD data user
-Route::resource('/admin/carousel',CarouselController::class); //CRUD gambar carousel
-Route::resource('/admin/tuk', TukController::class); //CRUD gambar tuk
-Route::resource('/admin/registration', RegistrationController::class); //verifikasi registrasi akun user
-Route::resource('/admin/skema-sertifikasi', SkemaSertifikasiController::class); //verifikasi registrasi akun user
-Route::resource('/admin/posisi-las', PosisiLasController::class); //verifikasi registrasi akun user
+Route::prefix('/admin')->name('admin.')->group(function(){
+    Route::resource('/user',UserController::class); //CRUD data user
+    Route::resource('/carousel',CarouselController::class); //CRUD gambar carousel
+    Route::resource('/tuk', TukController::class); //CRUD gambar tuk
+    Route::resource('/registration', RegistrationController::class); //verifikasi registrasi akun user
+    Route::resource('/skema-sertifikasi', SkemaSertifikasiController::class); //verifikasi registrasi akun user
+    Route::resource('/posisi-las', PosisiLasController::class); //verifikasi registrasi akun user
+
+    Route::post('/sertifikat/import', [SertifikasiController::class,'saveImport'])->name('import-sertifikat');
+    Route::get('/sertifikat/import', [SertifikasiController::class,'showImport'])->name('import-sertifikat');
+});
 
 
 //registration route

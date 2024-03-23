@@ -14,9 +14,15 @@ return new class extends Migration
         Schema::create('skema_sertifikasis', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('no_skema');
+            $table->text('deskripsi');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
+
+
+   
 
     /**
      * Reverse the migrations.

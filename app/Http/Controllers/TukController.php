@@ -12,11 +12,9 @@ class TukController extends Controller
      */
     public function index()
     {
-        // return view("buat-test.admin.tuk.index", [
-        //     'tuks' => Tuk::all()
-        // ]);
-        return view("admin.tuk.index", [
-            'tuks' => Tuk::all()
+        return view('admin.tuk.index', [
+            'tuks' => Tuk::all(),
+            'page' => 'TUK'
         ]);
     }
 
@@ -25,7 +23,9 @@ class TukController extends Controller
      */
     public function create()
     {
-        return view("admin.tuk.create");
+        return view('admin.tuk.create',[
+            'page' => 'TUK'
+        ]);
     }
 
     /**
@@ -36,7 +36,7 @@ class TukController extends Controller
 
         $validatedData = $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'name' => 'required|string',
+            'name' => 'required|string|unique:tuks',
             'address' => 'required',
         ]);
 
@@ -44,9 +44,9 @@ class TukController extends Controller
         $validatedData['image'] = $fileName;
 
         Tuk::create($validatedData);
-        $request->image->move(public_path('Images/tukImg'), $fileName);
+        $request->image->move(public_path('images/tuk-img'), $fileName);
 
-        return redirect('/admin/tuk')->with('success', 'image uploaded');
+        return redirect('/admin/tuk')->with('success', 'Uploaded');
     }
 
     /**
@@ -62,9 +62,10 @@ class TukController extends Controller
      */
     public function edit(Tuk $tuk)
     {
-        // return view('buat-test.admin.tuk.update',[
-        //     'tuk'=>$tuk
-        // ]);
+        return view('admin.tuk.update',[
+            'tuk'=>$tuk,
+            'page' => 'TUK'
+        ]);
 
     }
 
@@ -74,9 +75,10 @@ class TukController extends Controller
     public function update(Request $request, Tuk $tuk)
     {
         $rules = [
-            'name' => 'required|string',
             'address' => 'required',
         ];
+        $request->name != $tuk->name ? $rules['name']= 'required|unique:tuks': '';
+
         // $rules['image'] = $request->image == $tuk->image ? '' : 'required|image|mimes:png,jpg,jpeg|max:2048';
         // dd($request->hasFile('image'));
         // $rules['image'] = $request->hasFile('image') ? 'required|image|mimes:png,jpg,jpeg|max:2048' : '';
@@ -87,16 +89,16 @@ class TukController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('Images/tukImg/' . $tuk->image))) {
-                unlink(public_path('Images/tukImg/' . $tuk->image));
+            if (file_exists(public_path('images/tuk-img/' . $tuk->image))) {
+                unlink(public_path('images/tuk-img/' . $tuk->image));
             }
 
             $newFileName = 'tuk' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('Images/tukImg'), $newFileName);
+            $request->image->move(public_path('Images/tuk-img'), $newFileName);
         }
         Tuk::whereId($tuk->id)->update($updatedData);
-        return redirect('/admin/tuk')->with('success', 'Edit Data Berhasil!');
+        return redirect('/admin/tuk')->with('success', 'Updated');
     }
 
     /**
@@ -105,9 +107,9 @@ class TukController extends Controller
     public function destroy(Tuk $tuk)
     {
         Tuk::destroy($tuk->id);
-        if (file_exists(public_path('Images/tukImg/' . $tuk->image))) {
-            unlink(public_path('Images/tukImg/' . $tuk->image));
+        if (file_exists(public_path('images/tuk-img/' . $tuk->image))) {
+            unlink(public_path('images/tuk-img/' . $tuk->image));
         }
-        return redirect('/admin/tuk')->with('success', 'Data Berhasil Dihapus');
+        return redirect('/admin/tuk')->with('success', 'Deleted');
     }
 }
