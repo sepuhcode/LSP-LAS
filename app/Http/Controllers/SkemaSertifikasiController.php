@@ -13,7 +13,7 @@ class SkemaSertifikasiController extends Controller
     public function index()
     {
         $skemas = SkemaSertifikasi::all();
-        return view('Admin.Skema-sertifikasi.index',
+        return view('admin.skema-sertifikasi.index',
         ['skemas'=>$skemas,
          'page'=>'Skema Sertifikasi']);
     }
@@ -23,7 +23,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function create()
     {
-        return view('Admin.Skema-Sertifikasi.create');
+        return view('admin.skema-sertifikasi.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function edit(SkemaSertifikasi $skemaSertifikasi)
     {
-        return view('Admin.Skema-Sertifikasi.update',[
+        return view('admin.skema-sertifikasi.update',[
             'skema'=>$skemaSertifikasi,
             'page'=>'Skema Sertifikasi']);
     }
@@ -75,8 +75,7 @@ class SkemaSertifikasiController extends Controller
         // ];
 
         SkemaSertifikasi::whereId($skemaSertifikasi->id)->update($updatedData);
-        return redirect('/admin/skema-sertifikasi')->with('success','Data berhasil diupdate');
-
+        return redirect('/admin/skema-sertifikasi')->with('success', 'Data berhasil diupdate');
     }
 
     /**

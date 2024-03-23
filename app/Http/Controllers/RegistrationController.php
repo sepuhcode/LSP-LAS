@@ -15,7 +15,7 @@ class RegistrationController extends Controller
     {
         //admin
         $registrations = Registration::all();
-        return view('BuatTest.Admin.Register.index',['registrations'=>$registrations]);
+        return view('buat-test.admin.register.index', ['registrations' => $registrations]);
     }
 
     /**
@@ -23,8 +23,8 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        // user 
-        return view('BuatTest.User.Register.index');
+        // user
+        return view('buat-test.user.register.index');
     }
 
     /**
@@ -61,7 +61,6 @@ class RegistrationController extends Controller
      */
     public function edit(Registration $registration)
     {
-
     }
 
     /**
@@ -69,7 +68,7 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, Registration $registration)
     {
-        // admin 
+        // admin
         $registrationData = [
             'name' => $registration->name,
             'email' => $registration->email,
@@ -84,7 +83,7 @@ class RegistrationController extends Controller
 
         Registration::destroy($registration->id);
 
-        return redirect('/admin/registration')->with('success','Registrasi berhasil diterima');
+        return redirect('/admin/registration')->with('success', 'Registrasi berhasil diterima');
     }
 
     /**
@@ -92,7 +91,7 @@ class RegistrationController extends Controller
      */
     public function destroy(Registration $registration)
     {
-        // admin 
+        // admin
         Registration::destroy($registration->id);
         return redirect('/admin/registration')->with('success', 'Registrasi Berhasil Ditolak');
     }

@@ -12,10 +12,7 @@ class TukController extends Controller
      */
     public function index()
     {
-        // return view("BuatTest.Admin.Tuk.index", [
-        //     'tuks' => Tuk::all()
-        // ]);
-        return view('Admin.TUK.index', [
+        return view('admin.tuk.index', [
             'tuks' => Tuk::all(),
             'page' => 'TUK'
         ]);
@@ -26,7 +23,7 @@ class TukController extends Controller
      */
     public function create()
     {
-        return view('Admin.TUK.create',[
+        return view('admin.tuk.create',[
             'page' => 'TUK'
         ]);
     }
@@ -36,7 +33,7 @@ class TukController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $validatedData = $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'name' => 'required|string|unique:tuks',
@@ -47,9 +44,9 @@ class TukController extends Controller
         $validatedData['image'] = $fileName;
 
         Tuk::create($validatedData);
-        $request->image->move(public_path('Images/tukImg'),$fileName);
+        $request->image->move(public_path('images/tuk-img'), $fileName);
 
-        return redirect('/admin/tuk')->with('success','Uploaded');
+        return redirect('/admin/tuk')->with('success', 'Uploaded');
     }
 
     /**
@@ -65,11 +62,11 @@ class TukController extends Controller
      */
     public function edit(Tuk $tuk)
     {
-        return view('Admin.TUK.update',[
+        return view('admin.tuk.update',[
             'tuk'=>$tuk,
             'page' => 'TUK'
         ]);
-        
+
     }
 
     /**
@@ -92,18 +89,16 @@ class TukController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('Images/tukImg/'.$tuk->image))) {
-                unlink(public_path('Images/tukImg/'.$tuk->image));
+            if (file_exists(public_path('images/tuk-img/' . $tuk->image))) {
+                unlink(public_path('images/tuk-img/' . $tuk->image));
             }
 
             $newFileName = 'tuk' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('Images/tukImg'),$newFileName);
-
+            $request->image->move(public_path('Images/tuk-img'), $newFileName);
         }
         Tuk::whereId($tuk->id)->update($updatedData);
-        return redirect('/admin/tuk')->with('success','Updated');
-
+        return redirect('/admin/tuk')->with('success', 'Updated');
     }
 
     /**
@@ -112,9 +107,9 @@ class TukController extends Controller
     public function destroy(Tuk $tuk)
     {
         Tuk::destroy($tuk->id);
-        if (file_exists(public_path('Images/tukImg/'.$tuk->image))) {
-            unlink(public_path('Images/tukImg/'.$tuk->image));
+        if (file_exists(public_path('images/tuk-img/' . $tuk->image))) {
+            unlink(public_path('images/tuk-img/' . $tuk->image));
         }
-        return redirect('/admin/tuk')->with('success','Deleted');
+        return redirect('/admin/tuk')->with('success', 'Deleted');
     }
 }

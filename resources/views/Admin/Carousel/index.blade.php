@@ -25,7 +25,7 @@
                                 @foreach ($carousels as $carousel)
                                     <tr>
                                         <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center"><img src={{ asset('Images/carouselImg/' . $carousel->image) }}
+                                        <td id="td-center"><img src={{ asset('Images/carousel-img/' . $carousel->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center">
                                             {{-- <button class="btn btn-outline-success"><a

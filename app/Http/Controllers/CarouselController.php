@@ -14,11 +14,7 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        // return view('BuatTest.Admin.Carousel.index',[
-        //     'carousels'=>Carousel::all(),
-        //     'page' => 'Carousel'
-        // ]);
-        return view('Admin.Carousel.index',[
+        return view('admin.carousel.index',[
             'carousels'=>Carousel::all(),
             'page' => 'Carousel'
         ]);
@@ -29,7 +25,7 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        return view('Admin.Carousel.create',[
+        return view('admin.carousel.create',[
             'page' => 'Carousel'
         ]);
     }
@@ -40,20 +36,20 @@ class CarouselController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image'=>'required|image|mimes:png,jpg,jpeg|max:4096'
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:4096'
         ]);
-        
-        $fileName = time().'.'.$request->image->extension();
+
+        $fileName = time() . '.' . $request->image->extension();
 
         $validatedData = [
-            'image'=> $fileName,
-            'visibility'=>true    
+            'image' => $fileName,
+            'visibility' => true
         ];
 
         Carousel::create($validatedData);
 
 
-        $request->image->move(public_path('Images/carouselImg'),$fileName);
+        $request->image->move(public_path('Images/carousel-img'), $fileName);
 
         return redirect('/admin/carousel')->with('success','Uploaded');
     }
@@ -80,7 +76,7 @@ class CarouselController extends Controller
     public function update(Request $request, Carousel $carousel)
     {
         $updatedData = [
-            'visibility'=> !$carousel->visibility
+            'visibility' => !$carousel->visibility
         ];
         Carousel::whereId($carousel->id)->update($updatedData);
         return redirect('/admin/carousel')->with('success','Updated');
@@ -93,8 +89,8 @@ class CarouselController extends Controller
     {
 
         Carousel::destroy($carousel->id);
-        if (file_exists(public_path('Images/carouselImg/'.$carousel->image))) {
-            unlink(public_path('Images/carouselImg/'.$carousel->image));
+        if (file_exists(public_path('Images/carousel-img/' . $carousel->image))) {
+            unlink(public_path('Images/carousel-img/' . $carousel->image));
         }
         return redirect('/admin/carousel')->with('success','Deleted');
     }

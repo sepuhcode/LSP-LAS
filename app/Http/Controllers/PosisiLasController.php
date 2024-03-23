@@ -14,7 +14,7 @@ class PosisiLasController extends Controller
     public function index()
     {
         $positions = PosisiLas::all();
-        return view('Admin.Posisi-Las.index',[
+        return view('admin.posisi-Las.index',[
             'posisis'=>$positions,
             'page'=>'Posisi Las']);
     }
@@ -26,15 +26,15 @@ class PosisiLasController extends Controller
     {
         $skemaSertifikasi = SkemaSertifikasi::all();
         if ($skemaSertifikasi->isNotEmpty()) {
-            return view('Admin.Posisi-Las.create',[
+            return view('admin.posisi-Las.create',[
                 'skemas'=>$skemaSertifikasi,
                 'page'=>'Posisi Las'
             ]);
         } else {
             return back()->with('failed','Belum ada data Skema Sertifikasi');
         }
-        
-        
+
+
     }
 
     /**
@@ -43,8 +43,8 @@ class PosisiLasController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'=>'required',
-            'skema_sertifikasi_id'=>'required|integer'
+            'name' => 'required',
+            'skema_sertifikasi_id' => 'required|integer'
         ]);
 
         PosisiLas::create($validatedData);
@@ -65,7 +65,7 @@ class PosisiLasController extends Controller
     public function edit(PosisiLas $posisiLa)
     {
         $skemaSertifikasi = SkemaSertifikasi::all();
-        return view('Admin.Posisi-las.update',[
+        return view('admin.posisi-las.update',[
             'skemas'=>$skemaSertifikasi,
             'posisiLas'=>$posisiLa,
             'page'=>'Posisi Las']);

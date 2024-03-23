@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('Admin.User.index',[
+        return view('admin.user.index',[
             'users' => User::all(),
             'page' => 'User'
         ]);
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('Admin.User.create',[
+        return view('admin.user.create',[
             'page'=>'User'
         ]);
     }
@@ -35,11 +35,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'=>'required',
-            'email'=>'required|unique:users',
-            'password'=>'required|min:8',
-            'phone'=>'required|unique:users',
-            'address'=>'nullable'
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:8',
+            'phone' => 'required|unique:users',
+            'address' => 'nullable'
         ]);
         $validatedData['is_active'] = true;
         // $validatedData['password']= Hash::make($validatedData['password']);
@@ -64,7 +64,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         // dd($user);
-        return view('Admin.user.update',[
+        return view('admin.user.update',[
             'user'=>$user
         ]);
     }
@@ -75,27 +75,27 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $rules = [
-            'name'=>'required',
-            'is_active'=>'required',
-            'address'=>'nullable',
+            'name' => 'required',
+            'is_active' => 'required',
+            'address' => 'nullable',
         ];
         //cek perubahan data pada no telp, email
-        $request->phone != $user->phone ? $rules['phone']= 'required|unique:users': '';
-        $request->email != $user->email ? $rules['email']= 'required|unique:users':'';
-        
+        $request->phone != $user->phone ? $rules['phone'] = 'required|unique:users' : '';
+        $request->email != $user->email ? $rules['email'] = 'required|unique:users' : '';
+
         // Cek isi inputan password\
         $request->filled('password') ? $rules['password'] = 'required|min:8' : '';
 
 
         $validatedData = $request->validate($rules);
- 
-        if($user->getRoleNames()[0] != $request->role){
+
+        if ($user->getRoleNames()[0] != $request->role) {
             $user->syncRoles($request->role);
         }
         // hash password baru
         // $request->filled('password') ? $validatedData['password'] = Hash::make($validatedData['password']) : '';
 
-        User::where('id',$user->id)
+        User::where('id', $user->id)
             ->update($validatedData);
         return redirect('/admin/user')->with('success','Updated');
     }

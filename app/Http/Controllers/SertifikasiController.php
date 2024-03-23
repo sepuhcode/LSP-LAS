@@ -67,7 +67,7 @@ class SertifikasiController extends Controller
 
     public function showImport()
     {
-        return view('Admin.Sertifikat.import',[
+        return view('admin.sertifikat.import',[
             'page'=>'Sertifikat'
         ]);
     }

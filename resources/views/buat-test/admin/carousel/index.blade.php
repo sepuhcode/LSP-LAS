@@ -29,7 +29,7 @@
             @foreach ($carousels as $carousel)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td><img src={{ asset('Images/carouselImg/' . $carousel->image) }} alt="" width="150px"></td>
+                    <td><img src={{ asset('Images/carousel-img/' . $carousel->image) }} alt="" width="150px"></td>
                     <td>
                         <form action="/admin/carousel/{{ $carousel->id }}" method="post">
                             @method('put')
