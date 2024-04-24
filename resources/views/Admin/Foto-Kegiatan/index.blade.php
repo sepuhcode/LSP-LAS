@@ -4,9 +4,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">TUK</h3>
+                    <h3 class="card-title">Foto Kegiatan</h3>
                     <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/tuk/create" style="color: white">Upload TUK</a></button>
+                            href="/admin/foto-kegiatan/create" style="color: white">Upload Foto</a></button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -14,39 +14,31 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama TUK</th>
-                                <th>Alamat</th>
-                                <th>Gambar</th>
+                                <th>Nama Kegiatan</th>
+                                <th>Tanggal</th>
+                                <th>Foto</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($tuks->count() > 0)
-                                @foreach ($tuks as $tuk)
+                            @if ($kegiatans->count() > 0)
+                                @foreach ($kegiatans as $kegiatan)
                                     <tr>
                                         <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center">{{ $tuk->name }}</td>
-                                        <td id="td-center">{{ $tuk->address }}</td>
-                                        <td id="td-center"><img src={{ asset('Images/tuk-img/' . $tuk->image) }}
+                                        <td id="td-center">{{ $kegiatan->name }}</td>
+                                        <td id="td-center">{{ $kegiatan->date }}</td>
+                                        <td id="td-center"><img src={{ asset('Images/kegiatan/' . $kegiatan->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/tuk/{{ $tuk->id }}/edit"
+                                                    href="/admin/foto-kegiatan/{{ $kegiatan->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            {{-- <form action="/admin/tuk/{{ $tuk->id }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-outline-danger" type="submit"
-                                                    onClick="return confirm('yakin mau dihapus?');"><i
-                                                        class="fas fa-trash-alt"></i></button>
-                                            </form> --}}
-
-                                            <button class="btn btn-outline-danger delete-tuk" data-tukId="{{ $tuk->id }}"
-                                                data-tukName="{{ $tuk->name }}">
+                                            <button class="btn btn-outline-danger delete-kegiatan" data-kegiatanId="{{ $kegiatan->id }}"
+                                                data-kegiatanName="{{ $kegiatan->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -69,11 +61,11 @@
 @section('optional_script')
     <script>
         $(function() {
-            $('.delete-tuk').on('click', function() {
-                var tukId = $(this).attr('data-tukId');
+            $('.delete-kegiatan').on('click', function() {
+                var kegiatanId = $(this).attr('data-kegiatanId');
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-tukName') +
+                    text: "delete " + $(this).attr('data-kegiatanName') +
                         " ?",
                     icon: 'question',
                     showCancelButton: true,
@@ -83,7 +75,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/tuk/' + tukId);
+                        $('#form-delete').attr('action', '/admin/foto-kegiatan/' + kegiatanId);
                         $('#form-delete').submit();
                     }
                 });
