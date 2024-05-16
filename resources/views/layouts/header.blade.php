@@ -14,7 +14,7 @@
                     <a class="nav-link {{ Request::is('cari/sertifikat') ? 'active' : '' }}" href="{{ route('sertifikat') }}">Sertifikasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('pendaftaran/*') ? 'active' : '' }}" href="#">Pendaftaran</a>
+                    <a class="nav-link {{ Request::is('pendaftaran/') ? 'active' : '' }}" href="{{ route('pendaftaran') }}">Pendaftaran</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('about/*') ? 'active' : '' }}" href="#">About</a>

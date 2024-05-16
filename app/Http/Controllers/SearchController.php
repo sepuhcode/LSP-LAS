@@ -110,4 +110,8 @@ class SearchController extends Controller
             'carousels'=>$carousels
         ]);
     }
+
+    public function showPendaftaran(){
+        return view('pendaftaran.index');
+    }
 }
