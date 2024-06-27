@@ -90,7 +90,7 @@ class FotoKaryawanController extends Controller
 
             $newFileName = 'karyawan' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('Images/our-team'), $newFileName);
+            $request->image->move(public_path('images/our-team'), $newFileName);
         }
         FotoKaryawan::whereId($fotoKaryawan->id)->update($updatedData);
         return redirect('/admin/foto-karyawan')->with('success', 'Updated');
