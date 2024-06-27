@@ -153,7 +153,7 @@
                     <p>TUK Aktif</p>
                 </div>
                 <div class="tuk col-4">
-                    <h2>13</h2>
+                    <h2>{{ $skema }}</h2>
                     <p>Skema Sertifikasi</p>
                 </div>
             </div>
@@ -348,44 +348,10 @@
         });
         // end accordion
 
+
         // carousel image about us
         const slider = document.querySelector("#slider-section .slider");
-        const imagesObject = [{
-                "img": "{{ asset('images/our-team/image-1.png') }}",
-                "nama": "Sunoto Mudiantoro",
-                "jabatan": "Direktur"
-            },
-            {
-                "img": "{{ asset('images/our-team/image-2.png') }}",
-                "nama": "Kemal Mahdi",
-                "jabatan": "Manajer Mutu"
-            },
-            {
-                "img": "{{ asset('images/our-team/image-3.png') }}",
-                "nama": "Aiyub",
-                "jabatan": "Komite Skema"
-            },
-            {
-                "img": "{{ asset('images/our-team/image-4.png') }}",
-                "nama": "Wahadi Sugijono",
-                "jabatan": "Manajer Sertifikat"
-            },
-            {
-                "img": "{{ asset('images/our-team/image-5.png') }}",
-                "nama": "Wahyuni",
-                "jabatan": "Manajer Administrasi"
-            },
-            {
-                "img": "{{ asset('images/our-team/image-6.png') }}",
-                "nama": "Nadifa Mutiara",
-                "jabatan": "Wakil Manajer Mutu"
-            },
-            {
-                "img": "{{ asset('images/our-team/image-7.png') }}",
-                "nama": "Karla Juwita",
-                "jabatan": "Staff Administrasi"
-            }
-        ];
+        const imagesObject = JSON.parse('<?= json_encode($karyawans) ?>');
 
         window.addEventListener("load", initializeSlider());
 
@@ -393,15 +359,15 @@
             let images = "";
             for (let image in imagesObject) {
                 images += `<div class="slide">
-              <img src="${imagesObject[image].img}"
-                alt="image">
-              <br><br>
-              <div>
-                <p><strong>${imagesObject[image].nama}</strong></p>
-                <p>${imagesObject[image].jabatan}</p>
-              </div>
-            </div>`
-            }
+                    <img src="{{ asset('Images/our-team/${imagesObject[image].image}') }}"
+                        alt="image">
+                    <br><br>
+                    <div>
+                        <p><strong>${imagesObject[image].name}</strong></p>
+                        <p>${imagesObject[image].department}</p>
+                    </div>
+                    </div>`
+                            }
             slider.innerHTML = images;
         }
 
@@ -410,11 +376,12 @@
             autoWidth: true,
             gutter: 50,
             slideBy: 1,
-            nav: true,
             speed: 400,
             controlsContainer: '#slider-section #controls',
             prevButton: '#slider-section .previous',
-            nextButton: '#slider-section .next'
+            nextButton: '#slider-section .next',
+            lazyload: true,
+            nav: false
         });
     </script>
 @endpush

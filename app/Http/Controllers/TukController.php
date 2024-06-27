@@ -35,7 +35,7 @@ class TukController extends Controller
     {
 
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:512',
             'name' => 'required|string|unique:tuks',
             'address' => 'required',
         ]);
@@ -83,7 +83,7 @@ class TukController extends Controller
         // dd($request->hasFile('image'));
         // $rules['image'] = $request->hasFile('image') ? 'required|image|mimes:png,jpg,jpeg|max:2048' : '';
         if ($request->hasFile('image')) {
-            $rules['image'] = 'required|image|mimes:png,jpg,jpeg|max:2048';
+            $rules['image'] = 'required|image|mimes:png,jpg,jpeg|max:512';
         }
 
         $updatedData = $request->validate($rules);

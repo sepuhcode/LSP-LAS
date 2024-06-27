@@ -285,8 +285,9 @@
                         </li>
 
 
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fad fa-images"></i>
                                 <p>
                                     Images
@@ -294,16 +295,28 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/admin/carousel" class="nav-link">
+                                <li class="nav-item ">
+                                    <a href="/admin/carousel" class="nav-link {{ (request()->is('admin/carousel'))?'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Carousel</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/admin/tuk" class="nav-link">
+                                <li class="nav-item ">
+                                    <a href="/admin/tuk" class="nav-link {{ (request()->is('admin/tuk'))?'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TUK</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/foto-karyawan" class="nav-link {{ (request()->is('admin/foto-karyawan'))?'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Karyawan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/foto-kegiatan" class="nav-link {{ (request()->is('admin/foto-kegiatan'))?'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Kegiatan</p>
                                     </a>
                                 </li>
                             </ul>
