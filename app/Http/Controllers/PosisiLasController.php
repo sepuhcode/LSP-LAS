@@ -14,7 +14,7 @@ class PosisiLasController extends Controller
     public function index()
     {
         $positions = PosisiLas::all();
-        return view('admin.posisi-Las.index',[
+        return view('admin.posisi-las.index',[
             'posisis'=>$positions,
             'page'=>'Posisi Las']);
     }
@@ -26,7 +26,7 @@ class PosisiLasController extends Controller
     {
         $skemaSertifikasi = SkemaSertifikasi::all();
         if ($skemaSertifikasi->isNotEmpty()) {
-            return view('admin.posisi-Las.create',[
+            return view('admin.posisi-las.create',[
                 'skemas'=>$skemaSertifikasi,
                 'page'=>'Posisi Las'
             ]);

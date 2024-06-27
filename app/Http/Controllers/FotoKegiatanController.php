@@ -90,7 +90,7 @@ class FotoKegiatanController extends Controller
 
             $newFileName = 'kegiatan' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('Images/kegiatan'), $newFileName);
+            $request->image->move(public_path('images/kegiatan'), $newFileName);
         }
         FotoKegiatan::whereId($fotoKegiatan->id)->update($updatedData);
         return redirect('/admin/foto-kegiatan')->with('success', 'Updated');
