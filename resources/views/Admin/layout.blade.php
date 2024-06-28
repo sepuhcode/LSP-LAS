@@ -62,6 +62,9 @@
 
     {{-- <link rel="stylesheet" href={{ asset('admin_template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}> --}}
 
+    <!-- summernote -->
+    <link rel="stylesheet" href={{ asset('admin_template/plugins//summernote/summernote-bs4.min.css') }}>
+
 
 
 </head>
@@ -218,7 +221,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src={{ asset('images/Logo-LSP-3.png') }} alt="AdminLTE Logo"
+                <img src={{ asset('Images/Logo-LSP-3.png') }} alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-bold">LSP Las</span>
             </a>
@@ -255,7 +258,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item ">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link {{ request()->is('admin/user*') ? 'active' : '' }}">
                                 <i class="nav-icon fad fa-users"></i>
                                 <p>
                                     User Management
@@ -296,25 +299,29 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
-                                    <a href="/admin/carousel" class="nav-link {{ (request()->is('admin/carousel'))?'active':'' }}">
+                                    <a href="/admin/carousel"
+                                        class="nav-link {{ request()->is('admin/carousel') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Carousel</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a href="/admin/tuk" class="nav-link {{ (request()->is('admin/tuk'))?'active':'' }}">
+                                    <a href="/admin/tuk"
+                                        class="nav-link {{ request()->is('admin/tuk') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TUK</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a href="/admin/foto-karyawan" class="nav-link {{ (request()->is('admin/foto-karyawan'))?'active':'' }}">
+                                    <a href="/admin/foto-karyawan"
+                                        class="nav-link {{ request()->is('admin/foto-karyawan') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Karyawan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a href="/admin/foto-kegiatan" class="nav-link {{ (request()->is('admin/foto-kegiatan'))?'active':'' }}">
+                                    <a href="/admin/foto-kegiatan"
+                                        class="nav-link {{ request()->is('admin/foto-kegiatan') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Kegiatan</p>
                                     </a>
@@ -420,6 +427,9 @@
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.print.min.js') }}></script>
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}></script>
 
+    <!-- Summernote -->
+    <script src={{ asset('admin_template/plugins/summernote/summernote-bs4.min.js') }}></script>
+
     {{-- sweetalert --}}
     <script src={{ asset('admin_template/plugins/sweetalert2/sweetalert2.min.js') }}></script>
 
@@ -447,6 +457,21 @@
 
             //bs custom file input
             bsCustomFileInput.init();
+
+            // Summernote
+            $('#summernote').summernote({
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph','height']],
+                    ['table', ['table']],
+                    ['insert', ['link']],
+                    ['view', ['fullscreen']],
+                ],
+            })
         });
     </script>
     <!-- AdminLTE for demo purposes -->
@@ -455,14 +480,14 @@
     <script src={{ asset('admin_template/dist/js/pages/dashboard2.js') }}></script>
 
     {{-- sweetalert  --}}
-  
-        {{-- // $('.test-alert').click(function(){
+
+    {{-- // $('.test-alert').click(function(){
         //
         // }); --}}
 
-        @if (session()->has('success'))
-           // success message
-           <script>
+    @if (session()->has('success'))
+        // success message
+        <script>
             Swal.fire({
                 position: 'auto',
                 icon: 'success',
@@ -471,9 +496,9 @@
                 timerProgressBar: true,
                 timer: 1500
             });
-          </script>
-        @endif
-    
+        </script>
+    @endif
+
     @yield('optional_script')
 </body>
 

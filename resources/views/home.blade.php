@@ -114,11 +114,11 @@
         <div class="carousel-inner">
             @forelse ($carousels as $carousel)
                 <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
-                    <img src="{{ asset('images/carousel-img/' . $carousel->image) }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('Images/carousel-img/' . $carousel->image) }}" class="d-block w-100" alt="...">
                 </div>
             @empty
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/Content-Dashboard1.png') }}" class="d-block w-100" alt="dashboard image">
+                    <img src="{{ asset('Images/Content-Dashboard1.png') }}" class="d-block w-100" alt="dashboard image">
                 </div>
             @endforelse
         </div>
@@ -311,7 +311,7 @@
 
         // show image after load dom
         $(document).ready(function() {
-            const imageUrl = "{{ asset('images/mampu-bersaing.png') }}";
+            const imageUrl = "{{ asset('Images/mampu-bersaing.png') }}";
             const imgElement = document.createElement("img");
             imgElement.src = imageUrl;
             imgElement.classList.add("img-fluid");
@@ -328,10 +328,10 @@
         accordionItems.forEach((item, index) => {
             const button = item.querySelector(".accordion-button");
             const images = [
-                "{{ asset('images/mampu-bersaing.png') }}",
-                "{{ asset('images/mengikuti-perkembangan.png') }}",
-                "{{ asset('images/membina-tempat.png') }}",
-                "{{ asset('images/menjalin hub.png') }}",
+                "{{ asset('Images/mampu-bersaing.png') }}",
+                "{{ asset('Images/mengikuti-perkembangan.png') }}",
+                "{{ asset('Images/membina-tempat.png') }}",
+                "{{ asset('Images/menjalin hub.png') }}",
             ];
 
             button.addEventListener("click", () => {

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -29,7 +29,7 @@
                                         <td id="td-center">{{ $loop->iteration }}</td>
                                         <td id="td-center">{{ $kegiatan->name }}</td>
                                         <td id="td-center">{{ $kegiatan->date }}</td>
-                                        <td id="td-center"><img src={{ asset('images/kegiatan/' . $kegiatan->image) }}
+                                        <td id="td-center"><img src={{ asset('Images/kegiatan/' . $kegiatan->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/foto-kegiatan/{{ $kegiatan->id }}/edit"

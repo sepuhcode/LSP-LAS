@@ -1,8 +1,8 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-md-9 col-sm">
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
@@ -31,8 +31,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="deskripsi">Deskripsi</label>
-                            <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="3">{{ old('deskripsi', $skema->deskripsi) }}</textarea>
+                            <label for="summernote">Deskripsi</label>
+                            <textarea name="deskripsi" id="summernote" class="form-control @error('deskripsi') is-invalid @enderror" rows="3">{{ old('deskripsi', $skema->deskripsi) }}</textarea>
                         </div>
                     </div>
                     <div class="card-footer">

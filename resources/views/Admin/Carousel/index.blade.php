@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -25,7 +25,7 @@
                                 @foreach ($carousels as $carousel)
                                     <tr>
                                         <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center"><img src={{ asset('images/carousel-img/' . $carousel->image) }}
+                                        <td id="td-center"><img src={{ asset('Images/carousel-img/' . $carousel->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center">
                                             {{-- <button class="btn btn-outline-success"><a

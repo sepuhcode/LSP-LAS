@@ -1,7 +1,7 @@
 <div class="row px-0 py-5 m-0 justify-content-center footer">
     <div class="row p-0" style="width: 80%">
         <div class="col-4">
-            <img src="{{ asset('images/LogoLAS.png') }}" width="120px"; class="mb-4 mt-3" />
+            <img src="{{ asset('Images/LogoLAS.png') }}" width="120px"; class="mb-4 mt-3" />
             <ul>
                 <li><a href="{{ url('/') }}">Home </a></li>
                 <li><a href="{{ route('sertifikat') }}">Sertifikasi</a></li>

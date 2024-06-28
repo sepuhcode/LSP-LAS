@@ -62,6 +62,7 @@ class SearchController extends Controller
 
     public function cariSertifikat(Request $request)
     {
+        $skemaSertifikasis = SkemaSertifikasi::all();
         $keyword = $request['keyword'];
 
         $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
@@ -78,10 +79,11 @@ class SearchController extends Controller
             // return view('sertifikat.index', compact('sertifikat', 'tglBerlaku'));
             return redirect()->route('sertifikat')->with($sertifikat)->with($tglBerlaku);
         }
-
+        
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
+            'skemaSertifikasis'=>$skemaSertifikasis
         ]);
         // return redirect()->route('sertifikat')->with('sertifikat',$sertifikat)->with('tglBerlaku',$tglBerlaku);
 
@@ -91,10 +93,12 @@ class SearchController extends Controller
     {
         $sertifikat = [];
         $tglBerlaku = null;
+        $skemaSertifikasis = SkemaSertifikasi::all();
        
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
-            'tglBerlaku' => $tglBerlaku
+            'tglBerlaku' => $tglBerlaku,
+            'skemaSertifikasis'=>$skemaSertifikasis
         ]);
     }
 
