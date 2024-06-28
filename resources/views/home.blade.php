@@ -380,7 +380,6 @@
             controlsContainer: '#slider-section #controls',
             prevButton: '#slider-section .previous',
             nextButton: '#slider-section .next',
-            lazyload: true,
             nav: false
         });
     </script>
