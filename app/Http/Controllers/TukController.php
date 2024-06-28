@@ -95,7 +95,7 @@ class TukController extends Controller
 
             $newFileName = 'tuk' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('Images/tuk-img'), $newFileName);
+            $request->image->move(public_path('images/tuk-img'), $newFileName);
         }
         Tuk::whereId($tuk->id)->update($updatedData);
         return redirect('/admin/tuk')->with('success', 'Updated');

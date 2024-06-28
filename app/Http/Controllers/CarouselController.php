@@ -49,7 +49,7 @@ class CarouselController extends Controller
         Carousel::create($validatedData);
 
 
-        $request->image->move(public_path('Images/carousel-img'), $fileName);
+        $request->image->move(public_path('images/carousel-img'), $fileName);
 
         return redirect('/admin/carousel')->with('success','Uploaded');
     }
@@ -89,8 +89,8 @@ class CarouselController extends Controller
     {
 
         Carousel::destroy($carousel->id);
-        if (file_exists(public_path('Images/carousel-img/' . $carousel->image))) {
-            unlink(public_path('Images/carousel-img/' . $carousel->image));
+        if (file_exists(public_path('images/carousel-img/' . $carousel->image))) {
+            unlink(public_path('images/carousel-img/' . $carousel->image));
         }
         return redirect('/admin/carousel')->with('success','Deleted');
     }
