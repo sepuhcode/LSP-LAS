@@ -4,38 +4,52 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Posisi Las</h3>
+                    <h3 class="card-title">User</h3>
                     <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/posisi-las/create" style="color: white">Tambah</a></button>
+                            href="/admin/user/create" style="color: white">Add User</a></button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="table-without-search" class="table table-bordered table-hover" style="text-align: center; ">
+                    <table id="example2" class="table table-bordered table-hover" style="text-align: center; ">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>No.Sertifikat</th>
+                                <th>No.Registrasi Sertifikat</th>
+                                <th>Skema Sertifikasi</th>
                                 <th>Posisi Las</th>
-                                <th>Skema</th>
+                                <th>TUK</th>
+                                <th>No.Blangko</th>
+                                <th>Tanggal Uji</th>
+                                <th>Tanggal Sertifikat</th>
+                                <th>Asesor</th>
+                                <th>Scan Sertifikat</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($posisis->count() > 0)
-                                @foreach ($posisis as $posisi)
+                            @if ($sertifikats->count() > 0)
+                                @foreach ($sertifikats as $sertifikat)
                                     <tr>
-                                        <td id="td-center">{{ $posisi->id }}</td>
-                                        <td id="td-center">{{ $posisi->name }}</td>
-                                        <td id="td-center">{{ $posisi->skema->name }}</td>
+                                        <td id="td-center">{{ $loop->iteration }}</td>
+                                        <td id="td-center">{{ $sertifikat->nama }}</td>
+                                        <td id="td-center">{{ $sertifikat->no_sertifikat }}</td>
+                                        <td id="td-center">{{ $sertifikat->no_reg_sertifikat }}</td>
+                                        <td id="td-center">{{ $sertifikat->address }}</td>
+                                        <td id="td-center">{{ $sertifikat->getRoleNames()[0] }}</td>
+                                        <td id="td-center">{{ $sertifikat->is_active ? 'Active' : 'Inactive' }}</td>
+
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/posisi-las/{{ $posisi->id }}/edit"
+                                                    href="/admin/user/{{ $sertifikat->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
+                                        {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-posisi-las"
-                                                data-posisiLasId="{{ $posisi->id }}"
-                                                data-posisiLasName="{{ $posisi->name }}">
+                                            <button class="btn btn-outline-danger delete-user"
+                                                data-userId="{{ $sertifikat->id }}" data-userName="{{ $sertifikat->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -57,11 +71,11 @@
 @push('script')
     <script>
         $(function() {
-            $('.delete-posisi-las').on('click', function() {
-                var tukId = $(this).attr('data-posisiLasId');
+            $('.delete-user').on('click', function() {
+                var userId = $(this).attr('data-userId');
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-posisiLasName') +
+                    text: "delete " + $(this).attr('data-userName') +
                         " ?",
                     icon: 'question',
                     showCancelButton: true,
@@ -71,7 +85,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/posisi-las/' + posisiLasId);
+                        $('#form-delete').attr('action', '/admin/user/' + userId);
                         $('#form-delete').submit();
                     }
                 });

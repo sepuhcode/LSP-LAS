@@ -62,11 +62,7 @@
 
     {{-- <link rel="stylesheet" href={{ asset('admin_template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}> --}}
 
-    <!-- summernote -->
-    <link rel="stylesheet" href={{ asset('admin_template/plugins//summernote/summernote-bs4.min.css') }}>
-
-
-
+    @stack('style')
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -427,9 +423,6 @@
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.print.min.js') }}></script>
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}></script>
 
-    <!-- Summernote -->
-    <script src={{ asset('admin_template/plugins/summernote/summernote-bs4.min.js') }}></script>
-
     {{-- sweetalert --}}
     <script src={{ asset('admin_template/plugins/sweetalert2/sweetalert2.min.js') }}></script>
 
@@ -458,20 +451,7 @@
             //bs custom file input
             bsCustomFileInput.init();
 
-            // Summernote
-            $('#summernote').summernote({
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph','height']],
-                    ['table', ['table']],
-                    ['insert', ['link']],
-                    ['view', ['fullscreen']],
-                ],
-            })
+           
         });
     </script>
     <!-- AdminLTE for demo purposes -->
@@ -499,7 +479,8 @@
         </script>
     @endif
 
-    @yield('optional_script')
+    {{-- @yield('optional_script') --}}
+    @stack('script');
 </body>
 
 </html>

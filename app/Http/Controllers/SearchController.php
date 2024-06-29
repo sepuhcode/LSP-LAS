@@ -65,7 +65,7 @@ class SearchController extends Controller
         $skemaSertifikasis = SkemaSertifikasi::all();
         $keyword = $request['keyword'];
 
-        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
+        $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'posisi_las', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
             if ($sertifikat[0]->tgl_sertifikat != null) {
                 $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string("1096 days"));

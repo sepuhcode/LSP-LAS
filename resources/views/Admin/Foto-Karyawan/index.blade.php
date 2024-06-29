@@ -37,7 +37,8 @@
                                                         class="fas fa-edit"></i></a></button></td>
                                         {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-karyawan" data-karyawanId="{{ $karyawan->id }}"
+                                            <button class="btn btn-outline-danger delete-karyawan"
+                                                data-karyawanId="{{ $karyawan->id }}"
                                                 data-karyawanName="{{ $karyawan->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
@@ -57,8 +58,7 @@
     <!-- /.row -->
 @endsection
 
-{{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-karyawan').on('click', function() {
@@ -82,4 +82,4 @@
             });
         });
     </script>
-@endsection
+@endpush

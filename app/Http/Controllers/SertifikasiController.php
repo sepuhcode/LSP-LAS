@@ -14,7 +14,11 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-        //
+        $sertifikats = Sertifikasi::all();
+        return view('Admin.sertifikat.index',[
+            'sertifikats'=>$sertifikats,
+            'page'=>'Sertifikat',
+        ]);
     }
 
     /**
@@ -22,7 +26,7 @@ class SertifikasiController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

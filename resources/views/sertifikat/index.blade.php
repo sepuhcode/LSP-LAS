@@ -51,6 +51,14 @@
                             @endif
                         </tr>
                         <tr>
+                            <th scope="row">Posisi Las</th>
+                            @if (empty($sertifikat))
+                                <td>{{ ' ' }}</td>
+                            @else
+                                <td>{{ $sertifikat[0]->posisi_las }}</td>
+                            @endif
+                        </tr>
+                        <tr>
                             <th scope="row">Berlaku Sampai</th>
                             @if (empty($tglBerlaku))
                                 <td>{{ ' ' }}</td>
@@ -89,6 +97,9 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
         @endsection
         @push('scripts')
             <script>

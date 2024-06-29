@@ -35,8 +35,8 @@
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-skema" data-skemaId="{{ $skema->id }}"
-                                                data-skemaName="{{ $skema->name }}">
+                                            <button class="btn btn-outline-danger delete-skema"
+                                                data-skemaId="{{ $skema->id }}" data-skemaName="{{ $skema->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -55,8 +55,7 @@
     <!-- /.row -->
 @endsection
 
-{{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-skema').on('click', function() {
@@ -80,4 +79,4 @@
             });
         });
     </script>
-@endsection
+@endpush

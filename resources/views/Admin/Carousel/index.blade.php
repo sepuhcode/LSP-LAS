@@ -37,7 +37,8 @@
                                                 @method('put')
                                                 @csrf
                                                 {{-- <input type="submit" value="{{ $carousel->visibility ? 'Hide' : 'Show' }}"> --}}
-                                                <button type="submit" class="btn btn-outline-success" style="text-decoration: none; ">{{ $carousel->visibility?'Hide':'Show' }}</button>
+                                                <button type="submit" class="btn btn-outline-success"
+                                                    style="text-decoration: none; ">{{ $carousel->visibility ? 'Hide' : 'Show' }}</button>
                                             </form>
                                         </td>
                                         <td id="td-center">
@@ -62,8 +63,7 @@
     <!-- /.row -->
 @endsection
 
-{{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-carousel').on('click', function() {
@@ -100,8 +100,8 @@
                 "responsive": true,
             });
 
-            //bs custom file input
-            bsCustomFileInput.init();
+            // //bs custom file input
+            // bsCustomFileInput.init();
         });
     </script>
-@endsection
+@endpush

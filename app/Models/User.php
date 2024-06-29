@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     public function sertifikasis(): HasMany
     {
-        return $this->hasMany(Sertifikasi::class);
+        return $this->hasMany(Sertifikasi::class,'asesor_id','id');
     }
 }

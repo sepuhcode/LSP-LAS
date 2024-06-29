@@ -36,15 +36,15 @@
                                         <td id="td-center">{{ $user->address }}</td>
                                         <td id="td-center">{{ $user->getRoleNames()[0] }}</td>
                                         <td id="td-center">{{ $user->is_active ? 'Active' : 'Inactive' }}</td>
-                                        
+
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/user/{{ $user->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-user" data-userId="{{ $user->id }}"
-                                                data-userName="{{ $user->name }}">
+                                            <button class="btn btn-outline-danger delete-user"
+                                                data-userId="{{ $user->id }}" data-userName="{{ $user->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -63,8 +63,7 @@
     <!-- /.row -->
 @endsection
 
-{{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-user').on('click', function() {
@@ -88,4 +87,4 @@
             });
         });
     </script>
-@endsection
+@endpush

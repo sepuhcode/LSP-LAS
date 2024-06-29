@@ -13,7 +13,7 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
 
     public function collection(Collection $collection)
     {
-        $date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($collection[3][10])->format('Y-m-d h:i:s'); //convert excel date (int) ke date format
+        // $date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($collection[3][10])->format('Y-m-d h:i:s'); //convert excel date (int) ke date format
         // dd($date);
         $index = 0; //skip index 0 (header/judul)
         foreach ($collection as $row) {
@@ -45,15 +45,16 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
                 $sertifikat['no_reg_sertifikat'] = !empty($row[4]) ? $row[4] : '';
                 $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
                 $sertifikat['posisi_las_id'] = !empty($row[6]) ? $row[6] : '';
-                $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
-                $sertifikat['posisi_las_id'] = !empty($row[6]) ? $row[6] : '';
+                // $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
+                // $sertifikat['posisi_las_id'] = !empty($row[6]) ? $row[6] : '';
                 $sertifikat['tuk'] = !empty($row[7]) ? $row[7] : '';
                 $sertifikat['no_blangko'] = !empty($row[8]) ? $row[8] : '';
                 $sertifikat['tgl_uji'] = !empty($row[9]) ? $row[9] : '';
                 // $sertifikat['tgl_sertifikat'] = !empty($row[10]) ? $date : '';
                 $sertifikat['tgl_sertifikat'] = $date;
                 // $sertifikat['user_id'] = !empty($row[11]) ? $row[11] : '';
-                $sertifikat['user_id'] = rand(1,100); //random number buat test
+                $sertifikat['asesor_id'] = rand(1,3); //random number buat test
+                $sertifikat['file_scan_sertifikat'] = NULL; //random number buat test
 
                 // dd($sertifikat);
                 Sertifikasi::create($sertifikat);

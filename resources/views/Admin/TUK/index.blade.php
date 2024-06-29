@@ -66,28 +66,28 @@
 @endsection
 
 {{-- script sweetalert --}}
-@section('optional_script')
-    <script>
-        $(function() {
-            $('.delete-tuk').on('click', function() {
-                var tukId = $(this).attr('data-tukId');
-                Swal.fire({
-                    title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-tukName') +
-                        " ?",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes',
-                    cancelButtonText: 'No'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/tuk/' + tukId);
-                        $('#form-delete').submit();
-                    }
-                });
+@push('script')
+<script>
+    $(function() {
+        $('.delete-tuk').on('click', function() {
+            var tukId = $(this).attr('data-tukId');
+            Swal.fire({
+                title: 'Are You Sure?',
+                text: "delete " + $(this).attr('data-tukName') +
+                    " ?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#form-delete').attr('action', '/admin/tuk/' + tukId);
+                    $('#form-delete').submit();
+                }
             });
         });
-    </script>
-@endsection
+    });
+</script>
+@endpush
