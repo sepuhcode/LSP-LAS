@@ -65,6 +65,7 @@
     @stack('style')
 </head>
 
+{{-- <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"> --}}
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
@@ -430,6 +431,7 @@
         $(function() {
             $('#example2').DataTable({
                 "paging": true,
+                "pageLength":25,
                 "lengthChange": false,
                 "searching": true,
                 "ordering": false,

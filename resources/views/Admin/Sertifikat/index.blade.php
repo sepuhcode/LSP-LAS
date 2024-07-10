@@ -4,9 +4,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">User</h3>
-                    <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/user/create" style="color: white">Add User</a></button>
+                    <h3 class="card-title">Sertifikat</h3>
+                    <div class="card-tools">
+
+                        <button class="btn btn-outline-info btn-tool" ><a
+                            href="/admin/sertifikat/create" style="color: white">Tambah Sertifikat</a></button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -35,21 +38,26 @@
                                 @foreach ($sertifikats as $sertifikat)
                                     <tr>
                                         <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center">{{ $sertifikat->nama }}</td>
+                                        <td id="td-center">{{ $sertifikat->name }}</td>
                                         <td id="td-center">{{ $sertifikat->no_sertifikat }}</td>
                                         <td id="td-center">{{ $sertifikat->no_reg_sertifikat }}</td>
-                                        <td id="td-center">{{ $sertifikat->address }}</td>
-                                        <td id="td-center">{{ $sertifikat->getRoleNames()[0] }}</td>
-                                        <td id="td-center">{{ $sertifikat->is_active ? 'Active' : 'Inactive' }}</td>
+                                        <td id="td-center">{{ $sertifikat->skemaSertifikasi->name }}</td>
+                                        <td id="td-center">{{ $sertifikat->posisiLas->name }}</td>
+                                        <td id="td-center">{{ $sertifikat->tuk}}</td>
+                                        <td id="td-center">{{ $sertifikat->no_blangko }}</td>
+                                        <td id="td-center">{{ $sertifikat->tgl_uji }}</td>
+                                        <td id="td-center">{{ $sertifikat->tgl_sertifikat }}</td>
+                                        <td id="td-center">{{ $sertifikat->asesor->name }}</td>
+                                        <td id="td-center">download</td>
 
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/user/{{ $sertifikat->id }}/edit"
+                                                    href="/admin/sertifikat/{{ $sertifikat->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-user"
-                                                data-userId="{{ $sertifikat->id }}" data-userName="{{ $sertifikat->name }}">
+                                            <button class="btn btn-outline-danger delete-sertifikat"
+                                                data-sertifikatId="{{ $sertifikat->id }}" data-sertifikatName="{{ $sertifikat->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -71,11 +79,11 @@
 @push('script')
     <script>
         $(function() {
-            $('.delete-user').on('click', function() {
-                var userId = $(this).attr('data-userId');
+            $('.delete-sertifikat').on('click', function() {
+                var sertifikatId = $(this).attr('data-sertifikatId');
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-userName') +
+                    text: "delete " + $(this).attr('data-sertifikatName') +
                         " ?",
                     icon: 'question',
                     showCancelButton: true,
@@ -85,7 +93,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/user/' + userId);
+                        $('#form-delete').attr('action', '/admin/sertifikat/' + sertifikatId);
                         $('#form-delete').submit();
                     }
                 });

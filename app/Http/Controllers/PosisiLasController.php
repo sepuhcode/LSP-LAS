@@ -13,7 +13,7 @@ class PosisiLasController extends Controller
      */
     public function index()
     {
-        $positions = PosisiLas::all();
+        $positions = PosisiLas::with('skema:id,name')->get();
         return view('admin.posisi-las.index',[
             'posisis'=>$positions,
             'page'=>'Posisi Las']);

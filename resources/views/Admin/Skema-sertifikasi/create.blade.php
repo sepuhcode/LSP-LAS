@@ -16,7 +16,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="\admin\skema-sertifikasi" method="POST">
+                <form action="/admin/skema-sertifikasi" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">

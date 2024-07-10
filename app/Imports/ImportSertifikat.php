@@ -39,8 +39,7 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
                 }
 
                 if (!empty($row[2])) {
-                
-                $sertifikat['nama'] = !empty($row[2]) ? $row[2] : '';
+                $sertifikat['name'] = !empty($row[2]) ? $row[2] : '';
                 $sertifikat['no_sertifikat'] = !empty($row[3]) ? $row[3] : '';
                 $sertifikat['no_reg_sertifikat'] = !empty($row[4]) ? $row[4] : '';
                 $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
@@ -53,8 +52,8 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
                 // $sertifikat['tgl_sertifikat'] = !empty($row[10]) ? $date : '';
                 $sertifikat['tgl_sertifikat'] = $date;
                 // $sertifikat['user_id'] = !empty($row[11]) ? $row[11] : '';
-                $sertifikat['asesor_id'] = rand(1,3); //random number buat test
-                $sertifikat['file_scan_sertifikat'] = NULL; //random number buat test
+                $sertifikat['asesor_id'] = $row[11]; //random number buat test
+                $sertifikat['file_scan_sertifikat'] = NULL; 
 
                 // dd($sertifikat);
                 Sertifikasi::create($sertifikat);

@@ -54,10 +54,12 @@ Route::prefix('/admin')->name('admin.')->group(function(){
     Route::resource('/skema-sertifikasi', SkemaSertifikasiController::class); //CRUD skema sertifikasi
     Route::resource('/posisi-las', PosisiLasController::class); //CRUD posisi las
     Route::resource('/foto-karyawan', FotoKaryawanController::class); //CRUD foto karyawan
-    Route::resource('/foto-kegiatan', FotoKegiatanController::class); //CRUD foto karyawan
-
+    Route::resource('/foto-kegiatan', FotoKegiatanController::class); //CRUD foto kegiatan
+    
     Route::post('/sertifikat/import', [SertifikasiController::class,'saveImport'])->name('import-sertifikat');
     Route::get('/sertifikat/import', [SertifikasiController::class,'showImport'])->name('import-sertifikat');
+    Route::resource('/sertifikat', SertifikasiController::class); //CRUD Sertifikat
+    Route::post('/get-posisilas',[SertifikasiController::class,'fetchPosisiLas']);
 });
 
 

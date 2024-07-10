@@ -48,7 +48,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function sertifikasis(): HasMany
+    public function sertifikats(): HasMany
     {
         return $this->hasMany(Sertifikasi::class,'asesor_id','id');
     }

@@ -5,8 +5,10 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">TUK</h3>
-                    <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/tuk/create" style="color: white">Upload TUK</a></button>
+                    <div class="card-tools">
+                        <button class="btn btn-tool btn-outline-info"><a
+                                href="/admin/tuk/create" style="color: white">Upload TUK</a></button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -45,8 +47,8 @@
                                                         class="fas fa-trash-alt"></i></button>
                                             </form> --}}
 
-                                            <button class="btn btn-outline-danger delete-tuk" data-tukId="{{ $tuk->id }}"
-                                                data-tukName="{{ $tuk->name }}">
+                                            <button class="btn btn-outline-danger delete-tuk"
+                                                data-tukId="{{ $tuk->id }}" data-tukName="{{ $tuk->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -67,27 +69,27 @@
 
 {{-- script sweetalert --}}
 @push('script')
-<script>
-    $(function() {
-        $('.delete-tuk').on('click', function() {
-            var tukId = $(this).attr('data-tukId');
-            Swal.fire({
-                title: 'Are You Sure?',
-                text: "delete " + $(this).attr('data-tukName') +
-                    " ?",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes',
-                cancelButtonText: 'No'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#form-delete').attr('action', '/admin/tuk/' + tukId);
-                    $('#form-delete').submit();
-                }
+    <script>
+        $(function() {
+            $('.delete-tuk').on('click', function() {
+                var tukId = $(this).attr('data-tukId');
+                Swal.fire({
+                    title: 'Are You Sure?',
+                    text: "delete " + $(this).attr('data-tukName') +
+                        " ?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#form-delete').attr('action', '/admin/tuk/' + tukId);
+                        $('#form-delete').submit();
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 @endpush

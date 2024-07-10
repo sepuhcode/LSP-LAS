@@ -18,8 +18,8 @@ class SkemaSertifikasi extends Model
         return $this->hasMany(PosisiLas::class,'skema_sertifikasi_id','id');
     }
 
-    public function sertifikasis(): HasMany
+    public function sertifikats(): HasMany
     {
-        return $this->hasMany(Sertifikasi::class);
+        return $this->hasMany(Sertifikasi::class,'skema_sertifikasi_id');
     }
 }

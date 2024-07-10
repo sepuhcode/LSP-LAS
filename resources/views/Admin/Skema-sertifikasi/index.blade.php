@@ -5,8 +5,10 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Skema Sertifikasi</h3>
-                    <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/skema-sertifikasi/create" style="color: white">Tambah</a></button>
+                    <div class="card-tools">
+                        <button class="btn btn-tool btn-outline-info"><a
+                                href="/admin/skema-sertifikasi/create" style="color: white">Tambah</a></button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
