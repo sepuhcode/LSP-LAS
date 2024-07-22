@@ -46,15 +46,22 @@
     <link rel="stylesheet" href={{ asset('admin_template/dist/css/adminlte.css') }}>
 
     <!-- DataTables -->
-    <link rel="stylesheet" href={{ asset('admin_template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}>
-    <link rel="stylesheet" href={{ asset('admin_template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}>
-    <link rel="stylesheet" href={{ asset('admin_template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}>
+    <link rel="stylesheet" href={{ asset('admin_template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}>
+    <link rel="stylesheet"
+        href={{ asset('admin_template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}>
+    <link rel="stylesheet" href={{ asset('admin_template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}>
 
     {{-- Font Awesome V5 pro --}}
     <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome"
         href="/css/app-wa-02670e9412103b5852dcbe140d278c49.css?vsn=d">
 
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    {{-- sweetalert --}}
+    <link rel="stylesheet" href={{ asset('admin_template/plugins/sweetalert2/sweetalert2.min.css') }}>
+
+    {{-- <link rel="stylesheet" href={{ asset('admin_template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}> --}}
+
 
 
 </head>
@@ -211,7 +218,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src={{ asset('Images/Logo-LSP-3.png') }} alt="AdminLTE Logo"
+                <img src={{ asset('images/Logo-LSP-3.png') }} alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-bold">LSP Las</span>
             </a>
@@ -224,7 +231,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div> --}}
                     <div class="info">
-                        <a href="#" class="d-block">Admin 1</a>
+                        <a href="#" class="d-block test-alert">Admin 1</a>
                     </div>
                 </div>
 
@@ -278,8 +285,9 @@
                         </li>
 
 
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fad fa-images"></i>
                                 <p>
                                     Images
@@ -287,16 +295,28 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/admin/carousel" class="nav-link">
+                                <li class="nav-item ">
+                                    <a href="/admin/carousel" class="nav-link {{ (request()->is('admin/carousel'))?'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Carousel</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/admin/tuk" class="nav-link">
+                                <li class="nav-item ">
+                                    <a href="/admin/tuk" class="nav-link {{ (request()->is('admin/tuk'))?'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TUK</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/foto-karyawan" class="nav-link {{ (request()->is('admin/foto-karyawan'))?'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Karyawan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/foto-kegiatan" class="nav-link {{ (request()->is('admin/foto-kegiatan'))?'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Kegiatan</p>
                                     </a>
                                 </li>
                             </ul>
@@ -357,6 +377,14 @@
     </div>
     <!-- ./wrapper -->
 
+    {{-- Form Untuk Hapus Data --}}
+    <form style="display: none" method="post" action="" id="form-delete">
+        @method('delete')
+        @csrf
+    </form>
+
+
+
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src={{ asset('admin_template/plugins/jquery/jquery.min.js') }}></script>
@@ -366,6 +394,8 @@
     <script src={{ asset('admin_template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}></script>
     <!-- AdminLTE App -->
     <script src={{ asset('admin_template/dist/js/adminlte.js') }}></script>
+    <!-- bs-custom-file-input -->
+    <script src={{ asset('admin_template/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}></script>
 
     {{-- <!-- PAGE {{ asset('admin_template/PLUGINS --> --}}
     <!-- jQuery Mapael -->
@@ -390,6 +420,9 @@
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.print.min.js') }}></script>
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}></script>
 
+    {{-- sweetalert --}}
+    <script src={{ asset('admin_template/plugins/sweetalert2/sweetalert2.min.js') }}></script>
+
     <script>
         $(function() {
             $('#example2').DataTable({
@@ -401,12 +434,47 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+
+            $('#table-without-search').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+
+            //bs custom file input
+            bsCustomFileInput.init();
         });
     </script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src={{ asset('admin_template/dist/js/demo.js') }}></script> -->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src={{ asset('admin_template/dist/js/pages/dashboard2.js') }}></script>
+
+    {{-- sweetalert  --}}
+  
+        {{-- // $('.test-alert').click(function(){
+        //
+        // }); --}}
+
+        @if (session()->has('success'))
+           // success message
+           <script>
+            Swal.fire({
+                position: 'auto',
+                icon: 'success',
+                title: '{{ session('success') }}',
+                showConfirmButton: false,
+                timerProgressBar: true,
+                timer: 1500
+            });
+          </script>
+        @endif
+    
+    @yield('optional_script')
 </body>
 
 </html>

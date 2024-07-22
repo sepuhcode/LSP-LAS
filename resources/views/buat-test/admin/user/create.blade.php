@@ -22,7 +22,7 @@
 
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" placeholder="Input Email"
-            class="@error('email') is-invalid @enderror" value="{{ old('email') }}>
+            class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
         @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror

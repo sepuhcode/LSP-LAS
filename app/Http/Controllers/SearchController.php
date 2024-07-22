@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carousel;
+use App\Models\FotoKaryawan;
 use App\Models\OldData;
+use App\Models\SkemaSertifikasi;
 use App\Models\Tuk;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -101,13 +103,18 @@ class SearchController extends Controller
         $sertifikat = [];
         $tglBerlaku = null;
         $tuks = Tuk::all();
+        $skema = SkemaSertifikasi::count();
         $carousels = Carousel::whereVisibility(true)->get();
+        $karyawans = FotoKaryawan::all();
 
         return view('home', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
             'tuks'=>$tuks,
-            'carousels'=>$carousels
+            'skema'=>$skema,
+            'carousels'=>$carousels,
+            'karyawans'=>$karyawans
+
         ]);
     }
 

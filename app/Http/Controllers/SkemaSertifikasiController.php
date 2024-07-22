@@ -13,7 +13,9 @@ class SkemaSertifikasiController extends Controller
     public function index()
     {
         $skemas = SkemaSertifikasi::all();
-        return view('buat-test.admin.skema-sertifikasi.index', ['skemas' => $skemas]);
+        return view('admin.skema-sertifikasi.index',
+        ['skemas'=>$skemas,
+         'page'=>'Skema Sertifikasi']);
     }
 
     /**
@@ -21,7 +23,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function create()
     {
-        return view('buat-test.admin.skema-sertifikasi.create');
+        return view('admin.skema-sertifikasi.create');
     }
 
     /**
@@ -31,10 +33,12 @@ class SkemaSertifikasiController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string',
+            'no_skema' => 'required|string',
+            'deskripsi'=> 'required'
         ]);
 
         SkemaSertifikasi::create($validatedData);
-        return redirect('/admin/skema-sertifikasi')->with('success', 'data berhasil ditambahkan');
+        return redirect('/admin/skema-sertifikasi')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -50,7 +54,9 @@ class SkemaSertifikasiController extends Controller
      */
     public function edit(SkemaSertifikasi $skemaSertifikasi)
     {
-        return view('buat-test.admin.skema-sertifikasi.update', ['skema' => $skemaSertifikasi]);
+        return view('admin.skema-sertifikasi.update',[
+            'skema'=>$skemaSertifikasi,
+            'page'=>'Skema Sertifikasi']);
     }
 
     /**
@@ -58,7 +64,15 @@ class SkemaSertifikasiController extends Controller
      */
     public function update(Request $request, SkemaSertifikasi $skemaSertifikasi)
     {
-        $updatedData = $request->validate(['name' => 'required']);
+        $updatedData = $request->validate([
+            'name'=>'required',
+            'no_skema'=>'required|string',
+            'deskripsi'=>'required']);
+        // $rules = [
+        //     'name'=>'required|string',
+        //     'no_skema'=>'required|string',
+
+        // ];
 
         SkemaSertifikasi::whereId($skemaSertifikasi->id)->update($updatedData);
         return redirect('/admin/skema-sertifikasi')->with('success', 'Data berhasil diupdate');
@@ -69,6 +83,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function destroy(SkemaSertifikasi $skemaSertifikasi)
     {
-        dd('skema sertifikasi destroy');
+        $skemaSertifikasi->delete();
+        return redirect('/admin/skema-sertifikasi')->with('success','Data berhasil dihapus');
     }
 }
