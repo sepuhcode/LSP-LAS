@@ -42,8 +42,7 @@ Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
 Route::get('/cari/sertifikat',[SearchController::class,'showSertifikatPage'])->name('sertifikat');
 Route::post('/cari/sertifikat',[SearchController::class,'cariSertifikat']);
 
-
-// Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
+Route::get('/pendaftaran',[SearchController::class,'showPendaftaran'])->name('pendaftaran');
 
 //admin routes
 Route::prefix('/admin')->name('admin.')->group(function(){
