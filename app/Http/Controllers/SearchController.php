@@ -122,5 +122,7 @@ class SearchController extends Controller
         ]);
     }
 
-    
+    public function showPendaftaran(){
+        return view('pendaftaran.index');
+    }
 }

@@ -95,6 +95,222 @@
                 width: 100%;
             }
         }
+
+        .main-text {
+            margin-left: 40px;
+        }
+
+        @media (max-width: 576px) {
+            .main-text {
+                margin-top: 0px;
+                margin-left: 0px;
+                text-align: center;
+            }
+        }
+
+        .visi-misi-title {
+            color: red;
+            font-weight: bold;
+            font-size: 30pt;
+        }
+
+        .visi-misi-text {
+            width: 50%;
+            font-weight: bold;
+            margin: 20px auto;
+            font-size: 20px;
+            color: #7b7b7b;
+        }
+
+        .accordion-home {
+            width: 50%;
+        }
+
+        .icon-home1 {
+            margin: 80px 0 0 -300px;
+            width: 453px;
+            height: 453px;
+            z-index: 1;
+        }
+
+        .icon-home2 {
+            top: 0px;
+            left: -200px;
+            width: 553px;
+            height: 309px;
+            margin-top: -750px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .icon-home3 {
+            margin: -380px 0 0 -470px;
+            width: 553px;
+            height: 309px;
+            position: relative;
+            z-index: 3;
+        }
+
+        #div-tuk {
+            background-color: #EFEFEF;
+            padding: 30px 0;
+        }
+
+        .tuk-box {
+            border-radius: 35px;
+            box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+            -webkit-box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 0px 11px 21px 1px rgba(0, 0, 0, 0.25);
+        }
+
+        .tuk-box-img {
+            border: 3px #d9d9d9 solid;
+        }
+        .tuk {
+            padding: 10px;
+            background-color: #FEFEFE;
+            color: #FF2F2F;
+            font-weight: bold;
+        }
+        .tuk * {
+            cursor: pointer;
+        }
+
+        .tuk:first-child {
+            border-radius: 35px 0px 0px 35px;
+            border-right: 4px #efefef solid;
+            padding-left: 13px;
+        }
+
+        .tuk:last-child {
+            border-radius: 0px 35px 35px 0px;
+            border-left: 4px #efefef solid;
+            padding-right: 13px;
+        }
+
+        .tuk:hover {
+            background-color: #FF2F2F;
+            color: #FEFEFE;
+        }
+
+        .text-home-center {
+            margin-left: 150px;
+            margin-top: 80px;
+            font-weight: bold;
+            font-size: 40pt;
+            color: red;
+            margin-bottom: 70px;
+        }
+        .text-home-center-p {
+            margin-top: 20px;
+            margin-left: 150px;
+            font-weight: bold;
+            font-size: 20pt;
+            margin-bottom: 30px;
+            color: #7b7878
+        }
+
+        .icon-home-bnsp {
+            display: inline-block;
+            margin-left: 150px;
+            margin-right: 70px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .icon-home-api {
+            display: inline-block;
+        }
+
+        @media (max-width: 576px) {
+
+            #div-tuk {
+                padding: 10px 0;
+
+            }
+
+            .tuk {
+                height: 50px;
+            }
+
+            .tuk h2 {
+                font-size: 12pt;
+                margin-bottom: 0px;
+            }
+
+            .tuk p {
+                font-size: 8pt;
+            }
+
+            #gambar-home-las {
+                overflow: hidden;
+            }
+
+            .icon-home1 {
+                margin: 70px 0 0 130px;
+                width: 150px;
+                height: 150px;
+            }
+
+            .icon-home2 {
+                margin: -360px 0 -100px 360px;
+                width: 200px;
+                height: 100px;
+                /* position: relative; */
+            }
+
+            .icon-home3 {
+                margin: -150px 0 0 55px;
+                width: 200px;
+                height: 100px;
+                /* position: relative; */
+            }
+
+            .icon-home-bnsp {
+                margin: 5px 30px 20px 20px;
+            }
+
+            .visi-misi-text {
+                width: 95%;
+                font-size: 11pt;
+                margin: 10px;
+            }
+
+            .visi-misi-title {
+                font-size: 12pt;
+            }
+
+            .accordion-home {
+                margin: 10px 0 10px 0;
+                width: 90%;
+                font-size: 10pt;
+            }
+
+            .fw-semibold {
+                font-size: 10pt;
+            }
+
+            .image-accordion {
+                position: relative;
+                content-visibility: hidden;
+                /* Sesuaikan lebar gambar sesuai kebutuhan Anda */
+            }
+
+            .text-home-center {
+                margin-top: 20px;
+                margin-left: 0px;
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: 19pt;
+            }
+
+            .text-home-center-p {
+                margin-top: 0px;
+                margin-left: 0px;
+                text-align: center;
+                font-size: 10pt;
+            }
+        }
     </style>
 @endpush
 
@@ -141,7 +357,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="row px-0 py-5 m-0 justify-content-center" style="background-color: #EFEFEF">
+    <div class="row m-0 justify-content-center" id="div-tuk">
         <div class="col-10 col-md-4">
             <div class="row justify-content-center text-center p-0 tuk-box">
                 <div class="tuk col-4">
@@ -160,36 +376,94 @@
         </div>
 
         <div class="row justify-content-center p-0" style="width: 80%">
-            @foreach ($tuks as $tuk)
+            {{-- @foreach ($tuks as $tuk)
                 <div class="col-2 p-3">
                     <div class="tuk-box-img">
-                        <img width="100%" height="135px" src="{{ asset('Images/tukImg/' . $tuk->image) }}" />
+                        <img width="100%" height="100%" src="{{ asset('Images/tuk-img/' . $tuk->image) }}" />
                     </div>
                 </div>
-            @endforeach
+            @endforeach --}}
+            <div class="col-lg-2 col-4 p-3 ">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
+            <div class="col-lg-2 col-4 p-3">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
+            <div class="col-lg-2 col-4 p-3">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
+            <div class="col-lg-2 col-4 p-3 ">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
+            <div class="col-lg-2 col-4 p-3">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
+            <div class="col-lg-2 col-4 p-3">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center p-0" style="width: 80%">
+            <div class="col-lg-2 col-4 p-3">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
+            <div class="col-lg-2 col-4 p-3">
+                <div class="tuk-box-img">
+                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row p-0 m-0">
-        <img src="{{ asset('Images/Content-Dashboard.png') }}" />
     </div>
-    <div class="row px-0 py-5 m-0" style="background-color: #EFEFEF">
+    </div>
+    <div class="row p-0 m-0">
+        <div class="col-lg-8 col-sm-4 main-text">
+            <p class="text-home-center">Lembaga Sertifikasi Profesi - LAS</p>
+            <p class="text-home-center-p">Lembaga sertifikasi untuk profesi <br>
+                pengelasan yang didirikan oleh Asosiasi <br>
+                Pengelasan Indonesia dan Terlisensi oleh <br>
+                Badan Nasional Sertifikasi Profesi.</p>
+            <div class="icon-home-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
+            <div class="icon-home-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
+        </div>
+        <div class="col-lg-3 col-sm-4" id="gambar-home-las">
+            <img class="icon-home1" src="{{ asset('Images/lingkaran1.png') }}" />
+            <img class="icon-home2" src="{{ asset('Images/las2.png') }}" />
+            <img class="icon-home3" src="{{ asset('Images/las3.png') }}" />
+        </div>
+    </div>
+
+    <div class="row px-0 py-2 m-0" style="background-color: #EFEFEF">
         <div class="col-12 text-center">
-            <h1 class="fw-semibold fs-3" style="color: red">Visi Misi LSP LAS</h1>
-            <h2 class="fw-semibold mx-auto my-5 fs-5" style="width: 50%">
+            <h1 class="visi-misi-title">Visi Misi LSP LAS</h1>
+            <h2 class="visi-misi-text">
                 Menjadi satu – satunya Lembaga Sertifikasi Profesi Pengelasan di Indonesia yang memiliki Kompetensi
                 Nasional
                 dan Internasional untuk menghasilkan tenaga – tenaga pengelasan yang berkualifikasi Nasional dan
                 Internasional.
             </h2>
         </div>
-        <div class="row mx-auto" style="width: 50%;">
+        <div class="row mx-auto accordion-home">
             <div class="col-md-7">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button bg-accordion" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <span class="fw-semibold fs-5">Mampu Bersaing</span>
+                                <span class="fw-semibold">Mampu Bersaing</span>
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show bg-accordion"
@@ -210,7 +484,7 @@
                             <button class="accordion-button collapsed bg-accordion " type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                                 aria-controls="collapseTwo">
-                                <span class="fw-semibold fs-5">
+                                <span class="fw-semibold">
                                     Mengikuti Perkembangan Internasional
                                 </span>
                             </button>
@@ -233,7 +507,7 @@
                             <button class="accordion-button bg-accordion collapsed" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                                 aria-controls="collapseThree">
-                                <span class="fw-semibold fs-5">
+                                <span class="fw-semibold">
                                     Membina Tempat Uji Kompetensi
                                 </span>
                             </button>
@@ -256,7 +530,7 @@
                             <button class="accordion-button bg-accordion collapsed" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
                                 aria-controls="collapseFour">
-                                <span class="fw-semibold fs-5">
+                                <span class="fw-semibold">
                                     Menjalin Hubungan Komunikasi Yang Intens dengan Stake Holder dan Lembaga
                                 </span>
                             </button>
@@ -367,7 +641,7 @@
                         <p>${imagesObject[image].department}</p>
                     </div>
                     </div>`
-                            }
+            }
             slider.innerHTML = images;
         }
 
@@ -380,8 +654,24 @@
             controlsContainer: '#slider-section #controls',
             prevButton: '#slider-section .previous',
             nextButton: '#slider-section .next',
-            lazyload: true,
             nav: false
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('.step');
+
+            steps.forEach(step => {
+                step.addEventListener('mouseover', () => {
+                    step.style.transform = 'translateY(-10px)';
+                    step.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+                });
+
+                step.addEventListener('mouseout', () => {
+                    step.style.transform = 'translateY(0)';
+                    step.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+                });
+            });
         });
     </script>
 @endpush
