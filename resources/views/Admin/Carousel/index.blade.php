@@ -7,7 +7,7 @@
                     <h3 class="card-title">Carousel</h3>
                     <div class="card-tools">
                         <button class="btn btn-tool btn-outline-info"><a
-                                href="/admin/carousel/create" style="color: white">Upload Carousel</a></button>
+                                href="/admin/gambar-carousel/create" style="color: white">Upload Carousel</a></button>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -35,12 +35,12 @@
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button> --}}
 
-                                            <form action="/admin/carousel/{{ $carousel->id }}" method="post">
+                                            <form action="/admin/gambar-carousel/{{ $carousel->id }}" method="post">
                                                 @method('put')
                                                 @csrf
                                                 {{-- <input type="submit" value="{{ $carousel->visibility ? 'Hide' : 'Show' }}"> --}}
                                                 <button type="submit" class="btn btn-outline-success"
-                                                    style="text-decoration: none; ">{{ $carousel->visibility ? 'Hide' : 'Show' }}</button>
+                                                    style="text-decoration: none; ">{{ $carousel->visibility ? 'Sembunyikan' : 'Tampilkan' }}</button>
                                             </form>
                                         </td>
                                         <td id="td-center">
@@ -82,7 +82,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/carousel/' + carouselId);
+                        $('#form-delete').attr('action', '/admin/gambar-carousel/' + carouselId);
                         $('#form-delete').submit();
                     }
                 });

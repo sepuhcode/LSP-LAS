@@ -1,4 +1,9 @@
 @extends('Admin.layout')
+
+@push('style')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
+
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -7,6 +12,8 @@
                     <h3 class="card-title">Sertifikat</h3>
                     <div class="card-tools">
 
+                        <button class="btn btn-outline-info btn-tool" ><a
+                            href="/admin/sertifikat/import" style="color: white">Import Excel</a></button>
                         <button class="btn btn-outline-info btn-tool" ><a
                             href="/admin/sertifikat/create" style="color: white">Tambah Sertifikat</a></button>
                     </div>
@@ -46,9 +53,9 @@
                                         <td id="td-center">{{ $sertifikat->tuk}}</td>
                                         <td id="td-center">{{ $sertifikat->no_blangko }}</td>
                                         <td id="td-center">{{ $sertifikat->tgl_uji }}</td>
-                                        <td id="td-center">{{ $sertifikat->tgl_sertifikat }}</td>
+                                        <td id="td-center">{{ strtotime('01-01-1970')==strtotime($sertifikat->tgl_sertifikat)?'': date('d-m-Y',strtotime($sertifikat->tgl_sertifikat)) }}</td>
                                         <td id="td-center">{{ $sertifikat->asesor->name }}</td>
-                                        <td id="td-center">download</td>
+                                        <td id="td-center"><button target="_blank" class="btn btn-view btn-outline-success"><a target="_blank" href="/admin/view-file/{{ $sertifikat->file_scan_sertifikat }}">view</a></button></td>
 
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/sertifikat/{{ $sertifikat->id }}/edit"
@@ -79,6 +86,8 @@
 @push('script')
     <script>
         $(function() {
+
+
             $('.delete-sertifikat').on('click', function() {
                 var sertifikatId = $(this).attr('data-sertifikatId');
                 Swal.fire({

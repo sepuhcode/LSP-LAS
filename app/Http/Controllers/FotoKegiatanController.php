@@ -45,7 +45,7 @@ class FotoKegiatanController extends Controller
         FotoKegiatan::create($validatedData);
         $request->image->move(public_path('Images/kegiatan'), $fileName);
 
-        return redirect('/admin/foto-kegiatan')->with('success', 'Uploaded');
+        return redirect('/admin/gambar-kegiatan')->with('success', 'Uploaded');
     }
 
     /**
@@ -93,7 +93,7 @@ class FotoKegiatanController extends Controller
             $request->image->move(public_path('Images/kegiatan'), $newFileName);
         }
         FotoKegiatan::whereId($fotoKegiatan->id)->update($updatedData);
-        return redirect('/admin/foto-kegiatan')->with('success', 'Updated');
+        return redirect('/admin/gambar-kegiatan')->with('success', 'Updated');
     }
 
     /**
@@ -105,6 +105,6 @@ class FotoKegiatanController extends Controller
         if (file_exists(public_path('Images/kegiatan/' . $fotoKegiatan->image))) {
             unlink(public_path('Images/kegiatan/' . $fotoKegiatan->image));
         }
-        return redirect('/admin/foto-kegiatan')->with('success', 'Deleted');
+        return redirect('/admin/gambar-kegiatan')->with('success', 'Deleted');
     }
 }

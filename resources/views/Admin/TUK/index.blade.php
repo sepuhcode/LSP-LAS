@@ -18,6 +18,7 @@
                                 <th>No</th>
                                 <th>Nama TUK</th>
                                 <th>Alamat</th>
+                                <th>Pemilik TUK</th>
                                 <th>Gambar</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
@@ -31,22 +32,14 @@
                                         <td id="td-center">{{ $loop->iteration }}</td>
                                         <td id="td-center">{{ $tuk->name }}</td>
                                         <td id="td-center">{{ $tuk->address }}</td>
+                                        <td id="td-center">{{ $tuk->tukOwner?->name==null?'':$tuk->tukOwner->name }}</td>
                                         <td id="td-center"><img src={{ asset('Images/tuk-img/' . $tuk->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/tuk/{{ $tuk->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
-                                        {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            {{-- <form action="/admin/tuk/{{ $tuk->id }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-outline-danger" type="submit"
-                                                    onClick="return confirm('yakin mau dihapus?');"><i
-                                                        class="fas fa-trash-alt"></i></button>
-                                            </form> --}}
-
                                             <button class="btn btn-outline-danger delete-tuk"
                                                 data-tukId="{{ $tuk->id }}" data-tukName="{{ $tuk->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>

@@ -88,8 +88,9 @@ class PosisiLasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PosisiLas $posisiLas)
+    public function destroy(PosisiLas $posisiLa)
     {
-        dd('posisi las destroy');
+        $posisiLa->delete();
+        return redirect('/admin/posisi-las')->with('success', $posisiLa->name.' berhasil dihapus');
     }
 }

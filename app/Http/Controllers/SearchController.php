@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Carousel;
 use App\Models\FotoKaryawan;
 use App\Models\OldData;
+use App\Models\Sertifikasi;
 use App\Models\SkemaSertifikasi;
 use App\Models\Tuk;
+use DateTime;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -79,14 +81,55 @@ class SearchController extends Controller
             // return view('sertifikat.index', compact('sertifikat', 'tglBerlaku'));
             return redirect()->route('sertifikat')->with($sertifikat)->with($tglBerlaku);
         }
-        
+
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
-            'skemaSertifikasis'=>$skemaSertifikasis
+            'skemaSertifikasis' => $skemaSertifikasis
         ]);
         // return redirect()->route('sertifikat')->with('sertifikat',$sertifikat)->with('tglBerlaku',$tglBerlaku);
 
+    }
+
+    public function cariSertifikatNew(Request $request)
+    {
+        // $skemaSertifikasis = SkemaSertifikasi::all();
+        $keyword = $request['key_word'];
+
+        // $sertifikat = Sertifikasi::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'posisi_las', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
+        $sertifikat = Sertifikasi::where('no_sertifikat', $keyword)->get();
+        if ($sertifikat->isNotEmpty()) {
+            if ($sertifikat[0]->tgl_sertifikat != null) {
+                $compareDate = strtotime("01-01-1970"); //compare date  (tanggal sertifikat tidak bisa dikosongin/null karena type nya date jadi kalau kosong diakalin dengan diisi pakai tahun 01-01-1970)
+                if (strtotime($sertifikat[0]->tgl_sertifikat) == $compareDate) { //cek apakah tanggal & tahun nya sama dengan compare date(10-10-1970), kalau sama maka akan diisi null
+                    $tglBerlaku = null;
+                } else {
+                    $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string("1096 days"))->format('d-m-Y');
+                }
+            } else {
+                $tglBerlaku = null;
+            }
+
+            $asesor = $sertifikat[0]->asesor->name;
+            $skemaSertifikasi = $sertifikat[0]->skemaSertifikasi->name;
+            $posisiLas = $sertifikat[0]->posisiLas->name;
+        } else {
+            $sertifikat = [];
+            $tglBerlaku = null;
+            $asesor = null;
+            $skemaSertifikasi = null;
+            $posisiLas = null;
+        }
+
+        return response()->json(
+            [
+                'sertifikat' => $sertifikat,
+                'asesor' => $asesor,
+                'skemaSertifikasi' => $skemaSertifikasi,
+                'posisiLas' => $posisiLas,
+                'tglBerlaku' => $tglBerlaku
+            ]
+        );
     }
 
     public function showSertifikatPage()
@@ -94,11 +137,11 @@ class SearchController extends Controller
         $sertifikat = [];
         $tglBerlaku = null;
         $skemaSertifikasis = SkemaSertifikasi::all();
-       
+
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
-            'skemaSertifikasis'=>$skemaSertifikasis
+            'skemaSertifikasis' => $skemaSertifikasis
         ]);
     }
 
@@ -114,13 +157,11 @@ class SearchController extends Controller
         return view('home', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
-            'tuks'=>$tuks,
-            'skema'=>$skema,
-            'carousels'=>$carousels,
-            'karyawans'=>$karyawans
+            'tuks' => $tuks,
+            'skema' => $skema,
+            'carousels' => $carousels,
+            'karyawans' => $karyawans
 
         ]);
     }
-
-    
 }

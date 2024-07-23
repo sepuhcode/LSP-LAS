@@ -45,7 +45,7 @@ class FotoKaryawanController extends Controller
         FotoKaryawan::create($validatedData);
         $request->image->move(public_path('Images/our-team'), $fileName);
 
-        return redirect('/admin/foto-karyawan')->with('success', 'Uploaded');
+        return redirect('/admin/gambar-karyawan')->with('success', 'Uploaded');
     }
 
     /**
@@ -93,7 +93,7 @@ class FotoKaryawanController extends Controller
             $request->image->move(public_path('Images/our-team'), $newFileName);
         }
         FotoKaryawan::whereId($fotoKaryawan->id)->update($updatedData);
-        return redirect('/admin/foto-karyawan')->with('success', 'Updated');
+        return redirect('/admin/gambar-karyawan')->with('success', 'Updated');
     }
 
     /**
@@ -105,6 +105,6 @@ class FotoKaryawanController extends Controller
         if (file_exists(public_path('Images/our-team/' . $fotoKaryawan->image))) {
             unlink(public_path('Images/our-team/' . $fotoKaryawan->image));
         }
-        return redirect('/admin/foto-karyawan')->with('success', 'Deleted');
+        return redirect('/admin/gambar-karyawan')->with('success', 'Deleted');
     }
 }

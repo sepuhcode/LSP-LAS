@@ -27,6 +27,23 @@
                                 placeholder="Alamat..">{{ old('address') }}</textarea>
                         </div>
                         <div class="form-group">
+                            <label for="user_tuk_id">Pemilik TUK</label>
+                            <select name="user_tuk_id"
+                                class="form-control select2bs4 @error('user_tuk_id') is-invalid @enderror" required>
+                                @foreach ($userTuks as $userTuk)
+                                    @if ($loop->iteration == 1)
+                                        <option value="{{ $userTuk->id }}" selected="selected">{{ $userTuk->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $userTuk->id }}">{{ $userTuk->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('user_tuk_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="image">Gambar</label>
                             <div class="input-group">
                                 <div class="custom-file">

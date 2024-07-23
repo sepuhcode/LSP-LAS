@@ -22,4 +22,12 @@ class SkemaSertifikasi extends Model
     {
         return $this->hasMany(Sertifikasi::class,'skema_sertifikasi_id');
     }
+
+
+    protected static function booted():void
+    {
+        static::deleted(function(SkemaSertifikasi $skemaSertifikasi){
+            $skemaSertifikasi->posisis()->delete();
+        });
+    }
 }

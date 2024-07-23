@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('tgl_uji')->nullable();
             $table->date('tgl_sertifikat')->nullable();
             $table->foreignId('asesor_id')->nullable();
+            $table->foreignId('owner_id')->nullable();
             // $table->foreignId('user_id')->nullable();
             $table->string('file_scan_sertifikat')->nullable();
             // $table->string('no_skema')->nullable();

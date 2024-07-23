@@ -7,7 +7,6 @@ use App\Models\PosisiLas;
 use App\Models\Sertifikasi;
 use App\Models\SkemaSertifikasi;
 use App\Models\User;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -34,10 +33,12 @@ class SertifikasiController extends Controller
         $skemas = SkemaSertifikasi::all();
         // $posisis = PosisiLas::all();
         $asesors = User::role('asesor')->get();
+        $owners = User::role(['user','tuk'])->get();
         return view('Admin.sertifikat.create',[
             'skemas'=>$skemas,
             // 'posisis'=>$posisis,
             'asesors'=>$asesors,
+            'owners'=>$owners,
             'page' => 'Sertifikat'
         ]);
     }
@@ -58,6 +59,7 @@ class SertifikasiController extends Controller
             'tgl_uji'=>'string',
             'tgl_sertifikat'=>'date|required',
             'asesor_id'=>'required|integer',
+            'owner_id'=>'integer',
             'file_scan_sertifikat'=>'required|file|mimes:pdf|max:512'
         ]);
 
@@ -84,13 +86,15 @@ class SertifikasiController extends Controller
     public function edit(Sertifikasi $sertifikat)
     {
         $skemas = SkemaSertifikasi::all();
-        $posisis = PosisiLas::all();
+        // $posisis = PosisiLas::where('skema_sertifikasi_id',$sertifikat->skema_sertifikasi_id)->get();
         $asesors = User::role('asesor')->get();
+        $owners = User::role(['user','tuk'])->get();
         return view('Admin.sertifikat.update',[
             'sertifikat'=>$sertifikat,
             'skemas'=>$skemas,
-            'posisis'=>$posisis,
+            // 'posisis'=>$posisis,
             'asesors'=>$asesors,
+            'owners'=>$owners,
             'page'=>'Sertifikat'
         ]);
     }
@@ -112,6 +116,7 @@ class SertifikasiController extends Controller
         $request->tgl_uji != $sertifikat->tgl_uji ? $rules['tgl_uji'] = 'string':'';
         $request->tgl_sertifikat != $sertifikat->tgl_sertifikat ? $rules['tgl_sertifikat'] = 'date|required':'';
         $request->asesor_id != $sertifikat->asesor_id ? $rules['asesor_id'] = 'integer|required':'';
+        $request->owner_id != $sertifikat->owner_id ? $rules['owner_id'] = 'integer':'';
 
         if ($request->hasFile('file_scan_sertifikat')) {
             $rules['file_scan_sertifikat']='required|file|mimes:pdf|max:512';
@@ -165,5 +170,11 @@ class SertifikasiController extends Controller
         $data['posisiLas'] = SkemaSertifikasi::find($request->skema_id)->posisis;
          return response()->json($data);
 
+    }
+
+    public function viewFile(Request $request)
+    {
+        $filePath = public_path('scan-files/'.$request->file);
+        return response()->file($filePath);
     }
 }

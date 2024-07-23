@@ -65,7 +65,6 @@
     @stack('style')
 </head>
 
-{{-- <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"> --}}
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
@@ -231,7 +230,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div> --}}
                     <div class="info">
-                        <a href="#" class="d-block test-alert">Admin 1</a>
+                        <a href="#" class="d-block test-alert">Your Name</a>
                     </div>
                 </div>
 
@@ -254,31 +253,37 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link {{ request()->is('admin/user*') ? 'active' : '' }}">
+                        <li class="nav-item {{ request()->is('admin/user*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fad fa-users"></i>
                                 <p>
-                                    User Management
+                                    Manajemen User
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="/admin/user/registration" class="nav-link {{ request()->is('admin/user/registration') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>User Registration</p>
+                                        <p>Verifikasi Akun</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link active">
+                                    <a href="/admin/user-asesor" class="nav-link {{ request()->is('admin/user-asesor') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Asesor</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/user-tuk" class="nav-link {{ request()->is('admin/user-tuk') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>User TUK</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/user-user" class="nav-link {{ request()->is('admin/user-user') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>User</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Assessor</p>
                                     </a>
                                 </li>
                             </ul>
@@ -286,44 +291,71 @@
 
 
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                        <li class="nav-item {{ request()->is('admin/gambar*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link">
+                            {{-- <a href="#" class="nav-link {{ request()->is('admin/gambar*') ? 'active' : '' }}"> --}}
                                 <i class="nav-icon fad fa-images"></i>
                                 <p>
-                                    Images
+                                    Gambar
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
-                                    <a href="/admin/carousel"
-                                        class="nav-link {{ request()->is('admin/carousel') ? 'active' : '' }}">
+                                    <a href="/admin/gambar-carousel"
+                                        class="nav-link {{ request()->is('admin/gambar-carousel') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Carousel</p>
                                     </a>
                                 </li>
-                                <li class="nav-item ">
+                                {{-- <li class="nav-item ">
                                     <a href="/admin/tuk"
                                         class="nav-link {{ request()->is('admin/tuk') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TUK</p>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item ">
-                                    <a href="/admin/foto-karyawan"
-                                        class="nav-link {{ request()->is('admin/foto-karyawan') ? 'active' : '' }}">
+                                    <a href="/admin/gambar-karyawan"
+                                        class="nav-link {{ request()->is('admin/gambar-karyawan') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Karyawan</p>
                                     </a>
                                 </li>
-                                <li class="nav-item ">
+                                {{-- <li class="nav-item ">
                                     <a href="/admin/foto-kegiatan"
                                         class="nav-link {{ request()->is('admin/foto-kegiatan') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Kegiatan</p>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="/admin/tuk" class="nav-link {{ request()->is('admin/tuk') ? 'active' : '' }}">
+                              {{-- <i class="nav-icon fad fa-images"></i> --}}
+                              <p>
+                                  TUK
+                                  {{-- <i class="right fas fa-angle-left"></i> --}}
+                              </p>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="/admin/skema-sertifikasi" class="nav-link {{ request()->is('admin/skema-sertifikasi') ? 'active' : '' }}">
+                              <p>
+                                  Skema Sertifikasi
+                              </p>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="/admin/posisi-las" class="nav-link {{ request()->is('admin/posisi-las') ? 'active' : '' }}">
+                              <p>
+                                  Posisi Las
+                              </p>
+                          </a>
                         </li>
 
                     </ul>
@@ -431,7 +463,7 @@
         $(function() {
             $('#example2').DataTable({
                 "paging": true,
-                "pageLength":25,
+                "pageLength": 25,
                 "lengthChange": false,
                 "searching": true,
                 "ordering": false,
@@ -453,7 +485,7 @@
             //bs custom file input
             bsCustomFileInput.init();
 
-           
+
         });
     </script>
     <!-- AdminLTE for demo purposes -->

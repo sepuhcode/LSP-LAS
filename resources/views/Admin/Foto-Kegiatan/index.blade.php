@@ -7,7 +7,7 @@
                     <h3 class="card-title">Foto Kegiatan</h3>
                     <div class="card-tools">
                         <button class="btn btn-tool btn-outline-info"><a
-                                href="/admin/foto-kegiatan/create" style="color: white">Upload Foto</a></button>
+                                href="/admin/gambar-kegiatan/create" style="color: white">Upload Foto</a></button>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -34,7 +34,7 @@
                                         <td id="td-center"><img src={{ asset('Images/kegiatan/' . $kegiatan->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/foto-kegiatan/{{ $kegiatan->id }}/edit"
+                                                    href="/admin/gambar-kegiatan/{{ $kegiatan->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         {{-- <td>hehehe</td> --}}
@@ -79,7 +79,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/foto-kegiatan/' + kegiatanId);
+                        $('#form-delete').attr('action', '/admin/gambar-kegiatan/' + kegiatanId);
                         $('#form-delete').submit();
                     }
                 });

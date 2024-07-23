@@ -10,7 +10,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/admin/foto-kegiatan" method="POST" enctype="multipart/form-data">
+                <form action="/admin/gambar-kegiatan" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">

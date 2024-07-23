@@ -1,4 +1,15 @@
 @extends('Admin.layout')
+
+@push('style')
+    {{-- select2 --}}
+    <link rel="stylesheet" href={{ asset('admin_template/plugins/select2/css/select2.css') }}>
+    <link rel="stylesheet" href={{ asset('admin_template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+
+    </style>
+@endpush
+
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -41,7 +52,7 @@
                         <div class="form-group">
                             <label for="skema_sertifikasi_id">Skema Sertifikasi</label>
                             <select name="skema_sertifikasi_id"
-                                class="form-control @error('skema_sertifikasi_id') is-invalid @enderror" required>
+                                class="form-control select2bs4 skema-sertifikasi @error('skema_sertifikasi_id') is-invalid @enderror" required>
                                 @foreach ($skemas as $skema)
                                     <option value="{{ $skema->id }}" {{ $sertifikat->skema_sertifikasi_id == $skema->id ? 'selected':''}}>{{ $skema->name }}</option>
                                 @endforeach
@@ -53,10 +64,10 @@
                         <div class="form-group">
                             <label for="posisi_las_id">Posisi Las</label>
                             <select name="posisi_las_id"
-                                class="form-control @error('posisi_las_id') is-invalid @enderror" required>
-                                @foreach ($posisis as $posisi)
+                                class="form-control select2bs4 posisi-las @error('posisi_las_id') is-invalid @enderror" required>
+                                {{-- @foreach ($posisis as $posisi)
                                     <option value="{{ $posisi->id }}" {{ $sertifikat->posisi_las_id == $posisi->id ? 'selected':'' }}>{{ $posisi->name }}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                             @error('posisi_las_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -97,7 +108,7 @@
                         <div class="form-group">
                             <label for="asesor_id">Asesor</label>
                             <select name="asesor_id"
-                                class="form-control @error('asesor_id') is-invalid @enderror" required>
+                                class="form-control select2bs4 @error('asesor_id') is-invalid @enderror" required>
                                 @foreach ($asesors as $asesor)
                                     <option value="{{ $asesor->id }}" {{ $sertifikat->asesor_id == $asesor->id?'selected':'' }}>{{ $asesor->name }}</option>
                                 @endforeach
@@ -107,10 +118,22 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="owner_id">Pemilik Sertifikat</label>
+                            <select name="owner_id"
+                                class="form-control select2bs4 @error('owner_id') is-invalid @enderror" required>
+                                @foreach ($owners as $owner)
+                                    <option value="{{ $owner->id }}" {{ $sertifikat->owner_id == $owner->id?'selected':'' }}>{{ $owner->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('owner_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="file_scan_sertifikat">File Scan Sertifikat</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="file_scan_sertifikat" name="file_scan_sertifikat" type="file" class="custom-file-input @error('file_scan_sertifikat') is-invalid @enderror">
+                                    <input id="file_scan_sertifikat" name="file_scan_sertifikat" type="file" class="custom-file-input @error('file_scan_sertifikat') is-invalid @enderror" accept="application/pdf">
                                     <label class="custom-file-label" for="file_scan_sertifikat">Pilih File</label>
                                 </div>
                                
@@ -131,3 +154,65 @@
         <!-- /.card -->
     </div>
 @endsection
+
+@push('script')
+    <script src={{ asset('admin_template/plugins/select2/js/select2.full.min.js') }}></script>
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var posisis = @json($posisis);
+            var sertifikat = @json($sertifikat);
+            $.each(posisis,function(i,value){
+                if(value.id == sertifikat.posisi_las_id){
+                    $('.posisi-las').append('<option selected value="'+value.id+'">'+value.name+'</option>');
+                }
+                else{
+                    $('.posisi-las').append('<option value="'+value.id+'">'+value.name+'</option>');
+                }
+            });
+
+
+            $('.skema-sertifikasi').on('change', function() {
+                var skemaId = this.value;
+                $('.posisi-las').html('');
+
+                if(skemaId){
+                $.ajax({
+                    url: "{{ url('admin/get-posisilas') }}",
+                    type: "POST",
+                    data: {
+                        _token:  $('#signup-token').val(),
+                        skema_id: skemaId,
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('.posisi-las').empty();
+                        $.each(result.posisiLas, function(index, value) {
+                            $('.posisi-las').append('<option value="' + value.id +
+                                '">' + value
+                                .name + '</option>');
+                        });
+                    }
+                });
+            }
+            else{
+                $('.posisi-las').empty();
+            }
+
+            });
+
+        });
+    </script>
+@endpush

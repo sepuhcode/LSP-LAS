@@ -60,7 +60,7 @@
     <script>
         $(function() {
             $('.delete-posisi-las').on('click', function() {
-                var tukId = $(this).attr('data-posisiLasId');
+                var posisiLasId = $(this).attr('data-posisiLasId');
                 Swal.fire({
                     title: 'Are You Sure?',
                     text: "delete " + $(this).attr('data-posisiLasName') +

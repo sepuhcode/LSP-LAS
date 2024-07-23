@@ -136,11 +136,29 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="owner_id">Pemilik Sertifikat</label>
+                            <select name="owner_id"
+                                class="form-control select2bs4 @error('owner_id') is-invalid @enderror" required>
+                                @foreach ($owners as $owner)
+                                    @if ($loop->iteration == 1)
+                                        <option value="{{ $owner->id }}" selected="selected">{{ $owner->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('owner_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="file_scan_sertifikat">File Scan Sertifikat</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input id="file_scan_sertifikat" name="file_scan_sertifikat" type="file"
-                                        class="custom-file-input @error('file_scan_sertifikat') is-invalid @enderror">
+                                        class="custom-file-input @error('file_scan_sertifikat') is-invalid @enderror" accept="application/pdf">
                                     <label class="custom-file-label" for="file_scan_sertifikat">Pilih File</label>
                                 </div>
 
