@@ -17,7 +17,7 @@
 </head>
 
 
-<body>
+<body style="overflow-x: hidden">
     @include('layouts.header')
 
     @yield('content')
