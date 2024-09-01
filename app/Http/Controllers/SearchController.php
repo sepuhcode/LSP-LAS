@@ -121,4 +121,13 @@ class SearchController extends Controller
     public function showPendaftaran(){
         return view('pendaftaran.index');
     }
+
+    public function showAbout(){
+
+        $karyawans = FotoKaryawan::all();
+
+        return view('about.index',[
+            'karyawans'=>$karyawans,
+        ]);
+    }
 }
