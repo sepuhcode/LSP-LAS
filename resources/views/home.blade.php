@@ -166,12 +166,14 @@
         .tuk-box-img {
             border: 3px #d9d9d9 solid;
         }
+
         .tuk {
             padding: 10px;
             background-color: #FEFEFE;
             color: #FF2F2F;
             font-weight: bold;
         }
+
         .tuk * {
             cursor: pointer;
         }
@@ -201,6 +203,7 @@
             color: red;
             margin-bottom: 70px;
         }
+
         .text-home-center-p {
             margin-top: 20px;
             margin-left: 150px;
@@ -222,7 +225,7 @@
             display: inline-block;
         }
 
-        .slider-wrapper h1{
+        .slider-wrapper h1 {
             font-size: 34pt;
         }
 
@@ -315,9 +318,9 @@
                 font-size: 10pt;
             }
 
-            .slider-wrapper h1{
-            font-size: 12pt;
-        }
+            .slider-wrapper h1 {
+                font-size: 12pt;
+            }
         }
     </style>
 @endpush
@@ -384,14 +387,14 @@
         </div>
 
         <div class="row justify-content-center p-0" style="width: 80%">
-            {{-- @foreach ($tuks as $tuk)
-                <div class="col-2 p-3">
+            @foreach ($tuks as $tuk)
+                <div class="col-lg-2 col-4 p-3">
                     <div class="tuk-box-img">
                         <img width="100%" height="135px" src="{{ asset('Images/tuk-img/' . $tuk->image) }}" />
                     </div>
                 </div>
-            @endforeach --}}
-            <div class="col-lg-2 col-4 p-3 ">
+            @endforeach
+            {{-- <div class="col-lg-2 col-4 p-3 ">
                 <div class="tuk-box-img">
                     <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
                 </div>
@@ -420,19 +423,7 @@
                 <div class="tuk-box-img">
                     <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
                 </div>
-            </div>
-        </div>
-        <div class="row justify-content-center p-0" style="width: 80%">
-            <div class="col-lg-2 col-4 p-3">
-                <div class="tuk-box-img">
-                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
-                </div>
-            </div>
-            <div class="col-lg-2 col-4 p-3">
-                <div class="tuk-box-img">
-                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
-                </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     </div>
