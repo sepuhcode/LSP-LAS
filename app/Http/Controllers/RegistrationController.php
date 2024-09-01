@@ -15,7 +15,7 @@ class RegistrationController extends Controller
     {
         //admin
         $registrations = Registration::all();
-        return view('buat-test.admin.register.index', ['registrations' => $registrations]);
+        return view('Admin.verifikasi-akun.index', ['registrations' => $registrations]);
     }
 
     /**
@@ -34,7 +34,7 @@ class RegistrationController extends Controller
     {
         // user
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|string',
             'email' => 'required|unique:users',
             'password' => 'required|min:8',
             'phone' => 'required|unique:users',
@@ -45,7 +45,7 @@ class RegistrationController extends Controller
 
         $user = Registration::create($validatedData);
 
-        return redirect('/home')->with('success', 'Data Berhasil Disimpan!');
+        return redirect('/home')->with('success', 'Data Pendaftaran Akun Berhasil Diajukan!');
     }
 
     /**

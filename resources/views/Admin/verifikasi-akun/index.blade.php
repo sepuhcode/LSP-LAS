@@ -4,9 +4,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">User</h3>
-                    <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/user/create" style="color: white">Add User</a></button>
+                    <h3 class="card-title">Verifikasi Akun</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -18,34 +16,38 @@
                                 <th>Email</th>
                                 <th>No.HP</th>
                                 <th>Alamat</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th>Edit</th>
-                                <th>Hapus</th>
+                                <th>Terima</th>
+                                <th>Tolak</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($users->count() > 0)
-                                @foreach ($users as $user)
+                            @if ($registrations->count() > 0)
+                                @foreach ($registrations as $registration)
                                     <tr>
                                         <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center">{{ $user->name }}</td>
-                                        <td id="td-center">{{ $user->email }}</td>
-                                        <td id="td-center">{{ $user->phone }}</td>
-                                        <td id="td-center">{{ $user->address }}</td>
-                                        <td id="td-center">{{ $user->getRoleNames()[0] }}</td>
-                                        <td id="td-center">{{ $user->is_active ? 'Active' : 'Inactive' }}</td>
-
+                                        <td id="td-center">{{ $registration->name }}</td>
+                                        <td id="td-center">{{ $registration->email }}</td>
+                                        <td id="td-center">{{ $registration->phone }}</td>
+                                        <td id="td-center">{{ $registration->address }}</td>
+                                        <td class="center">
+                                            <form action="/admin/registration/{{ $registration->id }}" method="post">
+                                                @method('put')
+                                                @csrf
+                                                <button class="btn btn-outline-success"><a
+                                                    style="text-decoration: none; color:inherit;">Terima</a></button>
+                                            </form>
+                                        </td>
+{{-- 
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/user/{{ $user->id }}/edit"
+                                                    href="/admin/registration/{{ $registration->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
-                                                        class="fas fa-edit"></i></a></button></td>
-                                        {{-- <td>hehehe</td> --}}
+                                                        class="fas fa-edit"></i></a></button></td> --}}
+
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-user"
-                                                data-userId="{{ $user->id }}" data-userName="{{ $user->name }}">
-                                                <i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn btn-outline-danger delete-registration"
+                                                data-registrationId="{{ $registration->id }}" data-registrationName="{{ $registration->name }}">
+                                                Tolak</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -66,11 +68,11 @@
 @push('script')
     <script>
         $(function() {
-            $('.delete-user').on('click', function() {
-                var userId = $(this).attr('data-userId');
+            $('.delete-registration').on('click', function() {
+                var registrationId = $(this).attr('data-registrationId');
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-userName') +
+                    text: "Tolak Pendaftaran Akun " + $(this).attr('data-registrationName') +
                         " ?",
                     icon: 'question',
                     showCancelButton: true,
@@ -80,7 +82,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/user/' + userId);
+                        $('#form-delete').attr('action', '/admin/registration/' + registrationId);
                         $('#form-delete').submit();
                     }
                 });

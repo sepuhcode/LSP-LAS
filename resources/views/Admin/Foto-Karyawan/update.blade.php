@@ -10,7 +10,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/admin/foto-karyawan/{{ $karyawan->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/admin/gambar-karyawan/{{ $karyawan->id }}" method="POST" enctype="multipart/form-data">
                     @method('put')
                     @csrf
                     <div class="card-body">

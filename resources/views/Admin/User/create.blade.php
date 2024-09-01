@@ -6,15 +6,15 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Add User</h3>
+                    <h3 class="card-title">Tambah User</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="\admin\user" method="POST">
+                <form action="/admin/user" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">Name:</label>
+                            <label for="name">Nama:</label>
                             <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                 id="name" placeholder="Input Name..." value="{{ old('name') }}">
                             @error('name')
@@ -39,7 +39,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number:</label>
+                            <label for="phone">No.HP:</label>
                             <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
                                 id="phone" placeholder="Input Phone Number..." value="{{ old('phone') }}">
                             @error('phone')
@@ -47,14 +47,15 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="address">Address:</label>
+                            <label for="address">Alamat:</label>
                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3"
                                 placeholder="Input Address...">{{ old('address') }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="role">Choose a role:</label>
+                            <label for="role">Pilih Role:</label>
                             <select name="role" class="form-control @error('role') is-invalid @enderror">
                                 <option value="user">User</option>
+                                <option value="tuk">User TUK</option>
                                 <option value="asesor">Asesor</option>
                             </select>
                             @error('role')
@@ -63,7 +64,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>

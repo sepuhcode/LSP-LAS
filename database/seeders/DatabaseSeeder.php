@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OldDataTableSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(TestPosisiLasSeeder::class);
+        $this->call(TestSkemaSeeder::class);
     }
 }

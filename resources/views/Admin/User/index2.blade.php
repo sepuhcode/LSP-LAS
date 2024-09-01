@@ -4,10 +4,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Foto Karyawan</h3>
+                    <h3 class="card-title">{{ $page }}</h3>
                     <div class="card-tools">
                         <button class="btn btn-tool btn-outline-info"><a
-                                href="/admin/gambar-karyawan/create" style="color: white">Upload Foto</a></button>
+                                href="/admin/user/create" style="color: white">Add User</a></button>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -16,34 +16,38 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Karyawan</th>
-                                <th>Jabatan</th>
-                                <th>Foto</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>No.HP</th>
+                                <th>Alamat</th>
+                                {{-- <th>Role</th> --}}
+                                <th>Status</th>
                                 <th>Edit</th>
-                                <th>Hapus</th>
+                                {{-- <th>Hapus</th> --}}
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($karyawans->count() > 0)
-                                @foreach ($karyawans as $karyawan)
+                            @if ($users->count() > 0)
+                                @foreach ($users as $user)
                                     <tr>
                                         <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center">{{ $karyawan->name }}</td>
-                                        <td id="td-center">{{ $karyawan->department }}</td>
-                                        <td id="td-center"><img src={{ asset('Images/our-team/' . $karyawan->image) }}
-                                                alt="" width="150px"></td>
+                                        <td id="td-center">{{ $user->name }}</td>
+                                        <td id="td-center">{{ $user->email }}</td>
+                                        <td id="td-center">{{ $user->phone }}</td>
+                                        <td id="td-center">{{ $user->address }}</td>
+                                        {{-- <td id="td-center">{{ $user->getRoleNames()[0] }}</td> --}}
+                                        <td id="td-center">{{ $user->is_active ? 'Active' : 'Inactive' }}</td>
+
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/gambar-karyawan/{{ $karyawan->id }}/edit"
+                                                    href="/admin/user/{{ $user->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
-                                        {{-- <td>hehehe</td> --}}
-                                        <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-karyawan"
-                                                data-karyawanId="{{ $karyawan->id }}"
-                                                data-karyawanName="{{ $karyawan->name }}">
+                                        {{-- <td id="td-center">
+                                            <button class="btn btn-outline-danger delete-user"
+                                                data-userId="{{ $user->id }}" data-userName="{{ $user->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             @endif
@@ -63,11 +67,11 @@
 @push('script')
     <script>
         $(function() {
-            $('.delete-karyawan').on('click', function() {
-                var karyawanId = $(this).attr('data-karyawanId');
+            $('.delete-user').on('click', function() {
+                var userId = $(this).attr('data-userId');
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-karyawanName') +
+                    text: "delete " + $(this).attr('data-userName') +
                         " ?",
                     icon: 'question',
                     showCancelButton: true,
@@ -77,7 +81,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/gambar-karyawan/' + karyawanId);
+                        $('#form-delete').attr('action', '/admin/user/' + userId);
                         $('#form-delete').submit();
                     }
                 });

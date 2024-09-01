@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Tuk extends Model
 {
@@ -12,6 +13,12 @@ class Tuk extends Model
     protected $fillable = [
         'name',
         'image',
-        'address'
+        'address',
+        'user_tuk_id'
     ];
+
+    public function tukOwner(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'user_tuk_id');
+    }
 }

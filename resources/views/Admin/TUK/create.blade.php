@@ -10,7 +10,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="\admin\tuk" method="POST" enctype="multipart/form-data">
+                <form action="/admin/tuk" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -25,6 +25,23 @@
                             <label for="address">Alamat</label>
                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3"
                                 placeholder="Alamat..">{{ old('address') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="user_tuk_id">Pemilik TUK</label>
+                            <select name="user_tuk_id"
+                                class="form-control select2bs4 @error('user_tuk_id') is-invalid @enderror" required>
+                                @foreach ($userTuks as $userTuk)
+                                    @if ($loop->iteration == 1)
+                                        <option value="{{ $userTuk->id }}" selected="selected">{{ $userTuk->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $userTuk->id }}">{{ $userTuk->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('user_tuk_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="image">Gambar</label>

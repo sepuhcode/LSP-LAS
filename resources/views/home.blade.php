@@ -379,7 +379,7 @@
             {{-- @foreach ($tuks as $tuk)
                 <div class="col-2 p-3">
                     <div class="tuk-box-img">
-                        <img width="100%" height="100%" src="{{ asset('Images/tuk-img/' . $tuk->image) }}" />
+                        <img width="100%" height="135px" src="{{ asset('Images/tuk-img/' . $tuk->image) }}" />
                     </div>
                 </div>
             @endforeach --}}

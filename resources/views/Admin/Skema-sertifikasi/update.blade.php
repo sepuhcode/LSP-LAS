@@ -1,4 +1,10 @@
 @extends('Admin.layout')
+
+@push('style')
+    <!-- summernote -->
+    <link rel="stylesheet" href={{ asset('admin_template/plugins//summernote/summernote-bs4.min.css') }}>
+@endpush
+
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -47,3 +53,24 @@
     </div>
 
 @endsection
+
+@push('script')
+    <!-- Summernote -->
+    <script src={{ asset('admin_template/plugins/summernote/summernote-bs4.min.js') }}></script>
+    <script>
+        // Summernote
+        $('#summernote').summernote({
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph', 'height']],
+                ['table', ['table']],
+                ['insert', ['link']],
+                ['view', ['fullscreen']],
+            ],
+        })
+    </script>
+@endpush
