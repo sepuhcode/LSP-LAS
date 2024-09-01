@@ -43,6 +43,7 @@ Route::get('/cari/sertifikat',[SearchController::class,'showSertifikatPage'])->n
 Route::post('/cari/sertifikat',[SearchController::class,'cariSertifikat']);
 
 Route::get('/pendaftaran',[SearchController::class,'showPendaftaran'])->name('pendaftaran');
+Route::get('/about',[SearchController::class,'showAbout'])->name('about');
 
 //admin routes
 Route::prefix('/admin')->name('admin.')->group(function(){
@@ -67,3 +68,5 @@ Route::resource('/register',RegistrationController::class);
 //test halaman admin
 Route::view('testadmin','admin.dashboard.index');
 Route::view('testtuk','admin.tuk.index');
+Route::view('daftar','user.register.index2');
+
