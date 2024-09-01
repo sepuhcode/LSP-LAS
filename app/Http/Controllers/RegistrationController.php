@@ -34,7 +34,7 @@ class RegistrationController extends Controller
     {
         // user
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|string',
             'email' => 'required|unique:users',
             'password' => 'required|min:8',
             'phone' => 'required|unique:users',

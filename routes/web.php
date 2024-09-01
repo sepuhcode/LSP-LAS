@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\FotoKaryawanController;
 use App\Http\Controllers\FotoKegiatanController;
 use App\Http\Controllers\LoginController;
@@ -66,6 +67,9 @@ Route::prefix('/admin')->name('admin.')->group(function(){
     Route::post('/get-posisilas',[SertifikasiController::class,'fetchPosisiLas']);
     Route::get('/view-file/{file}',[SertifikasiController::class,'viewFile']);
 });
+
+Route::get('/change-password',[ChangePassword::class,'changePassword']);
+Route::post('/change-password',[ChangePassword::class,'savePassword']);
 
 
 //registration route
