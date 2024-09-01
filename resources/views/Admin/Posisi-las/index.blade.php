@@ -1,12 +1,14 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Posisi Las</h3>
-                    <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/posisi-las/create" style="color: white">Tambah</a></button>
+                    <div class="card-tools">
+                        <button class="btn btn-tool btn-outline-info"><a
+                                href="/admin/posisi-las/create" style="color: white">Tambah Posisi Las</a></button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -33,7 +35,8 @@
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-posisi-las" data-posisiLasId="{{ $posisi->id }}"
+                                            <button class="btn btn-outline-danger delete-posisi-las"
+                                                data-posisiLasId="{{ $posisi->id }}"
                                                 data-posisiLasName="{{ $posisi->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
@@ -53,12 +56,11 @@
     <!-- /.row -->
 @endsection
 
-{{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-posisi-las').on('click', function() {
-                var tukId = $(this).attr('data-posisiLasId');
+                var posisiLasId = $(this).attr('data-posisiLasId');
                 Swal.fire({
                     title: 'Are You Sure?',
                     text: "delete " + $(this).attr('data-posisiLasName') +
@@ -78,4 +80,4 @@
             });
         });
     </script>
-@endsection
+@endpush

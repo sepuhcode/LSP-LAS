@@ -13,11 +13,13 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- jQuery -->
+    {{-- <script src={{ asset('admin_template/plugins/jquery/jquery.min.js') }}></script> --}}
     @stack('style')
 </head>
 
 
-<body>
+<body style="overflow-x: hidden">
     @include('layouts.header')
 
     @yield('content')

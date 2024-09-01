@@ -18,4 +18,9 @@ class PosisiLas extends Model
     {
         return $this->belongsTo(SkemaSertifikasi::class,'skema_sertifikasi_id','id');
     }
+
+    public function sertifikats(): BelongsTo
+    {
+        return $this->belongsTo(Sertifikasi::class,'posisi_las_id');
+    }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -6,7 +6,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Add User</h3>
+                    <h3 class="card-title">Edit User</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -15,7 +15,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">Name:</label>
+                            <label for="name">Nama:</label>
                             <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                 id="name" value="{{ old('name',$user->name) }}">
                             @error('name')
@@ -40,7 +40,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number:</label>
+                            <label for="phone">No.HP:</label>
                             <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
                                 id="phone" placeholder="Input Phone Number..." value="{{ old('phone',$user->phone) }}">
                             @error('phone')
@@ -48,14 +48,15 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="address">Address:</label>
+                            <label for="address">Alamat:</label>
                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3"
                                 placeholder="Input Address...">{{ old('address',$user->address) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="role">Choose a role:</label>
+                            <label for="role">Pilih Role:</label>
                             <select name="role" class="form-control @error('role') is-invalid @enderror">
                                 <option value="user" {{ $user->hasRole('user')? 'selected' : '' }}>User</option>
+                                <option value="tuk" {{ $user->hasRole('tuk')? 'selected' : '' }}>User TUK</option>
                                 <option value="asesor" {{ $user->hasRole('asesor')? 'selected' : ''  }}>Asesor</option>
                             </select>
                             @error('role')
@@ -65,8 +66,8 @@
                         <div class="form-group">
                             <label for="is_active">Status:</label>
                             <select name="is_active" class="form-control @error('is_active') is-invalid @enderror">
-                                <option value=1 {{ $user->is_active ? 'selected' : '' }}>Active</option>
-                                <option value=0 {{ !$user->is_active ? 'selected' : ''  }}>Inactive</option>
+                                <option value=1 {{ $user->is_active ? 'selected' : '' }}>Aktif</option>
+                                <option value=0 {{ !$user->is_active ? 'selected' : ''  }}>Nonaktif</option>
                             </select>
                             @error('is_active')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -74,7 +75,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>

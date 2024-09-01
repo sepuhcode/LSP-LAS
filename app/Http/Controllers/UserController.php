@@ -13,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index',[
-            'users' => User::all(),
+        return view('admin.user.index', [
+            'users' => User::with('roles')->get(), //eager load user dengan role nya
             'page' => 'User'
         ]);
     }
@@ -24,8 +24,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create',[
-            'page'=>'User'
+        return view('admin.user.create', [
+            'page' => 'User'
         ]);
     }
 
@@ -47,7 +47,7 @@ class UserController extends Controller
         $user = User::create($validatedData);
         $user->assignRole($request['role']);
 
-        return redirect('/admin/user')->with('success','Added');
+        return redirect('/admin/user')->with('success', 'Added');
     }
 
     /**
@@ -64,8 +64,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         // dd($user);
-        return view('admin.user.update',[
-            'user'=>$user
+        return view('admin.user.update', [
+            'user' => $user
         ]);
     }
 
@@ -92,12 +92,22 @@ class UserController extends Controller
         if ($user->getRoleNames()[0] != $request->role) {
             $user->syncRoles($request->role);
         }
+
+        if($request->role == 'asesor'){
+            $url = 'admin.user-asesor';
+        }
+        else if($request->role == 'tuk'){
+            $url = 'admin.user-tuk';
+        }
+        else if ($request->role == 'user') {
+            $url = 'admin.user-user';
+        }
         // hash password baru
         // $request->filled('password') ? $validatedData['password'] = Hash::make($validatedData['password']) : '';
 
-        User::where('id', $user->id)
-            ->update($validatedData);
-        return redirect('/admin/user')->with('success','Updated');
+        $user->update($validatedData);
+        // return redirect('/admin/user')->with('success', 'Updated');
+        return redirect(route($url))->with('success', 'Updated');
     }
 
     /**
@@ -105,7 +115,29 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        User::destroy($user->id);
-        return redirect('/admin/user')->with('success','Deleted');
+        // User::destroy($user->id);
+        // return redirect('/admin/user')->with('success','Deleted');
+    }
+
+    public function userAsesor()
+    {
+        return view('admin.user.index2', [
+            'users' => User::role('asesor')->get(), 
+            'page' => 'Asesor',
+        ]);
+    }
+    public function userTuk()
+    {
+        return view('admin.user.index2', [
+            'users' => User::role('tuk')->get(), 
+            'page' => 'User TUK'
+        ]);
+    }
+    public function userUser()
+    {
+        return view('admin.user.index2', [
+            'users' => User::role('user')->get(), 
+            'page' => 'User'
+        ]);
     }
 }
