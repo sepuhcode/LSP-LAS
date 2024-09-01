@@ -64,27 +64,13 @@
                         <div class="form-group">
                             <label for="posisi_las_id">Posisi Las</label>
                             <select name="posisi_las_id"
-                                class="form-control select2bs4 posisi-las @error('posisi_las_id') is-invalid @enderror" required>
-                                {{-- @foreach ($posisis as $posisi)
-                                    <option value="{{ $posisi->id }}">{{ $posisi->name }}</option>
-                                @endforeach --}}
+                                class="form-control select2bs4 posisi-las @error('posisi_las_id') is-invalid @enderror"
+                                required>
                             </select>
                             @error('posisi_las_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="posisi_las_id">Posisi Las</label>
-                            <select name="posisi_las_id"
-                                class="form-control posisi-las @error('posisi_las_id') is-invalid @enderror" required>
-                                @foreach ($posisis as $posisi)
-                                    <option value="{{ $posisi->id }}">{{ $posisi->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('posisi_las_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div> --}}
                         <div class="form-group">
                             <label for="tuk">TUK</label>
                             <input name="tuk" type="text" class="form-control" id="tuk" placeholder="TUK..."
@@ -137,8 +123,8 @@
 
                         <div class="form-group">
                             <label for="owner_id">Pemilik Sertifikat</label>
-                            <select name="owner_id"
-                                class="form-control select2bs4 @error('owner_id') is-invalid @enderror" required>
+                            <select name="owner_id" class="form-control select2bs4 @error('owner_id') is-invalid @enderror"
+                                required>
                                 @foreach ($owners as $owner)
                                     @if ($loop->iteration == 1)
                                         <option value="{{ $owner->id }}" selected="selected">{{ $owner->name }}
@@ -158,7 +144,8 @@
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input id="file_scan_sertifikat" name="file_scan_sertifikat" type="file"
-                                        class="custom-file-input @error('file_scan_sertifikat') is-invalid @enderror" accept="application/pdf">
+                                        class="custom-file-input @error('file_scan_sertifikat') is-invalid @enderror"
+                                        accept="application/pdf">
                                     <label class="custom-file-label" for="file_scan_sertifikat">Pilih File</label>
                                 </div>
 
@@ -171,7 +158,7 @@
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
-                    <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+                    <input id="signup-token" name="_token" type="hidden" value="{{ csrf_token() }}">
                 </form>
             </div>
             <!-- /.card-body -->
@@ -202,28 +189,27 @@
                 var skemaId = this.value;
                 $('.posisi-las').html('');
 
-                if(skemaId){
-                $.ajax({
-                    url: "{{ url('admin/get-posisilas') }}",
-                    type: "POST",
-                    data: {
-                        _token:  $('#signup-token').val(),
-                        skema_id: skemaId,
-                    },
-                    dataType: 'json',
-                    success: function(result) {
-                        $('.posisi-las').empty();
-                        $.each(result.posisiLas, function(index, value) {
-                            $('.posisi-las').append('<option value="' + value.id +
-                                '">' + value
-                                .name + '</option>');
-                        });
-                    }
-                });
-            }
-            else{
-                $('.posisi-las').empty();
-            }
+                if (skemaId) {
+                    $.ajax({
+                        url: "{{ url('admin/get-posisilas') }}",
+                        type: "POST",
+                        data: {
+                            _token: $('#signup-token').val(),
+                            skema_id: skemaId,
+                        },
+                        dataType: 'json',
+                        success: function(result) {
+                            $('.posisi-las').empty();
+                            $.each(result.posisiLas, function(index, value) {
+                                $('.posisi-las').append('<option value="' + value.id +
+                                    '">' + value
+                                    .name + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('.posisi-las').empty();
+                }
 
             });
 

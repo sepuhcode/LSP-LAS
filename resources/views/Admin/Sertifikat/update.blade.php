@@ -65,9 +65,6 @@
                             <label for="posisi_las_id">Posisi Las</label>
                             <select name="posisi_las_id"
                                 class="form-control select2bs4 posisi-las @error('posisi_las_id') is-invalid @enderror" required>
-                                {{-- @foreach ($posisis as $posisi)
-                                    <option value="{{ $posisi->id }}" {{ $sertifikat->posisi_las_id == $posisi->id ? 'selected':'' }}>{{ $posisi->name }}</option>
-                                @endforeach --}}
                             </select>
                             @error('posisi_las_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -99,7 +96,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tgl_sertifikat">Tanggal Sertifikat </label>
-                            <input name="tgl_sertifikat" type="date" class="form-control" id="tgl_sertifikat" 
+                            <input name="tgl_sertifikat" type="date" class="form-control" id="tgl_sertifikat"
                                 value="{{ old('tgl_sertifikat',$sertifikat->tgl_sertifikat) }}" required>
                             @error('tgl_sertifikat')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -136,7 +133,7 @@
                                     <input id="file_scan_sertifikat" name="file_scan_sertifikat" type="file" class="custom-file-input @error('file_scan_sertifikat') is-invalid @enderror" accept="application/pdf">
                                     <label class="custom-file-label" for="file_scan_sertifikat">Pilih File</label>
                                 </div>
-                               
+
                             </div>
                             @error('file_scan_sertifikat')
                                 <div class="alert alert-danger">{{ $message }}</div>

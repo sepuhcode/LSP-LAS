@@ -17,11 +17,11 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-        
-        $sertifikats = Sertifikasi::with(['skemaSertifikasi:id,name','posisiLas:id,name','asesor:id,name'])->get();
-        return view('Admin.sertifikat.index',[
-            'sertifikats'=>$sertifikats,
-            'page'=>'Sertifikat'
+
+        $sertifikats = Sertifikasi::with(['skemaSertifikasi:id,name', 'posisiLas:id,name', 'asesor:id,name'])->get();
+        return view('Admin.sertifikat.index', [
+            'sertifikats' => $sertifikats,
+            'page' => 'Sertifikat'
         ]);
     }
 
@@ -31,14 +31,12 @@ class SertifikasiController extends Controller
     public function create()
     {
         $skemas = SkemaSertifikasi::all();
-        // $posisis = PosisiLas::all();
         $asesors = User::role('asesor')->get();
-        $owners = User::role(['user','tuk'])->get();
-        return view('Admin.sertifikat.create',[
-            'skemas'=>$skemas,
-            // 'posisis'=>$posisis,
-            'asesors'=>$asesors,
-            'owners'=>$owners,
+        $owners = User::role(['user', 'tuk'])->get();
+        return view('Admin.sertifikat.create', [
+            'skemas' => $skemas,
+            'asesors' => $asesors,
+            'owners' => $owners,
             'page' => 'Sertifikat'
         ]);
     }
@@ -49,27 +47,27 @@ class SertifikasiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'=>'string|required',
-            'no_sertifikat'=>'string|required|unique:sertifikasis',
-            'no_reg_sertifikat'=>'string|required',
-            'skema_sertifikasi_id'=>'required|integer',
-            'posisi_las_id'=>'required|integer',
-            'tuk'=>'string|required',
-            'no_blangko'=>'string',
-            'tgl_uji'=>'string',
-            'tgl_sertifikat'=>'date|required',
-            'asesor_id'=>'required|integer',
-            'owner_id'=>'integer',
-            'file_scan_sertifikat'=>'required|file|mimes:pdf|max:512'
+            'name' => 'string|required',
+            'no_sertifikat' => 'string|required|unique:sertifikasis',
+            'no_reg_sertifikat' => 'string|required',
+            'skema_sertifikasi_id' => 'required|integer',
+            'posisi_las_id' => 'required|integer',
+            'tuk' => 'string|required',
+            'no_blangko' => 'string',
+            'tgl_uji' => 'string',
+            'tgl_sertifikat' => 'date|required',
+            'asesor_id' => 'required|integer',
+            'owner_id' => 'integer',
+            'file_scan_sertifikat' => 'required|file|mimes:pdf|max:512'
         ]);
 
-        $fileName = 'sertifikat-'. $request->no_sertifikat.'-' . time() . '.' . $request->file_scan_sertifikat->extension();
+        $fileName = 'sertifikat-' . $request->no_sertifikat . '-' . time() . '.' . $request->file_scan_sertifikat->extension();
         $validatedData['file_scan_sertifikat'] = $fileName;
 
         Sertifikasi::create($validatedData);
         $request->file_scan_sertifikat->move(public_path('scan-files'), $fileName);
 
-        return redirect('/admin/sertifikat')->with('success','Sertifikat Berhasil Ditambahkan');
+        return redirect('/admin/sertifikat')->with('success', 'Sertifikat Berhasil Ditambahkan');
     }
 
     /**
@@ -86,16 +84,16 @@ class SertifikasiController extends Controller
     public function edit(Sertifikasi $sertifikat)
     {
         $skemas = SkemaSertifikasi::all();
-        // $posisis = PosisiLas::where('skema_sertifikasi_id',$sertifikat->skema_sertifikasi_id)->get();
+        $posisis = PosisiLas::where('skema_sertifikasi_id', $sertifikat->skema_sertifikasi_id)->get();
         $asesors = User::role('asesor')->get();
-        $owners = User::role(['user','tuk'])->get();
-        return view('Admin.sertifikat.update',[
-            'sertifikat'=>$sertifikat,
-            'skemas'=>$skemas,
-            // 'posisis'=>$posisis,
-            'asesors'=>$asesors,
-            'owners'=>$owners,
-            'page'=>'Sertifikat'
+        $owners = User::role(['user', 'tuk'])->get();
+        return view('Admin.sertifikat.update', [
+            'sertifikat' => $sertifikat,
+            'skemas' => $skemas,
+            'posisis' => $posisis,
+            'asesors' => $asesors,
+            'owners' => $owners,
+            'page' => 'Sertifikat'
         ]);
     }
 
@@ -106,37 +104,36 @@ class SertifikasiController extends Controller
     {
         $rules = [];
 
-        $request->name != $sertifikat->name ? $rules['name']='string|required':'';
-        $request->no_sertifikat != $sertifikat->no_sertifikat ? $rules['no_sertifikat']='string|required|unique:sertifikasis':'';
-        $request->no_reg_sertifikat != $sertifikat->no_reg_sertifikat ? $rules['no_reg_sertifikat'] = 'string|required':'';
-        $request->skema_sertifikasi_id != $sertifikat->skema_sertifikasi_id ? $rules['skema_sertifikasi_id'] = 'integer|required':'';
-        $request->posisi_las_id != $sertifikat->posisi_las_id ? $rules['posisi_las_id'] = 'integer|required':'';
-        $request->tuk != $sertifikat->tuk? $rules['tuk'] = 'string|required':'';
-        $request->no_blangko != $sertifikat->no_blangko ? $rules['no_blangko'] = 'string':'';
-        $request->tgl_uji != $sertifikat->tgl_uji ? $rules['tgl_uji'] = 'string':'';
-        $request->tgl_sertifikat != $sertifikat->tgl_sertifikat ? $rules['tgl_sertifikat'] = 'date|required':'';
-        $request->asesor_id != $sertifikat->asesor_id ? $rules['asesor_id'] = 'integer|required':'';
-        $request->owner_id != $sertifikat->owner_id ? $rules['owner_id'] = 'integer':'';
+        $request->name != $sertifikat->name ? $rules['name'] = 'string|required' : '';
+        $request->no_sertifikat != $sertifikat->no_sertifikat ? $rules['no_sertifikat'] = 'string|required|unique:sertifikasis' : '';
+        $request->no_reg_sertifikat != $sertifikat->no_reg_sertifikat ? $rules['no_reg_sertifikat'] = 'string|required' : '';
+        $request->skema_sertifikasi_id != $sertifikat->skema_sertifikasi_id ? $rules['skema_sertifikasi_id'] = 'integer|required' : '';
+        $request->posisi_las_id != $sertifikat->posisi_las_id ? $rules['posisi_las_id'] = 'integer|required' : '';
+        $request->tuk != $sertifikat->tuk ? $rules['tuk'] = 'string|required' : '';
+        $request->no_blangko != $sertifikat->no_blangko ? $rules['no_blangko'] = 'string' : '';
+        $request->tgl_uji != $sertifikat->tgl_uji ? $rules['tgl_uji'] = 'string' : '';
+        $request->tgl_sertifikat != $sertifikat->tgl_sertifikat ? $rules['tgl_sertifikat'] = 'date|required' : '';
+        $request->asesor_id != $sertifikat->asesor_id ? $rules['asesor_id'] = 'integer|required' : '';
+        $request->owner_id != $sertifikat->owner_id ? $rules['owner_id'] = 'integer' : '';
 
         if ($request->hasFile('file_scan_sertifikat')) {
-            $rules['file_scan_sertifikat']='required|file|mimes:pdf|max:512';
+            $rules['file_scan_sertifikat'] = 'required|file|mimes:pdf|max:512';
         }
 
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('file_scan_sertifikat')) {
-            if (file_exists(public_path('scan-files/'.$sertifikat->file_scan_sertifikat))) {
-                unlink(public_path('scan-files/'.$sertifikat->file_scan_sertifikat));
+            if (file_exists(public_path('scan-files/' . $sertifikat->file_scan_sertifikat))) {
+                unlink(public_path('scan-files/' . $sertifikat->file_scan_sertifikat));
             }
-            $newFileName = 'sertifikat-'. $request->no_sertifikat.'-' . time() . '.' . $request->file_scan_sertifikat->extension();
+            $newFileName = 'sertifikat-' . $request->no_sertifikat . '-' . time() . '.' . $request->file_scan_sertifikat->extension();
             $updatedData['file_scan_sertifikat'] = $newFileName;
-            $request->file_scan_sertifikat->move(public_path('scan-files'),$newFileName);
+            $request->file_scan_sertifikat->move(public_path('scan-files'), $newFileName);
         }
 
         Sertifikasi::whereId($sertifikat->id)->update($updatedData);
 
-        return redirect('admin/sertifikat')->with('success','Sertifikat Berhasil Diupdate');
-
+        return redirect('admin/sertifikat')->with('success', 'Sertifikat Berhasil Diupdate');
     }
 
     /**
@@ -153,28 +150,27 @@ class SertifikasiController extends Controller
 
     public function showImport()
     {
-        return view('admin.sertifikat.import',[
-            'page'=>'Sertifikat'
+        return view('admin.sertifikat.import', [
+            'page' => 'Sertifikat'
         ]);
     }
 
     public function saveImport(Request $request)
     {
-        Excel::import(new ImportSertifikat,$request->file('excelFile'));
+        Excel::import(new ImportSertifikat, $request->file('excelFile'));
 
-        return redirect('/admin/sertifikat')->with('success','Import Data Berhasil');
+        return redirect('/admin/sertifikat')->with('success', 'Import Data Berhasil');
     }
 
     public function fetchPosisiLas(Request $request)
     {
         $data['posisiLas'] = SkemaSertifikasi::find($request->skema_id)->posisis;
-         return response()->json($data);
-
+        return response()->json($data);
     }
 
     public function viewFile(Request $request)
     {
-        $filePath = public_path('scan-files/'.$request->file);
+        $filePath = public_path('scan-files/' . $request->file);
         return response()->file($filePath);
     }
 }
