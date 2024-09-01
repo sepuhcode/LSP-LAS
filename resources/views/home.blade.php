@@ -166,12 +166,14 @@
         .tuk-box-img {
             border: 3px #d9d9d9 solid;
         }
+
         .tuk {
             padding: 10px;
             background-color: #FEFEFE;
             color: #FF2F2F;
             font-weight: bold;
         }
+
         .tuk * {
             cursor: pointer;
         }
@@ -201,6 +203,7 @@
             color: red;
             margin-bottom: 70px;
         }
+
         .text-home-center-p {
             margin-top: 20px;
             margin-left: 150px;
@@ -222,6 +225,10 @@
             display: inline-block;
         }
 
+        .slider-wrapper h1 {
+            font-size: 34pt;
+        }
+
         @media (max-width: 576px) {
 
             #div-tuk {
@@ -234,12 +241,12 @@
             }
 
             .tuk h2 {
-                font-size: 12pt;
+                font-size: 10pt;
                 margin-bottom: 0px;
             }
 
             .tuk p {
-                font-size: 8pt;
+                font-size: 7pt;
             }
 
             #gambar-home-las {
@@ -272,7 +279,7 @@
 
             .visi-misi-text {
                 width: 95%;
-                font-size: 11pt;
+                font-size: 10pt;
                 margin: 10px;
             }
 
@@ -301,7 +308,7 @@
                 margin-left: 0px;
                 margin-bottom: 20px;
                 text-align: center;
-                font-size: 19pt;
+                font-size: 12pt;
             }
 
             .text-home-center-p {
@@ -309,6 +316,10 @@
                 margin-left: 0px;
                 text-align: center;
                 font-size: 10pt;
+            }
+
+            .slider-wrapper h1 {
+                font-size: 12pt;
             }
         }
     </style>
@@ -330,11 +341,11 @@
         <div class="carousel-inner">
             @forelse ($carousels as $carousel)
                 <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
-                    <img src="{{ asset('images/carousel-img/' . $carousel->image) }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('Images/carousel-img/' . $carousel->image) }}" class="d-block w-100" alt="...">
                 </div>
             @empty
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/Content-Dashboard1.png') }}" class="d-block w-100" alt="dashboard image">
+                    <img src="{{ asset('Images/Content-Dashboard1.png') }}" class="d-block w-100" alt="dashboard image">
                 </div>
             @endforelse
         </div>
@@ -376,14 +387,14 @@
         </div>
 
         <div class="row justify-content-center p-0" style="width: 80%">
-            {{-- @foreach ($tuks as $tuk)
-                <div class="col-2 p-3">
+            @foreach ($tuks as $tuk)
+                <div class="col-lg-2 col-4 p-3">
                     <div class="tuk-box-img">
-                        <img width="100%" height="100%" src="{{ asset('Images/tuk-img/' . $tuk->image) }}" />
+                        <img width="100%" height="135px" src="{{ asset('Images/tuk-img/' . $tuk->image) }}" />
                     </div>
                 </div>
-            @endforeach --}}
-            <div class="col-lg-2 col-4 p-3 ">
+            @endforeach
+            {{-- <div class="col-lg-2 col-4 p-3 ">
                 <div class="tuk-box-img">
                     <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
                 </div>
@@ -412,19 +423,7 @@
                 <div class="tuk-box-img">
                     <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
                 </div>
-            </div>
-        </div>
-        <div class="row justify-content-center p-0" style="width: 80%">
-            <div class="col-lg-2 col-4 p-3">
-                <div class="tuk-box-img">
-                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
-                </div>
-            </div>
-            <div class="col-lg-2 col-4 p-3">
-                <div class="tuk-box-img">
-                    <img width="100%" height="100%" src="{{ asset('Images/tuk-img/tuk1705123689.png') }}" />
-                </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     </div>
@@ -556,13 +555,13 @@
             </div>
         </div>
     </div>
-    <div class="row mx-auto px-0 py-5 m-0" style="width: 80%;">
+    <div class="row mx-auto px-0 py-5 m-0" style="width: 80%; ">
         <div class="col-12">
             <section id="slider-section">
                 <div class="container">
                     <div class="subcontainer">
                         <div class="slider-wrapper">
-                            <h1 class="fw-semibold fs-3 text-center" style="color: red">Tim Kami</h1>
+                            <h1 class="fw-semibold text-center" style="color: red">Tim Kami</h1>
                             <br>
                             <div class="slider"></div>
                             <div id="controls">
@@ -585,7 +584,7 @@
 
         // show image after load dom
         $(document).ready(function() {
-            const imageUrl = "{{ asset('images/mampu-bersaing.png') }}";
+            const imageUrl = "{{ asset('Images/mampu-bersaing.png') }}";
             const imgElement = document.createElement("img");
             imgElement.src = imageUrl;
             imgElement.classList.add("img-fluid");
@@ -602,10 +601,10 @@
         accordionItems.forEach((item, index) => {
             const button = item.querySelector(".accordion-button");
             const images = [
-                "{{ asset('images/mampu-bersaing.png') }}",
-                "{{ asset('images/mengikuti-perkembangan.png') }}",
-                "{{ asset('images/membina-tempat.png') }}",
-                "{{ asset('images/menjalin hub.png') }}",
+                "{{ asset('Images/mampu-bersaing.png') }}",
+                "{{ asset('Images/mengikuti-perkembangan.png') }}",
+                "{{ asset('Images/membina-tempat.png') }}",
+                "{{ asset('Images/menjalin hub.png') }}",
             ];
 
             button.addEventListener("click", () => {

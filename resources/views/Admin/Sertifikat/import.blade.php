@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -18,7 +18,7 @@
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input id="excelFile" name="excelFile" type="file"
-                                        class="custom-file-input @error('excelFile') is-invalid @enderror">
+                                        class="custom-file-input @error('excelFile') is-invalid @enderror" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
                                     <label class="custom-file-label" for="excelFile">Choose file</label>
                                 </div>
                                 {{-- <div class="input-group-append">

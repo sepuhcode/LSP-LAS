@@ -49,9 +49,9 @@ class CarouselController extends Controller
         Carousel::create($validatedData);
 
 
-        $request->image->move(public_path('images/carousel-img'), $fileName);
+        $request->image->move(public_path('Images/carousel-img'), $fileName);
 
-        return redirect('/admin/carousel')->with('success','Uploaded');
+        return redirect('/admin/gambar-carousel')->with('success','Carousel Berhasil Diupload');
     }
 
     /**
@@ -73,25 +73,25 @@ class CarouselController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Carousel $carousel)
+    public function update(Request $request, Carousel $gambar_carousel)
     {
         $updatedData = [
-            'visibility' => !$carousel->visibility
+            'visibility' => !$gambar_carousel->visibility
         ];
-        Carousel::whereId($carousel->id)->update($updatedData);
-        return redirect('/admin/carousel')->with('success','Updated');
+        Carousel::whereId($gambar_carousel->id)->update($updatedData);
+        return redirect('/admin/gambar-carousel')->with('success','Carousel Berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Carousel $carousel)
+    public function destroy(Carousel $gambar_carousel)
     {
 
-        Carousel::destroy($carousel->id);
-        if (file_exists(public_path('images/carousel-img/' . $carousel->image))) {
-            unlink(public_path('images/carousel-img/' . $carousel->image));
+        Carousel::destroy($gambar_carousel->id);
+        if (file_exists(public_path('Images/carousel-img/' . $gambar_carousel->image))) {
+            unlink(public_path('Images/carousel-img/' . $gambar_carousel->image));
         }
-        return redirect('/admin/carousel')->with('success','Deleted');
+        return redirect('/admin/gambar-carousel')->with('success','Carousel Berhasil Dihapus');
     }
 }

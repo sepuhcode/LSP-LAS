@@ -13,7 +13,7 @@ class PosisiLasController extends Controller
      */
     public function index()
     {
-        $positions = PosisiLas::all();
+        $positions = PosisiLas::with('skema:id,name')->get();
         return view('admin.posisi-las.index',[
             'posisis'=>$positions,
             'page'=>'Posisi Las']);
@@ -88,8 +88,9 @@ class PosisiLasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PosisiLas $posisiLas)
+    public function destroy(PosisiLas $posisiLa)
     {
-        dd('posisi las destroy');
+        $posisiLa->delete();
+        return redirect('/admin/posisi-las')->with('success', $posisiLa->name.' berhasil dihapus');
     }
 }

@@ -1,8 +1,14 @@
-@extends('admin.layout')
+@extends('Admin.layout')
+
+@push('style')
+    <!-- summernote -->
+    <link rel="stylesheet" href={{ asset('admin_template/plugins//summernote/summernote-bs4.min.css') }}>
+@endpush
+
 @section('content')
     <div class="row">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-md-9 col-sm">
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
@@ -31,8 +37,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="deskripsi">Deskripsi</label>
-                            <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="3">{{ old('deskripsi', $skema->deskripsi) }}</textarea>
+                            <label for="summernote">Deskripsi</label>
+                            <textarea name="deskripsi" id="summernote" class="form-control @error('deskripsi') is-invalid @enderror" rows="3">{{ old('deskripsi', $skema->deskripsi) }}</textarea>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -47,3 +53,24 @@
     </div>
 
 @endsection
+
+@push('script')
+    <!-- Summernote -->
+    <script src={{ asset('admin_template/plugins/summernote/summernote-bs4.min.js') }}></script>
+    <script>
+        // Summernote
+        $('#summernote').summernote({
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph', 'height']],
+                ['table', ['table']],
+                ['insert', ['link']],
+                ['view', ['fullscreen']],
+            ],
+        })
+    </script>
+@endpush

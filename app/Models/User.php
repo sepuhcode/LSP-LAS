@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -48,8 +49,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function sertifikasis(): HasMany
+    public function sertifikats(): HasMany
     {
-        return $this->hasMany(Sertifikasi::class);
+        return $this->hasMany(Sertifikasi::class,'asesor_id','id');
+    }
+
+    public function userSertifikats(): HasMany
+    {
+        return $this->hasMany(Sertifikasi::class,'owner_id');
+    }
+
+    public function tuk():HasOne
+    {
+        return $this->hasOne(Tuk::class,'user_tuk_id');
     }
 }

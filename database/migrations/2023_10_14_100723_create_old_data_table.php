@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('tgl_sertifikat')->nullable();
             $table->string('asesor')->nullable();
             $table->string('no_skema')->nullable();
+            $table->string('file_scan_sertifikat')->nullable();
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -14,14 +14,14 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
+                                <th>Nama</th>
                                 <th>Email</th>
-                                <th>Phone</th>
-                                <th>Address</th>
+                                <th>No.HP</th>
+                                <th>Alamat</th>
                                 <th>Role</th>
                                 <th>Status</th>
-                                <th>Update</th>
-                                <th>Delete</th>
+                                <th>Edit</th>
+                                <th>Hapus</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
@@ -36,15 +36,15 @@
                                         <td id="td-center">{{ $user->address }}</td>
                                         <td id="td-center">{{ $user->getRoleNames()[0] }}</td>
                                         <td id="td-center">{{ $user->is_active ? 'Active' : 'Inactive' }}</td>
-                                        
+
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/user/{{ $user->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-user" data-userId="{{ $user->id }}"
-                                                data-userName="{{ $user->name }}">
+                                            <button class="btn btn-outline-danger delete-user"
+                                                data-userId="{{ $user->id }}" data-userName="{{ $user->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -63,8 +63,7 @@
     <!-- /.row -->
 @endsection
 
-{{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-user').on('click', function() {
@@ -88,4 +87,4 @@
             });
         });
     </script>
-@endsection
+@endpush

@@ -1,12 +1,14 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Foto Karyawan</h3>
-                    <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/foto-karyawan/create" style="color: white">Upload Foto</a></button>
+                    <div class="card-tools">
+                        <button class="btn btn-tool btn-outline-info"><a
+                                href="/admin/gambar-karyawan/create" style="color: white">Upload Foto</a></button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -29,15 +31,16 @@
                                         <td id="td-center">{{ $loop->iteration }}</td>
                                         <td id="td-center">{{ $karyawan->name }}</td>
                                         <td id="td-center">{{ $karyawan->department }}</td>
-                                        <td id="td-center"><img src={{ asset('images/our-team/' . $karyawan->image) }}
+                                        <td id="td-center"><img src={{ asset('Images/our-team/' . $karyawan->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center"><button class="btn btn-outline-success"><a
-                                                    href="/admin/foto-karyawan/{{ $karyawan->id }}/edit"
+                                                    href="/admin/gambar-karyawan/{{ $karyawan->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
                                         {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            <button class="btn btn-outline-danger delete-karyawan" data-karyawanId="{{ $karyawan->id }}"
+                                            <button class="btn btn-outline-danger delete-karyawan"
+                                                data-karyawanId="{{ $karyawan->id }}"
                                                 data-karyawanName="{{ $karyawan->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
@@ -57,8 +60,7 @@
     <!-- /.row -->
 @endsection
 
-{{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-karyawan').on('click', function() {
@@ -75,11 +77,11 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/foto-karyawan/' + karyawanId);
+                        $('#form-delete').attr('action', '/admin/gambar-karyawan/' + karyawanId);
                         $('#form-delete').submit();
                     }
                 });
             });
         });
     </script>
-@endsection
+@endpush

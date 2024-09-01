@@ -1,12 +1,14 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">TUK</h3>
-                    <button class="btn btn-outline-info" style="position: absolute; right:20px; top:15px"><a
-                            href="/admin/tuk/create" style="color: white">Upload TUK</a></button>
+                    <div class="card-tools">
+                        <button class="btn btn-tool btn-outline-info"><a
+                                href="/admin/tuk/create" style="color: white">Upload TUK</a></button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -16,6 +18,7 @@
                                 <th>No</th>
                                 <th>Nama TUK</th>
                                 <th>Alamat</th>
+                                <th>Pemilik TUK</th>
                                 <th>Gambar</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
@@ -29,24 +32,16 @@
                                         <td id="td-center">{{ $loop->iteration }}</td>
                                         <td id="td-center">{{ $tuk->name }}</td>
                                         <td id="td-center">{{ $tuk->address }}</td>
-                                        <td id="td-center"><img src={{ asset('images/tuk-img/' . $tuk->image) }}
+                                        <td id="td-center">{{ $tuk->tukOwner?->name==null?'':$tuk->tukOwner->name }}</td>
+                                        <td id="td-center"><img src={{ asset('Images/tuk-img/' . $tuk->image) }}
                                                 alt="" width="150px"></td>
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/tuk/{{ $tuk->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
                                                         class="fas fa-edit"></i></a></button></td>
-                                        {{-- <td>hehehe</td> --}}
                                         <td id="td-center">
-                                            {{-- <form action="/admin/tuk/{{ $tuk->id }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-outline-danger" type="submit"
-                                                    onClick="return confirm('yakin mau dihapus?');"><i
-                                                        class="fas fa-trash-alt"></i></button>
-                                            </form> --}}
-
-                                            <button class="btn btn-outline-danger delete-tuk" data-tukId="{{ $tuk->id }}"
-                                                data-tukName="{{ $tuk->name }}">
+                                            <button class="btn btn-outline-danger delete-tuk"
+                                                data-tukId="{{ $tuk->id }}" data-tukName="{{ $tuk->name }}">
                                                 <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -66,7 +61,7 @@
 @endsection
 
 {{-- script sweetalert --}}
-@section('optional_script')
+@push('script')
     <script>
         $(function() {
             $('.delete-tuk').on('click', function() {
@@ -90,4 +85,4 @@
             });
         });
     </script>
-@endsection
+@endpush
