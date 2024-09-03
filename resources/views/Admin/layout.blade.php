@@ -358,6 +358,14 @@
                           </a>
                         </li>
 
+                        <li class="nav-item">
+                          <a href="/admin/sertifikat" class="nav-link {{ request()->is('admin/sertifikat*') ? 'active' : '' }}">
+                              <p>
+                                  Sertifikat
+                              </p>
+                          </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

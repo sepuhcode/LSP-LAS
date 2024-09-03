@@ -165,6 +165,10 @@ class SearchController extends Controller
         ]);
     }
 
+    public function showPendaftaran(){
+        return view('Pendaftaran.index');
+    }
+
     public function showAbout(){
 
         $karyawans = FotoKaryawan::all();
