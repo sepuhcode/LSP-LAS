@@ -31,7 +31,7 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
                 // $sertifikat['user_id'] = $row[11];
 
                 if (!empty($row[10])) {
-                    $date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($collection[3][10])->format('Y-m-d h:i:s'); //convert excel date (int) ke date format
+                    $date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($collection[$index][10])->format('Y-m-d h:i:s'); //convert excel date (int) ke date format
 
                 }
                 else{
@@ -52,7 +52,8 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
                 // $sertifikat['tgl_sertifikat'] = !empty($row[10]) ? $date : '';
                 $sertifikat['tgl_sertifikat'] = $date;
                 // $sertifikat['user_id'] = !empty($row[11]) ? $row[11] : '';
-                $sertifikat['asesor_id'] = $row[11]; //random number buat test
+                $sertifikat['asesor_id'] = $row[11]; //asesor1 id
+                $sertifikat['asesor2_id'] = $row[12]; //asesor2 id
                 $sertifikat['file_scan_sertifikat'] = NULL; 
 
                 // dd($sertifikat);

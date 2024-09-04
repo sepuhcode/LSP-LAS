@@ -471,10 +471,10 @@
         $(function() {
             $('#example2').DataTable({
                 "paging": true,
-                "pageLength": 25,
-                "lengthChange": false,
+                // "pageLength": 25,
+                "lengthChange": true,
                 "searching": true,
-                "ordering": false,
+                "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
@@ -482,9 +482,9 @@
 
             $('#table-without-search').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": false,
-                "ordering": false,
+                "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,

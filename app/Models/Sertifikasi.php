@@ -33,6 +33,10 @@ class Sertifikasi extends Model
     {
         return $this->belongsTo(User::class,'asesor_id');
     }
+    public function asesor2(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'asesor2_id');
+    }
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class,'owner_id');

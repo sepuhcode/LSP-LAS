@@ -33,7 +33,8 @@
                                 <th>No.Blangko</th>
                                 <th>Tanggal Uji</th>
                                 <th>Tanggal Sertifikat</th>
-                                <th>Asesor</th>
+                                <th>Asesor 1</th>
+                                <th>Asesor 2</th>
                                 <th>Scan Sertifikat</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
@@ -55,8 +56,11 @@
                                         <td id="td-center">{{ $sertifikat->tgl_uji }}</td>
                                         <td id="td-center">{{ strtotime('01-01-1970')==strtotime($sertifikat->tgl_sertifikat)?'': date('d-m-Y',strtotime($sertifikat->tgl_sertifikat)) }}</td>
                                         <td id="td-center">{{ $sertifikat->asesor->name }}</td>
-                                        <td id="td-center"><button target="_blank" class="btn btn-view btn-outline-success"><a target="_blank" href="/admin/view-file/{{ $sertifikat->file_scan_sertifikat }}">view</a></button></td>
-
+                                        <td id="td-center">{{ $sertifikat->asesor2!=null?$sertifikat->asesor2->name:'' }}</td>
+                                        <td id="td-center">
+                                            @if ($sertifikat->file_scan_sertifikat != null)
+                                            <button target="_blank" class="btn btn-view btn-outline-success"><a style="color: white" target="_blank" href="/admin/view-file/{{ $sertifikat->file_scan_sertifikat }}">view</a></button></td>
+                                            @endif
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/sertifikat/{{ $sertifikat->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i
