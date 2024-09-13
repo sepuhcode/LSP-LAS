@@ -6,7 +6,7 @@ use App\Models\SkemaSertifikasi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TestSkemaSeeder extends Seeder
+class SkemaSeeder extends Seeder
 {
     /**
      * Run the database seeds.

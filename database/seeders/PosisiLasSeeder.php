@@ -6,7 +6,7 @@ use App\Models\PosisiLas;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TestPosisiLasSeeder extends Seeder
+class PosisiLasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -357,6 +357,5 @@ class TestPosisiLasSeeder extends Seeder
             'name'=>'5G SMAW-FCAW',
             'skema_sertifikasi_id'=>'3'
         ]);
-       
     }
 }

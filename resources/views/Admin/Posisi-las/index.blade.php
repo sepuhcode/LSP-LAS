@@ -12,7 +12,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="table-without-search" class="table table-bordered table-hover" style="text-align: center; ">
+                    <table id="example2" class="table table-bordered table-hover" style="text-align: center; ">
                         <thead>
                             <tr>
                                 <th>ID</th>
