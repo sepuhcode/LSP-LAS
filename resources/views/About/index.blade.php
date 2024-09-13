@@ -97,7 +97,18 @@
         }
 
         .main-text {
-            margin-left: 40px;
+            /* margin-left: 40px; */
+        }
+
+        .right-home-icons-wrapper {
+            width: fit-content;
+        }
+
+        .left-home-icons-wrapper {
+            width: 100%;
+            max-width: calc(553px + 20rem);
+            padding-block: .5rem;
+            position: relative;
         }
 
         @media (max-width: 576px) {
@@ -127,32 +138,42 @@
         }
 
         .icon-home1 {
-            margin: 80px 0 0 -300px;
+            width: 60%;
+            display: block;
+            /* margin: 80px 0 0 -300px;
             width: 453px;
             height: 453px;
-            z-index: 1;
+            z-index: 1; */
         }
 
         .icon-home2 {
-            top: 0px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            /* top: 0px;
             left: -200px;
             width: 553px;
             height: 309px;
             margin-top: -750px;
             z-index: 2;
-            position: relative;
+            position: relative; */
         }
 
         .icon-home3 {
-            margin: -380px 0 0 -470px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70%;
+            /* margin: -380px 0 0 -470px;
             width: 553px;
             height: 309px;
             position: relative;
-            z-index: 3;
+            z-index: 3; */
         }
 
         .text-home-center {
-            margin-left: 150px;
+            /* margin-left: 150px; */
             margin-top: 80px;
             font-weight: bold;
             font-size: 40pt;
@@ -161,7 +182,7 @@
         }
         .text-home-center-p {
             margin-top: 20px;
-            margin-left: 150px;
+            /* margin-left: 150px; */
             font-weight: bold;
             font-size: 20pt;
             margin-bottom: 30px;
@@ -170,7 +191,7 @@
 
         .icon-home-bnsp {
             display: inline-block;
-            margin-left: 150px;
+            /* margin-left: 150px; */
             margin-right: 70px;
             margin-top: 50px;
             margin-bottom: 50px;
@@ -190,15 +211,11 @@
         }
 
         .icon-about {
-            margin-top: 80px;
-            margin-left: 336px;
-            margin-bottom: 80px;
-            width: 234px;
-            height: 470px;
+            width: 40%;
+            max-width: 234px;
         }
 
         .text-about-center {
-            margin-left: 150px;
             margin-top: 80px;
             font-weight: bold;
             font-size: 40pt;
@@ -218,15 +235,11 @@
         }
 
         .icon-about-bnsp {
-            display: inline-block;
-            margin-left: 150px;
-            margin-right: 70px;
-            margin-top: 50px;
-            margin-bottom: 50px;
+            /* display: inline-block; */
         }
 
         .icon-about-api {
-            display: inline-block;
+            /* display: inline-block; */
         }
 
         @media (max-width: 576px) {
@@ -234,32 +247,32 @@
             #gambar-home-las {
                 overflow: hidden;
             }
-            
+
             .icon-about {
-                margin: 50px 0 20px 90px;
+                transform: rotate(90deg);
             }
             .icon-home1 {
-                margin: 70px 0 0 130px;
+                /* margin: 70px 0 0 130px;
                 width: 150px;
-                height: 150px;
+                height: 150px; */
             }
 
             .icon-home2 {
-                margin: -360px 0 -100px 360px;
+                /* margin: -360px 0 -100px 360px;
                 width: 200px;
-                height: 100px;
+                height: 100px; */
                 /* position: relative; */
             }
 
             .icon-home3 {
-                margin: -150px 0 0 55px;
+                /* margin: -150px 0 0 55px;
                 width: 200px;
-                height: 100px;
+                height: 100px; */
                 /* position: relative; */
             }
 
             .icon-about-bnsp {
-                margin: 5px 30px 20px 20px;
+                /* margin: 5px 30px 20px 20px; */
             }
 
             .visi-misi-text {
@@ -321,20 +334,26 @@
 @endpush
 
 @section('content')
-    <div class="row p-0 m-0">
-        <div class="col-lg-8 col-sm-4 main-text">
-            <p class="text-home-center">Lembaga Sertifikasi Profesi - LAS</p>
-            <p class="text-home-center-p">Lembaga sertifikasi untuk profesi <br>
-                pengelasan yang didirikan oleh Asosiasi <br>
-                Pengelasan Indonesia dan Terlisensi oleh <br>
-                Badan Nasional Sertifikasi Profesi.</p>
-            <div class="icon-about-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
-            <div class="icon-home-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
-        </div>
-        <div class="col-lg-3 col-sm-4" id="gambar-home-las">
-            <img class="icon-home1" src="{{ asset('Images/lingkaran1.png') }}" />
-            <img class="icon-home2" src="{{ asset('Images/las2.png') }}" />
-            <img class="icon-home3" src="{{ asset('Images/las3.png') }}" />
+    <div class="container-xl">
+        <div class="row p-0 m-0">
+            <div class="col-xl-6 col-12 main-text">
+                <p class="text-home-center text-center text-xl-start">Lembaga Sertifikasi Profesi - LAS</p>
+                <p class="text-home-center-p text-center text-xl-start">Lembaga sertifikasi untuk profesi <br>
+                    pengelasan yang didirikan oleh Asosiasi <br>
+                    Pengelasan Indonesia dan Terlisensi oleh <br>
+                    Badan Nasional Sertifikasi Profesi.</p>
+                <div class="right-home-icons-wrapper mx-auto mx-xl-0">
+                    <div class="icon-home-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
+                    <div class="icon-home-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
+                </div>
+            </div>
+            <div class="my-5 col-xl-6 col-12 d-flex justify-content-center align-items-center" id="gambar-home-las">
+                <div class="left-home-icons-wrapper d-flex justify-content-center align-items-center">
+                    <img class="icon-home1" src="{{ asset('Images/lingkaran1.png') }}" />
+                    <img class="icon-home2" src="{{ asset('Images/las2.png') }}" />
+                    <img class="icon-home3" src="{{ asset('Images/las3.png') }}" />
+                </div>
+            </div>
         </div>
     </div>
 
@@ -470,16 +489,26 @@
     </div>
 
     <div class="main-about">
-        <div class="row p-0 m-0">
-            <div class="col-lg-4 sm-4">
-                <img class="icon-about" src="{{ asset('Images/icon gambar pendaftaran.png') }}" />
-            </div>
-            <div class="col-lg-8 sm-4">
-                <p class="text-about-center">Anda dapat menghubungi kami <br>
-                melalui whatsapp/telepon <br>
-                Klik <a href="http://">di sini</a></p>
-                <div class="icon-about-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
-                <div class="icon-about-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
+        <div class="container">
+            <div class="row p-0 m-0">
+                <div class="col-lg-6 col-12 sm-4">
+                    <div class="h-100 w-100 d-flex justify-content-center align-items-center">
+                        <img class="icon-about" src="{{ asset('Images/icon gambar pendaftaran.png') }}" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 sm-4">
+                    <p class="text-about-center">Anda dapat menghubungi kami <br>
+                    melalui whatsapp/telepon <br>
+                    Klik <a href="http://">di sini</a></p>
+                    <div class="row my-5">
+                        <div class="col-12 col-md-6">
+                            <div class="icon-about-bnsp"><img class="d-block mx-auto mx-lg-0" src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="icon-about-api"><img class="d-block mx-auto mx-lg-0" src="{{ asset('Images/api pendaftaran.png') }}" /></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
