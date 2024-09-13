@@ -24,7 +24,7 @@ class RegistrationController extends Controller
     public function create()
     {
         // user
-        return view('buat-test.user.register.index');
+        return view('auth.register');
     }
 
     /**
