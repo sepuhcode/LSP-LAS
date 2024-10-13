@@ -97,7 +97,18 @@
         }
 
         .main-text {
-            margin-left: 40px;
+            /* margin-left: 40px; */
+        }
+
+        .right-home-icons-wrapper {
+            width: fit-content;
+        }
+
+        .left-home-icons-wrapper {
+            width: 100%;
+            max-width: calc(553px + 20rem);
+            padding-block: .5rem;
+            position: relative;
         }
 
         @media (max-width: 576px) {
@@ -127,28 +138,38 @@
         }
 
         .icon-home1 {
-            margin: 80px 0 0 -300px;
+            width: 60%;
+            display: block;
+            /* margin: 80px 0 0 -300px;
             width: 453px;
             height: 453px;
-            z-index: 1;
+            z-index: 1; */
         }
 
         .icon-home2 {
-            top: 0px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            /* top: 0px;
             left: -200px;
             width: 553px;
             height: 309px;
             margin-top: -750px;
             z-index: 2;
-            position: relative;
+            position: relative; */
         }
 
         .icon-home3 {
-            margin: -380px 0 0 -470px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70%;
+            /* margin: -380px 0 0 -470px;
             width: 553px;
             height: 309px;
             position: relative;
-            z-index: 3;
+            z-index: 3; */
         }
 
         #div-tuk {
@@ -196,7 +217,7 @@
         }
 
         .text-home-center {
-            margin-left: 150px;
+            /* margin-left: 150px; */
             margin-top: 80px;
             font-weight: bold;
             font-size: 40pt;
@@ -206,7 +227,7 @@
 
         .text-home-center-p {
             margin-top: 20px;
-            margin-left: 150px;
+            /* margin-left: 150px; */
             font-weight: bold;
             font-size: 20pt;
             margin-bottom: 30px;
@@ -215,7 +236,7 @@
 
         .icon-home-bnsp {
             display: inline-block;
-            margin-left: 150px;
+            /* margin-left: 150px; */
             margin-right: 70px;
             margin-top: 50px;
             margin-bottom: 50px;
@@ -254,23 +275,21 @@
             }
 
             .icon-home1 {
-                margin: 70px 0 0 130px;
+                /* margin: 70px 0 0 130px;
                 width: 150px;
-                height: 150px;
+                height: 150px; */
             }
 
             .icon-home2 {
-                margin: -360px 0 -100px 360px;
+                /* margin: -360px 0 -100px 360px;
                 width: 200px;
-                height: 100px;
-                /* position: relative; */
+                height: 100px; */
             }
 
             .icon-home3 {
-                margin: -150px 0 0 55px;
+                /* margin: -150px 0 0 55px;
                 width: 200px;
-                height: 100px;
-                /* position: relative; */
+                height: 100px; */
             }
 
             .icon-home-bnsp {
@@ -428,20 +447,26 @@
     </div>
     </div>
     </div>
-    <div class="row p-0 m-0">
-        <div class="col-lg-8 col-sm-4 main-text">
-            <p class="text-home-center">Lembaga Sertifikasi Profesi - LAS</p>
-            <p class="text-home-center-p">Lembaga sertifikasi untuk profesi <br>
-                pengelasan yang didirikan oleh Asosiasi <br>
-                Pengelasan Indonesia dan Terlisensi oleh <br>
-                Badan Nasional Sertifikasi Profesi.</p>
-            <div class="icon-home-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
-            <div class="icon-home-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
-        </div>
-        <div class="col-lg-3 col-sm-4" id="gambar-home-las">
-            <img class="icon-home1" src="{{ asset('Images/lingkaran1.png') }}" />
-            <img class="icon-home2" src="{{ asset('Images/las2.png') }}" />
-            <img class="icon-home3" src="{{ asset('Images/las3.png') }}" />
+    <div class="container-xl">
+        <div class="row p-0 m-0">
+            <div class="col-xl-6 col-12 main-text">
+                <p class="text-home-center text-center text-xl-start">Lembaga Sertifikasi Profesi - LAS</p>
+                <p class="text-home-center-p text-center text-xl-start">Lembaga sertifikasi untuk profesi <br>
+                    pengelasan yang didirikan oleh Asosiasi <br>
+                    Pengelasan Indonesia dan Terlisensi oleh <br>
+                    Badan Nasional Sertifikasi Profesi.</p>
+                <div class="right-home-icons-wrapper mx-auto mx-xl-0">
+                    <div class="icon-home-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
+                    <div class="icon-home-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
+                </div>
+            </div>
+            <div class="my-5 col-xl-6 col-12 d-flex justify-content-center align-items-center" id="gambar-home-las">
+                <div class="left-home-icons-wrapper d-flex justify-content-center align-items-center">
+                    <img class="icon-home1" src="{{ asset('Images/lingkaran1.png') }}" />
+                    <img class="icon-home2" src="{{ asset('Images/las2.png') }}" />
+                    <img class="icon-home3" src="{{ asset('Images/las3.png') }}" />
+                </div>
+            </div>
         </div>
     </div>
 
