@@ -110,6 +110,11 @@ class SearchController extends Controller
                 $tglBerlaku = null;
             }
 
+            $asesor2 = null;
+            if($sertifikat[0]->asesor2 != null){
+                $asesor2 = $sertifikat[0]->asesor2->name;
+            }
+
             $asesor = $sertifikat[0]->asesor->name;
             $skemaSertifikasi = $sertifikat[0]->skemaSertifikasi->name;
             $posisiLas = $sertifikat[0]->posisiLas->name;
@@ -117,6 +122,7 @@ class SearchController extends Controller
             $sertifikat = [];
             $tglBerlaku = null;
             $asesor = null;
+            $asesor2 = null;
             $skemaSertifikasi = null;
             $posisiLas = null;
         }
@@ -125,6 +131,7 @@ class SearchController extends Controller
             [
                 'sertifikat' => $sertifikat,
                 'asesor' => $asesor,
+                'asesor2' => $asesor2,
                 'skemaSertifikasi' => $skemaSertifikasi,
                 'posisiLas' => $posisiLas,
                 'tglBerlaku' => $tglBerlaku
@@ -163,6 +170,10 @@ class SearchController extends Controller
             'karyawans' => $karyawans
 
         ]);
+    }
+
+    public function showPendaftaran(){
+        return view('Pendaftaran.index');
     }
 
     public function showAbout(){

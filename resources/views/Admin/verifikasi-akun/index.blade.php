@@ -31,7 +31,7 @@
                                         <td id="td-center">{{ $registration->phone }}</td>
                                         <td id="td-center">{{ $registration->address }}</td>
                                         <td class="center">
-                                            <form action="/admin/registration/{{ $registration->id }}" method="post">
+                                            <form action="/admin/user/registration/{{ $registration->id }}" method="post">
                                                 @method('put')
                                                 @csrf
                                                 <button class="btn btn-outline-success"><a
@@ -82,7 +82,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/registration/' + registrationId);
+                        $('#form-delete').attr('action', '/admin/user/registration/' + registrationId);
                         $('#form-delete').submit();
                     }
                 });

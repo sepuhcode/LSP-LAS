@@ -83,7 +83,7 @@ class RegistrationController extends Controller
 
         Registration::destroy($registration->id);
 
-        return redirect('/admin/registration')->with('success', 'Registrasi berhasil diterima');
+        return redirect('/admin/user/registration')->with('success', 'Registrasi berhasil diterima');
     }
 
     /**
@@ -93,6 +93,6 @@ class RegistrationController extends Controller
     {
         // admin
         Registration::destroy($registration->id);
-        return redirect('/admin/registration')->with('success', 'Registrasi Berhasil Ditolak');
+        return redirect('/admin/user/registration')->with('success', 'Registrasi Berhasil Ditolak');
     }
 }

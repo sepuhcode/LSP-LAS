@@ -353,7 +353,8 @@
                         @foreach ($skemaSertifikasis as $skemaSertifikasi)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading{{ $loop->iteration }}">
-                                    <button class="accordion-button bg-accordion {{ $loop->iteration != 1 ? 'collapsed' : '' }}"
+                                    <button
+                                        class="accordion-button bg-accordion {{ $loop->iteration != 1 ? 'collapsed' : '' }}"
                                         type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapse{{ $loop->iteration }}" aria-expanded="true"
                                         aria-controls="collapse{{ $loop->iteration }}">
@@ -409,7 +410,11 @@
                         }
 
                         if (!$.isEmptyObject(result.asesor)) {
-                            $('.asesor').html(result.asesor);
+                            if (result.asesor2+=null) {
+                                $('.asesor').html(result.asesor + ' & ' + result.asesor2);
+                            } else {
+                                $('.asesor').html(result.asesor);
+                            }
                         } else {
                             $('.asesor').empty();
                         }

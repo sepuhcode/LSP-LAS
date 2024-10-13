@@ -103,7 +103,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="asesor_id">Asesor</label>
+                            <label for="asesor_id">Asesor 1</label>
                             <select name="asesor_id"
                                 class="form-control select2bs4 @error('asesor_id') is-invalid @enderror" required>
                                 @foreach ($asesors as $asesor)
@@ -115,9 +115,29 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="asesor2_id">Asesor 2</label>
+                            <select name="asesor2_id"
+                                class="form-control select2bs4 @error('asesor2_id') is-invalid @enderror">
+                                @if ($sertifikat->asesor2 != null)
+                                @foreach ($asesors as $asesor)
+                                <option value="{{ $asesor->id }}" {{ $sertifikat->asesor2_id == $asesor->id?'selected':'' }}>{{ $asesor->name }}</option>
+                            @endforeach
+                            @else
+                            <option value="">Pilih Asesor 2</option>
+                            @foreach ($asesors as $asesor)
+                                <option value="{{ $asesor->id }}">{{ $asesor->name }}</option>
+                            @endforeach
+                                @endif
+                               
+                            </select>
+                            @error('asesor2_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="owner_id">Pemilik Sertifikat</label>
                             <select name="owner_id"
-                                class="form-control select2bs4 @error('owner_id') is-invalid @enderror" required>
+                                class="form-control select2bs4 @error('owner_id') is-invalid @enderror">
                                 @foreach ($owners as $owner)
                                     <option value="{{ $owner->id }}" {{ $sertifikat->owner_id == $owner->id?'selected':'' }}>{{ $owner->name }}</option>
                                 @endforeach

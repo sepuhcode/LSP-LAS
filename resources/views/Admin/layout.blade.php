@@ -358,6 +358,14 @@
                           </a>
                         </li>
 
+                        <li class="nav-item">
+                          <a href="/admin/sertifikat" class="nav-link {{ request()->is('admin/sertifikat*') ? 'active' : '' }}">
+                              <p>
+                                  Sertifikat
+                              </p>
+                          </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -463,10 +471,10 @@
         $(function() {
             $('#example2').DataTable({
                 "paging": true,
-                "pageLength": 25,
-                "lengthChange": false,
+                // "pageLength": 25,
+                "lengthChange": true,
                 "searching": true,
-                "ordering": false,
+                "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
@@ -474,9 +482,9 @@
 
             $('#table-without-search').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": false,
-                "ordering": false,
+                "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
