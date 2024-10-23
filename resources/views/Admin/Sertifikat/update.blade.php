@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @push('style')
     {{-- select2 --}}
@@ -128,7 +128,7 @@
                                 <option value="{{ $asesor->id }}">{{ $asesor->name }}</option>
                             @endforeach
                                 @endif
-                               
+
                             </select>
                             @error('asesor2_id')
                                 <div class="alert alert-danger">{{ $message }}</div>

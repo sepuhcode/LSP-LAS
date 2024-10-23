@@ -173,7 +173,7 @@ class SearchController extends Controller
     }
 
     public function showPendaftaran(){
-        return view('Pendaftaran.index');
+        return view('pendaftaran.index');
     }
 
     public function showAbout(){

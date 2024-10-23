@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -38,7 +38,7 @@
                                                     style="text-decoration: none; color:inherit;">Terima</a></button>
                                             </form>
                                         </td>
-{{-- 
+{{--
                                         <td id="td-center"><button class="btn btn-outline-success"><a
                                                     href="/admin/registration/{{ $registration->id }}/edit"
                                                     style="text-decoration: none; color:inherit;"><i

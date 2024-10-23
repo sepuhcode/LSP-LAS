@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @push('style')
     <!-- summernote -->

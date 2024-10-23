@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -36,7 +36,7 @@
                                     <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror" required>
                                     <label class="custom-file-label" for="image">Pilih File</label>
                                 </div>
-                               
+
                             </div>
                             @error('image')
                                 <div class="alert alert-danger">{{ $message }}</div>

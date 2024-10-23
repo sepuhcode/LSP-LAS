@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
     return redirect('/home');
 });
 
@@ -36,48 +36,47 @@ Route::get('/', function() {
 
 // auth
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
-Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
-Route::get('/logout',[LoginController::class,'logout'])->middleware('auth');
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
-Route::get('/cari/sertifikat',[SearchController::class,'showSertifikatPage'])->name('sertifikat');
+Route::get('/cari/sertifikat', [SearchController::class, 'showSertifikatPage'])->name('sertifikat');
 // Route::post('/cari/sertifikat',[SearchController::class,'cariSertifikat'])->name('cari-sertifikat');
-Route::post('/cari-sertifikat',[SearchController::class,'cariSertifikatNew']);
+Route::post('/cari-sertifikat', [SearchController::class, 'cariSertifikatNew']);
 
-Route::get('/pendaftaran',[SearchController::class,'showPendaftaran'])->name('pendaftaran');
-Route::get('/about',[SearchController::class,'showAbout'])->name('about');
+Route::get('/pendaftaran', [SearchController::class, 'showPendaftaran'])->name('pendaftaran');
+Route::get('/about', [SearchController::class, 'showAbout'])->name('about');
 
 //admin routes
-Route::prefix('/admin')->name('admin.')->group(function(){
-    Route::get('/user-asesor',[UserController::class,'userAsesor'])->name('user-asesor'); //user asesor
-    Route::get('/user-tuk',[UserController::class,'userTuk'])->name('user-tuk'); //user TUK
-    Route::get('/user-user',[UserController::class,'userUser'])->name('user-user'); //user biasa
+Route::prefix('/admin')->name('admin.')->group(function () {
+    Route::get('/user-asesor', [UserController::class, 'userAsesor'])->name('user-asesor'); //user asesor
+    Route::get('/user-tuk', [UserController::class, 'userTuk'])->name('user-tuk'); //user TUK
+    Route::get('/user-user', [UserController::class, 'userUser'])->name('user-user'); //user biasa
     Route::resource('/user/registration', RegistrationController::class); //verifikasi registrasi akun user
-    Route::resource('/user',UserController::class); //CRUD data user
-    Route::resource('/gambar-carousel',CarouselController::class); //CRUD gambar carousel
+    Route::resource('/user', UserController::class); //CRUD data user
+    Route::resource('/gambar-carousel', CarouselController::class); //CRUD gambar carousel
     Route::resource('/gambar-karyawan', FotoKaryawanController::class); //CRUD foto karyawan
     Route::resource('/gambar-kegiatan', FotoKegiatanController::class); //CRUD foto kegiatan
     Route::resource('/tuk', TukController::class); //CRUD gambar tuk
     Route::resource('/skema-sertifikasi', SkemaSertifikasiController::class); //CRUD skema sertifikasi
     Route::resource('/posisi-las', PosisiLasController::class); //CRUD posisi las
-    
-    Route::post('/sertifikat/import', [SertifikasiController::class,'saveImport'])->name('import-sertifikat');
-    Route::get('/sertifikat/import', [SertifikasiController::class,'showImport'])->name('import-sertifikat');
+
+    Route::post('/sertifikat/import', [SertifikasiController::class, 'saveImport'])->name('import-sertifikat');
+    Route::get('/sertifikat/import', [SertifikasiController::class, 'showImport'])->name('import-sertifikat');
     Route::resource('/sertifikat', SertifikasiController::class); //CRUD Sertifikat
-    Route::post('/get-posisilas',[SertifikasiController::class,'fetchPosisiLas']);
-    Route::get('/view-file/{file}',[SertifikasiController::class,'viewFile']);
+    Route::post('/get-posisilas', [SertifikasiController::class, 'fetchPosisiLas']);
+    Route::get('/view-file/{file}', [SertifikasiController::class, 'viewFile']);
 });
 
-Route::get('/change-password',[ChangePassword::class,'changePassword']);
-Route::post('/change-password',[ChangePassword::class,'savePassword']);
+Route::get('/change-password', [ChangePassword::class, 'changePassword']);
+Route::post('/change-password', [ChangePassword::class, 'savePassword']);
 
 
 //registration route
-Route::resource('/register',RegistrationController::class);
+Route::resource('/register', RegistrationController::class);
 
 
 //test halaman admin
-Route::view('testadmin','admin.dashboard.index');
-Route::view('testtuk','admin.tuk.index');
-Route::view('daftar','user.register.index2');
-
+Route::view('testadmin', 'admin.dashboard.index');
+Route::view('testtuk', 'admin.tuk.index');
+Route::view('daftar', 'user.register.index2');

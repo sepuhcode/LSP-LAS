@@ -15,7 +15,7 @@ class RegistrationController extends Controller
     {
         //admin
         $registrations = Registration::all();
-        return view('Admin.verifikasi-akun.index', ['registrations' => $registrations]);
+        return view('admin.verifikasi-akun.index', ['registrations' => $registrations]);
     }
 
     /**

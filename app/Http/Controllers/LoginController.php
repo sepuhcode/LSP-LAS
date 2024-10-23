@@ -24,12 +24,10 @@ class LoginController extends Controller
 
             if (auth()->user()->hasRole('admin')) {
                 dd('admin');
-                // return view('');
                 return redirect()->intended('/admin/home');
             } else if (auth()->user()->hasRole('asesor')) {
                 return redirect()->intended('/home');
             } else if (auth()->user()->hasRole('user')) {
-                // dd('user');
                 return redirect()->intended('/home');
             }
         }
