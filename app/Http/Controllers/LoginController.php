@@ -7,7 +7,16 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function indexRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function postDataRegister(Request $request)
+    {
+    }
+
+    public function indexLogin()
     {
         return view('auth.login');
     }

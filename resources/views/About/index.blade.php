@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="row px-0 py-2 m-0" style="background-color: #EFEFEF">
+    <div class="row px-0 py-4 m-0" style="background-color: #EFEFEF">
         <div class="col-12 text-center">
             <h1 class="visi-misi-title">Visi Misi LSP LAS</h1>
             <h2 class="visi-misi-text">
@@ -139,7 +139,7 @@
         </div>
     </div>
 
-    <div class="row mx-auto px-0 py-5 m-0" style="width: 80%; ">
+    <div id="container-our-team" class="row mx-auto px-0 py-5 m-0" style="width: 80%;">
         <div class="col-12">
             <section id="slider-section">
                 <div class="container">
@@ -236,6 +236,10 @@
         // carousel image about us
         const slider = document.querySelector("#slider-section .slider");
         const imagesObject = JSON.parse('<?= json_encode($karyawans) ?>');
+        let containerOurTeam = document.getElementById("container-our-team");
+        if (imagesObject.length === 0) {
+            containerOurTeam.style.display = "none";
+        }
 
         window.addEventListener("load", initializeSlider());
 

@@ -24,7 +24,7 @@ class RegistrationController extends Controller
     public function create()
     {
         // user
-        return view('auth.register');
+        return view('auth.admin-register');
     }
 
     /**

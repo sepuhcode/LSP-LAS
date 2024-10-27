@@ -35,7 +35,8 @@ Route::get('/', function () {
 // Route::get('/check/date', [SearchController::class, 'checkDate']); //cuma buat test
 
 // auth
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/daftar', [LoginController::class, 'indexRegister'])->middleware('guest')->name('daftar');
+Route::get('/login', [LoginController::class, 'indexLogin'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
@@ -79,4 +80,3 @@ Route::resource('/register', RegistrationController::class);
 //test halaman admin
 Route::view('testadmin', 'admin.dashboard.index');
 Route::view('testtuk', 'admin.tuk.index');
-Route::view('daftar', 'user.register.index2');
