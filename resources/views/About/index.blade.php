@@ -3,334 +3,7 @@
 @push('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
-    <style>
-        #slider-section * {
-            margin: 0;
-        }
-
-        #slider-section {
-            /* height: 600px; */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #slider-section .container {
-            /* width: 1600px; */
-            margin: auto;
-        }
-
-        #slider-section .subcontainer {
-            width: 85%;
-            margin: auto;
-        }
-
-        #slider-section .slider-wrapper {
-            position: relative;
-        }
-
-        #slider-section .previous,
-        #slider-section .next {
-            padding: 2px;
-            width: 30px;
-            cursor: pointer;
-            border-radius: 50%;
-            outline: none;
-            transition: 0.7s ease-in-out;
-            border: 3px solid white;
-            background-color: #1a1a1a;
-            box-shadow: 0 0 5px #bbb;
-            position: absolute;
-            top: 50%;
-        }
-
-        #slider-section .previous {
-            left: 2%;
-        }
-
-        #slider-section .next {
-            right: 2%;
-        }
-
-        #slider-section .previous:hover,
-        #slider-section .next:hover {
-            border: 3px solid gray;
-        }
-
-        #slider-section #controls i {
-            color: white;
-            font-size: 1rem;
-        }
-
-        #slider-section .tns-nav {
-            text-align: right;
-        }
-
-        #slider-section .tns-nav button {
-            border: black 1px solid;
-            padding: 8px;
-            border-radius: 50%;
-            background-color: white;
-            margin-left: 15px;
-        }
-
-        #slider-section .tns-nav .tns-nav-active {
-            background-color: gray;
-        }
-
-        /* DYNAMIC HTML */
-
-        #slider-section .slide {
-            width: auto;
-            height: fit-content;
-        }
-
-        #slider-section .slide img {
-            width: 100%;
-            height: 200px;
-        }
-
-        @media(max-width:1600px) {
-            #slider-section .container {
-                width: 100%;
-            }
-        }
-
-        .main-text {
-            /* margin-left: 40px; */
-        }
-
-        .right-home-icons-wrapper {
-            width: fit-content;
-        }
-
-        .left-home-icons-wrapper {
-            width: 100%;
-            max-width: calc(553px + 20rem);
-            padding-block: .5rem;
-            position: relative;
-        }
-
-        @media (max-width: 576px) {
-            .main-text {
-                margin-top: 0px;
-                margin-left: 0px;
-                text-align: center;
-            }
-        }
-
-        .visi-misi-title {
-            color: red;
-            font-weight: bold;
-            font-size: 30pt;
-        }
-
-        .visi-misi-text {
-            width: 50%;
-            font-weight: bold;
-            margin: 20px auto;
-            font-size: 20px;
-            color: #7b7b7b;
-        }
-
-        .accordion-home {
-            width: 50%;
-        }
-
-        .icon-home1 {
-            width: 60%;
-            display: block;
-            /* margin: 80px 0 0 -300px;
-            width: 453px;
-            height: 453px;
-            z-index: 1; */
-        }
-
-        .icon-home2 {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 70%;
-            /* top: 0px;
-            left: -200px;
-            width: 553px;
-            height: 309px;
-            margin-top: -750px;
-            z-index: 2;
-            position: relative; */
-        }
-
-        .icon-home3 {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 70%;
-            /* margin: -380px 0 0 -470px;
-            width: 553px;
-            height: 309px;
-            position: relative;
-            z-index: 3; */
-        }
-
-        .text-home-center {
-            /* margin-left: 150px; */
-            margin-top: 80px;
-            font-weight: bold;
-            font-size: 40pt;
-            color: red;
-            margin-bottom: 70px;
-        }
-        .text-home-center-p {
-            margin-top: 20px;
-            /* margin-left: 150px; */
-            font-weight: bold;
-            font-size: 20pt;
-            margin-bottom: 30px;
-            color: #7b7878
-        }
-
-        .icon-home-bnsp {
-            display: inline-block;
-            /* margin-left: 150px; */
-            margin-right: 70px;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-
-        .icon-home-api {
-            display: inline-block;
-        }
-
-        .slider-wrapper h1{
-            font-size: 34pt;
-        }
-
-        .main-about {
-            background-color: #efefef;
-            margin-top: 0px;
-        }
-
-        .icon-about {
-            width: 40%;
-            max-width: 234px;
-        }
-
-        .text-about-center {
-            margin-top: 80px;
-            font-weight: bold;
-            font-size: 40pt;
-            color: red;
-        }
-
-        .text-about-center a{
-            color: black;
-        }
-
-        .text-about-center-p {
-            margin-top: 20px;
-            margin-left: 150px;
-            font-weight: bold;
-            font-size: 20pt;
-            color: #7b7878;
-        }
-
-        .icon-about-bnsp {
-            /* display: inline-block; */
-        }
-
-        .icon-about-api {
-            /* display: inline-block; */
-        }
-
-        @media (max-width: 576px) {
-
-            #gambar-home-las {
-                overflow: hidden;
-            }
-
-            .icon-about {
-                transform: rotate(90deg);
-            }
-            .icon-home1 {
-                /* margin: 70px 0 0 130px;
-                width: 150px;
-                height: 150px; */
-            }
-
-            .icon-home2 {
-                /* margin: -360px 0 -100px 360px;
-                width: 200px;
-                height: 100px; */
-                /* position: relative; */
-            }
-
-            .icon-home3 {
-                /* margin: -150px 0 0 55px;
-                width: 200px;
-                height: 100px; */
-                /* position: relative; */
-            }
-
-            .icon-about-bnsp {
-                /* margin: 5px 30px 20px 20px; */
-            }
-
-            .visi-misi-text {
-                width: 95%;
-                font-size: 10pt;
-                margin: 10px;
-            }
-
-            .visi-misi-title {
-                font-size: 12pt;
-            }
-
-            .accordion-home {
-                margin: 10px 0 10px 0;
-                width: 90%;
-                font-size: 10pt;
-            }
-
-            .fw-semibold {
-                font-size: 10pt;
-            }
-
-            .image-accordion {
-                position: relative;
-                content-visibility: hidden;
-                /* Sesuaikan lebar gambar sesuai kebutuhan Anda */
-            }
-
-            .text-home-center {
-                margin-top: 20px;
-                margin-left: 0px;
-                margin-bottom: 20px;
-                text-align: center;
-                font-size: 12pt;
-            }
-
-            .text-home-center-p {
-                margin-top: 0px;
-                margin-left: 0px;
-                text-align: center;
-                font-size: 10pt;
-            }
-
-            .text-about-center {
-                margin-top: 20px;
-                margin-left: 0px;
-                margin-bottom: 20px;
-                text-align: center;
-                font-size: 12pt;
-            }
-
-            .slider-wrapper h1{
-            font-size: 12pt;
-        }
-    }
-
-
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/about-page.css') }}">
 @endpush
 
 @section('content')
@@ -343,15 +16,15 @@
                     Pengelasan Indonesia dan Terlisensi oleh <br>
                     Badan Nasional Sertifikasi Profesi.</p>
                 <div class="right-home-icons-wrapper mx-auto mx-xl-0">
-                    <div class="icon-home-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
-                    <div class="icon-home-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
+                    <div class="icon-home-bnsp"><img src="{{ asset('images/bnsp pendaftaran.png') }}" /></div>
+                    <div class="icon-home-api"><img src="{{ asset('images/api pendaftaran.png') }}" /></div>
                 </div>
             </div>
             <div class="my-5 col-xl-6 col-12 d-flex justify-content-center align-items-center" id="gambar-home-las">
                 <div class="left-home-icons-wrapper d-flex justify-content-center align-items-center">
-                    <img class="icon-home1" src="{{ asset('Images/lingkaran1.png') }}" />
-                    <img class="icon-home2" src="{{ asset('Images/las2.png') }}" />
-                    <img class="icon-home3" src="{{ asset('Images/las3.png') }}" />
+                    <img class="icon-home1" src="{{ asset('images/circle-background.png') }}" />
+                    <img class="icon-home2" src="{{ asset('images/las2.png') }}" />
+                    <img class="icon-home3" src="{{ asset('images/las3.png') }}" />
                 </div>
             </div>
         </div>
@@ -400,8 +73,8 @@
                                 </span>
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse bg-accordion"
-                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div id="collapseTwo" class="accordion-collapse collapse bg-accordion" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
                             <div class="accordion-body" style="text-align: justify;">
                                 Mengacu pada komitmen atau tujuan untuk
                                 tetap terinformasi dan terlibat dalam
@@ -415,9 +88,8 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button bg-accordion collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                aria-controls="collapseThree">
+                            <button class="accordion-button bg-accordion collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 <span class="fw-semibold">
                                     Membina Tempat Uji Kompetensi
                                 </span>
@@ -438,16 +110,15 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header " id="headingFour">
-                            <button class="accordion-button bg-accordion collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                aria-controls="collapseFour">
+                            <button class="accordion-button bg-accordion collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                 <span class="fw-semibold">
                                     Menjalin Hubungan Komunikasi Yang Intens dengan Stake Holder dan Lembaga
                                 </span>
                             </button>
                         </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse bg-accordion"
-                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div id="collapseFour" class="accordion-collapse collapse bg-accordion" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
                             <div class="accordion-body" style="text-align: justify;">
                                 Visi ini menyoroti pentingnya
                                 memprioritaskan hubungan yang baik
@@ -498,14 +169,16 @@
                 </div>
                 <div class="col-lg-6 col-12 sm-4">
                     <p class="text-about-center">Anda dapat menghubungi kami <br>
-                    melalui whatsapp/telepon <br>
-                    Klik <a href="http://">di sini</a></p>
+                        melalui whatsapp/telepon <br>
+                        Klik <a href="http://">di sini</a></p>
                     <div class="row my-5">
                         <div class="col-12 col-md-6">
-                            <div class="icon-about-bnsp"><img class="d-block mx-auto mx-lg-0" src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
+                            <div class="icon-about-bnsp"><img class="d-block mx-auto mx-lg-0"
+                                    src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
                         </div>
                         <div class="col-12 col-md-6">
-                            <div class="icon-about-api"><img class="d-block mx-auto mx-lg-0" src="{{ asset('Images/api pendaftaran.png') }}" /></div>
+                            <div class="icon-about-api"><img class="d-block mx-auto mx-lg-0"
+                                    src="{{ asset('Images/api pendaftaran.png') }}" /></div>
                         </div>
                     </div>
                 </div>
