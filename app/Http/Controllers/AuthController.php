@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function indexRegister()
     {
@@ -32,7 +32,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if (auth()->user()->hasRole('admin')) {
-                dd('admin');
+                // dd('admin');
                 return redirect()->intended('/admin/home');
             } else if (auth()->user()->hasRole('asesor')) {
                 return redirect()->intended('/home');

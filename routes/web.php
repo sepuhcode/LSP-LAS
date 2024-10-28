@@ -4,10 +4,10 @@ use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\FotoKaryawanController;
 use App\Http\Controllers\FotoKegiatanController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PosisiLasController;
 use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\SearchController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SertifikasiController;
 use App\Http\Controllers\SkemaSertifikasiController;
 use App\Http\Controllers\TukController;
@@ -30,23 +30,18 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-// Route::get('search/{keyword}', [SearchController::class, 'search']); //cuma buat test
-// Route::get('/convert/date', [SearchController::class, 'convertDate']); //cuma buat test
-// Route::get('/check/date', [SearchController::class, 'checkDate']); //cuma buat test
-
 // auth
-Route::get('/daftar', [LoginController::class, 'indexRegister'])->middleware('guest')->name('daftar');
-Route::get('/login', [LoginController::class, 'indexLogin'])->middleware('guest')->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
-Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
+Route::get('/daftar', [AuthController::class, 'indexRegister'])->middleware('guest')->name('daftar');
+Route::get('/login', [AuthController::class, 'indexLogin'])->middleware('guest')->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
-Route::get('/home', [SearchController::class, 'showHomePage'])->name('home');
-Route::get('/cari/sertifikat', [SearchController::class, 'showSertifikatPage'])->name('sertifikat');
-// Route::post('/cari/sertifikat',[SearchController::class,'cariSertifikat'])->name('cari-sertifikat');
-Route::post('/cari-sertifikat', [SearchController::class, 'cariSertifikatNew']);
+Route::get('/home', [LandingPageController::class, 'showHomePage'])->name('home');
+Route::get('/sertifikat', [LandingPageController::class, 'showSertifikatPage'])->name('sertifikat');
+Route::post('/sertifikat/find', [LandingPageController::class, 'cariSertifikatNew'])->name('sertifikat.find');
 
-Route::get('/pendaftaran', [SearchController::class, 'showPendaftaran'])->name('pendaftaran');
-Route::get('/about', [SearchController::class, 'showAbout'])->name('about');
+Route::get('/pendaftaran', [LandingPageController::class, 'showPendaftaran'])->name('pendaftaran');
+Route::get('/about', [LandingPageController::class, 'showAbout'])->name('about');
 
 //admin routes
 Route::prefix('/admin')->name('admin.')->group(function () {
