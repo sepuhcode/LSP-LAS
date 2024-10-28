@@ -20,7 +20,7 @@ return new class extends Migration
             // $table->rememberToken();
             $table->string('phone')->unique();
             $table->string('address')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

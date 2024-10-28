@@ -51,16 +51,16 @@ class User extends Authenticatable
 
     public function sertifikats(): HasMany
     {
-        return $this->hasMany(Sertifikasi::class,'asesor_id','id');
+        return $this->hasMany(Sertifikasi::class, 'asesor_id', 'id');
     }
 
     public function userSertifikats(): HasMany
     {
-        return $this->hasMany(Sertifikasi::class,'owner_id');
+        return $this->hasMany(Sertifikasi::class, 'owner_id');
     }
 
-    public function tuk():HasOne
+    public function tuk(): HasOne
     {
-        return $this->hasOne(Tuk::class,'user_tuk_id');
+        return $this->hasOne(Tuk::class, 'user_tuk_id');
     }
 }
