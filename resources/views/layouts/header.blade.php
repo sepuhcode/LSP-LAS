@@ -5,16 +5,20 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse py-3 py-md-0" id="navbarNav">
-            <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('Images/LogoLAS.png') }}" width="120px"></a>
+            <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('Images/LogoLAS.png') }}"
+                    width="120px"></a>
             <ul class="navbar-nav ms-auto me-5 fw-bold gap-4">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" aria-current="page" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" aria-current="page"
+                        href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('cari/sertifikat') ? 'active' : '' }}" href="{{ route('sertifikat') }}">Sertifikasi</a>
+                    <a class="nav-link {{ Request::is('sertifikat') ? 'active' : '' }}"
+                        href="{{ route('sertifikat') }}">Sertifikasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('pendaftaran') ? 'active' : '' }}" href="{{ route('pendaftaran') }}">Pendaftaran</a>
+                    <a class="nav-link {{ Request::is('pendaftaran') ? 'active' : '' }}"
+                        href="{{ route('pendaftaran') }}">Pendaftaran</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>

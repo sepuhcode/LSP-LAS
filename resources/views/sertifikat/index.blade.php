@@ -126,8 +126,7 @@
                     @foreach ($skemaSertifikasis as $skemaSertifikasi)
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading{{ $loop->iteration }}">
-                                <button
-                                    class="accordion-button bg-accordion {{ $loop->iteration != 1 ? 'collapsed' : '' }}"
+                                <button class="accordion-button bg-accordion {{ $loop->iteration != 1 ? 'collapsed' : '' }}"
                                     type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse{{ $loop->iteration }}" aria-expanded="true"
                                     aria-controls="collapse{{ $loop->iteration }}">
@@ -165,7 +164,7 @@
             $('.btn-search').on('click', function() {
                 var keyword = $('.input-keyword').val();
                 $.ajax({
-                    url: "{{ url('/cari-sertifikat') }}",
+                    url: "{{ url('/sertifikat/find') }}",
                     type: "POST",
                     data: {
                         _token: $('#signup-token').val(),
