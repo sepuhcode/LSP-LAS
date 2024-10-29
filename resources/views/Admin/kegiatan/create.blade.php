@@ -6,26 +6,26 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Upload Foto Karyawan</h3>
+                    <h3 class="card-title">Upload Foto Kegiatan</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/admin/gambar-karyawan" method="POST" enctype="multipart/form-data">
+                <form action="/admin/kegiatan" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">Nama Karyawan </label>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Nama Karyawan.."
-                                value="{{ old('name') }}" required>
+                            <label for="name">Nama Kegiatan </label>
+                            <input name="name" type="text" class="form-control" id="name"
+                                placeholder="Nama kegiatan.." value="{{ old('name') }}" required>
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="department">Jabatan </label>
-                            <input name="department" type="text" class="form-control" id="department" placeholder="Jabatan.."
-                                value="{{ old('department') }}" required>
-                            @error('department')
+                            <label for="date">Tanggal </label>
+                            <input name="date" type="date" class="form-control" id="date" placeholder="Tanggal.."
+                                value="{{ old('date') }}" required>
+                            @error('date')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -33,12 +33,11 @@
                             <label for="image">Foto</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror" required>
+                                    <input id="image" name="image" type="file"
+                                        class="custom-file-input @error('image') is-invalid @enderror" required>
                                     <label class="custom-file-label" for="image">Pilih File</label>
                                 </div>
-                                {{-- <div class="input-group-append">
-                                    <span class="input-group-text">Upload</span>
-                                  </div> --}}
+
                             </div>
                             @error('image')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -56,5 +55,4 @@
         </div>
         <!-- /.card -->
     </div>
-
 @endsection

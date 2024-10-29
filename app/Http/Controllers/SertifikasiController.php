@@ -17,7 +17,6 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-
         $sertifikats = Sertifikasi::with(['skemaSertifikasi:id,name', 'posisiLas:id,name', 'asesor:id,name','asesor2:id,name'])->get();
         return view('admin.sertifikat.index', [
             'sertifikats' => $sertifikats,

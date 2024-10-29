@@ -12,9 +12,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function postDataRegister(Request $request)
-    {
-    }
+    public function postDataRegister(Request $request) {}
 
     public function indexLogin()
     {
@@ -32,8 +30,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (auth()->user()->hasRole('admin')) {
-                // dd('admin');
-                return redirect()->intended('/admin/home');
+                return redirect()->intended('/admin/dashboard');
             } else if (auth()->user()->hasRole('asesor')) {
                 return redirect()->intended('/home');
             } else if (auth()->user()->hasRole('user')) {

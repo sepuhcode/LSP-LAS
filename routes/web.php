@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\ChangePassword;
-use App\Http\Controllers\FotoKaryawanController;
-use App\Http\Controllers\FotoKegiatanController;
+use App\Http\Controllers\TimController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PosisiLasController;
-use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SertifikasiController;
 use App\Http\Controllers\SkemaSertifikasiController;
@@ -33,8 +34,8 @@ Route::get('/', function () {
 // auth
 Route::get('/daftar', [AuthController::class, 'indexRegister'])->middleware('guest')->name('daftar');
 Route::get('/login', [AuthController::class, 'indexLogin'])->middleware('guest')->name('login');
-Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::post('/login/authenticate', [AuthController::class, 'authenticate'])->middleware('guest')->name('login.authenticate');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get('/home', [LandingPageController::class, 'showHomePage'])->name('home');
 Route::get('/sertifikat', [LandingPageController::class, 'showSertifikatPage'])->name('sertifikat');
@@ -45,33 +46,23 @@ Route::get('/about', [LandingPageController::class, 'showAbout'])->name('about')
 
 //admin routes
 Route::prefix('/admin')->name('admin.')->group(function () {
-    Route::get('/user-asesor', [UserController::class, 'userAsesor'])->name('user-asesor'); //user asesor
-    Route::get('/user-tuk', [UserController::class, 'userTuk'])->name('user-tuk'); //user TUK
-    Route::get('/user-user', [UserController::class, 'userUser'])->name('user-user'); //user biasa
-    Route::resource('/user/registration', RegistrationController::class); //verifikasi registrasi akun user
-    Route::resource('/user', UserController::class); //CRUD data user
-    Route::resource('/gambar-carousel', CarouselController::class); //CRUD gambar carousel
-    Route::resource('/gambar-karyawan', FotoKaryawanController::class); //CRUD foto karyawan
-    Route::resource('/gambar-kegiatan', FotoKegiatanController::class); //CRUD foto kegiatan
-    Route::resource('/tuk', TukController::class); //CRUD gambar tuk
-    Route::resource('/skema-sertifikasi', SkemaSertifikasiController::class); //CRUD skema sertifikasi
-    Route::resource('/posisi-las', PosisiLasController::class); //CRUD posisi las
-
-    Route::post('/sertifikat/import', [SertifikasiController::class, 'saveImport'])->name('import-sertifikat');
-    Route::get('/sertifikat/import', [SertifikasiController::class, 'showImport'])->name('import-sertifikat');
-    Route::resource('/sertifikat', SertifikasiController::class); //CRUD Sertifikat
-    Route::post('/get-posisilas', [SertifikasiController::class, 'fetchPosisiLas']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/user', UserController::class);
+    Route::resource('/verification', VerificationController::class);
+    Route::resource('/carousel', CarouselController::class);
+    Route::resource('/tim', TimController::class);
+    Route::resource('/kegiatan', KegiatanController::class);
+    Route::resource('/tuk', TukController::class);
+    Route::resource('/skema-sertifikasi', SkemaSertifikasiController::class);
+    Route::resource('/posisi-las', PosisiLasController::class);
+    Route::post('/sertifikat/import/store', [SertifikasiController::class, 'saveImport'])->name('sertifikat.import.store');
+    Route::get('/sertifikat/import', [SertifikasiController::class, 'showImport'])->name('sertifikat.import.create');
+    Route::resource('/sertifikat', SertifikasiController::class);
+    Route::post('/get-posisi-las', [SertifikasiController::class, 'fetchPosisiLas']);
     Route::get('/view-file/{file}', [SertifikasiController::class, 'viewFile']);
 });
 
 Route::get('/change-password', [ChangePassword::class, 'changePassword']);
 Route::post('/change-password', [ChangePassword::class, 'savePassword']);
 
-
-//registration route
-Route::resource('/register', RegistrationController::class);
-
-
-//test halaman admin
-Route::view('testadmin', 'admin.dashboard.index');
 Route::view('testtuk', 'admin.tuk.index');

@@ -28,7 +28,6 @@ class UserSeeder extends Seeder
                 'password' => 'password1',
                 'phone' => '08123456789',
                 'address' => 'Depok',
-                'is_active' => true,
                 'role' => 'asesor'
             ],
             [
@@ -37,43 +36,38 @@ class UserSeeder extends Seeder
                 'password' => 'password1',
                 'phone' => '08194884888',
                 'address' => 'Depok',
-                'is_active' => true,
                 'role' => 'asesor'
             ],
             [
                 'name' => 'Asesor Tiga',
                 'email' => 'asesor3@gmail.com',
                 'password' => 'password1',
-                'phone' => '083799334837',
+                'phone' => '083736434837',
                 'address' => 'Jakarta',
-                'is_active' => true,
                 'role' => 'asesor'
             ],
             [
                 'name' => 'User Satu',
                 'email' => 'user1@gmail.com',
                 'password' => 'password1',
-                'phone' => '082299334397',
+                'phone' => '082339334397',
                 'address' => 'Depok',
-                'is_active' => true,
                 'role' => 'user'
             ],
             [
                 'name' => 'User Dua',
                 'email' => 'user2@gmail.com',
                 'password' => 'password1',
-                'phone' => '082299334397',
+                'phone' => '08287644597',
                 'address' => 'Depok',
-                'is_active' => true,
                 'role' => 'user'
             ],
             [
                 'name' => 'TUK Satu',
                 'email' => 'tuk1@gmail.com',
                 'password' => 'password1',
-                'phone' => '082468339844',
+                'phone' => '082468129844',
                 'address' => 'Jakarta',
-                'is_active' => true,
                 'role' => 'tuk'
             ],
             [
@@ -82,7 +76,6 @@ class UserSeeder extends Seeder
                 'password' => 'password1',
                 'phone' => '082468339844',
                 'address' => 'Jakarta',
-                'is_active' => true,
                 'role' => 'tuk'
             ]
         ];
@@ -93,8 +86,7 @@ class UserSeeder extends Seeder
                 'email' => $list['email'],
                 'password' => $list['password'],
                 'phone' => $list['phone'],
-                'address' => $list['address'],
-                'is_active' => $list['is_active'],
+                'address' => $list['address']
             ]);
 
             $user->assignRole($list['role']);

@@ -31,28 +31,28 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">Home</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"
-                        title="Log Out">
+                    <a class="nav-link" data-slide="true" href="{{ route('logout') }}" role="button" title="Logout">
                         <i class="fas fa-sign-out"></i>
                     </a>
                 </li>
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="#" class="brand-link">
-                <img src={{ asset('Images/Logo-LSP-3.png') }} alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="{{ route('admin.dashboard') }}" class="brand-link">
+                <img src={{ asset('Images/Logo-LSP-3.png') }} alt="LSP Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-bold">LSP Las</span>
             </a>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block test-alert">Your Name</a>
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="d-block test-alert">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
                 <div class="form-inline">
@@ -69,7 +69,8 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item {{ request()->is('admin/user*') ? 'menu-is-opening menu-open' : '' }}">
+                        <li
+                            class="nav-item {{ request()->is('admin/user*') || request()->is('admin/verification*') ? 'menu-is-opening menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fad fa-users"></i>
                                 <p>
@@ -79,90 +80,93 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/admin/user/registration"
-                                        class="nav-link {{ request()->is('admin/user/registration') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.verification.index') }}"
+                                        class="nav-link {{ request()->is('admin/verification') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Verifikasi Akun</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/user-asesor"
-                                        class="nav-link {{ request()->is('admin/user-asesor') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Asesor</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/admin/user-tuk"
-                                        class="nav-link {{ request()->is('admin/user-tuk') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>User TUK</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/admin/user-user"
-                                        class="nav-link {{ request()->is('admin/user-user') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.user.index') }}"
+                                        class="nav-link {{ request()->is('admin/user') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>User</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item {{ request()->is('admin/gambar*') ? 'menu-is-opening menu-open' : '' }}">
+                        <li
+                            class="nav-item {{ request()->is('admin/skema-sertifikasi*') || request()->is('admin/posisi-las*') || request()->is('admin/sertifikat*') ? 'menu-is-opening menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fad fa-images"></i>
                                 <p>
-                                    Gambar
+                                    Sertifikat
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
-                                    <a href="/admin/gambar-carousel"
-                                        class="nav-link {{ request()->is('admin/gambar-carousel') ? 'active' : '' }}">
+                                    <a href="/admin/skema-sertifikasi"
+                                        class="nav-link {{ request()->is('admin/skema-sertifikasi') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Skema Sertifikasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/posisi-las"
+                                        class="nav-link {{ request()->is('admin/posisi-las') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Posisi Las</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/sertifikat"
+                                        class="nav-link {{ request()->is('admin/sertifikat') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Sertifikat</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li
+                            class="nav-item {{ request()->is('admin/carousel*') || request()->is('admin/kegiatan*') || request()->is('admin/tim*') || request()->is('admin/tuk*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fad fa-images"></i>
+                                <p>
+                                    Lainnya
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="/admin/carousel"
+                                        class="nav-link {{ request()->is('admin/carousel') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Carousel</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a href="/admin/gambar-karyawan"
-                                        class="nav-link {{ request()->is('admin/gambar-karyawan') ? 'active' : '' }}">
+                                    <a href="/admin/tuk"
+                                        class="nav-link {{ request()->is('admin/tuk') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Karyawan</p>
+                                        <p>TUK</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/kegiatan"
+                                        class="nav-link {{ request()->is('admin/kegiatan') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Kegiatan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/tim"
+                                        class="nav-link {{ request()->is('admin/tim') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tim</p>
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/tuk" class="nav-link {{ request()->is('admin/tuk') ? 'active' : '' }}">
-                                <p>
-                                    TUK
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/skema-sertifikasi"
-                                class="nav-link {{ request()->is('admin/skema-sertifikasi') ? 'active' : '' }}">
-                                <p>
-                                    Skema Sertifikasi
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/posisi-las"
-                                class="nav-link {{ request()->is('admin/posisi-las') ? 'active' : '' }}">
-                                <p>
-                                    Posisi Las
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/sertifikat"
-                                class="nav-link {{ request()->is('admin/sertifikat*') ? 'active' : '' }}">
-                                <p>
-                                    Sertifikat
-                                </p>
-                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -173,7 +177,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Admin | Dashboard</h1>
+                            <h1 class="m-0">Admin | @yield('page')</h1>
                         </div>
                     </div>
                 </div>
@@ -184,8 +188,6 @@
                 </div>
             </section>
         </div>
-        <aside class="control-sidebar control-sidebar-dark">
-        </aside>
         <footer class="main-footer">
             <strong>Copyright &copy; 2023 Nterco.id</strong>
             All rights reserved.
@@ -219,36 +221,7 @@
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.html5.min.js') }}></script>
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.print.min.js') }}></script>
     <script src={{ asset('admin_template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}></script>
-
     <script src={{ asset('admin_template/plugins/sweetalert2/sweetalert2.min.js') }}></script>
-
-    <script>
-        $(function() {
-            $('#example2').DataTable({
-                "paging": true,
-                // "pageLength": 25,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-
-            $('#table-without-search').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-
-            //bs custom file input
-            bsCustomFileInput.init();
-        });
-    </script>
     <script src={{ asset('admin_template/dist/js/pages/dashboard2.js') }}></script>
 
     @if (session()->has('success'))

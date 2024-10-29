@@ -10,7 +10,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/admin/gambar-karyawan/{{ $karyawan->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/admin/tim/{{ $karyawan->id }}" method="POST" enctype="multipart/form-data">
                     @method('put')
                     @csrf
                     <div class="card-body">
@@ -34,7 +34,8 @@
                             <label for="image">Foto</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
+                                    <input id="image" name="image" type="file"
+                                        class="custom-file-input @error('image') is-invalid @enderror">
                                     <label class="custom-file-label" for="image">Pilih File</label>
                                 </div>
                             </div>
@@ -54,5 +55,4 @@
         </div>
         <!-- /.card -->
     </div>
-
 @endsection

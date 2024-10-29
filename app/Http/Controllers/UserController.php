@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -13,9 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        // dd(Role::all());
         return view('admin.user.index', [
-            'users' => User::with('roles')->get(), //eager load user dengan role nya
-            'page' => 'User'
+            'data' => User::with('roles')->get(),
+            'roles' => Role::all()
         ]);
     }
 
@@ -63,7 +65,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        // dd($user);
         return view('admin.user.update', [
             'user' => $user
         ]);
@@ -79,13 +80,10 @@ class UserController extends Controller
             'is_active' => 'required',
             'address' => 'nullable',
         ];
-        //cek perubahan data pada no telp, email
+
         $request->phone != $user->phone ? $rules['phone'] = 'required|unique:users' : '';
         $request->email != $user->email ? $rules['email'] = 'required|unique:users' : '';
-
-        // Cek isi inputan password\
         $request->filled('password') ? $rules['password'] = 'required|min:8' : '';
-
 
         $validatedData = $request->validate($rules);
 
@@ -93,21 +91,8 @@ class UserController extends Controller
             $user->syncRoles($request->role);
         }
 
-        if($request->role == 'asesor'){
-            $url = 'admin.user-asesor';
-        }
-        else if($request->role == 'tuk'){
-            $url = 'admin.user-tuk';
-        }
-        else if ($request->role == 'user') {
-            $url = 'admin.user-user';
-        }
-        // hash password baru
-        // $request->filled('password') ? $validatedData['password'] = Hash::make($validatedData['password']) : '';
-
         $user->update($validatedData);
-        // return redirect('/admin/user')->with('success', 'Updated');
-        return redirect(route($url))->with('success', 'Updated');
+        return redirect(route('admin.user.index'))->with('success', 'Updated');
     }
 
     /**
@@ -117,27 +102,5 @@ class UserController extends Controller
     {
         // User::destroy($user->id);
         // return redirect('/admin/user')->with('success','Deleted');
-    }
-
-    public function userAsesor()
-    {
-        return view('admin.user.index2', [
-            'users' => User::role('asesor')->get(), 
-            'page' => 'Asesor',
-        ]);
-    }
-    public function userTuk()
-    {
-        return view('admin.user.index2', [
-            'users' => User::role('tuk')->get(), 
-            'page' => 'User TUK'
-        ]);
-    }
-    public function userUser()
-    {
-        return view('admin.user.index2', [
-            'users' => User::role('user')->get(), 
-            'page' => 'User'
-        ]);
     }
 }

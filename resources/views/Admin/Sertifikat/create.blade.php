@@ -124,10 +124,10 @@
                         <div class="form-group">
                             <label for="asesor2_id">Asesor 2</label>
                             <select name="asesor2_id"
-                                class="form-control select2bs4 @error('asesor2_id') is-invalid @enderror" >
+                                class="form-control select2bs4 @error('asesor2_id') is-invalid @enderror">
                                 @foreach ($asesors as $asesor)
-                                        <option value="{{ $asesor->id }}">{{ $asesor->name }}</option>
-                                    @endif
+                                    <option value="{{ $asesor->id }}">{{ $asesor->name }}</option>
+                                @endif
                                 @endforeach
                             </select>
                             @error('asesor2_id')
@@ -137,8 +137,8 @@
 
                         <div class="form-group">
                             <label for="owner_id">Pemilik Sertifikat</label>
-                            <select name="owner_id" class="form-control select2bs4 @error('owner_id') is-invalid @enderror"
-                                >
+                            <select name="owner_id"
+                                class="form-control select2bs4 @error('owner_id') is-invalid @enderror">
                                 @foreach ($owners as $owner)
                                     @if ($loop->iteration == 1)
                                         <option value="{{ $owner->id }}" selected="selected">{{ $owner->name }}
@@ -205,7 +205,7 @@
 
                 if (skemaId) {
                     $.ajax({
-                        url: "{{ url('admin/get-posisilas') }}",
+                        url: "{{ url('admin/get-posisi-las') }}",
                         type: "POST",
                         data: {
                             _token: $('#signup-token').val(),

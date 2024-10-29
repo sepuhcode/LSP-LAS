@@ -26,18 +26,18 @@
         <div class="col-12">
             <div class="card card-login-daftar mx-auto">
                 <div class="card-body">
-                    <form action="/login" method="POST">
+                    <form action="/login/authenticate" method="POST">
                         @csrf
                         <div class="text-center">
                             <h2 class="fw-bold mb-4">Login Atau Daftar</h2>
                         </div>
                         <div class="form-outline mb-3">
                             <input name="email" type="email" class="form-control form-control-lg"
-                                placeholder="Masukkan alamat email" />
+                                placeholder="Masukkan alamat email" required />
                         </div>
                         <div class="form-outline mb-3">
                             <input name="password" type="password" class="form-control form-control-lg"
-                                placeholder="Masukkan password" />
+                                placeholder="Masukkan password" required />
                         </div>
                         <div class="text-center text-lg-start mt-4">
                             <button type="submit" class="btn btn-primary btn-md px-4">Login</button>

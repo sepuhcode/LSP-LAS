@@ -6,7 +6,7 @@ use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class RegistrationController extends Controller
+class VerificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class RegistrationController extends Controller
     {
         //admin
         $registrations = Registration::all();
-        return view('admin.verifikasi-akun.index', ['registrations' => $registrations]);
+        return view('admin.verifikasi.index', ['registrations' => $registrations]);
     }
 
     /**
@@ -59,9 +59,7 @@ class RegistrationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Registration $registration)
-    {
-    }
+    public function edit(Registration $registration) {}
 
     /**
      * Update the specified resource in storage.
@@ -83,7 +81,7 @@ class RegistrationController extends Controller
 
         Registration::destroy($registration->id);
 
-        return redirect('/admin/user/registration')->with('success', 'Registrasi berhasil diterima');
+        return redirect('/admin/verification')->with('success', 'Registrasi berhasil diterima');
     }
 
     /**
@@ -93,6 +91,6 @@ class RegistrationController extends Controller
     {
         // admin
         Registration::destroy($registration->id);
-        return redirect('/admin/user/registration')->with('success', 'Registrasi Berhasil Ditolak');
+        return redirect('/admin/verification')->with('success', 'Registrasi Berhasil Ditolak');
     }
 }

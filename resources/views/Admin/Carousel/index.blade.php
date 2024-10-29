@@ -1,53 +1,53 @@
 @extends('admin.layout')
+
+@section('page')
+    Carousel
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Carousel</h3>
-                    <div class="card-tools">
-                        <button class="btn btn-tool btn-outline-info"><a
-                                href="/admin/gambar-carousel/create" style="color: white">Upload Carousel</a></button>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="card-title mb-0">Carousel</h3>
+                        <div class="card-tools">
+                            <a href="{{ route('admin.carousel.create') }}" class="btn btn-tool btn-outline-info text-white">
+                                Tambah
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="carousel-table" class="table table-bordered table-hover" style="text-align: center; ">
+                    <table id="myTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Image</th>
+                                <th>Gambar</th>
                                 <th>Visibility</th>
-                                <th>Delete</th>
-                                {{-- <th>Actions</th> --}}
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if ($carousels->count() > 0)
                                 @foreach ($carousels as $carousel)
                                     <tr>
-                                        <td id="td-center">{{ $loop->iteration }}</td>
-                                        <td id="td-center"><img src={{ asset('Images/carousel-img/' . $carousel->image) }}
-                                                alt="" width="150px"></td>
-                                        <td id="td-center">
-                                            {{-- <button class="btn btn-outline-success"><a
-                                                    href="/admin/carousel/{{ $carousel->id }}/edit"
-                                                    style="text-decoration: none; color:inherit;"><i
-                                                        class="fas fa-edit"></i></a></button> --}}
-
-                                            <form action="/admin/gambar-carousel/{{ $carousel->id }}" method="post">
+                                        <td class="td-center text-center">{{ $loop->iteration }}</td>
+                                        <td class="td-center text-center"><img
+                                                src={{ asset('Images/carousel-img/' . $carousel->image) }} alt=""
+                                                width="150px"></td>
+                                        <td class="td-center text-center">
+                                            <form action="/admin/carousel/{{ $carousel->id }}" method="post">
                                                 @method('put')
                                                 @csrf
-                                                {{-- <input type="submit" value="{{ $carousel->visibility ? 'Hide' : 'Show' }}"> --}}
-                                                <button type="submit" class="btn btn-outline-success"
-                                                    style="text-decoration: none; ">{{ $carousel->visibility ? 'Sembunyikan' : 'Tampilkan' }}</button>
+                                                <button type="submit"
+                                                    class="btn btn-outline-success">{{ $carousel->visibility ? 'Sembunyikan' : 'Tampilkan' }}</button>
                                             </form>
-                                        </td>
-                                        <td id="td-center">
                                             <button class="btn btn-outline-danger delete-carousel"
                                                 data-carouselId="{{ $carousel->id }}"
-                                                data-carouselName="{{ $carousel->name }}">
-                                                <i class="fas fa-trash-alt"></i></button>
+                                                data-carouselName="{{ $carousel->name }}" title="Hapus">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -55,17 +55,26 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 @endsection
 
 @push('script')
+    <script>
+        $(function() {
+            $('#myTable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            bsCustomFileInput.init();
+        });
+    </script>
     <script>
         $(function() {
             $('.delete-carousel').on('click', function() {
@@ -82,28 +91,11 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/gambar-carousel/' + carouselId);
+                        $('#form-delete').attr('action', '/admin/carousel/' + carouselId);
                         $('#form-delete').submit();
                     }
                 });
             });
-        });
-
-
-        // datatable
-        $(function() {
-            $('#carousel-table').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": false,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-
-            // //bs custom file input
-            // bsCustomFileInput.init();
         });
     </script>
 @endpush
