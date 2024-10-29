@@ -65,10 +65,30 @@
     font-style: italic;
 }
 
-.table {
-    width: 100%;
-    margin: 20px auto;
+table, th, td {
+    border: 1px solid darkgray;
     border-collapse: collapse;
+}
+
+.certificate-detail-table-container {
+    margin: auto auto;
+    width: 100%;
+    margin-block: 20px;
+}
+
+.certificate-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.certificate-detail-table th {
+    background-color: lightgray;
+    padding: 0.5rem;
+}
+
+.certificate-detail-table td {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem;
 }
 
 .table-size {
@@ -137,6 +157,10 @@ div .table-sertifikat {
 
     .container-search {
         margin: auto auto;
+        width: 95%;
+    }
+
+    .certificate-detail-table-container {
         width: 95%;
     }
 

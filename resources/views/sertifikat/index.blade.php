@@ -30,9 +30,12 @@
                 <button type="button" class="btn btn-danger btn-search">Cari</i></button>
             </form>
         </div>
-        <div class="table-size">
-            <img src="{{ asset('images/Logo-LSP-3.png') }}" alt="logo LSP">
-            <table class="table table-bordered rounded">
+        <div class="certificate-detail-table-container">
+            <table class="certificate-detail-table">
+                <colgroup>
+                    <col >
+                    <col style="background-image: url('{{ asset('images/Logo-LSP-3.png') }}'); background-size: 100px; background-repeat: no-repeat; background-origin: content-box; background-position: center;">
+                </colgroup>
                 <tbody>
                     <tr>
                         <th scope="row">Nama</th>
