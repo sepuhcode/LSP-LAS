@@ -285,7 +285,7 @@
                 <p class="text-daftar-center-p">Pada halaman <a href="{{ url('/login') }}">login</a>, silahkan klik tombol
                     daftar akun</p>
                 <p class="text-daftar-center-p">Anda juga dapat menghubungi kami lebih lanjut melalui <br>
-                    whatsapp/telepon, klik <a href="http://">di sini</a></p>
+                    whatsapp/telepon, klik <a target="_blank" href="https://wa.me/+6281917100200">di sini</a></p>
                 <div class="icon-daftar-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
                 <div class="icon-daftar-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
             </div>
