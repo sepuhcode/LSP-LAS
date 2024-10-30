@@ -38,6 +38,7 @@ p {
 
 /* btn style start */
 .btn-primary {
+    border: 2px solid #ff0000;
     background-color: #ff0000;
     color: #fff;
 }
@@ -57,9 +58,6 @@ a.btn-primary {
     text-decoration: underline;
     text-underline-position: under
 }
-
-/*halaman-cari-sertifikat */
-
 
 .logos,
 .logos-2 {

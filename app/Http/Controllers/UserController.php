@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -13,9 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index',[
-            'users' => User::all(),
-            'page' => 'User'
+        // dd(Role::all());
+        return view('admin.user.index', [
+            'data' => User::with('roles')->get(),
+            'roles' => Role::all()
         ]);
     }
 
@@ -24,8 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create',[
-            'page'=>'User'
+        return view('admin.user.create', [
+            'page' => 'User'
         ]);
     }
 
@@ -47,7 +49,7 @@ class UserController extends Controller
         $user = User::create($validatedData);
         $user->assignRole($request['role']);
 
-        return redirect('/admin/user')->with('success','Added');
+        return redirect('/admin/user')->with('success', 'Added');
     }
 
     /**
@@ -63,9 +65,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        // dd($user);
-        return view('admin.user.update',[
-            'user'=>$user
+        return view('admin.user.update', [
+            'user' => $user
         ]);
     }
 
@@ -79,25 +80,19 @@ class UserController extends Controller
             'is_active' => 'required',
             'address' => 'nullable',
         ];
-        //cek perubahan data pada no telp, email
+
         $request->phone != $user->phone ? $rules['phone'] = 'required|unique:users' : '';
         $request->email != $user->email ? $rules['email'] = 'required|unique:users' : '';
-
-        // Cek isi inputan password\
         $request->filled('password') ? $rules['password'] = 'required|min:8' : '';
-
 
         $validatedData = $request->validate($rules);
 
         if ($user->getRoleNames()[0] != $request->role) {
             $user->syncRoles($request->role);
         }
-        // hash password baru
-        // $request->filled('password') ? $validatedData['password'] = Hash::make($validatedData['password']) : '';
 
-        User::where('id', $user->id)
-            ->update($validatedData);
-        return redirect('/admin/user')->with('success','Updated');
+        $user->update($validatedData);
+        return redirect(route('admin.user.index'))->with('success', 'Updated');
     }
 
     /**
@@ -105,7 +100,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        User::destroy($user->id);
-        return redirect('/admin/user')->with('success','Deleted');
+        // User::destroy($user->id);
+        // return redirect('/admin/user')->with('success','Deleted');
     }
 }

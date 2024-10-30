@@ -13,37 +13,83 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::create([
-            'name'=>'admin1',
-            'email'=>'admin1@gmail.com',
-            'password'=>'P@ssw0rd',
-            'phone'=>'0812345678911',
-            'address'=>'Papua',
-            'is_active'=> true
-        ]);
+        $data = [
+            [
+                'name' => 'Admin Satu',
+                'email' => 'admin1@gmail.com',
+                'password' => 'password1',
+                'phone' => '0812645228911',
+                'address' => 'Tangerang',
+                'role' => 'admin'
+            ],
+            [
+                'name' => 'Asesor Satu',
+                'email' => 'asesor1@gmail.com',
+                'password' => 'password1',
+                'phone' => '08123456789',
+                'address' => 'Depok',
+                'role' => 'asesor'
+            ],
+            [
+                'name' => 'Asesor Dua',
+                'email' => 'asesor2@gmail.com',
+                'password' => 'password1',
+                'phone' => '08194884888',
+                'address' => 'Depok',
+                'role' => 'asesor'
+            ],
+            [
+                'name' => 'Asesor Tiga',
+                'email' => 'asesor3@gmail.com',
+                'password' => 'password1',
+                'phone' => '083736434837',
+                'address' => 'Jakarta',
+                'role' => 'asesor'
+            ],
+            [
+                'name' => 'User Satu',
+                'email' => 'user1@gmail.com',
+                'password' => 'password1',
+                'phone' => '082339334397',
+                'address' => 'Depok',
+                'role' => 'user'
+            ],
+            [
+                'name' => 'User Dua',
+                'email' => 'user2@gmail.com',
+                'password' => 'password1',
+                'phone' => '08287644597',
+                'address' => 'Depok',
+                'role' => 'user'
+            ],
+            [
+                'name' => 'TUK Satu',
+                'email' => 'tuk1@gmail.com',
+                'password' => 'password1',
+                'phone' => '082468129844',
+                'address' => 'Jakarta',
+                'role' => 'tuk'
+            ],
+            [
+                'name' => 'TUK Dua',
+                'email' => 'tuk2@gmail.com',
+                'password' => 'password1',
+                'phone' => '082468339844',
+                'address' => 'Jakarta',
+                'role' => 'tuk'
+            ]
+        ];
 
-        $user->assignRole('admin');
+        foreach ($data as $list) {
+            $user = User::create([
+                'name' => $list['name'],
+                'email' => $list['email'],
+                'password' => $list['password'],
+                'phone' => $list['phone'],
+                'address' => $list['address']
+            ]);
 
-        $user2 = User::create([
-            'name'=>'asesor1',
-            'email'=>'asesor1@gmail.com',
-            'password'=>'P@ssw0rd',
-            'phone'=>'08123456789',
-            'address'=>'Surabaya',
-            'is_active'=> true
-        ]);
-
-        $user2->assignRole('asesor');
-
-        $user3 = User::create([
-            'name'=>'user1',
-            'email'=>'user1@gmail.com',
-            'password'=>'P@ssw0rd',
-            'phone'=>'0812345678910',
-            'address'=>'Jakarta',
-            'is_active'=> true
-        ]);
-
-        $user3->assignRole('user');
+            $user->assignRole($list['role']);
+        }
     }
 }

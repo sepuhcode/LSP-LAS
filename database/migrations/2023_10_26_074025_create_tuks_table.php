@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->string('address');
+            $table->foreignId('user_tuk_id')->nullable();
             $table->timestamps();
         });
     }

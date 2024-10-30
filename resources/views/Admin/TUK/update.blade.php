@@ -27,6 +27,18 @@
                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3">{{ old('address', $tuk->address) }}</textarea>
                         </div>
                         <div class="form-group">
+                            <label for="user_tuk_id">Pemilik TUK</label>
+                            <select name="user_tuk_id"
+                                class="form-control select2bs4 @error('user_tuk_id') is-invalid @enderror" required>
+                                @foreach ($userTuks as $userTuk)
+                                    <option value="{{ $userTuk->id }}" {{ $tuk->user_tuk_id == $userTuk->id?'selected':'' }}>{{ $userTuk->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('user_tuk_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="image">Gambar</label>
                             <div class="input-group">
                                 <div class="custom-file">

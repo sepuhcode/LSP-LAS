@@ -10,7 +10,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="\admin\posisi-las" method="POST">
+                <form action="/admin/posisi-las" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
