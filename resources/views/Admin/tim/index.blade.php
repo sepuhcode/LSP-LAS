@@ -37,8 +37,7 @@
                                         <td class="td-center text-left">{{ $karyawan->name }}</td>
                                         <td class="td-center text-left">{{ $karyawan->department }}</td>
                                         <td class="td-center text-center">
-                                            <img src={{ asset('Images/our-team/' . $karyawan->image) }} alt=""
-                                                width="150px">
+                                            <img data-enlargeable src={{ asset('Images/our-team/' . $karyawan->image) }} alt="" style="cursor: zoom-in;" width="150px">
                                         </td>
                                         <td class="td-center text-center">
                                             <a class="btn btn-outline-success" href="/admin/tim/{{ $karyawan->id }}/edit"
@@ -63,6 +62,36 @@
 @endsection
 
 @push('script')
+    <script>
+        $('img[data-enlargeable]').addClass('img-enlargeable').click(function() {
+            var src = $(this).attr('src');
+            var modal;
+
+            function removeModal() {
+                modal.remove();
+                $('body').off('keyup.modal-close');
+            }
+            modal = $('<div>').css({
+                background: 'RGBA(0,0,0,.5) url(' + src + ') no-repeat center',
+                backgroundSize: 'contain',
+                width: '100%',
+                height: '100%',
+                position: 'fixed',
+                zIndex: '10000',
+                top: '0',
+                left: '0',
+                cursor: 'zoom-out'
+            }).click(function() {
+                removeModal();
+            }).appendTo('body');
+            //handling ESC
+            $('body').on('keyup.modal-close', function(e) {
+                if (e.key === 'Escape') {
+                removeModal();
+                }
+            });
+        });
+    </script>
     <script>
         $(function() {
             $('#myTable').DataTable({
