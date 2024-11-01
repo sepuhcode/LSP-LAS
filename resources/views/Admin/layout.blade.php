@@ -225,12 +225,25 @@
     <script src={{ asset('admin_template/dist/js/pages/dashboard2.js') }}></script>
 
     @if (session()->has('success'))
-        // success message
         <script>
             Swal.fire({
-                position: 'auto',
+                position: 'center',
                 icon: 'success',
-                title: '{{ session('success') }}',
+                title: 'Sukses',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timerProgressBar: true,
+                timer: 1500
+            });
+        </script>
+    @endif
+    @if (session()->has('failed'))
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('failed') }}',
                 showConfirmButton: false,
                 timerProgressBar: true,
                 timer: 1500

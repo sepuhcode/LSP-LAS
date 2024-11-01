@@ -19,8 +19,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="myTable" class="table table-bordered table-hover" style="text-align: center; ">
-                        <thead>
+                    <table id="myTable" class="table table-bordered table-hover">
+                        <thead class="text-center">
                             <tr>
                                 <th>No</th>
                                 <th>Nama TUK</th>

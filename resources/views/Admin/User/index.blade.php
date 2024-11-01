@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <table id="myTable" class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>

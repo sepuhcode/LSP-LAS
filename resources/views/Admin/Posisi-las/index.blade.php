@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body">
                     <table id="myTable" class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>ID</th>
                                 <th>Posisi Las</th>

@@ -41,8 +41,11 @@
                         </div>
                         <div class="text-center text-lg-start mt-4">
                             <button type="submit" class="btn btn-primary btn-md px-4">Login</button>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Belum punya akun?<a href="/daftar" class="link-danger">
-                                    Register</a></p>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Belum punya akun?
+                                <a href="/daftar" class="link-danger">
+                                    Daftar
+                                </a>
+                            </p>
                         </div>
                     </form>
                 </div>

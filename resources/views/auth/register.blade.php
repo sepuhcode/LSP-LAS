@@ -26,7 +26,7 @@
         <div class="col-12">
             <div class="card card-login-daftar mx-auto">
                 <div class="card-body">
-                    <form action="/register" method="POST" class="form-input">
+                    <form action="/daftar/store" method="POST" class="form-input">
                         @csrf
                         <div class="text-center">
                             <h2 class="fw-bold mb-4">Daftar</h2>

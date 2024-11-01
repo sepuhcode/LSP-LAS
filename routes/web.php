@@ -33,6 +33,7 @@ Route::get('/', function () {
 
 // auth
 Route::get('/daftar', [AuthController::class, 'indexRegister'])->middleware('guest')->name('daftar');
+Route::post('/daftar/store', [AuthController::class, 'postRegister'])->middleware('guest')->name('daftar.store');
 Route::get('/login', [AuthController::class, 'indexLogin'])->middleware('guest')->name('login');
 Route::post('/login/authenticate', [AuthController::class, 'authenticate'])->middleware('guest')->name('login.authenticate');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
@@ -45,9 +46,11 @@ Route::get('/pendaftaran', [LandingPageController::class, 'showPendaftaran'])->n
 Route::get('/about', [LandingPageController::class, 'showAbout'])->name('about');
 
 //admin routes
-Route::prefix('/admin')->name('admin.')->group(function () {
+Route::prefix('/admin')->name('admin.')->middleware(['role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/user', UserController::class);
+    Route::post('/verification/accept/{id}', [VerificationController::class, 'postAccept'])->name('verification.post-accept');
+    Route::post('/verification/reject/{id}', [VerificationController::class, 'postReject'])->name('verification.post-reject');
     Route::resource('/verification', VerificationController::class);
     Route::resource('/carousel', CarouselController::class);
     Route::resource('/tim', TimController::class);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,20 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function postDataRegister(Request $request) {}
+    public function postRegister(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:8',
+            'phone' => 'required',
+            'address' => 'nullable'
+        ]);
+
+        Registration::create($validatedData);
+
+        return redirect('/home')->with('success', 'Data Pendaftaran Akun Berhasil Diajukan!');
+    }
 
     public function indexLogin()
     {
