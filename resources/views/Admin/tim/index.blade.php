@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('page')
-    Carousel
+    Tim
 @endsection
 
 @section('content')
@@ -10,9 +10,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h3 class="card-title mb-0">Carousel</h3>
+                        <h3 class="card-title mb-0">Tim</h3>
                         <div class="card-tools">
-                            <a href="{{ route('admin.carousel.create') }}" class="btn btn-tool btn-outline-info text-white">
+                            <a href="{{ route('admin.tim.create') }}" class="btn btn-tool btn-outline-info text-white">
                                 Tambah
                             </a>
                         </div>
@@ -23,27 +23,30 @@
                         <thead class="text-center">
                             <tr>
                                 <th>No</th>
-                                <th>Gambar</th>
-                                <th>Visibility</th>
+                                <th>Nama Karyawan</th>
+                                <th>Jabatan</th>
+                                <th>Foto</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($carousels->count() > 0)
-                                @foreach ($carousels as $carousel)
+                            @if ($karyawans->count() > 0)
+                                @foreach ($karyawans as $karyawan)
                                     <tr>
                                         <td class="td-center text-center">{{ $loop->iteration }}</td>
-                                        <td class="td-center text-center"><img data-enlargeable src={{ asset('Images/carousel-img/' . $carousel->image) }} alt="" style="cursor: zoom-in;" width="150px"></td>
+                                        <td class="td-center text-left">{{ $karyawan->name }}</td>
+                                        <td class="td-center text-left">{{ $karyawan->department }}</td>
                                         <td class="td-center text-center">
-                                            <form action="/admin/carousel/{{ $carousel->id }}" method="post">
-                                                @method('put')
-                                                @csrf
-                                                <button type="submit"
-                                                    class="btn btn-outline-success">{{ $carousel->visibility ? 'Sembunyikan' : 'Tampilkan' }}</button>
-                                            </form>
-                                            <button class="btn btn-outline-danger delete-carousel"
-                                                data-carouselId="{{ $carousel->id }}"
-                                                data-carouselName="{{ $carousel->name }}" title="Hapus">
+                                            <img data-enlargeable src={{ asset('Images/our-team/' . $karyawan->image) }} alt="" style="cursor: zoom-in;" width="150px">
+                                        </td>
+                                        <td class="td-center text-center">
+                                            <a class="btn btn-outline-success" href="/admin/tim/{{ $karyawan->id }}/edit"
+                                                title="Ubah">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button class="btn btn-outline-danger delete-karyawan"
+                                                data-karyawanId="{{ $karyawan->id }}"
+                                                data-karyawanName="{{ $karyawan->name }}" title="Hapus">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
@@ -105,11 +108,11 @@
     </script>
     <script>
         $(function() {
-            $('.delete-carousel').on('click', function() {
-                var carouselId = $(this).attr('data-carouselId');
+            $('.delete-karyawan').on('click', function() {
+                var karyawanId = $(this).attr('data-karyawanId');
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: "delete " + $(this).attr('data-carouselName') +
+                    text: "delete " + $(this).attr('data-karyawanName') +
                         " ?",
                     icon: 'question',
                     showCancelButton: true,
@@ -119,7 +122,7 @@
                     cancelButtonText: 'No'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#form-delete').attr('action', '/admin/carousel/' + carouselId);
+                        $('#form-delete').attr('action', '/admin/tim/' + karyawanId);
                         $('#form-delete').submit();
                     }
                 });

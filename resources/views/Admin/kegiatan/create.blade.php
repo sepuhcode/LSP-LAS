@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -10,13 +10,13 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/admin/gambar-kegiatan" method="POST" enctype="multipart/form-data">
+                <form action="/admin/kegiatan" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Nama Kegiatan </label>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Nama kegiatan.."
-                                value="{{ old('name') }}" required>
+                            <input name="name" type="text" class="form-control" id="name"
+                                placeholder="Nama kegiatan.." value="{{ old('name') }}" required>
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -33,10 +33,11 @@
                             <label for="image">Foto</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror" required>
+                                    <input id="image" name="image" type="file"
+                                        class="custom-file-input @error('image') is-invalid @enderror" required>
                                     <label class="custom-file-label" for="image">Pilih File</label>
                                 </div>
-                               
+
                             </div>
                             @error('image')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -54,5 +55,4 @@
         </div>
         <!-- /.card -->
     </div>
-
 @endsection

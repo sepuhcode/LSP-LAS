@@ -10,14 +10,15 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/admin/gambar-carousel" method="POST" enctype="multipart/form-data">
+                <form action="/admin/kegiatan" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="image">Image</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
+                                    <input id="image" name="image" type="file"
+                                        class="custom-file-input @error('image') is-invalid @enderror">
                                     <label class="custom-file-label" for="image">Choose file</label>
                                 </div>
                                 {{-- <div class="input-group-append">
@@ -40,5 +41,4 @@
         </div>
         <!-- /.card -->
     </div>
-
 @endsection

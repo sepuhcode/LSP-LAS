@@ -14,8 +14,8 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        return view('admin.carousel.index',[
-            'carousels'=>Carousel::all(),
+        return view('admin.carousel.index', [
+            'carousels' => Carousel::all(),
             'page' => 'Carousel'
         ]);
     }
@@ -25,7 +25,7 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        return view('admin.carousel.create',[
+        return view('admin.carousel.create', [
             'page' => 'Carousel'
         ]);
     }
@@ -49,9 +49,9 @@ class CarouselController extends Controller
         Carousel::create($validatedData);
 
 
-        $request->image->move(public_path('Images/carousel-img'), $fileName);
+        $request->image->move(public_path('images/carousel-img'), $fileName);
 
-        return redirect('/admin/gambar-carousel')->with('success','Carousel Berhasil Diupload');
+        return redirect('/admin/carousel')->with('success', 'Carousel Berhasil Diupload');
     }
 
     /**
@@ -79,7 +79,7 @@ class CarouselController extends Controller
             'visibility' => !$gambar_carousel->visibility
         ];
         Carousel::whereId($gambar_carousel->id)->update($updatedData);
-        return redirect('/admin/gambar-carousel')->with('success','Carousel Berhasil Diupdate');
+        return redirect('/admin/carousel')->with('success', 'Carousel Berhasil Diupdate');
     }
 
     /**
@@ -89,9 +89,9 @@ class CarouselController extends Controller
     {
 
         Carousel::destroy($gambar_carousel->id);
-        if (file_exists(public_path('Images/carousel-img/' . $gambar_carousel->image))) {
-            unlink(public_path('Images/carousel-img/' . $gambar_carousel->image));
+        if (file_exists(public_path('images/carousel-img/' . $gambar_carousel->image))) {
+            unlink(public_path('images/carousel-img/' . $gambar_carousel->image));
         }
-        return redirect('/admin/gambar-carousel')->with('success','Carousel Berhasil Dihapus');
+        return redirect('/admin/carousel')->with('success', 'Carousel Berhasil Dihapus');
     }
 }

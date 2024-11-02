@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin | registration</title>
+    <title>Admin | Registration</title>
     <style>
         table,
         th,
@@ -34,9 +34,9 @@
                 {{-- <td><a href="/admin/registration/{{ $registration->id }}/edit">Update</a></td> --}}
                 <td>
                     <form action="/admin/registration/{{ $registration->id }}" method="post">
-                    @method('put')
-                    @csrf
-                    <button type="submit">Accept</button>
+                        @method('put')
+                        @csrf
+                        <button type="submit">Accept</button>
                     </form>
                     {{-- <a href="/admin/registration/{{ $registration->id }}/edit">Accept</a> --}}
                 </td>

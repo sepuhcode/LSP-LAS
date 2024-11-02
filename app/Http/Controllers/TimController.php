@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\FotoKaryawan;
 use Illuminate\Http\Request;
 
-class FotoKaryawanController extends Controller
+class TimController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.foto-karyawan.index', [
+        return view('admin.tim.index', [
             'karyawans' => FotoKaryawan::all(),
             'page' => 'Foto Karyawan'
         ]);
@@ -23,8 +23,8 @@ class FotoKaryawanController extends Controller
      */
     public function create()
     {
-        return view('admin.foto-karyawan.create',[
-            'page'=>'Foto Karyawan'
+        return view('admin.tim.create', [
+            'page' => 'Foto Karyawan'
         ]);
     }
 
@@ -43,9 +43,9 @@ class FotoKaryawanController extends Controller
         $validatedData['image'] = $fileName;
 
         FotoKaryawan::create($validatedData);
-        $request->image->move(public_path('Images/our-team'), $fileName);
+        $request->image->move(public_path('images/our-team'), $fileName);
 
-        return redirect('/admin/gambar-karyawan')->with('success', 'Uploaded');
+        return redirect('/admin/tim')->with('success', 'Uploaded');
     }
 
     /**
@@ -61,8 +61,8 @@ class FotoKaryawanController extends Controller
      */
     public function edit(FotoKaryawan $fotoKaryawan)
     {
-        return view('admin.foto-karyawan.update',[
-            'karyawan'=>$fotoKaryawan,
+        return view('admin.tim.update', [
+            'karyawan' => $fotoKaryawan,
             'page' => 'Foto Karyawan'
         ]);
     }
@@ -75,7 +75,7 @@ class FotoKaryawanController extends Controller
         $rules = [
             'department' => 'required',
         ];
-        $request->name != $fotoKaryawan->name ? $rules['name']= 'required|unique:foto_karyawans': '';
+        $request->name != $fotoKaryawan->name ? $rules['name'] = 'required|unique:foto_karyawans' : '';
 
         if ($request->hasFile('image')) {
             $rules['image'] = 'required|image|mimes:png,jpg,jpeg|max:512';
@@ -84,16 +84,16 @@ class FotoKaryawanController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('Images/our-team/' . $fotoKaryawan->image))) {
-                unlink(public_path('Images/our-team/' . $fotoKaryawan->image));
+            if (file_exists(public_path('images/our-team/' . $fotoKaryawan->image))) {
+                unlink(public_path('images/our-team/' . $fotoKaryawan->image));
             }
 
             $newFileName = 'karyawan' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('Images/our-team'), $newFileName);
+            $request->image->move(public_path('images/our-team'), $newFileName);
         }
         FotoKaryawan::whereId($fotoKaryawan->id)->update($updatedData);
-        return redirect('/admin/gambar-karyawan')->with('success', 'Updated');
+        return redirect('/admin/tim')->with('success', 'Updated');
     }
 
     /**
@@ -102,9 +102,9 @@ class FotoKaryawanController extends Controller
     public function destroy(FotoKaryawan $fotoKaryawan)
     {
         FotoKaryawan::destroy($fotoKaryawan->id);
-        if (file_exists(public_path('Images/our-team/' . $fotoKaryawan->image))) {
-            unlink(public_path('Images/our-team/' . $fotoKaryawan->image));
+        if (file_exists(public_path('images/our-team/' . $fotoKaryawan->image))) {
+            unlink(public_path('images/our-team/' . $fotoKaryawan->image));
         }
-        return redirect('/admin/gambar-karyawan')->with('success', 'Deleted');
+        return redirect('/admin/tim')->with('success', 'Deleted');
     }
 }

@@ -360,8 +360,8 @@ template {
 }
 
 /* user defined style  */
-#td-center{
-  vertical-align: middle;
+.td-center{
+  vertical-align: middle !important;
 }
 /* end  */
 

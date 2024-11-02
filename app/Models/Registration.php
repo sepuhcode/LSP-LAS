@@ -15,7 +15,7 @@ class Registration extends Model
         'password',
         'phone',
         'address',
-        // 'is_active'
+        'accepted'
     ];
 
     protected $guarded = ['id'];

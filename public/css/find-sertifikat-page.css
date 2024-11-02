@@ -1,0 +1,214 @@
+.main-sertifikat {
+    background-color: #ffffff;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.main-text {
+    margin-left: 40px;
+}
+
+.icon-sertifikat {
+    margin-top: 80px;
+    margin-right: 1455px;
+    margin-bottom: 80px;
+    width: 373px;
+    height: 507px;
+}
+
+.text-sertif-center {
+    margin-left: 150px;
+    margin-top: 80px;
+    font-weight: bold;
+    font-size: 40pt;
+    color: red;
+    margin-bottom: 70px;
+}
+
+.text-sertif-center-p {
+    margin-top: 20px;
+    margin-left: 150px;
+    font-weight: bold;
+    font-size: 20pt;
+    margin-bottom: 30px;
+    color: #7b7878;
+}
+
+.icon-sertif-bnsp {
+    display: inline-block;
+    margin-left: 150px;
+    margin-right: 70px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.icon-sertif-api {
+    display: inline-block;
+}
+
+/* TABLE SERTIF*/
+.container-find-sertifikat {
+    margin: auto auto;
+    width: 50%;
+}
+
+.btn-search {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-box::placeholder {
+    font-style: italic;
+}
+
+table, th, td {
+    border: 1px solid darkgray;
+    border-collapse: collapse;
+}
+
+.certificate-detail-table-container {
+    margin: auto auto;
+    width: 100%;
+    margin-block: 20px;
+}
+
+.certificate-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.certificate-detail-table th {
+    background-color: lightgray;
+    padding: 0.5rem;
+}
+
+.certificate-detail-table td {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem;
+}
+
+.table-size {
+    position: relative;
+}
+
+.table-size table {
+    /* set border table  */
+    border: 2px solid black;
+    text-align: left;
+}
+
+/* gambar background tabel  */
+.table-size img {
+    position: absolute;
+    width: 205px;
+    height: 205px;
+    margin-top: 20px;
+    /* opacity: .1; */
+    filter: opacity(0.1);
+    left: 50%;
+    z-index: 5;
+}
+
+.table-bordered th {
+    width: 30%;
+    background-color: #e5e5e5;
+    /* text-align: left; */
+    padding: 8px;
+}
+
+td {
+    width: 70%;
+    padding: 8px;
+}
+
+.teks-2 {
+    text-align: center;
+    font-size: 15pt;
+}
+
+div .table-sertifikat {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 106px;
+}
+
+#acc-sertif {
+    width: 50%;
+}
+
+@media (max-width: 576px) {
+    .main-text {
+        margin-top: 0px;
+        margin-left: 0px;
+        text-align: center;
+    }
+
+    .icon-sertifikat {
+        margin: 50px 0 20px 0;
+    }
+
+    .container-icon-sertifikat {
+        display: none;
+    }
+
+    .container-search {
+        margin: auto auto;
+        width: 95%;
+    }
+
+    .certificate-detail-table-container {
+        width: 95%;
+    }
+
+    .text-sertif-center {
+        margin-top: 20px;
+        margin-left: 0px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 19pt;
+    }
+
+    .text-sertif-center-p {
+        margin-top: 0px;
+        margin-left: 0px;
+        text-align: center;
+        font-size: 10pt;
+    }
+
+    .icon-sertif-bnsp {
+        margin: 5px 30px 20px 20px;
+    }
+
+    .container-find-sertifikat {
+        margin: auto auto;
+        width: 100%;
+    }
+
+    .btn .btn-danger {
+        width: 10px;
+        height: 10px;
+    }
+
+    .table {
+        width: 95%;
+        height: 100%;
+        margin: 20px 10px;
+    }
+
+    .table-size img {
+        /* width: 180px;
+        height: 180px;
+        margin: 50px 70px 0 0; */
+        width: 180px;
+        height: 180px;
+        margin: auto auto;
+    }
+
+    #acc-sertif {
+        width: 100%;
+    }
+}

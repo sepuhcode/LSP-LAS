@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -13,7 +13,7 @@
                 <form action="/change-password" method="POST">
                     @csrf
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <label for="current_password">Password Lama:</label>
                             <input name="current_password" type="password"

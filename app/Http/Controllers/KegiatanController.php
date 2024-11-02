@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\FotoKegiatan;
 use Illuminate\Http\Request;
 
-class FotoKegiatanController extends Controller
+class KegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.foto-kegiatan.index',[
-            'kegiatans'=>FotoKegiatan::all(),
-            'page'=>'Foto Kegiatan'
+        return view('admin.kegiatan.index', [
+            'kegiatans' => FotoKegiatan::all(),
+            'page' => 'Foto Kegiatan'
         ]);
     }
 
@@ -23,8 +23,8 @@ class FotoKegiatanController extends Controller
      */
     public function create()
     {
-        return view('admin.foto-kegiatan.create',[
-            'page'=>'Foto Kegiatan'
+        return view('admin.kegiatan.create', [
+            'page' => 'Foto Kegiatan'
         ]);
     }
 
@@ -43,9 +43,9 @@ class FotoKegiatanController extends Controller
         $validatedData['image'] = $fileName;
 
         FotoKegiatan::create($validatedData);
-        $request->image->move(public_path('Images/kegiatan'), $fileName);
+        $request->image->move(public_path('images/kegiatan'), $fileName);
 
-        return redirect('/admin/gambar-kegiatan')->with('success', 'Uploaded');
+        return redirect('/admin/kegiatan')->with('success', 'Uploaded');
     }
 
     /**
@@ -61,8 +61,8 @@ class FotoKegiatanController extends Controller
      */
     public function edit(FotoKegiatan $fotoKegiatan)
     {
-        return view('admin.foto-kegiatan.update',[
-            'kegiatan'=>$fotoKegiatan,
+        return view('admin.kegiatan.update', [
+            'kegiatan' => $fotoKegiatan,
             'page' => 'Foto Kegiatan'
         ]);
     }
@@ -75,7 +75,7 @@ class FotoKegiatanController extends Controller
         $rules = [
             'date' => 'required',
         ];
-        $request->name != $fotoKegiatan->name ? $rules['name']= 'required|string|unique:foto_kegiatans': '';
+        $request->name != $fotoKegiatan->name ? $rules['name'] = 'required|string|unique:foto_kegiatans' : '';
 
         if ($request->hasFile('image')) {
             $rules['image'] = 'required|image|mimes:png,jpg,jpeg|max:512';
@@ -84,16 +84,16 @@ class FotoKegiatanController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('Images/kegiatan/' . $fotoKegiatan->image))) {
-                unlink(public_path('Images/kegiatan/' . $fotoKegiatan->image));
+            if (file_exists(public_path('images/kegiatan/' . $fotoKegiatan->image))) {
+                unlink(public_path('images/kegiatan/' . $fotoKegiatan->image));
             }
 
             $newFileName = 'kegiatan' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('Images/kegiatan'), $newFileName);
+            $request->image->move(public_path('images/kegiatan'), $newFileName);
         }
         FotoKegiatan::whereId($fotoKegiatan->id)->update($updatedData);
-        return redirect('/admin/gambar-kegiatan')->with('success', 'Updated');
+        return redirect('/admin/kegiatan')->with('success', 'Updated');
     }
 
     /**
@@ -102,9 +102,9 @@ class FotoKegiatanController extends Controller
     public function destroy(FotoKegiatan $fotoKegiatan)
     {
         FotoKegiatan::destroy($fotoKegiatan->id);
-        if (file_exists(public_path('Images/kegiatan/' . $fotoKegiatan->image))) {
-            unlink(public_path('Images/kegiatan/' . $fotoKegiatan->image));
+        if (file_exists(public_path('images/kegiatan/' . $fotoKegiatan->image))) {
+            unlink(public_path('images/kegiatan/' . $fotoKegiatan->image));
         }
-        return redirect('/admin/gambar-kegiatan')->with('success', 'Deleted');
+        return redirect('/admin/kegiatan')->with('success', 'Deleted');
     }
 }

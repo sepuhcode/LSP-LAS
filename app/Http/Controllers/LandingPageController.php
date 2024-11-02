@@ -8,18 +8,11 @@ use App\Models\OldData;
 use App\Models\Sertifikasi;
 use App\Models\SkemaSertifikasi;
 use App\Models\Tuk;
-use DateTime;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class SearchController extends Controller
+class LandingPageController extends Controller
 {
-    // public function __construct(OldData $oldData)
-    // {
-    //     $this->oldData = $oldData;
-    // }
-
     public function search(string $keyword)
     {
         $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
@@ -60,6 +53,12 @@ class SearchController extends Controller
             'tanggal sertifikat' => date_format(date_create($data[0]->tgl_sertifikat_baru), 'd-M-Y'),
             'berlaku s/d' => date_format($tgl_berlaku, 'd-M-Y')
         ];
+    }
+
+    public function findSertifikat(Request $request)
+    {
+        $data = $request;
+        return response()->json($data, 200);
     }
 
     public function cariSertifikat(Request $request)
@@ -111,7 +110,7 @@ class SearchController extends Controller
             }
 
             $asesor2 = null;
-            if($sertifikat[0]->asesor2 != null){
+            if ($sertifikat[0]->asesor2 != null) {
                 $asesor2 = $sertifikat[0]->asesor2->name;
             }
 
@@ -172,16 +171,18 @@ class SearchController extends Controller
         ]);
     }
 
-    public function showPendaftaran(){
-        return view('Pendaftaran.index');
+    public function showPendaftaran()
+    {
+        return view('pendaftaran.index');
     }
 
-    public function showAbout(){
+    public function showAbout()
+    {
 
         $karyawans = FotoKaryawan::all();
 
-        return view('about.index',[
-            'karyawans'=>$karyawans,
+        return view('about.index', [
+            'karyawans' => $karyawans,
         ]);
     }
 }
