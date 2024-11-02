@@ -76,9 +76,11 @@ class CarouselController extends Controller
     public function update(Request $request, Carousel $gambar_carousel)
     {
         $updatedData = [
-            'visibility' => !$gambar_carousel->visibility
+            'visibility' => !$gambar_carousel->first()->visibility
         ];
-        Carousel::whereId($gambar_carousel->id)->update($updatedData);
+
+        $l = Carousel::whereId($gambar_carousel->first()->id)->update($updatedData);
+
         return redirect('/admin/carousel')->with('success', 'Carousel Berhasil Diupdate');
     }
 
