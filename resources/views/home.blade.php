@@ -22,7 +22,7 @@
         <div class="carousel-inner">
             @forelse ($carousels as $carousel)
                 <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
-                    <img src="{{ asset('images/carousel-img/' . $carousel->image) }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('images/carousel-img/' . $carousel->image) }}" class="d-block" alt="..." style="width: 100vw; height: 100vh; object-fit: contain;">
                 </div>
             @empty
                 <div class="carousel-item active">

@@ -12,7 +12,7 @@ class TimController extends Controller
      */
     public function index()
     {
-        return view('admin.tim.index', [
+        return view('Admin.tim.index', [
             'karyawans' => FotoKaryawan::all(),
             'page' => 'Foto Karyawan'
         ]);
@@ -23,7 +23,7 @@ class TimController extends Controller
      */
     public function create()
     {
-        return view('admin.tim.create', [
+        return view('Admin.tim.create', [
             'page' => 'Foto Karyawan'
         ]);
     }
@@ -61,7 +61,7 @@ class TimController extends Controller
      */
     public function edit(FotoKaryawan $fotoKaryawan)
     {
-        return view('admin.tim.update', [
+        return view('Admin.tim.update', [
             'karyawan' => $fotoKaryawan,
             'page' => 'Foto Karyawan'
         ]);

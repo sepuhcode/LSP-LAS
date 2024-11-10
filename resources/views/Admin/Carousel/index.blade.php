@@ -41,6 +41,8 @@
                                                 <button type="submit"
                                                     class="btn btn-outline-success">{{ $carousel->visibility ? 'Sembunyikan' : 'Tampilkan' }}</button>
                                             </form>
+                                        </td>
+                                        <td class="td-center text-center">
                                             <button class="btn btn-outline-danger delete-carousel"
                                                 data-carouselId="{{ $carousel->id }}"
                                                 data-carouselName="{{ $carousel->name }}" title="Hapus">
