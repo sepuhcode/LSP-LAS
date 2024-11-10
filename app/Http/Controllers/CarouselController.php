@@ -14,7 +14,7 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        return view('admin.carousel.index', [
+        return view('Admin.Carousel.index', [
             'carousels' => Carousel::all(),
             'page' => 'Carousel'
         ]);
@@ -25,7 +25,7 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        return view('admin.carousel.create', [
+        return view('Admin.Carousel.create', [
             'page' => 'Carousel'
         ]);
     }

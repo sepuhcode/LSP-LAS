@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         // dd(Role::all());
-        return view('admin.user.index', [
+        return view('Admin.User.index', [
             'data' => User::with('roles')->get(),
             'roles' => Role::all()
         ]);
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create', [
+        return view('Admin.User.create', [
             'page' => 'User'
         ]);
     }
@@ -65,7 +65,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.update', [
+        return view('Admin.User.update', [
             'user' => $user
         ]);
     }
