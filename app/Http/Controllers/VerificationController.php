@@ -11,7 +11,7 @@ class VerificationController extends Controller
     public function index()
     {
         $registrations = Registration::all();
-        return view('admin.verifikasi.index', ['registrations' => $registrations]);
+        return view('Admin.verifikasi.index', ['registrations' => $registrations]);
     }
 
     public function create()

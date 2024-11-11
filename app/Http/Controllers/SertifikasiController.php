@@ -18,7 +18,7 @@ class SertifikasiController extends Controller
     public function index()
     {
         $sertifikats = Sertifikasi::with(['skemaSertifikasi:id,name', 'posisiLas:id,name', 'asesor:id,name','asesor2:id,name'])->get();
-        return view('admin.sertifikat.index', [
+        return view('Admin.Sertifikat.index', [
             'sertifikats' => $sertifikats,
             'page' => 'Sertifikat'
         ]);
@@ -32,7 +32,7 @@ class SertifikasiController extends Controller
         $skemas = SkemaSertifikasi::all();
         $asesors = User::role('asesor')->get();
         $owners = User::role(['user', 'tuk'])->get();
-        return view('admin.sertifikat.create', [
+        return view('Admin.Sertifikat.create', [
             'skemas' => $skemas,
             'asesors' => $asesors,
             'owners' => $owners,
@@ -87,7 +87,7 @@ class SertifikasiController extends Controller
         $posisis = PosisiLas::where('skema_sertifikasi_id', $sertifikat->skema_sertifikasi_id)->get();
         $asesors = User::role('asesor')->get();
         $owners = User::role(['user', 'tuk'])->get();
-        return view('admin.sertifikat.update', [
+        return view('Admin.Sertifikat.update', [
             'sertifikat' => $sertifikat,
             'skemas' => $skemas,
             'posisis' => $posisis,
@@ -151,7 +151,7 @@ class SertifikasiController extends Controller
 
     public function showImport()
     {
-        return view('admin.sertifikat.import', [
+        return view('Admin.Sertifikat.import', [
             'page' => 'Sertifikat'
         ]);
     }
