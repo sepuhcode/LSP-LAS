@@ -16,15 +16,15 @@
                     Pengelasan Indonesia dan Terlisensi oleh <br>
                     Badan Nasional Sertifikasi Profesi.</p>
                 <div class="right-home-icons-wrapper mx-auto mx-xl-0">
-                    <div class="icon-home-bnsp"><img src="{{ asset('images/bnsp pendaftaran.png') }}" /></div>
-                    <div class="icon-home-api"><img src="{{ asset('images/api pendaftaran.png') }}" /></div>
+                    <div class="icon-home-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
+                    <div class="icon-home-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
                 </div>
             </div>
             <div class="my-5 col-xl-6 col-12 d-flex justify-content-center align-items-center" id="gambar-home-las">
                 <div class="left-home-icons-wrapper d-flex justify-content-center align-items-center">
-                    <img class="icon-home1" src="{{ asset('images/circle-background.png') }}" />
-                    <img class="icon-home2" src="{{ asset('images/las2.png') }}" />
-                    <img class="icon-home3" src="{{ asset('images/las3.png') }}" />
+                    <img class="icon-home1" src="{{ asset('Images/circle-background.png') }}" />
+                    <img class="icon-home2" src="{{ asset('Images/las2.png') }}" />
+                    <img class="icon-home3" src="{{ asset('Images/las3.png') }}" />
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@
 
         // show image after load dom
         $(document).ready(function() {
-            const imageUrl = "{{ asset('images/mampu-bersaing.png') }}";
+            const imageUrl = "{{ asset('Images/mampu-bersaing.png') }}";
             const imgElement = document.createElement("img");
             imgElement.src = imageUrl;
             imgElement.classList.add("img-fluid");
@@ -212,10 +212,10 @@
         accordionItems.forEach((item, index) => {
             const button = item.querySelector(".accordion-button");
             const images = [
-                "{{ asset('images/mampu-bersaing.png') }}",
-                "{{ asset('images/mengikuti-perkembangan.png') }}",
-                "{{ asset('images/membina-tempat.png') }}",
-                "{{ asset('images/menjalin hub.png') }}",
+                "{{ asset('Images/mampu-bersaing.png') }}",
+                "{{ asset('Images/mengikuti-perkembangan.png') }}",
+                "{{ asset('Images/membina-tempat.png') }}",
+                "{{ asset('Images/menjalin hub.png') }}",
             ];
 
             button.addEventListener("click", () => {
