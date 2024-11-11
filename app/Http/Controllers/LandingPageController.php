@@ -173,7 +173,7 @@ class LandingPageController extends Controller
 
     public function showPendaftaran()
     {
-        return view('pendaftaran.index');
+        return view('Pendaftaran.index');
     }
 
     public function showAbout()
@@ -181,7 +181,7 @@ class LandingPageController extends Controller
 
         $karyawans = FotoKaryawan::all();
 
-        return view('about.index', [
+        return view('About.index', [
             'karyawans' => $karyawans,
         ]);
     }

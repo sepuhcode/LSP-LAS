@@ -43,7 +43,7 @@ class TimController extends Controller
         $validatedData['image'] = $fileName;
 
         FotoKaryawan::create($validatedData);
-        $request->image->move(public_path('images/our-team'), $fileName);
+        $request->image->move(public_path('Images/our-team'), $fileName);
 
         return redirect('/admin/tim')->with('success', 'Uploaded');
     }
@@ -84,13 +84,13 @@ class TimController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('images/our-team/' . $fotoKaryawan->image))) {
-                unlink(public_path('images/our-team/' . $fotoKaryawan->image));
+            if (file_exists(public_path('Images/our-team/' . $fotoKaryawan->image))) {
+                unlink(public_path('Images/our-team/' . $fotoKaryawan->image));
             }
 
             $newFileName = 'karyawan' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
-            $request->image->move(public_path('images/our-team'), $newFileName);
+            $request->image->move(public_path('Images/our-team'), $newFileName);
         }
         FotoKaryawan::whereId($fotoKaryawan->id)->update($updatedData);
         return redirect('/admin/tim')->with('success', 'Updated');
@@ -102,8 +102,8 @@ class TimController extends Controller
     public function destroy(FotoKaryawan $fotoKaryawan)
     {
         FotoKaryawan::destroy($fotoKaryawan->id);
-        if (file_exists(public_path('images/our-team/' . $fotoKaryawan->image))) {
-            unlink(public_path('images/our-team/' . $fotoKaryawan->image));
+        if (file_exists(public_path('Images/our-team/' . $fotoKaryawan->image))) {
+            unlink(public_path('Images/our-team/' . $fotoKaryawan->image));
         }
         return redirect('/admin/tim')->with('success', 'Deleted');
     }

@@ -13,11 +13,11 @@
             <div class="col-lg-8 sm-4 main-text">
                 <p class="text-sertif-center">Anda dapat memastikan keaslian <br>sertifikat disini</p>
                 <p class="text-sertif-center-p">Anda juga dapat melihat informasi sertifikasi pada halaman ini</p>
-                <div class="icon-sertif-bnsp"><img src="{{ asset('images/bnsp pendaftaran.png') }}" /></div>
-                <div class="icon-sertif-api"><img src="{{ asset('images/api pendaftaran.png') }}" /></div>
+                <div class="icon-sertif-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
+                <div class="icon-sertif-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
             </div>
             <div class="container-icon-sertifikat col-lg-3 sm-4">
-                <img class="icon-sertifikat" src="{{ asset('images/icon-sertifikat.png') }}" />
+                <img class="icon-sertifikat" src="{{ asset('Images/icon-sertifikat.png') }}" />
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
             <table class="certificate-detail-table">
                 <colgroup>
                     <col >
-                    <col style="background-image: url('{{ asset('images/Logo-LSP-3.png') }}'); background-size: 100px; background-repeat: no-repeat; background-origin: content-box; background-position: center;">
+                    <col style="background-image: url('{{ asset('Images/Logo-LSP-3.png') }}'); background-size: 100px; background-repeat: no-repeat; background-origin: content-box; background-position: center;">
                 </colgroup>
                 <tbody>
                     <tr>
