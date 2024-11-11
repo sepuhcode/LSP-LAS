@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @push('style')
     {{-- select2 --}}
     <link rel="stylesheet" href={{ asset('admin_template/plugins/select2/css/select2.css') }}>
@@ -125,9 +125,10 @@
                             <label for="asesor2_id">Asesor 2</label>
                             <select name="asesor2_id"
                                 class="form-control select2bs4 @error('asesor2_id') is-invalid @enderror">
+                                <option value="">{{ "Pilih Asesor 2" }}</option>
                                 @foreach ($asesors as $asesor)
                                     <option value="{{ $asesor->id }}">{{ $asesor->name }}</option>
-                                @endif
+                                {{-- @endif --}}
                                 @endforeach
                             </select>
                             @error('asesor2_id')
@@ -186,6 +187,7 @@
     <script src={{ asset('admin_template/plugins/select2/js/select2.full.min.js') }}></script>
     <script>
         $(function() {
+        
             //Initialize Select2 Elements
             $('.select2').select2()
             $('.select2bs4').select2({
