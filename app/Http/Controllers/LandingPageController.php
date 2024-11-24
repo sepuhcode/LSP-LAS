@@ -116,7 +116,12 @@ class LandingPageController extends Controller
 
             $asesor = $sertifikat[0]->asesor->name;
             $skemaSertifikasi = $sertifikat[0]->skemaSertifikasi->name;
-            $posisiLas = $sertifikat[0]->posisiLas->name;
+
+            $posisiLas = null;
+            if ($sertifikat[0]->posisiLas != null) {
+                $posisiLas = $sertifikat[0]->posisiLas->name;
+            }
+            
         } else {
             $sertifikat = [];
             $tglBerlaku = null;

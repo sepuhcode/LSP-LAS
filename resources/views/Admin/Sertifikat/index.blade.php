@@ -56,7 +56,7 @@
                                         <td class="td-center text-left">{{ $sertifikat->no_sertifikat }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->no_reg_sertifikat }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->skemaSertifikasi->name }}</td>
-                                        <td class="td-center text-left">{{ $sertifikat->posisiLas->name }}</td>
+                                        <td class="td-center text-left">{{ $sertifikat->posisiLas != null ? $sertifikat->posisiLas->name:'' }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->tuk }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->no_blangko }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->tgl_uji }}</td>

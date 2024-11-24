@@ -184,7 +184,7 @@
                         }
 
                         if (!$.isEmptyObject(result.asesor)) {
-                            if (result.asesor2 += null) {
+                            if (result.asesor2 != null) {
                                 $('.asesor').html(result.asesor + ' & ' + result.asesor2);
                             } else {
                                 $('.asesor').html(result.asesor);

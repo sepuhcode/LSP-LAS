@@ -256,6 +256,14 @@ class UserSeeder extends Seeder
                 'address' => '',
                 'role' => 'asesor'
             ],
+            [ //31
+                'name' => 'Ma\'mun Hidayat',
+                'email' => 'ma\'munhidayatgmail.com',
+                'password' => 'password1',
+                'phone' => '',
+                'address' => '',
+                'role' => 'asesor'
+            ],
 
 //admin
 
