@@ -189,7 +189,7 @@
             </section>
         </div>
         <footer class="main-footer">
-            <strong>Copyright &copy; 2023 Nterco.id</strong>
+            <strong>Copyright &copy; 2024 Nterco.id</strong>
             All rights reserved.
         </footer>
     </div>

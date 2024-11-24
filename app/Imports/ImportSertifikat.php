@@ -42,8 +42,8 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
                 $sertifikat['name'] = !empty($row[2]) ? $row[2] : '';
                 $sertifikat['no_sertifikat'] = !empty($row[3]) ? $row[3] : '';
                 $sertifikat['no_reg_sertifikat'] = !empty($row[4]) ? $row[4] : '';
-                $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
-                $sertifikat['posisi_las_id'] = !empty($row[6]) ? $row[6] : '';
+                $sertifikat['skema_sertifikasi_id'] = $row[5];
+                $sertifikat['posisi_las_id'] = $row[6];
                 // $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
                 // $sertifikat['posisi_las_id'] = !empty($row[6]) ? $row[6] : '';
                 $sertifikat['tuk'] = !empty($row[7]) ? $row[7] : '';
