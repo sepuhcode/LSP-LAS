@@ -170,7 +170,9 @@
                 <div class="col-lg-6 col-12 sm-4">
                     <p class="text-about-center">Anda dapat menghubungi kami <br>
                         melalui whatsapp/telepon <br>
+
                         Klik <a href="https://wa.me/+6281917100200" target="_blank">di sini</a></p>
+
                     <div class="row my-5">
                         <div class="col-12 col-md-6">
                             <div class="icon-about-bnsp"><img class="d-block mx-auto mx-lg-0"
