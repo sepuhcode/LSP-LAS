@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $accountRegistrations = Registration::whereAccepted(0)->count();
+        $accountRegistrations = Registration::whereAccepted(null)->count();
         $tuks = Tuk::count();
         $certificates = Sertifikasi::count();
         return view('Admin.Dashboard.index',[

@@ -10,7 +10,7 @@ class VerificationController extends Controller
 {
     public function index()
     {
-        $registrations = Registration::all();
+        $registrations = Registration::whereAccepted(null);
         return view('Admin.verifikasi.index', ['registrations' => $registrations]);
     }
 

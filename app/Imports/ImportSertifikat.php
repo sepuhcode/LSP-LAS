@@ -33,32 +33,33 @@ class ImportSertifikat implements ToCollection, WithCalculatedFormulas
                 if (!empty($row[10])) {
                     $date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($collection[$index][10])->format('Y-m-d h:i:s'); //convert excel date (int) ke date format
 
-                }
-                else{
+                } else {
                     $date = '1970-01-01';
                 }
 
                 if (!empty($row[2])) {
-                $sertifikat['name'] = !empty($row[2]) ? $row[2] : '';
-                $sertifikat['no_sertifikat'] = !empty($row[3]) ? $row[3] : '';
-                $sertifikat['no_reg_sertifikat'] = !empty($row[4]) ? $row[4] : '';
-                $sertifikat['skema_sertifikasi_id'] = $row[5];
-                $sertifikat['posisi_las_id'] = $row[6];
-                // $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
-                // $sertifikat['posisi_las_id'] = !empty($row[6]) ? $row[6] : '';
-                $sertifikat['tuk'] = !empty($row[7]) ? $row[7] : '';
-                $sertifikat['no_blangko'] = !empty($row[8]) ? $row[8] : '';
-                $sertifikat['tgl_uji'] = !empty($row[9]) ? $row[9] : '';
-                // $sertifikat['tgl_sertifikat'] = !empty($row[10]) ? $date : '';
-                $sertifikat['tgl_sertifikat'] = $date;
-                // $sertifikat['user_id'] = !empty($row[11]) ? $row[11] : '';
-                $sertifikat['asesor_id'] = $row[11]; //asesor1 id
-                $sertifikat['asesor2_id'] = $row[12]; //asesor2 id
-                $sertifikat['file_scan_sertifikat'] = NULL; 
 
-                // dd($sertifikat);
-                Sertifikasi::create($sertifikat);
+                    if (Sertifikasi::where('no_sertifikat', $row[3])->count() <= 0) {
+                        $sertifikat['name'] = !empty($row[2]) ? $row[2] : '';
+                        $sertifikat['no_sertifikat'] = !empty($row[3]) ? $row[3] : '';
+                        $sertifikat['no_reg_sertifikat'] = !empty($row[4]) ? $row[4] : '';
+                        $sertifikat['skema_sertifikasi_id'] = $row[5];
+                        $sertifikat['posisi_las_id'] = $row[6];
+                        // $sertifikat['skema_sertifikasi_id'] = !empty($row[5]) ? $row[5] : '';
+                        // $sertifikat['posisi_las_id'] = !empty($row[6]) ? $row[6] : '';
+                        $sertifikat['tuk'] = !empty($row[7]) ? $row[7] : '';
+                        $sertifikat['no_blangko'] = !empty($row[8]) ? $row[8] : '';
+                        $sertifikat['tgl_uji'] = !empty($row[9]) ? $row[9] : '';
+                        // $sertifikat['tgl_sertifikat'] = !empty($row[10]) ? $date : '';
+                        $sertifikat['tgl_sertifikat'] = $date;
+                        // $sertifikat['user_id'] = !empty($row[11]) ? $row[11] : '';
+                        $sertifikat['asesor_id'] = $row[11]; //asesor1 id
+                        $sertifikat['asesor2_id'] = $row[12]; //asesor2 id
+                        $sertifikat['file_scan_sertifikat'] = NULL;
 
+                        // dd($sertifikat);
+                        Sertifikasi::create($sertifikat);
+                    }
                 }
             }
             $index++;

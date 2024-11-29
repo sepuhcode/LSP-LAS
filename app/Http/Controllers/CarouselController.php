@@ -87,12 +87,12 @@ class CarouselController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Carousel $gambar_carousel)
+    public function destroy(Carousel $carousel)
     {
 
-        Carousel::destroy($gambar_carousel->id);
-        if (file_exists(public_path('Images/carousel-img/' . $gambar_carousel->image))) {
-            unlink(public_path('Images/carousel-img/' . $gambar_carousel->image));
+        Carousel::destroy($carousel->id);
+        if (file_exists(public_path('Images/carousel-img/' . $carousel->image))) {
+            unlink(public_path('Images/carousel-img/' . $carousel->image));
         }
         return redirect('/admin/carousel')->with('success', 'Carousel Berhasil Dihapus');
     }
