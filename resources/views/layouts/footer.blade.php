@@ -28,14 +28,14 @@
         </div>
         <div class="col-4 text-white">
             <h4>Alamat</h4>
-            <p>Graha Surveyor Indonesia Lt. 14</p>
-            <p>Jl. Gatot Subroto Kav. 56 Jakarta Selatan</p>
+            <p>Casa Residence Cijantung Blok A8</p>
+            <p>Jl. Bima II No.30A Cijantung Kec.Pasar Rebo Jakarta Timur</p>
             <p>Tlp : 0819 17100200</p>
-            <p>Post code : 12950</p>
+            <p>Post code : 13770</p>
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1850074093113!2d106.82989237581323!3d-6.2393303610991895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3c2f78e1417%3A0x6e69dc9146860164!2sPT%20Surveyor%20Indonesia%20(Persero)%20Tbk!5e0!3m2!1sid!2sid!4v1697885207960!5m2!1sid!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2802.9167298185607!2d106.85698623145339!3d-6.3247664098443215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed005146b6e1%3A0x495ed4aa6fffcccd!2sLSP%20LAS!5e0!3m2!1sid!2sid!4v1732866740557!5m2!1sid!2sid"
                 width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" class="mt-2"></iframe>
+                referrerpolicy="no-referrer-when-downgrade" class="mt-2">
         </div>
     </div>
 </div>
