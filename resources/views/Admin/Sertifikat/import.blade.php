@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 @section('page')
     Sertifikat
@@ -41,3 +41,11 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script>
+@endpush

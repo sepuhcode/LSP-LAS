@@ -357,5 +357,37 @@ class PosisiLasSeeder extends Seeder
             'name'=>'5G SMAW-FCAW',
             'skema_sertifikasi_id'=>'3'
         ]);
+        PosisiLas::create([ //87
+            'name'=>'6G GMAW-SMAW',
+            'skema_sertifikasi_id'=>'3'
+        ]);
+        PosisiLas::create([ //88
+            'name'=>'3G FCAW-GMAW',
+            'skema_sertifikasi_id'=>'2'
+        ]);
+        PosisiLas::create([ //89
+            'name'=>'3G SMAW-GTAW',
+            'skema_sertifikasi_id'=>'2'
+        ]);
+        PosisiLas::create([ //90
+            'name'=>'3G FCAW-GTAW',
+            'skema_sertifikasi_id'=>'2'
+        ]);
+        PosisiLas::create([ //91
+            'name'=>'3G GMAW-SMAW',
+            'skema_sertifikasi_id'=>'2'
+        ]);
+        PosisiLas::create([ //92
+            'name'=>'4G FCAW-GMAW',
+            'skema_sertifikasi_id'=>'2'
+        ]);
+        PosisiLas::create([ //93
+            'name'=>'4G SMAW-FCAW',
+            'skema_sertifikasi_id'=>'2'
+        ]);
+        PosisiLas::create([ //94
+            'name'=>'1G GTAW-SMAW',
+            'skema_sertifikasi_id'=>'2'
+        ]);
     }
 }

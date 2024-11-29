@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->unique();
             $table->string('address')->nullable();
-            // $table->boolean('is_active');
+            $table->boolean('accepted')->nullable()->default(null);
             $table->timestamps();
         });
     }

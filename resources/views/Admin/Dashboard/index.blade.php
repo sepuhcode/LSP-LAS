@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 @section('page')
     Dashboard
@@ -11,9 +11,9 @@
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-plus"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">User Registration</span>
+                    <span class="info-box-text">Registrasi Akun</span>
                     <span class="info-box-number">
-                        10
+                        {{ $accountRegistrations }}
                     </span>
                 </div>
             </div>
@@ -22,8 +22,8 @@
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-layer-plus"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Certification Registration</span>
-                    <span class="info-box-number">215</span>
+                    <span class="info-box-text">Registrasi Sertifikat</span>
+                    <span class="info-box-number">0</span>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-map-marker-alt"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">TUK</span>
-                    <span class="info-box-number">30</span>
+                    <span class="info-box-number">{{ $tuks }}</span>
                 </div>
             </div>
         </div>
@@ -41,13 +41,14 @@
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-file-certificate"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Certificates</span>
-                    <span class="info-box-number">2,000</span>
+                    <span class="info-box-text">Sertifikat</span>
+                    <span class="info-box-number">{{ $certificates }}</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    
+    {{-- <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -696,5 +697,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

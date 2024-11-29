@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 @section('page')
     Skema Sertifikasi
@@ -21,7 +21,7 @@
                 </div>
                 <div class="card-body">
                     <table id="myTable" class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>ID</th>
                                 <th>Skema Sertifikasi</th>
@@ -75,7 +75,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-skema').on('click', function() {
+            $(document).on('click', '.delete-skema', function() {
                 var skemaId = $(this).attr('data-skemaId');
                 Swal.fire({
                     title: 'Are You Sure?',

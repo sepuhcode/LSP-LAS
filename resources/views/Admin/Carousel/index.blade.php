@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 @section('page')
     Carousel
@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body">
                     <table id="myTable" class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>No</th>
                                 <th>Gambar</th>
@@ -33,9 +33,7 @@
                                 @foreach ($carousels as $carousel)
                                     <tr>
                                         <td class="td-center text-center">{{ $loop->iteration }}</td>
-                                        <td class="td-center text-center"><img
-                                                src={{ asset('Images/carousel-img/' . $carousel->image) }} alt=""
-                                                width="150px"></td>
+                                        <td class="td-center text-center"><img data-enlargeable src={{ asset('Images/carousel-img/' . $carousel->image) }} alt="" style="cursor: zoom-in;" width="150px"></td>
                                         <td class="td-center text-center">
                                             <form action="/admin/carousel/{{ $carousel->id }}" method="post">
                                                 @method('put')
@@ -43,6 +41,8 @@
                                                 <button type="submit"
                                                     class="btn btn-outline-success">{{ $carousel->visibility ? 'Sembunyikan' : 'Tampilkan' }}</button>
                                             </form>
+                                        </td>
+                                        <td class="td-center text-center">
                                             <button class="btn btn-outline-danger delete-carousel"
                                                 data-carouselId="{{ $carousel->id }}"
                                                 data-carouselName="{{ $carousel->name }}" title="Hapus">
@@ -62,6 +62,36 @@
 
 @push('script')
     <script>
+        $('img[data-enlargeable]').addClass('img-enlargeable').click(function() {
+            var src = $(this).attr('src');
+            var modal;
+
+            function removeModal() {
+                modal.remove();
+                $('body').off('keyup.modal-close');
+            }
+            modal = $('<div>').css({
+                background: 'RGBA(0,0,0,.5) url(' + src + ') no-repeat center',
+                backgroundSize: 'contain',
+                width: '100%',
+                height: '100%',
+                position: 'fixed',
+                zIndex: '10000',
+                top: '0',
+                left: '0',
+                cursor: 'zoom-out'
+            }).click(function() {
+                removeModal();
+            }).appendTo('body');
+            //handling ESC
+            $('body').on('keyup.modal-close', function(e) {
+                if (e.key === 'Escape') {
+                removeModal();
+                }
+            });
+        });
+    </script>
+    <script>
         $(function() {
             $('#myTable').DataTable({
                 "paging": true,
@@ -77,7 +107,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-carousel').on('click', function() {
+            $(document).on('click', '.delete-carousel', function() {
                 var carouselId = $(this).attr('data-carouselId');
                 Swal.fire({
                     title: 'Are You Sure?',

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 @section('page')
     Sertifikat
@@ -29,7 +29,7 @@
                 </div>
                 <div class="card-body">
                     <table id="myTable" class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
@@ -56,7 +56,7 @@
                                         <td class="td-center text-left">{{ $sertifikat->no_sertifikat }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->no_reg_sertifikat }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->skemaSertifikasi->name }}</td>
-                                        <td class="td-center text-left">{{ $sertifikat->posisiLas->name }}</td>
+                                        <td class="td-center text-left">{{ $sertifikat->posisiLas != null ? $sertifikat->posisiLas->name:'' }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->tuk }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->no_blangko }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->tgl_uji }}</td>
@@ -116,7 +116,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-sertifikat').on('click', function() {
+            $(document).on('click', '.delete-sertifikat', function() {
                 var sertifikatId = $(this).attr('data-sertifikatId');
                 Swal.fire({
                     title: 'Are You Sure?',

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 @section('page')
     Posisi Las
@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body">
                     <table id="myTable" class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>ID</th>
                                 <th>Posisi Las</th>
@@ -74,7 +74,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-posisi-las').on('click', function() {
+            $(document).on('click', '.delete-posisi-las', function() {
                 var posisiLasId = $(this).attr('data-posisiLasId');
                 Swal.fire({
                     title: 'Are You Sure?',
