@@ -108,7 +108,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-karyawan').on('click', function() {
+            $(document).on('click', '.delete-karyawan', function() {
                 var karyawanId = $(this).attr('data-karyawanId');
                 Swal.fire({
                     title: 'Are You Sure?',

@@ -78,7 +78,7 @@
     </script>
     <script>
         $(function() {
-            $('.accept-registration').on('click', function() {
+            $(document).on('click', '.accept-registration', function() {
                 var registrationId = $(this).attr('data-registration-id');
                 Swal.fire({
                     title: 'Anda Yakin?',
@@ -99,7 +99,7 @@
                 });
             });
 
-            $('.reject-registration').on('click', function() {
+            $(document).on('click', '.reject-registration', function() {
                 var registrationId = $(this).attr('data-registration-id');
                 Swal.fire({
                     title: 'Anda Yakin?',

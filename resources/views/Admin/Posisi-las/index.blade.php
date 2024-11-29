@@ -74,7 +74,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-posisi-las').on('click', function() {
+            $(document).on('click', '.delete-posisi-las', function() {
                 var posisiLasId = $(this).attr('data-posisiLasId');
                 Swal.fire({
                     title: 'Are You Sure?',

@@ -102,7 +102,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-user').on('click', function() {
+            $(document).on('click', '.delete-user', function() {
                 var userId = $(this).attr('data-userId');
                 Swal.fire({
                     title: 'Are You Sure?',
