@@ -107,7 +107,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-carousel').on('click', function() {
+            $(document).on('click', '.delete-carousel', function() {
                 var carouselId = $(this).attr('data-carouselId');
                 Swal.fire({
                     title: 'Are You Sure?',

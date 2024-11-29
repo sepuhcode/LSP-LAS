@@ -75,7 +75,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-skema').on('click', function() {
+            $(document).on('click', '.delete-skema', function() {
                 var skemaId = $(this).attr('data-skemaId');
                 Swal.fire({
                     title: 'Are You Sure?',
