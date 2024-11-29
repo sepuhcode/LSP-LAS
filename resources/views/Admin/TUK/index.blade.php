@@ -110,7 +110,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-tuk').on('click', function() {
+            $(document).on('click', '.delete-tuk', function() {
                 var tukId = $(this).attr('data-tukId');
                 Swal.fire({
                     title: 'Are You Sure?',

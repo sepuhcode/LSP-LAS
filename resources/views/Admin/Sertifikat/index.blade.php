@@ -116,7 +116,7 @@
     </script>
     <script>
         $(function() {
-            $('.delete-sertifikat').on('click', function() {
+            $(document).on('click', '.delete-sertifikat', function() {
                 var sertifikatId = $(this).attr('data-sertifikatId');
                 Swal.fire({
                     title: 'Are You Sure?',
