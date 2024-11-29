@@ -6,7 +6,7 @@
                 <li><a href="{{ url('/') }}">Home </a></li>
                 <li><a href="{{ route('sertifikat') }}">Sertifikasi</a></li>
                 <li><a href="{{ route('pendaftaran') }}">Pendaftaran</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="{{ route('about') }}">About</a></li>
                 <li><a href="{{ url('/login') }}">Login</a></li>
             </ul>
         </div>
