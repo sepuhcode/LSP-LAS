@@ -51,7 +51,7 @@ class TimController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FotoKaryawan $fotoKaryawan)
+    public function show(FotoKaryawan $tim)
     {
         //
     }
@@ -59,10 +59,10 @@ class TimController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FotoKaryawan $fotoKaryawan)
+    public function edit(FotoKaryawan $tim)
     {
         return view('Admin.tim.update', [
-            'karyawan' => $fotoKaryawan,
+            'karyawan' => $tim,
             'page' => 'Foto Karyawan'
         ]);
     }
@@ -70,12 +70,12 @@ class TimController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FotoKaryawan $fotoKaryawan)
+    public function update(Request $request, FotoKaryawan $tim)
     {
         $rules = [
             'department' => 'required',
         ];
-        $request->name != $fotoKaryawan->name ? $rules['name'] = 'required|unique:foto_karyawans' : '';
+        $request->name != $tim->name ? $rules['name'] = 'required|unique:foto_karyawans' : '';
 
         if ($request->hasFile('image')) {
             $rules['image'] = 'required|image|mimes:png,jpg,jpeg|max:512';
@@ -84,26 +84,26 @@ class TimController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('Images/our-team/' . $fotoKaryawan->image))) {
-                unlink(public_path('Images/our-team/' . $fotoKaryawan->image));
+            if (file_exists(public_path('Images/our-team/' . $tim->image))) {
+                unlink(public_path('Images/our-team/' . $tim->image));
             }
 
             $newFileName = 'karyawan' . time() . '.' . $request->image->extension();
             $updatedData['image'] = $newFileName;
             $request->image->move(public_path('Images/our-team'), $newFileName);
         }
-        FotoKaryawan::whereId($fotoKaryawan->id)->update($updatedData);
+        FotoKaryawan::whereId($tim->id)->update($updatedData);
         return redirect('/admin/tim')->with('success', 'Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FotoKaryawan $fotoKaryawan)
+    public function destroy(FotoKaryawan $tim)
     {
-        FotoKaryawan::destroy($fotoKaryawan->id);
-        if (file_exists(public_path('Images/our-team/' . $fotoKaryawan->image))) {
-            unlink(public_path('Images/our-team/' . $fotoKaryawan->image));
+        FotoKaryawan::destroy($tim->id);
+        if (file_exists(public_path('Images/our-team/' . $tim->image))) {
+            unlink(public_path('Images/our-team/' . $tim->image));
         }
         return redirect('/admin/tim')->with('success', 'Deleted');
     }

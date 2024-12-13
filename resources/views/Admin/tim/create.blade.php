@@ -58,3 +58,11 @@
         <!-- /.card -->
     </div>
 @endsection
+
+@push('script')
+<script>
+    $(function() {
+        bsCustomFileInput.init();
+    });
+</script>
+@endpush
