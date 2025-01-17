@@ -41,7 +41,7 @@
             color: #7b7878;
         }
 
-        .text-daftar-center-p a{
+        .text-daftar-center-p a {
             color: red;
             text-decoration: none;
         }
@@ -74,7 +74,6 @@
             border-radius: 8px;
             padding: 20px;
             padding-top: 0px;
-            text-align: center;
             width: 15%;
             height: 430px;
             /* Fixed height */
@@ -91,24 +90,6 @@
 
         .step:hover {
             transform: translateY(-10px);
-        }
-
-        .step-garis-ikon {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 15%;
-            height: 230px;
-            /* Fixed height */
-            position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            /* Align items to the top */
-            align-items: center;
         }
 
         .line {
@@ -160,16 +141,18 @@
         .step h2 {
             color: red;
             font-size: 18px;
+            text-align: center;
             margin: 10px 0 5px 0;
         }
 
         .step p {
-            font-size: 14px;
             color: #333;
+            font-size: 14px;
+            text-align: center;
             margin: 0;
             overflow: hidden;
             text-overflow: ellipsis;
-            padding: 5px;
+            padding: 1rem .5rem;
             box-shadow: 10 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -177,7 +160,7 @@
             border-radius: 8px;
             background-color: #d9d9d9;
             width: 220px;
-            height: 200px;
+            height: auto;
         }
 
         /* Responsive adjustments */
@@ -215,22 +198,10 @@
 
             .step {
                 width: 90%;
-                /* Adjust width for mobile screens */
                 height: auto;
-                /* Allow height to adjust based on content */
                 padding: 0px;
                 margin-top: 0px;
                 margin-bottom: 0px;
-            }
-
-            step5 .step {
-                width: 90%;
-                /* Adjust width for mobile screens */
-                height: auto;
-                /* Allow height to adjust based on content */
-                padding: 0px;
-                margin-top: 0px;
-                margin-bottom: 10px;
             }
 
             .line {
@@ -284,10 +255,8 @@
                 <p class="text-daftar-center">Anda dapat mendaftar melalui <br> website ini</p>
                 <p class="text-daftar-center-p">Pada halaman <a href="{{ url('/login') }}">login</a>, silahkan klik tombol
                     daftar akun</p>
-                <p class="text-daftar-center-p">Anda juga dapat menghubungi kami lebih lanjut melalui <br>
-
-                    whatsapp/telepon, klik <a href="https://wa.me/+6281917100200" target="_blank">di sini</a></p>
-
+                <p class="text-daftar-center-p">Anda juga dapat menghubungi kami lebih lanjut melalui <br> whatsapp/telepon,
+                    klik <a href="https://wa.me/+6281917100200" target="_blank">di sini</a></p>
                 <div class="icon-daftar-bnsp"><img src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
                 <div class="icon-daftar-api"><img src="{{ asset('Images/api pendaftaran.png') }}" /></div>
             </div>
@@ -295,27 +264,27 @@
     </div>
 
     <div class="container-daftar">
-        <div class="step" id="step1">
+        <div class="step">
             <img src="{{ asset('Images/man standing with laptop and coffee.png') }}" alt="Person 1" class="person">
-            <div class=" line"></div>
-            <div class=" icon">1</div>
+            <div class="line"></div>
+            <div class="icon">1</div>
             <div class="border">
                 <h2>Buat Akun</h2>
                 <p>Klik pada menu login, lalu pilih daftar untuk membuat akun baru selanjutnya ikuti persyaratan untuk
                     membuat akun baru.</p>
             </div>
         </div>
-        <div class="step" id="step2">
+        <div class="step">
             {{-- <img src="person2.gif" alt="Person 2" class="person"> --}}
             <div class="line2"></div>
             <div class="icon">2</div>
             <div class="border">
-                <h2 class="h2-daftar">Tunggu Aktivasi</h2>
-                <p class="p-daftar">Setelah melakukan pendaftaran, silahkan tunggu aktivasi dari admin kami, atau anda bisa
+                <h2>Tunggu Aktivasi</h2>
+                <p>Setelah melakukan pendaftaran, silahkan tunggu aktivasi dari admin kami, atau anda bisa
                     langsung menghubungi admin kami agar proses lebih cepat.</p>
             </div>
         </div>
-        <div class="step" id="step3">
+        <div class="step">
             {{-- <img src="person3.gif" alt="Person 3" class="person"> --}}
             <div class="line"></div>
             <div class="icon">3</div>
@@ -325,7 +294,7 @@
                     pendaftaran.</p>
             </div>
         </div>
-        <div class="step" id="step4">
+        <div class="step">
             <img src="{{ asset('Images/two men working with a laptop.png') }}" alt="Person 4" class="person2">
             <div class="line2"></div>
             <div class="icon ">4</div>
@@ -334,7 +303,7 @@
                 <p>Anda dapat melihat status pendaftaran sertifikasi yang anda daftarkan.</p>
             </div>
         </div>
-        <div class="step" id="step5">
+        <div class="step">
             {{-- <img src="person5.gif" alt="Person 5" class="person"> --}}
             <div class="line"></div>
             <div class="icon">5</div>
