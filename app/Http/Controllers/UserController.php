@@ -100,7 +100,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if (!$user->hasRole('admin')){
         User::destroy($user->id);
         return redirect('/admin/user')->with('success','Deleted');
+        }
+        return back()->with('failed','Admin accounts cannot be deleted');
     }
 }

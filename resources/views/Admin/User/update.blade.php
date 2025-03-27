@@ -58,6 +58,9 @@
                                 <option value="user" {{ $user->hasRole('user')? 'selected' : '' }}>User</option>
                                 <option value="tuk" {{ $user->hasRole('tuk')? 'selected' : '' }}>User TUK</option>
                                 <option value="asesor" {{ $user->hasRole('asesor')? 'selected' : ''  }}>Asesor</option>
+                                @if ($user->hasRole('admin'))
+                                <option value="admin" selected>Admin</option>
+                                @endif
                             </select>
                             @error('role')
                                 <div class="alert alert-danger">{{ $message }}</div>
