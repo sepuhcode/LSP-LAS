@@ -20,10 +20,10 @@
 
             <h4>Contact Us</h4>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-regular fa-envelope"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/lsp.las"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/15B9QizFew/"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@lsp_las"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@lsp.profesilas"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
         <div class="col-4 text-white">
