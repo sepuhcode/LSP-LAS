@@ -121,7 +121,7 @@ class LandingPageController extends Controller
             if ($sertifikat[0]->posisiLas != null) {
                 $posisiLas = $sertifikat[0]->posisiLas->name;
             }
-            
+
         } else {
             $sertifikat = [];
             $tglBerlaku = null;
@@ -183,11 +183,19 @@ class LandingPageController extends Controller
 
     public function showAbout()
     {
-
         $karyawans = FotoKaryawan::all();
 
         return view('About.index', [
             'karyawans' => $karyawans,
+        ]);
+    }
+
+    public function showSurveillance()
+    {
+        $skemaSertifikasis = SkemaSertifikasi::all();
+
+        return view('Surveillance.index', [
+            'skemaSertifikasis' => $skemaSertifikasis
         ]);
     }
 }

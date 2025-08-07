@@ -44,6 +44,7 @@ Route::post('/sertifikat/find', [LandingPageController::class, 'cariSertifikatNe
 
 Route::get('/pendaftaran', [LandingPageController::class, 'showPendaftaran'])->name('pendaftaran');
 Route::get('/about', [LandingPageController::class, 'showAbout'])->name('about');
+Route::get('/surveillance', [LandingPageController::class, 'showSurveillance'])->name('surveillance');
 
 //admin routes
 Route::prefix('/admin')->name('admin.')->middleware(['role:admin'])->group(function () {
