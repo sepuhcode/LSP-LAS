@@ -63,7 +63,7 @@
             flex-direction: row;
             justify-content: center;
             width: 100%;
-            max-width: 1920px;
+            /* max-width: 1920px; */
             flex-wrap: wrap;
             padding: 0px;
             margin-bottom: 0;

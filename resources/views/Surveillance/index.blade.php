@@ -17,13 +17,13 @@
         <div class="alert alert-info alert-dismissible fade show" role="alert">
             <h1 class="display-6">Informasi:</h1>
             <p class="mb-5" style="text-align: justify">Dalam rangka pemenuhan pemeliharaan sertifikasi yang telah
-                ditetapkan oleh LSP Geoteknik Indonesia dengan melakukan surveilans kepada Pemegang Sertifikat Kompetensi
+                ditetapkan oleh LSP LAS Indonesia dengan melakukan surveilans kepada Pemegang Sertifikat Kompetensi
                 Kerja setiap satu (1) tahun sekali dan berdasarkan Peraturan Badan Nasional Sertifikasi Kompetensi (BNSP)
                 Nomor 2/BNSP/VIII/2017 tentang Pedoman Pengembangan dan Pemeliharaan Skema Sertifikasi Profesi bahwa
                 pemegang sertifikat wajib dilakukan surveilans terhadap kompetensi yang sudah didapatkan berdasarkan skema
                 sertifikat, untuk itu mohon kesediaan Saudara/i Pemegang Sertifikat Kompetensi Kerja yang telah dikeluarkan
-                oleh LSP Geoteknik Indonesia untuk mengisi formulir ini. Data yang diberikan akan kami jaga kerahasiaannya
-                sesuai Standar Operasi Prosedur (SOP) yang berlaku di LSP Geoteknik Indonesia.
+                oleh LSP LAS Indonesia untuk mengisi formulir ini. Data yang diberikan akan kami jaga kerahasiaannya
+                sesuai Standar Operasi Prosedur (SOP) yang berlaku di LSP LAS Indonesia.
             </p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
