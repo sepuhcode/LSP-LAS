@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         $data = [
 
-//asesor
+            //asesor
             [ //1
                 'name' => 'Agus Wardjito',
                 'email' => 'Aguswardjito@gmail.com',
@@ -265,7 +265,7 @@ class UserSeeder extends Seeder
                 'role' => 'asesor'
             ],
 
-//admin
+            //admin
 
             [
                 'name' => 'Admin Satu',

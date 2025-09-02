@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\CarouselController;
-use App\Http\Controllers\ChangePassword;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimController;
-use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\TukController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PosisiLasController;
-use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SertifikasiController;
+use App\Http\Controllers\SurveillanceController;
+use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\SkemaSertifikasiController;
-use App\Http\Controllers\TukController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -45,6 +46,7 @@ Route::post('/sertifikat/find', [LandingPageController::class, 'cariSertifikatNe
 Route::get('/pendaftaran', [LandingPageController::class, 'showPendaftaran'])->name('pendaftaran');
 Route::get('/about', [LandingPageController::class, 'showAbout'])->name('about');
 Route::get('/surveillance', [LandingPageController::class, 'showSurveillance'])->name('surveillance');
+Route::post('/surveillance', [LandingPageController::class, 'storeSurveillance'])->name('store.surveillance');
 
 //admin routes
 Route::prefix('/admin')->name('admin.')->middleware(['role:admin'])->group(function () {
@@ -55,6 +57,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['role:admin'])->group(funct
     Route::resource('/verification', VerificationController::class);
     Route::resource('/carousel', CarouselController::class);
     Route::resource('/tim', TimController::class);
+    Route::resource('/surveillance', SurveillanceController::class);
     Route::resource('/kegiatan', KegiatanController::class);
     Route::resource('/tuk', TukController::class);
     Route::resource('/skema-sertifikasi', SkemaSertifikasiController::class);

@@ -166,6 +166,13 @@
                                         <p>Tim</p>
                                     </a>
                                 </li>
+                                <li class="nav-item ">
+                                    <a href="/admin/surveillance"
+                                        class="nav-link {{ request()->is('admin/surveillance') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Data Surveillance</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -197,7 +204,6 @@
         @method('delete')
         @csrf
     </form>
-
 
     <script src={{ asset('admin_template/plugins/jquery/jquery.min.js') }}></script>
     <script src={{ asset('admin_template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}></script>

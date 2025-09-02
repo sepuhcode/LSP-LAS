@@ -1,26 +1,18 @@
 @extends('Admin.layout')
 
 @push('style')
-    {{-- select2 --}}
     <link rel="stylesheet" href={{ asset('admin_template/plugins/select2/css/select2.css') }}>
     <link rel="stylesheet" href={{ asset('admin_template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-
-    </style>
 @endpush
 
 @section('content')
     <div class="row">
-        <!-- left column -->
         <div class="col-md-6">
-            <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Edit Sertifikat</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
                 <form action="/admin/sertifikat/{{ $sertifikat->id }}" method="POST" enctype="multipart/form-data">
                     @method('put')
                     @csrf
@@ -127,7 +119,8 @@
                                 @if ($sertifikat->asesor2 != null)
                                     @foreach ($asesors as $asesor)
                                         <option value="{{ $asesor->id }}"
-                                            {{ $sertifikat->asesor2_id == $asesor->id ? 'selected' : '' }}>{{ $asesor->name }}
+                                            {{ $sertifikat->asesor2_id == $asesor->id ? 'selected' : '' }}>
+                                            {{ $asesor->name }}
                                         </option>
                                     @endforeach
                                 @else
@@ -136,7 +129,6 @@
                                         <option value="{{ $asesor->id }}">{{ $asesor->name }}</option>
                                     @endforeach
                                 @endif
-
                             </select>
                             @error('asesor2_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -164,7 +156,6 @@
                                         accept="application/pdf">
                                     <label class="custom-file-label" for="file_scan_sertifikat">Pilih File</label>
                                 </div>
-
                             </div>
                             @error('file_scan_sertifikat')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -176,10 +167,7 @@
                     </div>
                 </form>
             </div>
-            <!-- /.card-body -->
-
         </div>
-        <!-- /.card -->
     </div>
 @endsection
 
@@ -187,12 +175,10 @@
     <script src={{ asset('admin_template/plugins/select2/js/select2.full.min.js') }}></script>
     <script>
         $(function() {
-            //Initialize Select2 Elements
             $('.select2').select2()
             $('.select2bs4').select2({
                 theme: 'bootstrap4'
             });
-
 
             $.ajaxSetup({
                 headers: {
@@ -211,11 +197,9 @@
                 }
             });
 
-
             $('.skema-sertifikasi').on('change', function() {
                 var skemaId = this.value;
                 $('.posisi-las').html('');
-
                 if (skemaId) {
                     $.ajax({
                         url: "{{ url('admin/get-posisi-las') }}",
@@ -237,9 +221,13 @@
                 } else {
                     $('.posisi-las').empty();
                 }
-
             });
 
+        });
+
+        document.getElementById("file_scan_sertifikat").addEventListener("change", function() {
+            let fileName = this.files[0] ? this.files[0].name : "Pilih File";
+            this.nextElementSibling.innerText = fileName;
         });
     </script>
 @endpush

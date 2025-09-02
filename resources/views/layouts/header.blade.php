@@ -1,14 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('Images/LogoLAS.png') }}" width="120px"></a>
+        <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('Images/LogoLAS.png') }}" alt=""
+                width="120px"></a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav" style="margin-left: auto; margin-right: 0">
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" aria-current="page"
-                        href="{{ url('/') }}">Home</a>
+                        href="{{ url('/') }}">Beranda</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('sertifikat') ? 'active' : '' }}"
@@ -19,7 +21,12 @@
                         href="{{ route('pendaftaran') }}">Pendaftaran</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                    <a class="nav-link {{ Request::is('surveillance') ? 'active' : '' }}"
+                        href="{{ route('surveillance') }}">Surveillance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}"
+                        href="{{ route('about') }}">Tentang</a>
                 </li>
                 @guest
                     <li class="nav-item">

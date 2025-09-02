@@ -33,8 +33,9 @@
         <div class="certificate-detail-table-container">
             <table class="certificate-detail-table">
                 <colgroup>
-                    <col >
-                    <col style="background-image: url('{{ asset('Images/Logo-LSP-3.png') }}'); background-size: 100px; background-repeat: no-repeat; background-origin: content-box; background-position: center;">
+                    <col>
+                    <col
+                        style="background-image: url('{{ asset('Images/Logo-LSP-3.png') }}'); background-size: 100px; background-repeat: no-repeat; background-origin: content-box; background-position: center;">
                 </colgroup>
                 <tbody>
                     <tr>
@@ -121,7 +122,7 @@
     </div>
     <div class="row px-0 py-5 m-0" style="background-color: #EFEFEF">
         <div class="col-12 text-center">
-            <h1 class="fw-semibold fs-3" style="color: red">SKEMA Sertifikasi</h1>
+            <h1 class="fw-semibold fs-3 mb-4" style="color: red">SKEMA Sertifikasi</h1>
         </div>
         <div class="row mx-auto" style="" id="acc-sertif">
             <div class="col-md-12">

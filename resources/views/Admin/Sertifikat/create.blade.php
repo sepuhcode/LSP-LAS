@@ -1,24 +1,18 @@
 @extends('Admin.layout')
+
 @push('style')
-    {{-- select2 --}}
     <link rel="stylesheet" href={{ asset('admin_template/plugins/select2/css/select2.css') }}>
     <link rel="stylesheet" href={{ asset('admin_template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-
-    </style>
 @endpush
+
 @section('content')
     <div class="row">
-        <!-- left column -->
         <div class="col-md-6">
-            <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Tambah Sertifikat</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
                 <form action="/admin/sertifikat" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
@@ -125,17 +119,15 @@
                             <label for="asesor2_id">Asesor 2</label>
                             <select name="asesor2_id"
                                 class="form-control select2bs4 @error('asesor2_id') is-invalid @enderror">
-                                <option value="">{{ "Pilih Asesor 2" }}</option>
+                                <option value="">{{ 'Pilih Asesor 2' }}</option>
                                 @foreach ($asesors as $asesor)
                                     <option value="{{ $asesor->id }}">{{ $asesor->name }}</option>
-                                {{-- @endif --}}
                                 @endforeach
                             </select>
                             @error('asesor2_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="form-group">
                             <label for="owner_id">Pemilik Sertifikat</label>
                             <select name="owner_id"
@@ -153,7 +145,6 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="form-group">
                             <label for="file_scan_sertifikat">File Scan Sertifikat</label>
                             <div class="input-group">
@@ -163,7 +154,6 @@
                                         accept="application/pdf">
                                     <label class="custom-file-label" for="file_scan_sertifikat">Pilih File</label>
                                 </div>
-
                             </div>
                             @error('file_scan_sertifikat')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -176,10 +166,7 @@
                     <input id="signup-token" name="_token" type="hidden" value="{{ csrf_token() }}">
                 </form>
             </div>
-            <!-- /.card-body -->
-
         </div>
-        <!-- /.card -->
     </div>
 @endsection
 
@@ -187,13 +174,10 @@
     <script src={{ asset('admin_template/plugins/select2/js/select2.full.min.js') }}></script>
     <script>
         $(function() {
-        
-            //Initialize Select2 Elements
             $('.select2').select2()
             $('.select2bs4').select2({
                 theme: 'bootstrap4'
             });
-
 
             $.ajaxSetup({
                 headers: {
@@ -229,6 +213,10 @@
 
             });
 
+            document.getElementById("file_scan_sertifikat").addEventListener("change", function() {
+                let fileName = this.files[0] ? this.files[0].name : "Pilih File";
+                this.nextElementSibling.innerText = fileName;
+            });
         });
     </script>
 @endpush

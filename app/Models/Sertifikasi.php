@@ -16,12 +16,12 @@ class Sertifikasi extends Model
 
     public function skemaSertifikasi(): BelongsTo
     {
-        return $this->belongsTo(SkemaSertifikasi::class,'skema_sertifikasi_id')->withTrashed();
+        return $this->belongsTo(SkemaSertifikasi::class, 'skema_sertifikasi_id')->withTrashed();
     }
 
     public function posisiLas(): BelongsTo
     {
-        return $this->belongsTo(PosisiLas::class,'posisi_las_id')->withTrashed();
+        return $this->belongsTo(PosisiLas::class, 'posisi_las_id')->withTrashed();
     }
 
     // public function user(): BelongsTo
@@ -31,16 +31,14 @@ class Sertifikasi extends Model
 
     public function asesor(): BelongsTo
     {
-        return $this->belongsTo(User::class,'asesor_id');
+        return $this->belongsTo(User::class, 'asesor_id');
     }
     public function asesor2(): BelongsTo
     {
-        return $this->belongsTo(User::class,'asesor2_id');
+        return $this->belongsTo(User::class, 'asesor2_id');
     }
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(User::class,'owner_id');
+        return $this->belongsTo(User::class, 'owner_id');
     }
-
-    
 }

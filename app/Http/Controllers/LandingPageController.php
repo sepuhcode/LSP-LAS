@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carousel;
-use App\Models\FotoKaryawan;
-use App\Models\OldData;
-use App\Models\Sertifikasi;
-use App\Models\SkemaSertifikasi;
 use App\Models\Tuk;
+use App\Models\OldData;
+use App\Models\Carousel;
+use App\Models\Sertifikasi;
+use App\Models\FotoKaryawan;
 use Illuminate\Http\Request;
+use App\Models\SkemaSertifikasi;
 use Illuminate\Support\Facades\DB;
+use App\Models\SumberDanaSertifikasi;
+use App\Models\Surveillance;
 
 class LandingPageController extends Controller
 {
@@ -121,7 +123,6 @@ class LandingPageController extends Controller
             if ($sertifikat[0]->posisiLas != null) {
                 $posisiLas = $sertifikat[0]->posisiLas->name;
             }
-
         } else {
             $sertifikat = [];
             $tglBerlaku = null;
@@ -192,10 +193,37 @@ class LandingPageController extends Controller
 
     public function showSurveillance()
     {
-        $skemaSertifikasis = SkemaSertifikasi::all();
+        $danaSkemaSertifikasi = SkemaSertifikasi::all();
+        $dataSumberDanaSertifikasi = SumberDanaSertifikasi::all();
 
         return view('Surveillance.index', [
-            'skemaSertifikasis' => $skemaSertifikasis
+            'danaSkemaSertifikasi' => $danaSkemaSertifikasi,
+            'dataSumberDanaSertifikasi' => $dataSumberDanaSertifikasi
         ]);
+    }
+
+    public function storeSurveillance(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_lengkap' => ['required'],
+            'email' => ['required', 'email'],
+            'nomor_hp' => ['required'],
+            'nomor_identitas' => ['required'],
+            'nomor_sertifikat' => ['required'],
+            'nomor_registrasi_sertifikat' => ['required'],
+            'skema_kompetensi_id' => ['required'],
+            'sumber_dana_sertifikasi_id' => ['required'],
+            'nama_tempat_bekerja' => ['nullable'],
+            'alamat_tempat_bekerja' => ['nullable'],
+            'jabatan_ditempat_kerja' => ['nullable'],
+            'proyek_sedang_dikerjakan' => ['nullable'],
+            'jabatan_dalam_proyek' => ['nullable'],
+            'pekerjaan_sesuai_skk' => ['nullable'],
+            'pekerjaan_sesuai_skk_text' => ['nullable'],
+        ]);
+
+        Surveillance::create($validatedData);
+
+        return redirect('/');
     }
 }

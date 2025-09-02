@@ -175,11 +175,11 @@
 
                     <div class="row my-5">
                         <div class="col-12 col-md-6">
-                            <div class="icon-about-bnsp"><img class="d-block mx-auto mx-lg-0"
+                            <div class="icon-about-bnsp"><img class="d-block mx-auto mx-lg-0" alt=""
                                     src="{{ asset('Images/bnsp pendaftaran.png') }}" /></div>
                         </div>
                         <div class="col-12 col-md-6">
-                            <div class="icon-about-api"><img class="d-block mx-auto mx-lg-0"
+                            <div class="icon-about-api"><img class="d-block mx-auto mx-lg-0" alt=""
                                     src="{{ asset('Images/api pendaftaran.png') }}" /></div>
                         </div>
                     </div>

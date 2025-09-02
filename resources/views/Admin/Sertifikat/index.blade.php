@@ -52,18 +52,20 @@
                                 @foreach ($sertifikats as $sertifikat)
                                     <tr>
                                         <td class="td-center text-center">{{ $loop->iteration }}</td>
-                                        <td class="td-center text-left">{{ $sertifikat->name }}</td>
+                                        <td class="td-center text-left">{{ $sertifikat->name ?? '' }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->no_sertifikat }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->no_reg_sertifikat }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->skemaSertifikasi->name }}</td>
-                                        <td class="td-center text-left">{{ $sertifikat->posisiLas != null ? $sertifikat->posisiLas->name:'' }}</td>
+                                        <td class="td-center text-left">
+                                            {{ $sertifikat->posisiLas != null ? $sertifikat->posisiLas->name : '' }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->tuk }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->no_blangko }}</td>
                                         <td class="td-center text-left">{{ $sertifikat->tgl_uji }}</td>
                                         <td class="td-center text-left">
                                             {{ strtotime('01-01-1970') == strtotime($sertifikat->tgl_sertifikat) ? '' : date('d-m-Y', strtotime($sertifikat->tgl_sertifikat)) }}
                                         </td>
-                                        <td class="td-center text-left">{{ $sertifikat->asesor->name }}</td>
+                                        <td class="td-center text-left">
+                                            {{ $sertifikat->asesor != null ? $sertifikat->asesor->name : '' }}</td>
                                         <td class="td-center text-left">
                                             {{ $sertifikat->asesor2 != null ? $sertifikat->asesor2->name : '' }}
                                         </td>
