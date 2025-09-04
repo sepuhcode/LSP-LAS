@@ -57,6 +57,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['role:admin'])->group(funct
     Route::resource('/verification', VerificationController::class);
     Route::resource('/carousel', CarouselController::class);
     Route::resource('/tim', TimController::class);
+    Route::get('/surveillance/export', [SurveillanceController::class, 'export'])->name('surveillance.export');
     Route::resource('/surveillance', SurveillanceController::class);
     Route::resource('/kegiatan', KegiatanController::class);
     Route::resource('/tuk', TukController::class);

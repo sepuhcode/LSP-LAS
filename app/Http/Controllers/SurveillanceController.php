@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SurveillanceExport;
 use App\Models\Surveillance;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SurveillanceController extends Controller
 {
@@ -65,5 +67,13 @@ class SurveillanceController extends Controller
     {
         Surveillance::destroy($surveillance->id);
         return redirect('/admin/surveillance')->with('success', 'Deleted');
+    }
+
+    /**
+     * Exports surveillance.
+     */
+    public function export()
+    {
+        return Excel::download(new SurveillanceExport, 'SurveillanceExport.xlsx');
     }
 }
