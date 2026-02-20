@@ -94,11 +94,10 @@
                                 '">';
                         }
                     },
-                    // 1 – No
+                    // 1 – Iteration number + responsive expand control
                     {
                         data: 'no',
                         orderable: false,
-                        searchable: false,
                         className: 'text-center',
                         render: function(data, type, row) {
                             return '<span style="cursor:pointer; font-weight: bold;" class="d-flex align-items-center">' +
@@ -153,16 +152,17 @@
                     // 13 – Scan Sertifikat
                     {
                         data: 'file_scan_sertifikat',
-                        orderable: false,
+                        orderable: true,
                         searchable: false,
-                        className: 'text-center',
                         render: function(data) {
                             if (!data) {
                                 return '';
                             }
-                            return '<a class="btn btn-outline-success btn-sm" href="/admin/view-file/' +
+                            return '<div class="d-flex justify-content-center">' +
+                                '<a class="btn btn-outline-success btn-sm" href="/admin/view-file/' +
                                 data +
-                                '" target="_blank">View</a>';
+                                '" target="_blank">View</a>' +
+                                '</div>';
                         }
                     },
                     // 14 – Aksi
@@ -187,25 +187,19 @@
                         }
                     },
                 ],
-                columnDefs: [
-                    // Checkbox and actions always stay visible
-                    {
+                columnDefs: [{
                         responsivePriority: 1,
-                        targets: [0, 14]
+                        targets: [0, 13, 14]
                     },
-                    // "No" column stays visible — it also carries the expand toggle (see responsive.details)
                     {
                         responsivePriority: 2,
                         targets: 1
                     },
-                    // Core identity columns next
                     {
                         responsivePriority: 3,
                         targets: [2, 3]
                     },
                 ],
-                // Move the responsive expand control to column 1 ("No") so that
-                // clicking the checkbox (column 0) never accidentally expands the row.
                 responsive: {
                     details: {
                         type: 'column',
@@ -213,7 +207,7 @@
                     }
                 },
                 order: [
-                    [3, 'asc']
+                    [4, 'asc']
                 ],
                 pageLength: 25,
                 autoWidth: false,

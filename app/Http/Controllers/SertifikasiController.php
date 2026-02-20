@@ -75,8 +75,12 @@ class SertifikasiController extends Controller
 
         $filtered = $query->count();
 
-        $orderColumn = $columnMap[$orderColumnIndex] ?? 'id';
-        $query->orderBy($orderColumn, $orderDir);
+        if ($orderColumnIndex === 13) {
+            $query->orderByRaw('(file_scan_sertifikat IS NULL) '.$orderDir);
+        } else {
+            $orderColumn = $columnMap[$orderColumnIndex] ?? 'id';
+            $query->orderBy($orderColumn, $orderDir);
+        }
 
         $rows = $query->skip($start)->take($length)->get();
 
