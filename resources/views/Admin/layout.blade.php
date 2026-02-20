@@ -72,7 +72,7 @@
                         <li
                             class="nav-item {{ request()->is('admin/user*') || request()->is('admin/verification*') ? 'menu-is-opening menu-open' : '' }}">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fad fa-users"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Manajemen User
                                     <i class="right fas fa-angle-left"></i>
@@ -98,7 +98,7 @@
                         <li
                             class="nav-item {{ request()->is('admin/skema-sertifikasi*') || request()->is('admin/posisi-las*') || request()->is('admin/sertifikat*') ? 'menu-is-opening menu-open' : '' }}">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fad fa-images"></i>
+                                <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Sertifikat
                                     <i class="right fas fa-angle-left"></i>
@@ -131,7 +131,7 @@
                         <li
                             class="nav-item {{ request()->is('admin/carousel*') || request()->is('admin/kegiatan*') || request()->is('admin/tim*') || request()->is('admin/tuk*') ? 'menu-is-opening menu-open' : '' }}">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fad fa-images"></i>
+                                <i class="nav-icon fas fa-paperclip"></i>
                                 <p>
                                     Lainnya
                                     <i class="right fas fa-angle-left"></i>
@@ -196,7 +196,7 @@
             </section>
         </div>
         <footer class="main-footer">
-            <strong>Copyright &copy; 2024 Nterco.id</strong>
+            <strong>Copyright &copy; 2025 Nterco.id</strong>
             All rights reserved.
         </footer>
     </div>

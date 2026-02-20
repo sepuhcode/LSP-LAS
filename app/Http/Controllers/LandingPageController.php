@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tuk;
-use App\Models\OldData;
 use App\Models\Carousel;
-use App\Models\Sertifikasi;
 use App\Models\FotoKaryawan;
-use Illuminate\Http\Request;
+use App\Models\OldData;
+use App\Models\Sertifikasi;
 use App\Models\SkemaSertifikasi;
-use Illuminate\Support\Facades\DB;
 use App\Models\SumberDanaSertifikasi;
 use App\Models\Surveillance;
+use App\Models\Tuk;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LandingPageController extends Controller
 {
@@ -19,10 +19,11 @@ class LandingPageController extends Controller
     {
         $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
-            $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1095 days"));
+            $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat_baru), date_interval_create_from_date_string('1095 days'));
         } else {
-            $tglBerlaku = "";
+            $tglBerlaku = '';
         }
+
         return view('home', compact('sertifikat', 'tglBerlaku'));
         //  return dd(OldData::where('no_sertifikat',$keyword)->firstOrFail());
     }
@@ -32,8 +33,8 @@ class LandingPageController extends Controller
         $datas = OldData::all();
         // $datas = OldData::pluck('tgl_sertifikat_lama','no');
         foreach ($datas as $data) {
-            if (!empty($data->tgl_sertifikat_lama)) {
-                $correct_tgl = str_replace('/', '-', $data->tgl_sertifikat_lama); //replace / ke - (ex: "02/08/2023" -> "02-08-2023");
+            if (! empty($data->tgl_sertifikat_lama)) {
+                $correct_tgl = str_replace('/', '-', $data->tgl_sertifikat_lama); // replace / ke - (ex: "02/08/2023" -> "02-08-2023");
                 $time = strtotime($correct_tgl);
                 $formatedDate = date('Y-m-d', $time);
             } else {
@@ -47,19 +48,20 @@ class LandingPageController extends Controller
     public function checkDate()
     {
         $data = OldData::select('tgl_sertifikat_baru')->where('no', 2)->get();
-        $tgl_berlaku = date_add(date_create($data[0]->tgl_sertifikat_baru), date_interval_create_from_date_string("1095 days"));
+        $tgl_berlaku = date_add(date_create($data[0]->tgl_sertifikat_baru), date_interval_create_from_date_string('1095 days'));
         // dd(date_format($tgl_berlaku,'d-M-Y'));
 
         $test = [
             'type' => 'test',
             'tanggal sertifikat' => date_format(date_create($data[0]->tgl_sertifikat_baru), 'd-M-Y'),
-            'berlaku s/d' => date_format($tgl_berlaku, 'd-M-Y')
+            'berlaku s/d' => date_format($tgl_berlaku, 'd-M-Y'),
         ];
     }
 
     public function findSertifikat(Request $request)
     {
         $data = $request;
+
         return response()->json($data, 200);
     }
 
@@ -71,7 +73,7 @@ class LandingPageController extends Controller
         $sertifikat = OldData::select('nama', 'no_sertifikat', 'asesor', 'skema_sertifikasi', 'posisi_las', 'tgl_sertifikat')->where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
             if ($sertifikat[0]->tgl_sertifikat != null) {
-                $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string("1096 days"));
+                $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string('1096 days'));
             } else {
                 $tglBerlaku = null;
             }
@@ -79,6 +81,7 @@ class LandingPageController extends Controller
             $sertifikat = [];
             $tglBerlaku = null;
             session(['failed' => 'Data tidak ditemukan']);
+
             // return view('sertifikat.index', compact('sertifikat', 'tglBerlaku'));
             return redirect()->route('sertifikat')->with($sertifikat)->with($tglBerlaku);
         }
@@ -86,7 +89,7 @@ class LandingPageController extends Controller
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
-            'skemaSertifikasis' => $skemaSertifikasis
+            'skemaSertifikasis' => $skemaSertifikasis,
         ]);
         // return redirect()->route('sertifikat')->with('sertifikat',$sertifikat)->with('tglBerlaku',$tglBerlaku);
 
@@ -101,11 +104,11 @@ class LandingPageController extends Controller
         $sertifikat = Sertifikasi::where('no_sertifikat', $keyword)->get();
         if ($sertifikat->isNotEmpty()) {
             if ($sertifikat[0]->tgl_sertifikat != null) {
-                $compareDate = strtotime("01-01-1970"); //compare date  (tanggal sertifikat tidak bisa dikosongin/null karena type nya date jadi kalau kosong diakalin dengan diisi pakai tahun 01-01-1970)
-                if (strtotime($sertifikat[0]->tgl_sertifikat) == $compareDate) { //cek apakah tanggal & tahun nya sama dengan compare date(10-10-1970), kalau sama maka akan diisi null
+                $compareDate = strtotime('01-01-1970'); // compare date  (tanggal sertifikat tidak bisa dikosongin/null karena type nya date jadi kalau kosong diakalin dengan diisi pakai tahun 01-01-1970)
+                if (strtotime($sertifikat[0]->tgl_sertifikat) == $compareDate) { // cek apakah tanggal & tahun nya sama dengan compare date(10-10-1970), kalau sama maka akan diisi null
                     $tglBerlaku = null;
                 } else {
-                    $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string("1096 days"))->format('d-m-Y');
+                    $tglBerlaku = date_add(date_create($sertifikat[0]->tgl_sertifikat), date_interval_create_from_date_string('1096 days'))->format('d-m-Y');
                 }
             } else {
                 $tglBerlaku = null;
@@ -139,7 +142,7 @@ class LandingPageController extends Controller
                 'asesor2' => $asesor2,
                 'skemaSertifikasi' => $skemaSertifikasi,
                 'posisiLas' => $posisiLas,
-                'tglBerlaku' => $tglBerlaku
+                'tglBerlaku' => $tglBerlaku,
             ]
         );
     }
@@ -153,7 +156,7 @@ class LandingPageController extends Controller
         return view('sertifikat.index', [
             'sertifikat' => $sertifikat,
             'tglBerlaku' => $tglBerlaku,
-            'skemaSertifikasis' => $skemaSertifikasis
+            'skemaSertifikasis' => $skemaSertifikasis,
         ]);
     }
 
@@ -172,21 +175,21 @@ class LandingPageController extends Controller
             'tuks' => $tuks,
             'skema' => $skema,
             'carousels' => $carousels,
-            'karyawans' => $karyawans
+            'karyawans' => $karyawans,
 
         ]);
     }
 
     public function showPendaftaran()
     {
-        return view('Pendaftaran.index');
+        return view('pendaftaran.index');
     }
 
     public function showAbout()
     {
         $karyawans = FotoKaryawan::all();
 
-        return view('About.index', [
+        return view('about.index', [
             'karyawans' => $karyawans,
         ]);
     }
@@ -196,9 +199,9 @@ class LandingPageController extends Controller
         $danaSkemaSertifikasi = SkemaSertifikasi::all();
         $dataSumberDanaSertifikasi = SumberDanaSertifikasi::all();
 
-        return view('Surveillance.index', [
+        return view('surveillance.index', [
             'danaSkemaSertifikasi' => $danaSkemaSertifikasi,
-            'dataSumberDanaSertifikasi' => $dataSumberDanaSertifikasi
+            'dataSumberDanaSertifikasi' => $dataSumberDanaSertifikasi,
         ]);
     }
 

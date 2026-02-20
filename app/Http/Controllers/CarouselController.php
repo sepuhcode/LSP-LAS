@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Carousel;
 use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\fileExists;
-
 class CarouselController extends Controller
 {
     /**
@@ -14,9 +12,9 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        return view('Admin.Carousel.index', [
+        return view('admin.carousel.index', [
             'carousels' => Carousel::all(),
-            'page' => 'Carousel'
+            'page' => 'Carousel',
         ]);
     }
 
@@ -25,8 +23,8 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        return view('Admin.Carousel.create', [
-            'page' => 'Carousel'
+        return view('admin.carousel.create', [
+            'page' => 'Carousel',
         ]);
     }
 
@@ -36,18 +34,17 @@ class CarouselController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:1024'
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:1024',
         ]);
 
-        $fileName = time() . '.' . $request->image->extension();
+        $fileName = time().'.'.$request->image->extension();
 
         $validatedData = [
             'image' => $fileName,
-            'visibility' => true
+            'visibility' => true,
         ];
 
         Carousel::create($validatedData);
-
 
         $request->image->move(public_path('Images/carousel-img'), $fileName);
 
@@ -76,7 +73,7 @@ class CarouselController extends Controller
     public function update(Request $request, Carousel $gambar_carousel)
     {
         $updatedData = [
-            'visibility' => !$gambar_carousel->first()->visibility
+            'visibility' => ! $gambar_carousel->first()->visibility,
         ];
 
         $l = Carousel::whereId($gambar_carousel->first()->id)->update($updatedData);
@@ -91,9 +88,10 @@ class CarouselController extends Controller
     {
 
         Carousel::destroy($carousel->id);
-        if (file_exists(public_path('Images/carousel-img/' . $carousel->image))) {
-            unlink(public_path('Images/carousel-img/' . $carousel->image));
+        if (file_exists(public_path('Images/carousel-img/'.$carousel->image))) {
+            unlink(public_path('Images/carousel-img/'.$carousel->image));
         }
+
         return redirect('/admin/carousel')->with('success', 'Carousel Berhasil Dihapus');
     }
 }

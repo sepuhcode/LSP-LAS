@@ -12,9 +12,9 @@ class TimController extends Controller
      */
     public function index()
     {
-        return view('Admin.tim.index', [
+        return view('admin.tim.index', [
             'karyawans' => FotoKaryawan::all(),
-            'page' => 'Foto Karyawan'
+            'page' => 'Foto Karyawan',
         ]);
     }
 
@@ -23,8 +23,8 @@ class TimController extends Controller
      */
     public function create()
     {
-        return view('Admin.tim.create', [
-            'page' => 'Foto Karyawan'
+        return view('admin.tim.create', [
+            'page' => 'Foto Karyawan',
         ]);
     }
 
@@ -39,7 +39,7 @@ class TimController extends Controller
             'department' => 'required',
         ]);
 
-        $fileName = 'karyawan' . time() . '.' . $request->image->extension();
+        $fileName = 'karyawan'.time().'.'.$request->image->extension();
         $validatedData['image'] = $fileName;
 
         FotoKaryawan::create($validatedData);
@@ -61,9 +61,9 @@ class TimController extends Controller
      */
     public function edit(FotoKaryawan $tim)
     {
-        return view('Admin.tim.update', [
+        return view('admin.tim.update', [
             'karyawan' => $tim,
-            'page' => 'Foto Karyawan'
+            'page' => 'Foto Karyawan',
         ]);
     }
 
@@ -84,15 +84,16 @@ class TimController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('Images/our-team/' . $tim->image))) {
-                unlink(public_path('Images/our-team/' . $tim->image));
+            if (file_exists(public_path('Images/our-team/'.$tim->image))) {
+                unlink(public_path('Images/our-team/'.$tim->image));
             }
 
-            $newFileName = 'karyawan' . time() . '.' . $request->image->extension();
+            $newFileName = 'karyawan'.time().'.'.$request->image->extension();
             $updatedData['image'] = $newFileName;
             $request->image->move(public_path('Images/our-team'), $newFileName);
         }
         FotoKaryawan::whereId($tim->id)->update($updatedData);
+
         return redirect('/admin/tim')->with('success', 'Updated');
     }
 
@@ -102,9 +103,10 @@ class TimController extends Controller
     public function destroy(FotoKaryawan $tim)
     {
         FotoKaryawan::destroy($tim->id);
-        if (file_exists(public_path('Images/our-team/' . $tim->image))) {
-            unlink(public_path('Images/our-team/' . $tim->image));
+        if (file_exists(public_path('Images/our-team/'.$tim->image))) {
+            unlink(public_path('Images/our-team/'.$tim->image));
         }
+
         return redirect('/admin/tim')->with('success', 'Deleted');
     }
 }

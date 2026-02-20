@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Registration;
 use App\Models\Sertifikasi;
 use App\Models\Tuk;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -14,10 +13,11 @@ class DashboardController extends Controller
         $accountRegistrations = Registration::whereAccepted(null)->count();
         $tuks = Tuk::count();
         $certificates = Sertifikasi::count();
-        return view('Admin.Dashboard.index',[
-            'accountRegistrations'=>$accountRegistrations,
-            'tuks'=>$tuks,
-            'certificates'=>$certificates,
+
+        return view('admin.dashboard.index', [
+            'accountRegistrations' => $accountRegistrations,
+            'tuks' => $tuks,
+            'certificates' => $certificates,
         ]);
     }
 }

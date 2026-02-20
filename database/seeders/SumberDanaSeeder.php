@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\SumberDanaSertifikasi;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SumberDanaSeeder extends Seeder
@@ -15,17 +14,17 @@ class SumberDanaSeeder extends Seeder
     {
         $datas = [
             [
-                'name' => 'Sumber anggaran dari APBN'
+                'name' => 'Sumber anggaran dari APBN',
             ],
             [
-                'name' => 'Sumber anggaran dari APBD'
+                'name' => 'Sumber anggaran dari APBD',
             ],
             [
-                'name' => 'Sumber anggaran biaya dari perusahaan'
+                'name' => 'Sumber anggaran biaya dari perusahaan',
             ],
             [
-                'name' => 'Sumber anggaran biaya mandiri'
-            ]
+                'name' => 'Sumber anggaran biaya mandiri',
+            ],
         ];
 
         SumberDanaSertifikasi::insert($datas);

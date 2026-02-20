@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Registration;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
     public function index()
     {
         $registrations = Registration::whereAccepted(null);
-        return view('Admin.verifikasi.index', ['registrations' => $registrations]);
+
+        return view('admin.verifikasi.index', ['registrations' => $registrations]);
     }
 
     public function create()
@@ -28,7 +28,7 @@ class VerificationController extends Controller
             'password' => $registrationData->password,
             'phone' => $registrationData->phone,
             'address' => $registrationData->address,
-            'is_active' => true
+            'is_active' => true,
         ];
 
         $newUser = User::create($data);
@@ -42,6 +42,7 @@ class VerificationController extends Controller
     public function postReject($id)
     {
         Registration::where('id', $id)->update(['accepted' => 0]);
+
         return redirect('/admin/verification')->with('success', 'Registrasi Berhasil Ditolak');
     }
 }

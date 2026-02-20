@@ -14,9 +14,10 @@ class PosisiLasController extends Controller
     public function index()
     {
         $positions = PosisiLas::with('skema:id,name')->get();
-        return view('Admin.Posisi-las.index',[
-            'posisis'=>$positions,
-            'page'=>'Posisi Las']);
+
+        return view('admin.posisi-las.index', [
+            'posisis' => $positions,
+            'page' => 'Posisi Las']);
     }
 
     /**
@@ -26,14 +27,13 @@ class PosisiLasController extends Controller
     {
         $skemaSertifikasi = SkemaSertifikasi::all();
         if ($skemaSertifikasi->isNotEmpty()) {
-            return view('Admin.Posisi-las.create',[
-                'skemas'=>$skemaSertifikasi,
-                'page'=>'Posisi Las'
+            return view('admin.posisi-las.create', [
+                'skemas' => $skemaSertifikasi,
+                'page' => 'Posisi Las',
             ]);
         } else {
-            return back()->with('failed','Belum ada data Skema Sertifikasi');
+            return back()->with('failed', 'Belum ada data Skema Sertifikasi');
         }
-
 
     }
 
@@ -44,11 +44,12 @@ class PosisiLasController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'skema_sertifikasi_id' => 'required|integer'
+            'skema_sertifikasi_id' => 'required|integer',
         ]);
 
         PosisiLas::create($validatedData);
-        return redirect('/admin/posisi-las')->with('success','Data berhasil ditambahkan');
+
+        return redirect('/admin/posisi-las')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -65,10 +66,11 @@ class PosisiLasController extends Controller
     public function edit(PosisiLas $posisiLa)
     {
         $skemaSertifikasi = SkemaSertifikasi::all();
-        return view('Admin.Posisi-las.update',[
-            'skemas'=>$skemaSertifikasi,
-            'posisiLas'=>$posisiLa,
-            'page'=>'Posisi Las']);
+
+        return view('admin.posisi-las.update', [
+            'skemas' => $skemaSertifikasi,
+            'posisiLas' => $posisiLa,
+            'page' => 'Posisi Las']);
     }
 
     /**
@@ -77,12 +79,13 @@ class PosisiLasController extends Controller
     public function update(Request $request, PosisiLas $posisiLa)
     {
         $updatedData = $request->validate([
-            'name'=>'required|string',
-            'skema_sertifikasi_id'=>'required|integer'
+            'name' => 'required|string',
+            'skema_sertifikasi_id' => 'required|integer',
         ]);
 
         PosisiLas::whereId($posisiLa->id)->update($updatedData);
-        return redirect('/admin/posisi-las')->with('success','Data berhasil diupdate');
+
+        return redirect('/admin/posisi-las')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -91,6 +94,7 @@ class PosisiLasController extends Controller
     public function destroy(PosisiLas $posisiLa)
     {
         $posisiLa->delete();
+
         return redirect('/admin/posisi-las')->with('success', $posisiLa->name.' berhasil dihapus');
     }
 }

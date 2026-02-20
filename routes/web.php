@@ -1,21 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PosisiLasController;
+use App\Http\Controllers\SertifikasiController;
+use App\Http\Controllers\SkemaSertifikasiController;
+use App\Http\Controllers\SurveillanceController;
 use App\Http\Controllers\TimController;
 use App\Http\Controllers\TukController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CarouselController;
-use App\Http\Controllers\KegiatanController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PosisiLasController;
-use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\SertifikasiController;
-use App\Http\Controllers\SurveillanceController;
 use App\Http\Controllers\VerificationController;
-use App\Http\Controllers\SkemaSertifikasiController;
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +47,7 @@ Route::get('/about', [LandingPageController::class, 'showAbout'])->name('about')
 Route::get('/surveillance', [LandingPageController::class, 'showSurveillance'])->name('surveillance');
 Route::post('/surveillance', [LandingPageController::class, 'storeSurveillance'])->name('store.surveillance');
 
-//admin routes
+// admin routes
 Route::prefix('/admin')->name('admin.')->middleware(['role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/user', UserController::class);
@@ -63,8 +62,10 @@ Route::prefix('/admin')->name('admin.')->middleware(['role:admin'])->group(funct
     Route::resource('/tuk', TukController::class);
     Route::resource('/skema-sertifikasi', SkemaSertifikasiController::class);
     Route::resource('/posisi-las', PosisiLasController::class);
+    Route::post('/sertifikat/bulk-destroy', [SertifikasiController::class, 'bulkDestroy'])->name('sertifikat.bulk-destroy');
     Route::post('/sertifikat/import/store', [SertifikasiController::class, 'saveImport'])->name('sertifikat.import.store');
     Route::get('/sertifikat/import', [SertifikasiController::class, 'showImport'])->name('sertifikat.import.create');
+    Route::get('/sertifikat/datatable', [SertifikasiController::class, 'datatable'])->name('sertifikat.datatable');
     Route::resource('/sertifikat', SertifikasiController::class);
     Route::post('/get-posisi-las', [SertifikasiController::class, 'fetchPosisiLas']);
     Route::get('/view-file/{file}', [SertifikasiController::class, 'viewFile']);

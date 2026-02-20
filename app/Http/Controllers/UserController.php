@@ -8,16 +8,15 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         // dd(Role::all());
-        return view('Admin.User.index', [
+        return view('admin.user.index', [
             'data' => User::with('roles')->get(),
-            'roles' => Role::all()
+            'roles' => Role::all(),
         ]);
     }
 
@@ -26,8 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('Admin.User.create', [
-            'page' => 'User'
+        return view('admin.user.create', [
+            'page' => 'User',
         ]);
     }
 
@@ -41,7 +40,7 @@ class UserController extends Controller
             'email' => 'required|unique:users',
             'password' => 'required|min:8',
             'phone' => 'required|unique:users',
-            'address' => 'nullable'
+            'address' => 'nullable',
         ]);
         $validatedData['is_active'] = true;
         // $validatedData['password']= Hash::make($validatedData['password']);
@@ -65,8 +64,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('Admin.User.update', [
-            'user' => $user
+        return view('admin.user.update', [
+            'user' => $user,
         ]);
     }
 
@@ -92,6 +91,7 @@ class UserController extends Controller
         }
 
         $user->update($validatedData);
+
         return redirect(route('admin.user.index'))->with('success', 'Updated');
     }
 
@@ -100,10 +100,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if (!$user->hasRole('admin')){
-        User::destroy($user->id);
-        return redirect('/admin/user')->with('success','Deleted');
+        if (! $user->hasRole('admin')) {
+            User::destroy($user->id);
+
+            return redirect('/admin/user')->with('success', 'Deleted');
         }
-        return back()->with('failed','Admin accounts cannot be deleted');
+
+        return back()->with('failed', 'Admin accounts cannot be deleted');
     }
 }

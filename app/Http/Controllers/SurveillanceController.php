@@ -14,9 +14,9 @@ class SurveillanceController extends Controller
      */
     public function index()
     {
-        return view('Admin.surveillance.index', [
+        return view('admin.surveillance.index', [
             'data' => Surveillance::all(),
-            'page' => 'Data Surveillance'
+            'page' => 'Data Surveillance',
         ]);
     }
 
@@ -66,6 +66,7 @@ class SurveillanceController extends Controller
     public function destroy(Surveillance $surveillance)
     {
         Surveillance::destroy($surveillance->id);
+
         return redirect('/admin/surveillance')->with('success', 'Deleted');
     }
 

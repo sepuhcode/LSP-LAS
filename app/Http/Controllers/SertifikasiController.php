@@ -7,6 +7,8 @@ use App\Models\PosisiLas;
 use App\Models\Sertifikasi;
 use App\Models\SkemaSertifikasi;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -17,10 +19,93 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-        $sertifikats = Sertifikasi::with(['skemaSertifikasi:id,name', 'posisiLas:id,name', 'asesor:id,name','asesor2:id,name'])->get();
-        return view('Admin.Sertifikat.index', [
-            'sertifikats' => $sertifikats,
-            'page' => 'Sertifikat'
+        return view('admin.sertifikat.index', [
+            'page' => 'Sertifikat',
+        ]);
+    }
+
+    /**
+     * Server-side DataTables endpoint.
+     *
+     * @param  array<int, string>  $columnMap
+     */
+    public function datatable(Request $request): JsonResponse
+    {
+        $draw = $request->integer('draw', 1);
+        $start = $request->integer('start', 0);
+        $length = $request->integer('length', 25);
+        $search = $request->input('search.value', '');
+
+        $orderColumnIndex = $request->integer('order.0.column', 3);
+        $orderDir = $request->input('order.0.dir', 'asc') === 'desc' ? 'desc' : 'asc';
+
+        /** @var array<int, string> $columnMap */
+        $columnMap = [
+            2 => 'name',
+            3 => 'no_sertifikat',
+            4 => 'no_reg_sertifikat',
+            7 => 'tuk',
+            8 => 'no_blangko',
+            9 => 'tgl_uji',
+            10 => 'tgl_sertifikat',
+        ];
+
+        $query = Sertifikasi::with([
+            'skemaSertifikasi:id,name',
+            'posisiLas:id,name',
+            'asesor:id,name',
+            'asesor2:id,name',
+        ]);
+
+        $total = Sertifikasi::count();
+
+        if ($search !== '') {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('no_sertifikat', 'like', "%{$search}%")
+                    ->orWhere('no_reg_sertifikat', 'like', "%{$search}%")
+                    ->orWhere('tuk', 'like', "%{$search}%")
+                    ->orWhere('no_blangko', 'like', "%{$search}%")
+                    ->orWhereHas('skemaSertifikasi', fn ($q) => $q->where('name', 'like', "%{$search}%"))
+                    ->orWhereHas('posisiLas', fn ($q) => $q->where('name', 'like', "%{$search}%"))
+                    ->orWhereHas('asesor', fn ($q) => $q->where('name', 'like', "%{$search}%"))
+                    ->orWhereHas('asesor2', fn ($q) => $q->where('name', 'like', "%{$search}%"));
+            });
+        }
+
+        $filtered = $query->count();
+
+        $orderColumn = $columnMap[$orderColumnIndex] ?? 'id';
+        $query->orderBy($orderColumn, $orderDir);
+
+        $rows = $query->skip($start)->take($length)->get();
+
+        $data = $rows->map(function (Sertifikasi $item, int $index) use ($start) {
+            return [
+                'id' => $item->id,
+                'no' => $start + $index + 1,
+                'name' => $item->name ?? '',
+                'no_sertifikat' => $item->no_sertifikat,
+                'no_reg_sertifikat' => $item->no_reg_sertifikat,
+                'skema_sertifikasi' => $item->skemaSertifikasi?->name ?? '',
+                'posisi_las' => $item->posisiLas?->name ?? '',
+                'tuk' => $item->tuk,
+                'no_blangko' => $item->no_blangko,
+                'tgl_uji' => $item->tgl_uji,
+                'tgl_sertifikat' => $item->tgl_sertifikat
+                    ? date('d-m-Y', strtotime($item->tgl_sertifikat))
+                    : '',
+                'asesor' => $item->asesor?->name ?? '',
+                'asesor2' => $item->asesor2?->name ?? '',
+                'file_scan_sertifikat' => $item->file_scan_sertifikat,
+            ];
+        });
+
+        return response()->json([
+            'draw' => $draw,
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+            'data' => $data,
         ]);
     }
 
@@ -32,11 +117,12 @@ class SertifikasiController extends Controller
         $skemas = SkemaSertifikasi::all();
         $asesors = User::role('asesor')->get();
         $owners = User::role(['user', 'tuk'])->get();
-        return view('Admin.Sertifikat.create', [
+
+        return view('admin.sertifikat.create', [
             'skemas' => $skemas,
             'asesors' => $asesors,
             'owners' => $owners,
-            'page' => 'Sertifikat'
+            'page' => 'Sertifikat',
         ]);
     }
 
@@ -58,10 +144,11 @@ class SertifikasiController extends Controller
             'asesor_id' => 'required|integer',
             'asesor2_id' => 'integer|nullable',
             'owner_id' => 'integer|nullable',
-            'file_scan_sertifikat' => 'required|file|mimes:pdf|max:512'
+            'file_scan_sertifikat' => 'required|file|mimes:pdf|max:512',
         ]);
 
-        $fileName = 'sertifikat-' . $request->no_sertifikat . '-' . time() . '.' . $request->file_scan_sertifikat->extension();
+        $safeNo = preg_replace('/[^A-Za-z0-9\-_]/', '-', $request->no_sertifikat);
+        $fileName = 'sertifikat-'.$safeNo.'-'.time().'.'.$request->file_scan_sertifikat->extension();
         $validatedData['file_scan_sertifikat'] = $fileName;
 
         Sertifikasi::create($validatedData);
@@ -87,13 +174,14 @@ class SertifikasiController extends Controller
         $posisis = PosisiLas::where('skema_sertifikasi_id', $sertifikat->skema_sertifikasi_id)->get();
         $asesors = User::role('asesor')->get();
         $owners = User::role(['user', 'tuk'])->get();
-        return view('Admin.Sertifikat.update', [
+
+        return view('admin.sertifikat.update', [
             'sertifikat' => $sertifikat,
             'skemas' => $skemas,
             'posisis' => $posisis,
             'asesors' => $asesors,
             'owners' => $owners,
-            'page' => 'Sertifikat'
+            'page' => 'Sertifikat',
         ]);
     }
 
@@ -124,10 +212,11 @@ class SertifikasiController extends Controller
         $updatedData = $request->validate($rules);
 
         if ($request->hasFile('file_scan_sertifikat')) {
-            if (is_file(public_path('scan-files/' . $sertifikat->file_scan_sertifikat))) {
-                unlink(public_path('scan-files/' . $sertifikat->file_scan_sertifikat));
+            if (is_file(public_path('scan-files/'.$sertifikat->file_scan_sertifikat))) {
+                unlink(public_path('scan-files/'.$sertifikat->file_scan_sertifikat));
             }
-            $newFileName = 'sertifikat-' . $request->no_sertifikat . '-' . time() . '.' . $request->file_scan_sertifikat->extension();
+            $safeNo = preg_replace('/[^A-Za-z0-9\-_]/', '-', $request->no_sertifikat);
+            $newFileName = 'sertifikat-'.$safeNo.'-'.time().'.'.$request->file_scan_sertifikat->extension();
             $updatedData['file_scan_sertifikat'] = $newFileName;
             $request->file_scan_sertifikat->move(public_path('scan-files'), $newFileName);
         }
@@ -143,16 +232,37 @@ class SertifikasiController extends Controller
     public function destroy(Sertifikasi $sertifikat)
     {
         Sertifikasi::destroy($sertifikat->id);
-        if (file_exists(public_path('scan-files/' . $sertifikat->file_scan_sertifikat))) {
-            unlink(public_path('scan-files/' . $sertifikat->file_scan_sertifikat));
+        if (is_file(public_path('scan-files/'.$sertifikat->file_scan_sertifikat))) {
+            unlink(public_path('scan-files/'.$sertifikat->file_scan_sertifikat));
         }
+
         return redirect('/admin/sertifikat')->with('success', 'Data Berhasil Dihapus');
+    }
+
+    public function bulkDestroy(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'ids' => 'required|array|min:1',
+            'ids.*' => 'integer|exists:sertifikasis,id',
+        ]);
+
+        $sertifikasis = Sertifikasi::whereIn('id', $validated['ids'])->get();
+
+        foreach ($sertifikasis as $sertifikasi) {
+            if (is_file(public_path('scan-files/'.$sertifikasi->file_scan_sertifikat))) {
+                unlink(public_path('scan-files/'.$sertifikasi->file_scan_sertifikat));
+            }
+        }
+
+        Sertifikasi::destroy($validated['ids']);
+
+        return redirect('/admin/sertifikat')->with('success', count($validated['ids']).' Sertifikat Berhasil Dihapus');
     }
 
     public function showImport()
     {
-        return view('Admin.Sertifikat.import', [
-            'page' => 'Sertifikat'
+        return view('admin.sertifikat.import', [
+            'page' => 'Sertifikat',
         ]);
     }
 
@@ -166,12 +276,14 @@ class SertifikasiController extends Controller
     public function fetchPosisiLas(Request $request)
     {
         $data['posisiLas'] = SkemaSertifikasi::find($request->skema_id)->posisis;
+
         return response()->json($data);
     }
 
     public function viewFile(Request $request)
     {
-        $filePath = public_path('scan-files/' . $request->file);
+        $filePath = public_path('scan-files/'.$request->file);
+
         return response()->file($filePath);
     }
 }
