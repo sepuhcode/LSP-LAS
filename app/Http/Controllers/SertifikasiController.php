@@ -19,7 +19,7 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-        return view('admin.sertifikat.index', [
+        return view('Admin.Sertifikat.index', [
             'page' => 'Sertifikat',
         ]);
     }
@@ -122,7 +122,7 @@ class SertifikasiController extends Controller
         $asesors = User::role('asesor')->get();
         $owners = User::role(['user', 'tuk'])->get();
 
-        return view('admin.sertifikat.create', [
+        return view('Admin.Sertifikat.create', [
             'skemas' => $skemas,
             'asesors' => $asesors,
             'owners' => $owners,
@@ -179,7 +179,7 @@ class SertifikasiController extends Controller
         $asesors = User::role('asesor')->get();
         $owners = User::role(['user', 'tuk'])->get();
 
-        return view('admin.sertifikat.update', [
+        return view('Admin.Sertifikat.update', [
             'sertifikat' => $sertifikat,
             'skemas' => $skemas,
             'posisis' => $posisis,
@@ -265,7 +265,7 @@ class SertifikasiController extends Controller
 
     public function showImport()
     {
-        return view('admin.sertifikat.import', [
+        return view('Admin.Sertifikat.import', [
             'page' => 'Sertifikat',
         ]);
     }

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -32,7 +32,8 @@
                                 class="form-control select2bs4 @error('user_tuk_id') is-invalid @enderror" required>
                                 @foreach ($userTuks as $userTuk)
                                     <option value="{{ $userTuk->id }}"
-                                        {{ $tuk->user_tuk_id == $userTuk->id ? 'selected' : '' }}>{{ $userTuk->name }}</option>
+                                        {{ $tuk->user_tuk_id == $userTuk->id ? 'selected' : '' }}>{{ $userTuk->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('user_tuk_id')

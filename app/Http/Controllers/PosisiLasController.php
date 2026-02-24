@@ -15,7 +15,7 @@ class PosisiLasController extends Controller
     {
         $positions = PosisiLas::with('skema:id,name')->get();
 
-        return view('admin.posisi-las.index', [
+        return view('Admin.Posisi-las.index', [
             'posisis' => $positions,
             'page' => 'Posisi Las']);
     }
@@ -27,7 +27,7 @@ class PosisiLasController extends Controller
     {
         $skemaSertifikasi = SkemaSertifikasi::all();
         if ($skemaSertifikasi->isNotEmpty()) {
-            return view('admin.posisi-las.create', [
+            return view('Admin.Posisi-las.create', [
                 'skemas' => $skemaSertifikasi,
                 'page' => 'Posisi Las',
             ]);
@@ -67,7 +67,7 @@ class PosisiLasController extends Controller
     {
         $skemaSertifikasi = SkemaSertifikasi::all();
 
-        return view('admin.posisi-las.update', [
+        return view('Admin.Posisi-las.update', [
             'skemas' => $skemaSertifikasi,
             'posisiLas' => $posisiLa,
             'page' => 'Posisi Las']);

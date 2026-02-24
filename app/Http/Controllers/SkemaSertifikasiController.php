@@ -14,7 +14,7 @@ class SkemaSertifikasiController extends Controller
     {
         $skemas = SkemaSertifikasi::all();
 
-        return view('admin.skema-sertifikasi.index',
+        return view('Admin.Skema-sertifikasi.index',
             ['skemas' => $skemas,
                 'page' => 'Skema Sertifikasi']);
     }
@@ -24,7 +24,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function create()
     {
-        return view('admin.skema-sertifikasi.create');
+        return view('Admin.Skema-sertifikasi.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class SkemaSertifikasiController extends Controller
      */
     public function edit(SkemaSertifikasi $skemaSertifikasi)
     {
-        return view('admin.skema-sertifikasi.update', [
+        return view('Admin.Skema-sertifikasi.update', [
             'skema' => $skemaSertifikasi,
             'page' => 'Skema Sertifikasi']);
     }

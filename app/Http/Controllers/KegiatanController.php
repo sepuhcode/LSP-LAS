@@ -12,7 +12,7 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        return view('admin.kegiatan.index', [
+        return view('Admin.kegiatan.index', [
             'kegiatans' => FotoKegiatan::all(),
             'page' => 'Foto Kegiatan',
         ]);
@@ -23,7 +23,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        return view('admin.kegiatan.create', [
+        return view('Admin.kegiatan.create', [
             'page' => 'Foto Kegiatan',
         ]);
     }
@@ -61,7 +61,7 @@ class KegiatanController extends Controller
      */
     public function edit(FotoKegiatan $fotoKegiatan)
     {
-        return view('admin.kegiatan.update', [
+        return view('Admin.kegiatan.update', [
             'kegiatan' => $fotoKegiatan,
             'page' => 'Foto Kegiatan',
         ]);

@@ -182,14 +182,14 @@ class LandingPageController extends Controller
 
     public function showPendaftaran()
     {
-        return view('pendaftaran.index');
+        return view('Pendaftaran.index');
     }
 
     public function showAbout()
     {
         $karyawans = FotoKaryawan::all();
 
-        return view('about.index', [
+        return view('About.index', [
             'karyawans' => $karyawans,
         ]);
     }
@@ -199,7 +199,7 @@ class LandingPageController extends Controller
         $danaSkemaSertifikasi = SkemaSertifikasi::all();
         $dataSumberDanaSertifikasi = SumberDanaSertifikasi::all();
 
-        return view('surveillance.index', [
+        return view('Surveillance.index', [
             'danaSkemaSertifikasi' => $danaSkemaSertifikasi,
             'dataSumberDanaSertifikasi' => $dataSumberDanaSertifikasi,
         ]);

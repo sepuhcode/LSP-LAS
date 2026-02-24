@@ -14,7 +14,7 @@ class SurveillanceController extends Controller
      */
     public function index()
     {
-        return view('admin.surveillance.index', [
+        return view('Admin.surveillance.index', [
             'data' => Surveillance::all(),
             'page' => 'Data Surveillance',
         ]);

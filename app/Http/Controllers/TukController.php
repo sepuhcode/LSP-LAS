@@ -13,7 +13,7 @@ class TukController extends Controller
      */
     public function index()
     {
-        return view('admin.tuk.index', [
+        return view('Admin.TUK.index', [
             'tuks' => Tuk::all(),
             'page' => 'TUK',
         ]);
@@ -26,7 +26,7 @@ class TukController extends Controller
     {
         $userTuks = User::role('tuk')->get();
 
-        return view('admin.tuk.create', [
+        return view('Admin.TUK.create', [
             'userTuks' => $userTuks,
             'page' => 'TUK',
         ]);
@@ -69,7 +69,7 @@ class TukController extends Controller
     {
         $userTuks = User::role('tuk')->get();
 
-        return view('admin.tuk.update', [
+        return view('Admin.TUK.update', [
             'tuk' => $tuk,
             'userTuks' => $userTuks,
             'page' => 'TUK',

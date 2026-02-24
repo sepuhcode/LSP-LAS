@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $tuks = Tuk::count();
         $certificates = Sertifikasi::count();
 
-        return view('admin.dashboard.index', [
+        return view('Admin.Dashboard.index', [
             'accountRegistrations' => $accountRegistrations,
             'tuks' => $tuks,
             'certificates' => $certificates,

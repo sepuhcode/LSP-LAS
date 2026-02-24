@@ -11,7 +11,7 @@ class VerificationController extends Controller
     {
         $registrations = Registration::whereAccepted(null);
 
-        return view('admin.verifikasi.index', ['registrations' => $registrations]);
+        return view('Admin.verifikasi.index', ['registrations' => $registrations]);
     }
 
     public function create()

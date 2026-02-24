@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -35,8 +35,9 @@
                         <div class="form-group">
                             <label for="password_confirmation">Konfirmasi Password Baru:</label>
                             <input name="password_confirmation" type="password"
-                                class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation"
-                                placeholder="Input Konfirmasi Password Baru..." value="{{ old('password_confirmation') }}" required>
+                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                                id="password_confirmation" placeholder="Input Konfirmasi Password Baru..."
+                                value="{{ old('password_confirmation') }}" required>
                             @error('password_confirmation')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
