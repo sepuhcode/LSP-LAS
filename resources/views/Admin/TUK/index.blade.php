@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @section('page')
     TUK
@@ -39,7 +39,9 @@
                                         <td class="td-center text-left">{{ $tuk->address }}</td>
                                         <td class="td-center text-left">
                                             {{ $tuk->tukOwner->name == null ? '' : $tuk->tukOwner->name }}</td>
-                                        <td class="td-center text-center"><img data-enlargeable src={{ asset('Images/tuk-img/' . $tuk->image) }} alt="" style="cursor: zoom-in;" width="150px">
+                                        <td class="td-center text-center"><img data-enlargeable
+                                                src={{ asset('Images/tuk-img/' . $tuk->image) }} alt=""
+                                                style="cursor: zoom-in;" width="150px">
                                         </td>
                                         <td class="td-center text-center">
                                             <a class="btn btn-outline-success" href="/admin/tuk/{{ $tuk->id }}/edit"
@@ -89,7 +91,7 @@
             //handling ESC
             $('body').on('keyup.modal-close', function(e) {
                 if (e.key === 'Escape') {
-                removeModal();
+                    removeModal();
                 }
             });
         });

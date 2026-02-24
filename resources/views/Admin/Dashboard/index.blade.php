@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @section('page')
     Dashboard
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- <div class="row">
         <div class="col-md-12">
             <div class="card">

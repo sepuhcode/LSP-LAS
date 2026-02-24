@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -15,8 +15,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">TUK </label>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Nama TUK.."
-                                value="{{ old('name') }}">
+                            <input name="name" type="text" class="form-control" id="name"
+                                placeholder="Nama TUK.." value="{{ old('name') }}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -47,7 +47,8 @@
                             <label for="image">Gambar</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
+                                    <input id="image" name="image" type="file"
+                                        class="custom-file-input @error('image') is-invalid @enderror">
                                     <label class="custom-file-label" for="image">Pilih File</label>
                                 </div>
                                 {{-- <div class="input-group-append">
@@ -70,5 +71,4 @@
         </div>
         <!-- /.card -->
     </div>
-
 @endsection

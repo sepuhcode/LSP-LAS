@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @push('style')
     <!-- summernote -->
@@ -51,7 +51,6 @@
         </div>
         <!-- /.card -->
     </div>
-
 @endsection
 
 @push('script')

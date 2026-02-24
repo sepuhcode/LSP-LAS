@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @section('page')
     Surveillance
@@ -12,7 +12,8 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <h3 class="card-title mb-0">Surveillance</h3>
                         <div class="card-tools">
-                            <a class="btn btn-tool btn-outline-info text-white" href="{{ route('admin.surveillance.export') }}"> Export Excel</a>
+                            <a class="btn btn-tool btn-outline-info text-white"
+                                href="{{ route('admin.surveillance.export') }}"> Export Excel</a>
                             {{-- <a href="{{ route('admin.surveillance.create') }}" class="btn btn-tool btn-outline-info text-white"> Tambah </a> --}}
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -31,7 +31,8 @@
                             <select name="user_tuk_id"
                                 class="form-control select2bs4 @error('user_tuk_id') is-invalid @enderror" required>
                                 @foreach ($userTuks as $userTuk)
-                                    <option value="{{ $userTuk->id }}" {{ $tuk->user_tuk_id == $userTuk->id?'selected':'' }}>{{ $userTuk->name }}</option>
+                                    <option value="{{ $userTuk->id }}"
+                                        {{ $tuk->user_tuk_id == $userTuk->id ? 'selected' : '' }}>{{ $userTuk->name }}</option>
                                 @endforeach
                             </select>
                             @error('user_tuk_id')
@@ -42,7 +43,8 @@
                             <label for="image">Gambar</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="image" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
+                                    <input id="image" name="image" type="file"
+                                        class="custom-file-input @error('image') is-invalid @enderror">
                                     <label class="custom-file-label" for="image">Pilih File</label>
                                 </div>
                                 {{-- <div class="input-group-append">
@@ -65,5 +67,4 @@
         </div>
         <!-- /.card -->
     </div>
-
 @endsection

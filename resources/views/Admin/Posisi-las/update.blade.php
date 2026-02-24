@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -10,7 +10,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/admin/posisi-las/{{ $posisiLas->id }}" method="POST" >
+                <form action="/admin/posisi-las/{{ $posisiLas->id }}" method="POST">
                     @method('put')
                     @csrf
 
@@ -28,7 +28,9 @@
                             <select name="skema_sertifikasi_id"
                                 class="form-control @error('skema_sertifikasi_id') is-invalid @enderror">
                                 @foreach ($skemas as $skema)
-                                    <option value="{{ $skema->id }}" {{ $posisiLas->skema_sertifikasi_id == $skema->id ? 'selected':''}}>{{ $skema->name }}</option>
+                                    <option value="{{ $skema->id }}"
+                                        {{ $posisiLas->skema_sertifikasi_id == $skema->id ? 'selected' : '' }}>
+                                        {{ $skema->name }}</option>
                                 @endforeach
                             </select>
                             @error('skema_sertifikasi_id')

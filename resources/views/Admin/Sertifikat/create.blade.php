@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @push('style')
     <link rel="stylesheet" href={{ asset('admin_template/plugins/select2/css/select2.css') }}>

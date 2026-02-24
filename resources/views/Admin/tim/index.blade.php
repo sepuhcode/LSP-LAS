@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @section('page')
     Tim
@@ -37,7 +37,8 @@
                                         <td class="td-center text-left">{{ $karyawan->name }}</td>
                                         <td class="td-center text-left">{{ $karyawan->department }}</td>
                                         <td class="td-center text-center">
-                                            <img data-enlargeable src={{ asset('Images/our-team/' . $karyawan->image) }} alt="" style="cursor: zoom-in;" width="150px">
+                                            <img data-enlargeable src={{ asset('Images/our-team/' . $karyawan->image) }}
+                                                alt="" style="cursor: zoom-in;" width="150px">
                                         </td>
                                         <td class="td-center text-center">
                                             <a class="btn btn-outline-success" href="/admin/tim/{{ $karyawan->id }}/edit"
@@ -87,7 +88,7 @@
             //handling ESC
             $('body').on('keyup.modal-close', function(e) {
                 if (e.key === 'Escape') {
-                removeModal();
+                    removeModal();
                 }
             });
         });

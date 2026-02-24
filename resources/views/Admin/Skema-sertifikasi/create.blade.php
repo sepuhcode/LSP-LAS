@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @push('style')
     <!-- summernote -->
@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <label for="summernote">Deskripsi</label>
                             <textarea name="deskripsi" id="summernote" class="form-control @error('deskripsi') is-invalid @enderror" rows="3"
-                                placeholder="Enter deskripsi..." >{{ old('deskripsi') }}</textarea>
+                                placeholder="Enter deskripsi...">{{ old('deskripsi') }}</textarea>
                             @error('deskripsi')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

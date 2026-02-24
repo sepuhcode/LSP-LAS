@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -60,9 +60,9 @@
 @endsection
 
 @push('script')
-<script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
-</script>
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script>
 @endpush

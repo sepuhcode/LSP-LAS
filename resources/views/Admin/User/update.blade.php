@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -17,7 +17,7 @@
                         <div class="form-group">
                             <label for="name">Nama:</label>
                             <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                id="name" value="{{ old('name',$user->name) }}">
+                                id="name" value="{{ old('name', $user->name) }}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                id="email" value="{{ old('email',$user->email) }}">
+                                id="email" value="{{ old('email', $user->email) }}">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="phone">No.HP:</label>
                             <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                                id="phone" placeholder="Input Phone Number..." value="{{ old('phone',$user->phone) }}">
+                                id="phone" placeholder="Input Phone Number..." value="{{ old('phone', $user->phone) }}">
                             @error('phone')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -50,16 +50,16 @@
                         <div class="form-group">
                             <label for="address">Alamat:</label>
                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" rows="3"
-                                placeholder="Input Address...">{{ old('address',$user->address) }}</textarea>
+                                placeholder="Input Address...">{{ old('address', $user->address) }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="role">Pilih Role:</label>
                             <select name="role" class="form-control @error('role') is-invalid @enderror">
-                                <option value="user" {{ $user->hasRole('user')? 'selected' : '' }}>User</option>
-                                <option value="tuk" {{ $user->hasRole('tuk')? 'selected' : '' }}>User TUK</option>
-                                <option value="asesor" {{ $user->hasRole('asesor')? 'selected' : ''  }}>Asesor</option>
+                                <option value="user" {{ $user->hasRole('user') ? 'selected' : '' }}>User</option>
+                                <option value="tuk" {{ $user->hasRole('tuk') ? 'selected' : '' }}>User TUK</option>
+                                <option value="asesor" {{ $user->hasRole('asesor') ? 'selected' : '' }}>Asesor</option>
                                 @if ($user->hasRole('admin'))
-                                <option value="admin" selected>Admin</option>
+                                    <option value="admin" selected>Admin</option>
                                 @endif
                             </select>
                             @error('role')
@@ -70,7 +70,7 @@
                             <label for="is_active">Status:</label>
                             <select name="is_active" class="form-control @error('is_active') is-invalid @enderror">
                                 <option value=1 {{ $user->is_active ? 'selected' : '' }}>Aktif</option>
-                                <option value=0 {{ !$user->is_active ? 'selected' : ''  }}>Nonaktif</option>
+                                <option value=0 {{ !$user->is_active ? 'selected' : '' }}>Nonaktif</option>
                             </select>
                             @error('is_active')
                                 <div class="alert alert-danger">{{ $message }}</div>

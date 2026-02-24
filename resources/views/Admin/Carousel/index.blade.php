@@ -1,4 +1,4 @@
-@extends('Admin.layout')
+@extends('admin.layout')
 
 @section('page')
     Carousel
@@ -33,7 +33,9 @@
                                 @foreach ($carousels as $carousel)
                                     <tr>
                                         <td class="td-center text-center">{{ $loop->iteration }}</td>
-                                        <td class="td-center text-center"><img data-enlargeable src={{ asset('Images/carousel-img/' . $carousel->image) }} alt="" style="cursor: zoom-in;" width="150px"></td>
+                                        <td class="td-center text-center"><img data-enlargeable
+                                                src={{ asset('Images/carousel-img/' . $carousel->image) }} alt=""
+                                                style="cursor: zoom-in;" width="150px"></td>
                                         <td class="td-center text-center">
                                             <form action="/admin/carousel/{{ $carousel->id }}" method="post">
                                                 @method('put')
@@ -86,7 +88,7 @@
             //handling ESC
             $('body').on('keyup.modal-close', function(e) {
                 if (e.key === 'Escape') {
-                removeModal();
+                    removeModal();
                 }
             });
         });
