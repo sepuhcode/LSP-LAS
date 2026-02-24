@@ -76,7 +76,7 @@ class SertifikasiController extends Controller
         $filtered = $query->count();
 
         if ($orderColumnIndex === null) {
-            $query->orderBy('created_at', 'desc');
+            $query->orderBy('created_at', 'asc');
         } elseif ((int) $orderColumnIndex === 13) {
             $query->orderByRaw('(file_scan_sertifikat IS NULL) '.$orderDir);
         } else {
