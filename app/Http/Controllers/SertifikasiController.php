@@ -36,7 +36,7 @@ class SertifikasiController extends Controller
         $length = $request->integer('length', 25);
         $search = $request->input('search.value', '');
 
-        $orderColumnIndex = $request->integer('order.0.column', 3);
+        $orderColumnIndex = $request->input('order.0.column');
         $orderDir = $request->input('order.0.dir', 'asc') === 'desc' ? 'desc' : 'asc';
 
         /** @var array<int, string> $columnMap */
@@ -75,10 +75,12 @@ class SertifikasiController extends Controller
 
         $filtered = $query->count();
 
-        if ($orderColumnIndex === 13) {
+        if ($orderColumnIndex === null) {
+            $query->orderBy('created_at', 'desc');
+        } elseif ((int) $orderColumnIndex === 13) {
             $query->orderByRaw('(file_scan_sertifikat IS NULL) '.$orderDir);
         } else {
-            $orderColumn = $columnMap[$orderColumnIndex] ?? 'id';
+            $orderColumn = $columnMap[(int) $orderColumnIndex] ?? 'id';
             $query->orderBy($orderColumn, $orderDir);
         }
 

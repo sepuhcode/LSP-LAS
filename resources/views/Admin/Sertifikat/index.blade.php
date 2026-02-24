@@ -206,9 +206,7 @@
                         target: 1,
                     }
                 },
-                order: [
-                    [4, 'asc']
-                ],
+                order: [],
                 pageLength: 25,
                 autoWidth: false,
                 language: {
